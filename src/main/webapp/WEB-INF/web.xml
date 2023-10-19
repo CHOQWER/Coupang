@@ -29,8 +29,9 @@
 		<servlet-name>appServlet</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
-	
-	<!-- encoding mapping -->
+
+	<!-- 필터 등록 : 한글 encoding, spring-security 필터 -->
+    <!-- 필터 설정(Encoding) : CharacterEncodingFilter 객체 생성(pre loading)-->
 	<filter>
 		<filter-name>encodingFilter</filter-name>
 		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
@@ -39,15 +40,10 @@
 			<param-value>UTF-8</param-value>
 		</init-param>
 	</filter>
-	
-	<!-- Spring security 관련 필터 설정 -->
-	<filter>
-		<filter-name>springSecurityFilterChain</filter-name>
-		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
-	</filter>
+	<!-- encoding mapping -->
 	<filter-mapping>
-		<filter-name>springSecurityFilterChain</filter-name>
+		<filter-name>encodingFilter</filter-name>
 		<url-pattern>/*</url-pattern>
-	</filter-mapping>	
+	</filter-mapping>
 
 </web-app>

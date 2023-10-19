@@ -164,7 +164,14 @@
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-taglibs</artifactId>
 			<version>5.8.7</version>
-		</dependency>	
+		</dependency>
+		
+		<!-- spring-security-crypto : 비밀번호 암호화 -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-crypto</artifactId>
+			<version>5.8.7</version>
+		</dependency>
 		     
 	</dependencies>
     <build>
