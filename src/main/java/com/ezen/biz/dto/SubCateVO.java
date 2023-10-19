@@ -1,10 +1,11 @@
 package com.ezen.biz.dto;
 
 import lombok.Data;
+
 @Data
-public class SubCategoryVO {
+public class SubCateVO {
 	private int sca_no,ca_no;
 	private String subcate_name;
-	private Integer dispseq;
+	private int dispseq;
 	private String disp;
 }
