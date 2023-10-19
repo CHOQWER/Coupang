@@ -1,8 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 	
-	<!-- Root Context: defines shared resources visible to all other web components -->
+	<!-- DAO, Impl ... 객체 생성 -->
+	<context:component-scan base-package="com.ezen.biz"/>
+	<!-- DataSource의 정보를 설정할 외부 파일을 정의 -->
+	<context:property-placeholder location="classpath:oraCoupang.properties"/>
+	<!-- HikariCP 사용 bean 등록 -->
+	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+		<property name="driverClassName" value="${ora.driver}"/>
+		<property name="jdbcUrl"         value="${ora.url}"/>
+		<property name="username"        value="${ora.user}"/>
+		<property name="password"        value="${ora.pwd}"/>
+	</bean>
+	<!-- HikariCP configuration -->
+	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" 
+		destroy-method="close">
+		<constructor-arg ref="hikariConfig"/>
+		<property name="idleTimeout" value="300"/>
+		<property name="maxLifetime" value="300"/>
+	</bean>
+	<!-- Mybatis(SqlSession) 객체 생성 -->
+	<bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="configLocation" value="classpath:sql-map-config.xml"/>
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+	<!-- Mybatis이용해서 편리하게 CRUD 작업을 할 수 있는 Templet 사용 bean등록 -->
+	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactoryBean"/>
+	</bean>	
 		
 </beans>
