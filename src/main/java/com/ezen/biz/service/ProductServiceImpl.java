@@ -28,8 +28,13 @@ public class ProductServiceImpl implements ProductService{
 	}
 
 	@Override
-	public List<ProductVO> getProductList(ProductVO vo) {
-		return dao.getProductList(vo);
+	public List<ProductVO> selectProductList() {
+		return dao.selectProductList();
+	}
+	
+	@Override
+	public ProductVO SelectProduct(ProductVO vo) {
+		return dao.SelectProduct(vo);
 	}
 
 }

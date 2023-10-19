@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BuyDAO">
+	
+	<!-- 구매하기 -->
+	<insert id="buyProduct">
+	    insert into buy(bno,u_id,pno,pname,price,dis_price,b_cnt,post_no,addr1,addr2) 
+	    values(seq_buy.nextval,#{u_id,jdbcType=NVARCHAR},#{pno,jdbcType=INTEGER},#{pname,jdbcType=NVARCHAR}
+	    ,#{price,jdbcType=INTEGER},#{dis_price,jdbcType=INTEGER},#{b_cnt},#{post_no},#{addr1}
+	    ,#{addr2,jdbcType=NVARCHAR})
+	</insert>
+	
+	<!-- 환불하기 -->
+	<delete id="refundProduct">
+		delete from buy where bno=#{bno}
+	</delete>
+	
+	<!-- 관리자가 구매내역 확인 -->
+	<select id="adminSelectBuyList" resultType="buy">
+		select * from buy order by bno
+	</select>
+	
+	<!-- 판매자가 구매내역(상품별 매출) 확인 -->
+	<select id="sellerSelectBuyList" resultType="buy">
+		select distinct pname,dis_price * b_cnt as "상품별 매출" 
+		from buy where u_id=#{u_id,jdbcType=NVARCHAR}
+	</select>
+</mapper>

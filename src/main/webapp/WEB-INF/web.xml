@@ -31,10 +31,14 @@
 	</servlet-mapping>
 	
 	<!-- encoding mapping -->
-	<filter-mapping>
+	<filter>
 		<filter-name>encodingFilter</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
 	
 	<!-- Spring security 관련 필터 설정 -->
 	<filter>

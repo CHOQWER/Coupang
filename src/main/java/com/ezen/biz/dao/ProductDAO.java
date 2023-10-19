@@ -28,10 +28,12 @@ public class ProductDAO {
 		mybatis.delete("ProductDAO.deleteProduct", vo);
 	}
 	
-	// user가 등록한 제품 검색
-	public List<ProductVO> getProductList(ProductVO vo) {
-		return mybatis.selectList("ProductDAO.getProductList", vo);
+	public List<ProductVO> selectProductList(){
+		return mybatis.selectList("ProductDAO.selectProductList");
 	}
 	
+	public ProductVO SelectProduct(ProductVO vo) {
+		return mybatis.selectOne("ProductDAO.selectProduct", vo);
+	}
 	
 }

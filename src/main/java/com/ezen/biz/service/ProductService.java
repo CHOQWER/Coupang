@@ -15,7 +15,10 @@ public interface ProductService {
 	// 제품 삭제
 	void deleteProduct(ProductVO vo);
 	
-	// user가 등록한 제품 검색
-	List<ProductVO> getProductList(ProductVO vo);
+	// 
+	List<ProductVO> selectProductList();
+	
+	// 
+	ProductVO SelectProduct(ProductVO vo);
 
 }
