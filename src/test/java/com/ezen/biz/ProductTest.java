@@ -73,6 +73,7 @@ public class ProductTest {
 			vo.setPname("삼성전자 그랑데 드럼 세탁기 WF19T6000KW 19kg 방문설치");
 			vo.setPrice(648000);
 			dao.SelectProduct(vo);
+			log.info(vo);
 		}
 
 		@Test

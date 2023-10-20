@@ -78,17 +78,6 @@ public class ProductController {
 	}
 	
 
-	
-	
-
-	
-
-	
-	
-	
-	
-	
-	
 	@RequestMapping("ProductList")
 	public String ProductList(ProductVO vo, @RequestParam int sca_no, @RequestParam(required = false, defaultValue = "1") int pageNum, Model model) {
 	    // 페이징 관련 작업
@@ -103,6 +92,7 @@ public class ProductController {
 	    
 	    List<ProductVO> list = service.selectProductList(sca_no, cri);
 	    model.addAttribute("list", list);
+	    
 	    int cnt = service.selectRowCount(sca_no);
 	    PageMaker maker = new PageMaker(cri, cnt);
 	    model.addAttribute("pmaker", maker);

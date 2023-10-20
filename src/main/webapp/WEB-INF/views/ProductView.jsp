@@ -253,6 +253,7 @@ button:hover {
 <body>
     <section class="content">
         <div class="cate"> 쿠팡홈 > 태블릿PC > 태블릿PC</div>
+        
         <!--좌측 메인/서브 이미지-->
         <div class="content-main">
             <div class="main-img">

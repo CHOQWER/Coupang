@@ -34,11 +34,6 @@
 		FROM product where pno=#{pno}
   	</select>
   	
-  	
-  	
-  	
-  	
-  	
   	<!--  -->
   	<select id="selectProduct" resultType="product">
   		select * from product where pno=#{pno}

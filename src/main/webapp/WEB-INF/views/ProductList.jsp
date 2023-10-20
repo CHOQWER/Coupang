@@ -43,7 +43,7 @@ img {
 </style>
 <body>
 	<h2>제품리스트!!!!!!!!!!</h2>
-	 <a href="ProductView"> 상세폐이지로 이동하기 </a>
+	
 	
 	<table>
 		<section id="new">
@@ -56,7 +56,7 @@ img {
 								<img src="imgDown?main_img1=${vo.main_img1}">
 							</div></li>
 
-						<li id="title"> <a href="ProductView"> ${vo.pname} </a></li>
+						<li id="title"> <a href="ProductView?pno"> ${vo.pname} </a></li>
 
 						<li id="price">${vo.price}</li>
 						<li id="price">${vo.dis_price}</li>
