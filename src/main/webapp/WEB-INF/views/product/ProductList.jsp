@@ -53,10 +53,10 @@ img {
 					<ul>
 						<li><a href="ProductView"></a>
 							<div class="img_list">
-								<img src="imgDown?main_img1=${vo.main_img1}">
+								<img src="imgDown?imgName=${vo.main_img1}">
 							</div></li>
 
-						<li id="title"> <a href="ProductView?pno"> ${vo.pname} </a></li>
+						<li id="title"> <a href="ProductView?pno=${vo.pno}"> ${vo.pname} </a></li>
 
 						<li id="price">${vo.price}</li>
 						<li id="price">${vo.dis_price}</li>
