@@ -1,0 +1,235 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+header {
+    width: 1020px;
+    position: relative;
+    height: 115px;
+    margin: 0 auto;
+    padding-top: 32px;
+    background: #fff;
+    
+}
+.catagory-menu{
+    position: relative;
+}
+
+.dropmenu{
+    display: none;
+    position : absolute;
+    overflow: auto;
+    z-index : 1;
+    border: 1px solid black;
+    text-align: left;
+    background-color:#fff;
+    width: 560px;
+    height: auto;
+    font-weight: bold;
+}
+    .dropmenu{
+    display:flex;/* dropmenu를 flexbox로 만들겠다고 선언*/
+    justify-content:center;/*flex된 dropmenu 를 가운데 정렬*/
+    height:30px;/* 높이지정*/
+   }
+   .dropmenu ul{
+    list-style:none;/* ul의 하위에 속하는 전체 속성에 list-style없음*/
+    display:flex;/* flex 선언*/
+    background-color:#ccc;/* 바탕색*/
+    border-radius:5px;/* 보더를 둥글게*/
+   }
+   .dropmenu a{
+    color:white;/* 컬러*/
+    text-decoration:none;/* a태그의 밑줄 삭제*/
+    padding:0px 10px 0px 10px;/* 패딩추가*/
+    height:30px;/* 높이*/
+    line-height:30px;/* 글씨의 높이를 중간으로 맞춰줌*/
+    display:block;/* 블럭형으로 변경*/
+   }
+   .dropmenu li{
+    width:100px;/* 넓이 지정*/
+   }
+   .dropmenu ul ul{
+    display:none;/* .dropmenu의 ul 하위의 ul을 숨김처리*/
+   }
+   .dropmenu ul li:hover{/* 마우스를 올릴때 하단에 밑줄나오도록*/
+    border-bottom:3px solid blue;/* 보더 지정*/
+    box-sizing:border-box;/* 박스의 크기를 보더의 크기를 포함한 크기로 변경*/
+   }
+
+
+.dropmenu ul li:hover ul{ /* 마우스를 ul 하위 li위에 올릴때 li 하위ul 을 출력*/
+    display:block;/* 디스플레이 출력되도록 설정*/
+    position:absolute;/* ul의 위치를 부모의 하위에 나오도록 고정*/
+   }
+   .dropmenu ul li:hover li:hover{/* 하위 드롭다운 메뉴에 마우스 올릴시 색 반전효과*/
+    border-bottom:0px;/* 하단 보더 없앰*/
+    background-color:#555;/* 배경색*/
+    box-sizing:border-box;/* 박스의 크기를 보더의 크기를 포함한 크기로 변경*/
+   }
+   .dropmenu ul li:hover li.subdropmenu ul{/*추가 2단 드랍메뉴 구성*/
+     display: none;/*추가 드랍메뉴 숨기기*/
+   }
+   .dropmenu ul li:hover li.subdropmenu:hover ul{
+     display:block;/*추가 드랍메뉴 활성화*/
+     position:absolute;/*추가 드랍메뉴 위치를 부모 기준으로 고정*/
+     left: 100px;/*추가 드랍메뉴 위치를 왼쪽에서 100px만큼 옮김(.dropmenu li 에서 지정한 넓이값 만큼)*/
+     top: 30px;/*추가 드랍메뉴 위치를 상단에서 30px만큼 옮김(a 에서 지정한 높이값 만큼)*/
+   }
+.dropmenu ul li:hover li.subdropmenu:hover ul li{
+     width: 120px;/*추가 하위메뉴 넓이 수정*/
+   }
+
+
+
+
+section {
+    display: flex;
+    width: 840px;
+    height: 91px;
+    margin: 0 auto;
+}
+
+.top-nav {
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 32px;
+    z-index: 3;
+}
+
+.right-nav {
+    display: flex;
+    margin: 3px 100px;
+    font-size: 0.5rem;
+    margin-left: 71.3%;    
+}
+
+.right-nav li {
+    margin: 5px;
+}
+
+
+li {
+    list-style: none;
+
+}
+
+.logo {
+    margin-top: 2em;
+    margin-left: 2em;
+}
+
+.search-box {
+    margin-top: 2em;
+    margin-left: 2em;
+    display: flex;
+    align-items: center;
+    border: 2px solid #4285f4;
+    padding: 5px;
+    width: 400px;
+}
+
+.search-box select {
+    color: gray;
+    border: none;
+    text-align: center;
+}
+
+.search-box option {
+
+    border: none;
+}
+
+.search-box input[type="text"] {
+    color: gray;
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 5px;
+}
+
+.search-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+}
+
+.search-button img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+
+
+.icon-menu {
+
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin-left: 20px;
+}
+
+.icon-menu li {
+    display: inline-block;
+    margin: 0 10px;
+
+}
+
+.icon-menu li a {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #333;
+}
+
+.icon-menu li span {
+    padding-top: 10%;
+    width: 70px;
+}
+
+.icon-menu li img {
+    width: 50px;
+    height: 30px;
+}
+
+.menu {
+    position: absolute;
+    top: 60%;
+    left: 32%;
+    display: flex;
+    justify-content: space-between;
+    margin: 30px auto;
+}
+
+.menu li {
+    margin: 0 20px;
+}
+
+nav ul {
+    display: flex;
+}
+
+
+
+
+main {
+    position: relative;
+    margin: 0 auto;
+
+}
+

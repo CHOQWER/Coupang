@@ -15,15 +15,15 @@ public class UsersDAO {
    
    
    public UsersVO selectMember(String u_id) {    
-      return mybatis.selectOne("MemberDAO.selectMember", u_id);      
+      return mybatis.selectOne("UsersDAO.selectMember", u_id);      
    }
   
    public void insertMember(UsersVO vo) {
-	   mybatis.insert("MemberDAO.insertMember", vo);	
+	   mybatis.insert("UsersDAO.insertMember", vo);	
 }
    
-   public int idChk(UsersVO vo) {
-	   return mybatis.selectOne("MemberDAO.idChk", vo);
+   public int idCheck(String id) {
+	   return mybatis.selectOne("UsersDAO.idCheck", id);
    }
    
 }

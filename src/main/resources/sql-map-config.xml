@@ -20,7 +20,7 @@
 		<!-- =================Mappings======================= -->
 		<mapper resource="mappings/Buy-mapping.xml"/>
 		<mapper resource="mappings/Product-mapping.xml"/>
-		<!-- <mapper resource="mappings/users-mapping.xml"/> -->
+		<mapper resource="mappings/users-mapping.xml"/> 
 		<mapper resource="mappings/payment-mapping.xml"/>
 		<mapper resource="mappings/cart-mapping.xml"/>
 	</mappers>

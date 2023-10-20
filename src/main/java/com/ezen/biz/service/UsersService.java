@@ -8,5 +8,5 @@ public interface UsersService {
 	
 	void insertMember(UsersVO vo);
 	
-	int idChk(UsersVO vo);
+	int idCheck(String id);
 }

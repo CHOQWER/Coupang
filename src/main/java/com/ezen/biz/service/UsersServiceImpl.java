@@ -6,6 +6,9 @@ import org.springframework.stereotype.Service;
 import com.ezen.biz.dao.UsersDAO;
 import com.ezen.biz.dto.UsersVO;
 
+import lombok.extern.log4j.Log4j;
+
+
 @Service
 public class UsersServiceImpl implements UsersService {
 	
@@ -19,10 +22,15 @@ public class UsersServiceImpl implements UsersService {
 		return dao.selectMember(u_id);
 	}
 	
-	@Override
-	public int idChk(UsersVO vo) {
-		return dao.idChk(vo);
+	
+	public int idCheck(String id) {
+		int result=0;
+		result=dao.idCheck(id);
+		return result;
+		
 	}
+	
+	
 	
 
 
