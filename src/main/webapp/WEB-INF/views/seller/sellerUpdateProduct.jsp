@@ -5,7 +5,7 @@
 <%@ page session="false" %>
 
 <main>
-	<form action="sellerInsertProduct" method="post" >
+	<form action="sellerUpdateProduct" method="post" >
 		<table class="table table-sm table-bordered">
 			<tr>
 				<th>판매자 아이디</th> <!-- 아이디 가져오기 -->
@@ -27,7 +27,7 @@
 			<tr>
 				<th>상품명</th>
 				<td><input type="text" size="120"  maxlength="7" name="pname" id="pname" 
-				   placeholder="상품명입력" required></td>
+				   placeholder="상품명입력" required>${pno}</td>
 			</tr>
 	        <tr>
 				<th>할인 전 가격</th> <!-- 할인가격 보다 같거나 커야함 -->
@@ -66,7 +66,8 @@
 			</tr> -->
 		</table>
 			<div class="btn">
-				<button type="submit" class="btn btn-success">상품 수정</button> &nbsp; 
+				<button type="submit" class="btn btn-success">상품 등록</button> &nbsp; 
+
 			    <button type="reset" class="btn btn-secondary">다시 입력</button>
 		    </div>
 	</form>

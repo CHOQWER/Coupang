@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ezen.biz.dao.ProductDAO;
-import com.ezen.biz.dto.ImagesVO;
 import com.ezen.biz.dto.MainCateVO;
 import com.ezen.biz.dto.ProductVO;
 import com.ezen.biz.dto.SubCateVO;
@@ -22,13 +21,13 @@ public class ProductServiceImpl implements ProductService{
 	}
 	
 	@Override
-	public void sellerupdateProduct(ProductVO vo) {
-		dao.sellerupdateProduct(vo);
+	public void sellerUpdateProduct(ProductVO vo) {
+		dao.sellerUpdateProduct(vo);
 	}
 	
 	@Override
-	public void sellerdeleteProduct(ProductVO vo) {
-		dao.sellerdeleteProduct(vo);
+	public void sellerDeleteProduct(ProductVO vo) {
+		dao.sellerDeleteProduct(vo);
 	}
 
 	@Override
@@ -62,14 +61,13 @@ public class ProductServiceImpl implements ProductService{
 	}
 
 	@Override
-	public ProductVO selectProductPno(int pno) {
-		return dao.selectProductPno(pno);
+	public List<ProductVO> selectProductListPno(int pno) {
+		return dao.selectProductListPno(pno);
 	}
 
 	@Override
-	public ImagesVO selectImgPno(int pno) {
-		return dao.selectImgPno(pno);
+	public List<ProductVO> sellerSellectMineProduct(ProductVO vo) {
+		return dao.sellerSellectMineProduct(vo);
 	}
-
 
 }

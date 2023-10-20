@@ -2,7 +2,6 @@ package com.ezen.biz.service;
 
 import java.util.List;
 
-import com.ezen.biz.dto.ImagesVO;
 import com.ezen.biz.dto.MainCateVO;
 import com.ezen.biz.dto.ProductVO;
 import com.ezen.biz.dto.SubCateVO;
@@ -14,13 +13,16 @@ public interface ProductService {
 	void sellerInsertProduct(ProductVO vo);
 
 	// 제품 수정
-	void sellerupdateProduct(ProductVO vo);
+	void sellerUpdateProduct(ProductVO vo);
 
 	// 제품 삭제
-	void sellerdeleteProduct(ProductVO vo);
+	void sellerDeleteProduct(ProductVO vo);
 	
-	// 
+	// 전체 상품조회
 	List<ProductVO> selectProductList();
+	
+	// 판매자 상품등록 내역조회
+	List<ProductVO> sellerSellectMineProduct(ProductVO vo);
 	
 	// 
 	ProductVO SelectProduct(ProductVO vo);
@@ -34,9 +36,6 @@ public interface ProductService {
 	
 	int selectRowCount(int sca_no);
 	
-	//pno로 제품검색
-		ProductVO selectProductPno(int pno);
-		
-		ImagesVO selectImgPno(int pno);
+	List<ProductVO> selectProductListPno(int pno);
 
 }

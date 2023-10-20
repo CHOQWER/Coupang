@@ -11,6 +11,8 @@
 	 
 <a href="sellerInsertProduct">
 	<h2> 판매자 -> 상품등록</h2></a>
+<a href="sellerSellectMineProduct">
+	<h2> 판매자 -> 등록한 상품등록 내역</h2></a>	
 <a href="sellerMainPage">
 	<h2> 판매자 -> 판매내역</h2></a>
 <a href="adminSelectBuyList">

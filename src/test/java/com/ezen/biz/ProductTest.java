@@ -7,7 +7,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.ezen.biz.dao.ProductDAO;
-import com.ezen.biz.dto.ImagesVO;
 import com.ezen.biz.dto.ProductVO;
 
 import lombok.extern.log4j.Log4j;
@@ -44,29 +43,14 @@ public class ProductTest {
 			vo.setQty(10);
 			dao.sellerInsertProduct(vo);
 		}
-		@Test
-		public void sellerupdateProductTest() {
-			ProductVO vo=new ProductVO();
-			vo.setPno(253);
-			vo.setCa_no(1);
-			vo.setSca_no(1);
-			vo.setCompany("삼성전자");
-			vo.setU_id("whdgus1234");
-			vo.setPname("종현 상품");
-			vo.setPrice(2222);
-			vo.setQty(5);
-			dao.sellerupdateProduct(vo);
-		}
-		@Test
-		public void sellerdeleteProductTest() {
-			ProductVO vo=new ProductVO();
-			vo.setPno(253);
-			dao.sellerdeleteProduct(vo);
-		}
-		@Test
-		public void selectImgPno(){
-			ImagesVO vo=dao.selectImgPno(2);
-			log.info(vo);
-		}
+		/*
+		 * @Test public void sellerupdateProductTest() { ProductVO vo=new ProductVO();
+		 * vo.setPno(253); vo.setCa_no(1); vo.setSca_no(1); vo.setCompany("삼성전자");
+		 * vo.setU_id("whdgus1234"); vo.setPname("종현 상품"); vo.setPrice(2222);
+		 * vo.setQty(5); dao.sellerupdateProduct(vo); }
+		 * 
+		 * @Test public void sellerdeleteProductTest() { ProductVO vo=new ProductVO();
+		 * vo.setPno(253); dao.sellerdeleteProduct(vo); }
+		 */
 		
 }

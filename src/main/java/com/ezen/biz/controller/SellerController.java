@@ -38,18 +38,38 @@ public class SellerController {
 	public String adminSelectBuyList(Model model,BuyVO vo) {
 		List<BuyVO> list=buyService.adminSelectBuyList(vo);
 		model.addAttribute("list",list);
-		return "admin/adminSelectBuyList";
+		return "seller/adminSelectBuyList";
 	}
 	@GetMapping("sellerInsertProduct")
-	public String sellerInsertProduct1() {
+	public String sellerInsertProduct() {
 		return "seller/sellerInsertProduct";
 	}
 	@PostMapping("sellerInsertProduct")
 	public String sellerInsertProduct(Model model,ProductVO vo) {
-		System.out.println("sellerInsertProduct 메소드 실행");
 		productService.sellerInsertProduct(vo);
-		System.out.println("sellerInsertProduct vo="+vo);
 		return "seller/sellerHome";
 	}
-
+	// 판매자 상품등록 내역조회
+	@RequestMapping("sellerSellectMineProduct")
+	public String sellerSelectProduct(Model model,ProductVO vo) {
+		vo.setU_id("whdgus1234");
+		System.out.println("aaa");
+		List<ProductVO> list=productService.sellerSellectMineProduct(vo);
+		System.out.println(vo);
+		model.addAttribute("list",list);
+		return "seller/sellerSellectMineProduct";
+	}
+	//판매자 업데이트 팝업창 이동
+	@GetMapping("sellerUpdateProduct")
+	public String sellerUpdateProduct() {
+		return "seller/sellerUpdateProduct";
+	}
+	//판매자 업데이트 팝업창 이동
+	@PostMapping("sellerUpdateProduct")
+	public String sellerUpdateProduct(Model model,ProductVO vo) {
+		vo.setU_id("whdgus1234");
+		productService.sellerUpdateProduct(vo);
+		model.addAttribute("vo",vo);
+		return "seller/sellerHome";
+	}
 }

@@ -12,14 +12,14 @@
   	</insert>
   	
   	<!-- 제품 수정 -->
-	<update id="sellerupdateProduct">
+	<update id="sellerUpdateProduct">
   		update product set u_id=#{u_id,jdbcType=NVARCHAR},ca_no=#{ca_no,jdbcType=INTEGER},sca_no=#{sca_no,jdbcType=INTEGER}
   		,company=#{company},pname=#{pname},price=#{price},dis_price=#{dis_price,jdbcType=INTEGER},content=#{content,jdbcType=NVARCHAR},
   		color=#{color,jdbcType=NVARCHAR},qty=#{qty,jdbcType=INTEGER} where pno=#{pno}
   	</update>
   	
   	<!-- 제품 삭제 -->
-  	<delete id="sellerdeleteProduct">
+  	<delete id="sellerDeleteProduct">
   		delete from product where pno=#{pno}
   	</delete>
   	
@@ -28,9 +28,14 @@
   		select * from product
   	</select>
   	
+  	 <!-- // 판매자 상품등록 내역조회 -->
+  	<select id="sellerSellectMineProduct" resultType="product">
+  		select * from product where u_id=#{u_id}
+  	</select>
+  	
   	<!-- pno로 상품정보 조회 -->
-  	<select id="selectProductPno" resultType="product">
-  		SELECT pno, u_id, ca_no, sca_no, company, pname, price, dis_price, content, color, qty, p_regdate,disp
+  	<select id="selectProductListPno" resultType="product">
+  		SELECT (pno, u_id, ca_no, sca_no, company, pname, price, dis_price, content, color, qty, p_regdate,disp)
 		FROM product where pno=#{pno}
   	</select>
   	
@@ -41,7 +46,7 @@
 		select * from (
 		select rownum rn, A.* from
 		(select
-			p.pno,main_img1,sca_no,pname,price,dis_price from product p, images i
+			main_img1,sca_no,pname,price,dis_price from product p, images i
 				where 1=1
 					and p.pno=i.pno and sca_no=#{sca_no}) A
 		<![CDATA[
@@ -68,10 +73,7 @@
 		product where sca_no=#{sca_no} and disp='y' 
 	</select>
   	
-  	<!-- pno로 이미지 전체 조회 -->
- 	<select id="selectImgPno" resultType="images">
-			select * from images where pno=#{pno}
-    </select>
+  	
   	
   	
   	
