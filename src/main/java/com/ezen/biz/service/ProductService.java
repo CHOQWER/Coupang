@@ -10,13 +10,13 @@ import com.ezen.biz.utils.Criteria;
 public interface ProductService {
 
 	// 제품 등록
-	void insertProduct(ProductVO vo);
+	void sellerInsertProduct(ProductVO vo);
 
 	// 제품 수정
-	void updateProduct(ProductVO vo);
+	void sellerupdateProduct(ProductVO vo);
 
 	// 제품 삭제
-	void deleteProduct(ProductVO vo);
+	void sellerdeleteProduct(ProductVO vo);
 	
 	// 
 	List<ProductVO> selectProductList();
@@ -34,4 +34,5 @@ public interface ProductService {
 	int selectRowCount(int sca_no);
 	
 	List<ProductVO> selectProductListPno(int pno);
+
 }

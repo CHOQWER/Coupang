@@ -13,9 +13,10 @@ public class BuyDAO {
 	@Autowired
 	private SqlSessionTemplate mybatis;
 	
-	public void buyProduct(BuyVO vo) {
-		mybatis.insert("BuyDAO.buyProduct", vo);
-	}
+	/*
+	 * public void sellerInsertProduct(BuyVO vo) {
+	 * mybatis.insert("BuyDAO.sellerInsertProduct", vo); }
+	 */
 	
 	public void refundProduct(BuyVO vo) {
 		mybatis.delete("BuyDAO.refundProduct", vo);

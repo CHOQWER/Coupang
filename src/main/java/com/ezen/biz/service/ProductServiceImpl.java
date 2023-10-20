@@ -16,18 +16,18 @@ public class ProductServiceImpl implements ProductService{
 	private ProductDAO dao;
 	
 	@Override
-	public void insertProduct(ProductVO vo) {
-		dao.insertProduct(vo);
+	public void sellerInsertProduct(ProductVO vo) {
+		dao.sellerInsertProduct(vo);
 	}
 	
 	@Override
-	public void updateProduct(ProductVO vo) {
-		dao.updateProduct(vo);
+	public void sellerupdateProduct(ProductVO vo) {
+		dao.sellerupdateProduct(vo);
 	}
 	
 	@Override
-	public void deleteProduct(ProductVO vo) {
-		dao.deleteProduct(vo);
+	public void sellerdeleteProduct(ProductVO vo) {
+		dao.sellerdeleteProduct(vo);
 	}
 
 	@Override

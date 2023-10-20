@@ -72,7 +72,7 @@ public class ProductController {
 		List<ProductVO> list=service.selectProductListPno(1);
 		System.out.println(list);
 		model.addAttribute("list",list);
-		return "ProductView";
+		return "product/ProductView";
 	}
 	
 
@@ -94,7 +94,7 @@ public class ProductController {
 	    int cnt = service.selectRowCount(sca_no);
 	    PageMaker maker = new PageMaker(cri, cnt);
 	    model.addAttribute("pmaker", maker);
-	    return "ProductList";
+	    return "product/ProductList";
 	}
 
 

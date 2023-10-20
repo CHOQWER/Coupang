@@ -8,9 +8,11 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+
 import com.ezen.biz.dto.MainCateVO;
 import com.ezen.biz.dto.ProductVO;
 import com.ezen.biz.dto.SubCateVO;
+
 import com.ezen.biz.utils.Criteria;
 
 @Repository
@@ -20,17 +22,17 @@ public class ProductDAO {
 	private SqlSessionTemplate mybatis;
 	
 	// 제품 등록
-	public void insertProduct(ProductVO vo) {
-		mybatis.insert("ProductDAO.insertProduct", vo);
+	public void sellerInsertProduct(ProductVO vo) {
+		mybatis.insert("ProductDAO.sellerInsertProduct", vo);
 	}
 	
 	// 제품 수정
-	public void updateProduct(ProductVO vo) {
+	public void sellerupdateProduct(ProductVO vo) {
 		mybatis.update("ProductDAO.updateProduct", vo);
 	}
 	
 	// 제품 삭제
-	public void deleteProduct(ProductVO vo) {
+	public void sellerdeleteProduct(ProductVO vo) {
 		mybatis.delete("ProductDAO.deleteProduct", vo);
 	}
 	

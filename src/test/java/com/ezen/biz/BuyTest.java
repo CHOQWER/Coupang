@@ -36,7 +36,7 @@ public class BuyTest {
 		vo.setDis_price(648001);
 		vo.setAddr1("서울시 관악구");
 		vo.setAddr2("대림동");
-		dao.buyProduct(vo);
+		dao.refundProduct(vo);
 		log.info(vo);
 		
 	}

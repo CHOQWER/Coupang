@@ -22,6 +22,7 @@
 				</c:when>
 				<c:otherwise>
 					<li>${sessionScope.vo.u_name}님</li>
+					<li><a href="seller">판매자 사이트로 이동</a>
 					<li><a href="logout">로그아웃</a></li>
 				</c:otherwise>
 			</c:choose>

@@ -32,7 +32,7 @@ public class ProductTest {
 			dao.SelectProduct(vo);
 		}
 		@Test
-		public void insertProductTest() {
+		public void sellerinsertProductTest() {
 			ProductVO vo=new ProductVO();
 			vo.setCa_no(1);
 			vo.setSca_no(1);
@@ -41,10 +41,10 @@ public class ProductTest {
 			vo.setPname("종현 상품");
 			vo.setPrice(1113);
 			vo.setQty(10);
-			dao.insertProduct(vo);
+			dao.sellerInsertProduct(vo);
 		}
 		@Test
-		public void updateProductTest() {
+		public void sellerupdateProductTest() {
 			ProductVO vo=new ProductVO();
 			vo.setPno(253);
 			vo.setCa_no(1);
@@ -54,13 +54,13 @@ public class ProductTest {
 			vo.setPname("종현 상품");
 			vo.setPrice(2222);
 			vo.setQty(5);
-			dao.updateProduct(vo);
+			dao.sellerupdateProduct(vo);
 		}
 		@Test
-		public void deleteProductTest() {
+		public void sellerdeleteProductTest() {
 			ProductVO vo=new ProductVO();
 			vo.setPno(253);
-			dao.deleteProduct(vo);
+			dao.sellerdeleteProduct(vo);
 		}
 		
 		

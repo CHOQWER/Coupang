@@ -5,7 +5,7 @@
 <mapper namespace="BuyDAO">
 	
 	<!-- 구매하기 -->
-	<insert id="buyProduct">
+	<insert id="sellerInsertProduct">
 	    insert into buy(bno,u_id,pno,pname,price,dis_price,b_cnt,post_no,addr1,addr2) 
 	    values(seq_buy.nextval,#{u_id,jdbcType=NVARCHAR},#{pno,jdbcType=INTEGER},#{pname,jdbcType=NVARCHAR}
 	    ,#{price,jdbcType=INTEGER},#{dis_price,jdbcType=INTEGER},#{b_cnt},#{post_no},#{addr1}

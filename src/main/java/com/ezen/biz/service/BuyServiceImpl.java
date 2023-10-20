@@ -12,12 +12,6 @@ public class BuyServiceImpl implements BuyService {
 	@Autowired
 	private BuyDAO dao;
 
-	//구매하기-구매자
-	//현재수량 -재고 하기(17참고)
-	@Override
-	public void buyProduct(BuyVO vo) {
-		dao.buyProduct(vo);
-	}
 
 	//환불하기- 판매자
 	//상품구매후 취소
