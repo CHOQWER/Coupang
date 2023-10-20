@@ -34,43 +34,19 @@
 				<div class="catagory-menu">
 					<a href=""><img src="resources/img/catagory.png" alt=""></a>
 
-					<!--카테고리 클릭 시 메뉴보여주기-->
+					<!--카테고리 올려놓을 시 메뉴보여주기-->
 					<div class="dropmenu">
+					<c:forEach items="${catelist}" var="cate">
+					 	<a href="#">${cate.get('name')}</a>
+						<!-- 카테고리에 대한 하위 서브카테고리 표시 -->
 						<ul>
-							<li class="subdropmenu"><a href="">TV/영상가전</a>
-								<ul>
-									<li><a href="">TV</a></li>
-									<li><a href="">영상가전</a></li>
-								</ul></li>
-
-							<li><a href="">주방가전</li>
-							</a>
-							<li><a href="">냉장고</li>
-							</a>
-							<ul>
-								<li><a href="">3/4도어냉장고</a></li>
-								<li><a href="">양문형냉장고</a></li>
-								<li><a href="">일반냉장고</a></li>
-							</ul>
-							<li><a href="">청소기</li>
-							</a>
-							<ul>
-								<li><a href="">스틱청소기</a></li>
-								<li><a href="">진공청소기</a></li>
-								<li><a href="">로봇청소기</a></li>
-							</ul>
-							<li><a href="">태블릿PC</li>
-							</a>
-							<li><a href="">스마트워치</li>
-							</a>
-							<li><a href="">노트북</li>
-							</a>
-							<li><a href="">데스크탑</li>
-							</a>
-					</div>
-					</ul>
-				</div>			
-
+							<c:forEach items="${cate.get('subcates')}" var="sub">
+									<li><a href="ProductList?sca_no=${sub.get('sno')}&pageNum=${pmaker.cri.pageNum}">${sub.get('sname')}</a></li>						
+							</c:forEach> 
+						</ul>
+					</c:forEach>
+				</div>
+			</div>
 
 
 

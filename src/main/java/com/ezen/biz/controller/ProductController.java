@@ -63,7 +63,7 @@ public class ProductController {
 		}
 		model.addAttribute("catelist", catelist);
 
-		return "index";
+		return "main";
 	}
 	
 	
