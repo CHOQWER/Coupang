@@ -19,7 +19,7 @@ import lombok.extern.log4j.Log4j;
 public class CartController {
 	@Autowired
 	private CartService service;
-	@RequestMapping
+	@RequestMapping("insertCart")
 	public String insertCart(CartVO vo, HttpSession session, Model model) {
 		 String u_id = (String) session.getAttribute("u_id");
 		   vo.setU_id(u_id);		

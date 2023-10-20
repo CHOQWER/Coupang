@@ -19,7 +19,7 @@ public class SellerController {
 	@Autowired
 	private ProductService productService;
 	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/seller", method = RequestMethod.GET)
 	public String home() {
 		return "home";
 	}

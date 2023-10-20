@@ -26,7 +26,7 @@ public class UsersController {
 	@Autowired
 	private UsersService service;
 
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/users", method = RequestMethod.GET)
 	public String home() {
 		return "home";
 	}

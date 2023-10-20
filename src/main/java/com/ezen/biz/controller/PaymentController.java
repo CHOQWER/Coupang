@@ -30,7 +30,7 @@ public class PaymentController {
 	@Autowired
 	private PaymentService service;
 	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/payment", method = RequestMethod.GET)
 	public String index() {
 		return "index";
 	}
