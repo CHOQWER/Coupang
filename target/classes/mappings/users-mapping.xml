@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="MemberDAO">
+  	
+  	<!-- 회원가입 -->
+  	<insert id="insertMember">
+  		insert into users(u_id,u_pwd,u_name,u_identity,u_mobile,u_email,u_post_no,u_addr1,u_addr2)
+  		values(#{u_id},#{u_pwd},#{u_name},#{u_identity},#{u_mobile},#{u_email},#{u_post_no},
+  		#{u_addr1},#{u_addr2, jdbcType=NVARCHAR})
+  	</insert>  	
+  	
+  	
+  	<select id="selectMember" resultType="com.ezen.biz.dto.MemberVO">
+  		select * from users 
+  		where u_id=#{u_id} and disp='y'
+  	
+  	
+  	</select>
+  	
+  	<!-- 모든회원 조회 -->
+  	<select id="selectMemberList" resultType="com.ezen.biz.dto.MemberVO">
+  		select * from users where disp='y'
+  	</select>  	
+  	
+  	<!-- id 중복 체크 -->
+  	<select id="idChk" resultType="int">
+  		select count(*) from users where u_id=#{u_id}
+  	</select>  	
+  	
+</mapper>
