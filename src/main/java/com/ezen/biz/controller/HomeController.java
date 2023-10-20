@@ -11,7 +11,7 @@ public class HomeController {
 		return "home";
 	}
 	
-	
+	// 태근
 	// hi : )
 	// hi2 : )
 	
