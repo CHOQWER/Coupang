@@ -6,7 +6,7 @@
 	
 	<settings>
     	<setting name="jdbcTypeForNull" value="NULL" />
-    </settings>
+    </settings> 
 
 	<typeAliases>
 		<typeAlias alias="buy" type="com.ezen.biz.dto.BuyVO"/>

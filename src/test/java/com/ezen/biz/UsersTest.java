@@ -1,7 +1,5 @@
 package com.ezen.biz;
 
-import java.util.List;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +15,7 @@ import lombok.extern.log4j.Log4j;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({"file:src/main/webapp/WEB-INF/spring/root-context.xml"})
 @Log4j
-public class MemberTests {
+public class UsersTest {
 	@Autowired
 	private UsersDAO dao;
 	@Autowired
@@ -26,7 +24,7 @@ public class MemberTests {
 	@Test
 	public void insertMTest() {
 		log.info("테스트");
-		//MemberVO 객체 생성, 패스워드 암호화 저장
+		
 		UsersVO vo=new UsersVO();		
 			vo.setU_id("user2");
 			vo.setU_pwd(encoder.encode("1234"));

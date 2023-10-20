@@ -9,9 +9,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.ezen.biz.dao.UsersDAO;
 import com.ezen.biz.dao.PaymentDAO;
-import com.ezen.biz.dto.UsersVO;
 import com.ezen.biz.dto.PaymentVO;
 
 import lombok.extern.log4j.Log4j;

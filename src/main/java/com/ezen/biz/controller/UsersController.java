@@ -30,7 +30,7 @@ public class UsersController {
 	@Autowired
 	private PasswordEncoder encoder;
 
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/main", method = RequestMethod.GET)
 	public String home() {
 		return "main";
 	}
