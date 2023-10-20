@@ -10,8 +10,8 @@ public interface BuyService {
 
 	void refundProduct(BuyVO vo);
 
-	List<BuyVO> adminSelectBuyList();
+	List<BuyVO> adminSelectBuyList(BuyVO vo);
 
-	List<BuyVO> sellerSelectBuyList();
+	List<BuyVO> sellerSelectBuyList(BuyVO vo);
 
 }

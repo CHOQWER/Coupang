@@ -25,7 +25,7 @@ public class BuyTest {
 	public void buyProductTest() {
 		BuyVO vo=new BuyVO();
 		vo.setU_id("whdgus1234");
-		vo.setPno(250);
+		vo.setPno(170);
 		
 		ProductVO pvo=new ProductVO();
 		pvo.setPno(vo.getPno());
@@ -49,14 +49,15 @@ public class BuyTest {
 	@Test
 	public void adminSelectBuyList() {
 		BuyVO vo= new BuyVO();
-		dao.adminSelectBuyList();
+		dao.adminSelectBuyList(vo);
+		
 		log.info(vo);
 	}
 	@Test
 	public void sellerSelectBuyList() {
 		BuyVO vo= new BuyVO();
 		vo.setU_id("whdgus1234");
-		dao.sellerSelectBuyList();
+		dao.sellerSelectBuyList(vo);
 		log.info(vo);
 	}
 }

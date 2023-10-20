@@ -21,12 +21,12 @@ public class BuyDAO {
 		mybatis.delete("BuyDAO.refundProduct", vo);
 	}
 	
-	public List<BuyVO> adminSelectBuyList() {
-		return mybatis.selectList("BuyDAO.adminSelectBuyList");
+	public List<BuyVO> adminSelectBuyList(BuyVO vo) {
+		return mybatis.selectList("BuyDAO.adminSelectBuyList",vo);
 	}
 	
-	public List<BuyVO> sellerSelectBuyList() {
-		return mybatis.selectList("BuyDAO.sellerSelectBuyList");
+	public List<BuyVO> sellerSelectBuyList(BuyVO vo) {
+		return mybatis.selectList("BuyDAO.sellerSelectBuyList",vo);
 	}
 	
 }

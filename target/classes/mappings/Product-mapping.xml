@@ -23,21 +23,17 @@
   		delete from product where pno=#{pno}
   	</delete>
   	
-  	<!--  -->
+  	<!-- 전체 상품 목록 조회 -->
   	<select id="selectProductList" resultType="product">
   		select * from product
   	</select>
   	
   	<!-- pno로 상품정보 조회 -->
   	<select id="selectProductListPno" resultType="product">
-  		SELECT pno, u_id, ca_no, sca_no, company, pname, price, dis_price, content, color, qty, p_regdate,disp
+  		SELECT (pno, u_id, ca_no, sca_no, company, pname, price, dis_price, content, color, qty, p_regdate,disp)
 		FROM product where pno=#{pno}
   	</select>
   	
-  	<!--  -->
-  	<select id="selectProduct" resultType="product">
-  		select * from product where pno=#{pno}
-  	</select>
   	
   	<!-- 카테고리별 제품 리스트 -->
   	<select id="ProductListCate" parameterType="criteria"

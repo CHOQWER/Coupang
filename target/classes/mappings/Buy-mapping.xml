@@ -24,7 +24,6 @@
 	
 	<!-- 판매자가 구매내역(상품별 매출) 확인 -->
 	<select id="sellerSelectBuyList" resultType="buy">
-		select distinct pname,dis_price * b_cnt as "상품별 매출" 
-		from buy where u_id=#{u_id,jdbcType=NVARCHAR}
+		select * from buy where u_id=#{u_id,jdbcType=NVARCHAR}
 	</select>
 </mapper>

@@ -28,14 +28,14 @@ public class BuyServiceImpl implements BuyService {
 
 	//관리자가 구매내역 확인
 	@Override
-	public List<BuyVO> adminSelectBuyList() {
-		return dao.adminSelectBuyList();
+	public List<BuyVO> adminSelectBuyList(BuyVO vo) {
+		return dao.adminSelectBuyList(vo);
 	}
 
 	//판매자가 구매내역 확인
 	@Override
-	public List<BuyVO> sellerSelectBuyList() {
-		return dao.sellerSelectBuyList();
+	public List<BuyVO> sellerSelectBuyList(BuyVO vo) {
+		return dao.sellerSelectBuyList(vo);
 	}
 
 }
