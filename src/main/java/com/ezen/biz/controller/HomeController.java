@@ -14,4 +14,5 @@ public class HomeController {
 	
 	// hi : )
 	// hi2 : )
+	// 올라가는지 체크
 }
