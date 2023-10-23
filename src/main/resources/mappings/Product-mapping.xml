@@ -34,8 +34,8 @@
   	</select>
   	
   	<!-- pno로 상품정보 조회 -->
-  	<select id="selectProductListPno" resultType="product">
-  		SELECT (pno, u_id, ca_no, sca_no, company, pname, price, dis_price, content, color, qty, p_regdate,disp)
+  	<select id="selectProductPno" resultType="product">
+  		SELECT pno, u_id, ca_no, sca_no, company, pname, price, dis_price, content, color, qty, p_regdate,disp
 		FROM product where pno=#{pno}
   	</select>
   	
@@ -46,7 +46,7 @@
 		select * from (
 		select rownum rn, A.* from
 		(select
-			main_img1,sca_no,pname,price,dis_price from product p, images i
+			p.pno,main_img1,sca_no,pname,price,dis_price from product p, images i
 				where 1=1
 					and p.pno=i.pno and sca_no=#{sca_no}) A
 		<![CDATA[
@@ -72,6 +72,11 @@
 		select count(*) from
 		product where sca_no=#{sca_no} and disp='y' 
 	</select>
+	
+	<!-- pno로 이미지 전체 조회 -->
+ 	<select id="selectImgPno" resultType="images">
+			select * from images where pno=#{pno}
+    </select>
   	
   	
   	

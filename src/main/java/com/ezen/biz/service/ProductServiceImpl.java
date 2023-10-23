@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ezen.biz.dao.ProductDAO;
+import com.ezen.biz.dto.ImagesVO;
 import com.ezen.biz.dto.MainCateVO;
 import com.ezen.biz.dto.ProductVO;
 import com.ezen.biz.dto.SubCateVO;
@@ -61,9 +62,15 @@ public class ProductServiceImpl implements ProductService{
 	}
 
 	@Override
-	public List<ProductVO> selectProductListPno(int pno) {
-		return dao.selectProductListPno(pno);
+	public ProductVO selectProductPno(int pno) {
+		return dao.selectProductPno(pno);
 	}
+
+	@Override
+	public ImagesVO selectImgPno(int pno) {
+		return dao.selectImgPno(pno);
+	}
+
 
 	@Override
 	public List<ProductVO> sellerSellectMineProduct(ProductVO vo) {

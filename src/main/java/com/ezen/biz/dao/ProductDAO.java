@@ -8,7 +8,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-
+import com.ezen.biz.dto.ImagesVO;
 import com.ezen.biz.dto.MainCateVO;
 import com.ezen.biz.dto.ProductVO;
 import com.ezen.biz.dto.SubCateVO;
@@ -46,9 +46,9 @@ public class ProductDAO {
 	}
 	
 	//pno로 상품정보 조회
-	public List<ProductVO> selectProductListPno(int pno){
-		return mybatis.selectList("ProductDAO.selectProductListPno",pno);
-	}
+		public ProductVO selectProductPno(int pno){
+			return mybatis.selectOne("ProductDAO.selectProductPno",pno);
+		}
 	
 	
 	
@@ -80,5 +80,13 @@ public class ProductDAO {
 	public int selectRowCount(int sca_no) {
 		return mybatis.selectOne("ProductDAO.selectRowCount",sca_no);
 	}
+	
+	//이미지 전체 조회(pno 받아서)
+		public ImagesVO selectImgPno(int pno) {
+			return mybatis.selectOne("ProductDAO.selectImgPno",pno);
+		}
+		
+		
+		
 	
 }

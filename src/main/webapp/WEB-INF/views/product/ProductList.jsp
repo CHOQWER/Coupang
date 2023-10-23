@@ -42,9 +42,7 @@ img {
 }
 </style>
 <body>
-	<h2>제품리스트!!!!!!!!!!</h2>
-	
-	
+
 	<table>
 		<section id="new">
 			<c:forEach items="${list}" var="vo">
