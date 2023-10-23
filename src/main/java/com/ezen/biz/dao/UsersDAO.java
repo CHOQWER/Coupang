@@ -26,4 +26,7 @@ public class UsersDAO {
 	   return mybatis.selectOne("UsersDAO.idCheck", id);
    }
    
+   public UsersVO pwdCheck(String id) {
+	   return mybatis.selectOne("UsersDAO.pwdCheck", id);
+   }
 }

@@ -28,6 +28,10 @@ public class UsersServiceImpl implements UsersService {
 		
 	}
 	
+	public UsersVO pwdCheck(String id) {		
+		return dao.pwdCheck(id);
+	}
+	
 	
 	
 

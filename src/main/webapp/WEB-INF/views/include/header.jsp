@@ -52,7 +52,7 @@
 
 
 			<div class="logo">
-				<a href="index.html"><img
+				<a href="/"><img
 					src="/resources/img/logo_coupang_w350.png" alt="브랜드로고"
 					width="174px"></a>
 			</div>
@@ -78,7 +78,7 @@
 						alt="마이폐이지" style="width: 30px;"> <span>마이쿠팡</span>
 				</a></li>
 
-				<li><a href=""> <img src="resources/img/cart.png"
+				<li><a href="usercheck"> <img src="resources/img/cart.png"
 						alt="장바구니"> <span>장바구니</span>
 				</a></li>
 			</ul>

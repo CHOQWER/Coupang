@@ -39,7 +39,6 @@ public class UsersController {
 	@PostMapping("/login")
 	public String login(UsersVO vo, Model model, HttpServletRequest request) {
 		UsersVO v = service.selectMember(vo.getU_id());
-//		Map<String, String> map=service.selectMember(vo.getU_id());
 		if (v == null) {
 			model.addAttribute("error", "유효하지 않는 아이디 입니다.");
 			return "users/login";
@@ -47,11 +46,8 @@ public class UsersController {
 			if (encoder.matches(vo.getU_pwd(), v.getU_pwd())) {
 				// 로그인 성공 --> 세션에 담기
 				HttpSession session = request.getSession();
-//				session.setAttribute("u_id", v.getU_id());				   				
-//				session.setAttribute("u_name", v.getU_name());				   				
-//				session.setAttribute("grade", v.getGrade());
 				session.setAttribute("vo", v);
-				return "main";
+				return "forward:/";
 			} else {
 				model.addAttribute("error", "패스워드가 다릅니다.");
 				return "users/login";
@@ -63,7 +59,7 @@ public class UsersController {
 	@RequestMapping("/logout")
 	public String logout(HttpServletRequest request) {
 		request.getSession().invalidate();
-		return "main";
+		return "forward:/";
 	}
 
 	@GetMapping("/register")
@@ -108,6 +104,46 @@ public class UsersController {
 		}		
 	}
 
+	// 회원정보 수정시 회원정보 재확인 화면
+	@RequestMapping("/usercheck")
+	public String userCheck(Model model, UsersVO vo, HttpServletRequest request) {
+		HttpSession session=request.getSession();
+		if (session.getAttribute("vo") == null) {
+			return "forward:/";
+		} else {			
+			vo=service.selectMember(request.getSession().getId());
+			model.addAttribute("vo",vo);
+			return "users/usercheck";
+		}	
+		
+	}
+	// 회원정보 수정 페이지로 들어갈시 비밀번호 재확인
+	@RequestMapping("/pwdcheck")
+	public String pwdCheck() {
+		return "users/userceck";
+	}	
+	
+	// 회원정보 수정 페이지로 들어갈시 비밀번호 재확인
+	@PostMapping("/pwdcheck")
+	public String pwdCheck(UsersVO vo, Model model, HttpServletRequest request) {
+		UsersVO v = service.selectMember(vo.getU_id());
+		if (v == null) {
+			model.addAttribute("error", "비밀번호를 입력해주세요");
+			return "forward:/";
+		} else {// 패스워드 일치 확인
+			if (encoder.matches(vo.getU_pwd(), v.getU_pwd())) {
+				// 패스워드 일치
+				HttpSession session = request.getSession();
+				session.setAttribute("vo", v);
+				return "users/mypage";
+			} else {
+				model.addAttribute("error", "패스워드가 다릅니다.");
+				return "users/usercheck";
+			}
+
+		}
+	}
+	
 	
 
 }

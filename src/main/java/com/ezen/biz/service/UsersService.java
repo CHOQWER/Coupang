@@ -9,4 +9,6 @@ public interface UsersService {
 	void insertMember(UsersVO vo);
 	
 	int idCheck(String id);
+	
+	UsersVO pwdCheck(String id);
 }

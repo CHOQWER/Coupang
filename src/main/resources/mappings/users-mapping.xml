@@ -14,9 +14,14 @@
   	<!-- 로그인, 마이페이지 id로 정보 뽑기 -->
   	<select id="selectMember" resultType="com.ezen.biz.dto.UsersVO">
   		select * from users 
-  		where u_id=#{u_id,jdbcType=NVARCHAR} and disp='y'  	
-  	
+  		where u_id=#{u_id,jdbcType=NVARCHAR} and disp='y'  		  	  	
   	</select>
+  	
+  	<!-- 마이페이지 비밀번호 확인 -->
+  	<select id="pwdCheck"  resultType="com.ezen.biz.dto.UsersVO">
+  		select * from users where u_id=#{u_id} and u_pwd=#{u_pwd, jdbcType=NVARCHAR} and disp='y'
+  	</select>
+  	
   	
   	<!-- 모든회원 조회 -->
   	<select id="selectMemberList" resultType="com.ezen.biz.dto.UsersVO">
@@ -27,6 +32,7 @@
   	<select id="idCheck" parameterType="String" resultType="int">
   		select count(*) from users where u_id=#{u_id}
   	</select> 	
+  	
   	
   	<!-- 회원 정보 수정 -->
   	

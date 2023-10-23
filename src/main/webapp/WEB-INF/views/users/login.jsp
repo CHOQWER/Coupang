@@ -32,8 +32,7 @@
 				</div>
 			</div>
 			<div class="field">
-				<b>비밀번호</b> <input class="userpw" type="password" name="u_pwd"
-					id="pass" required />
+				<b>비밀번호</b> <input class="userpw" type="password" name="u_pwd" id="pass" required />
 			</div>
 			<!-- 6. 가입하기 버튼 -->
 			<input type="submit" name="signup" id="signup" value="로그인">
