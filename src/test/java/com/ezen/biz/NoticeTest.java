@@ -47,6 +47,7 @@ public class NoticeTest {
 	public void selectNoticeList() {
 		NoticeVO vo=new NoticeVO();
 		vo.setType("0");
+		log.info(vo);
 		dao.selectNoticeList(vo);
 	}
 	

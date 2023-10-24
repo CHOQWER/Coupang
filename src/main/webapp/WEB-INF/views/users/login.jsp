@@ -12,7 +12,7 @@
 	<div class="member">
 		<h1 style="text-align: center;">로그인</h1>
 		<br>
-		<!-- 등급 -->
+		<!-- 등급 -->		
 		
 		<form action="/login" method="post">
 			<div class="field grade">
@@ -37,8 +37,9 @@
 			<!-- 6. 가입하기 버튼 -->
 			<input type="submit" name="signup" id="signup" value="로그인">
 			<h2><c:out value="${error}"/> </h2>
+			<h2><c:out value="${error1}"/> </h2>
 			</form>
-			<!-- 푸터 -->
+			<!-- 푸터 -->			
 			<div class="member-footer">
 				<div>
 					<a href="#none">이용약관</a> <a href="#none">개인정보처리방침</a> <a

@@ -7,8 +7,10 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.ezen.biz.dao.BuyDAO;
+import com.ezen.biz.dao.ImagesDAO;
 import com.ezen.biz.dao.ProductDAO;
 import com.ezen.biz.dto.BuyVO;
+import com.ezen.biz.dto.ImagesVO;
 import com.ezen.biz.dto.ProductVO;
 
 import lombok.extern.log4j.Log4j;
@@ -21,6 +23,32 @@ public class BuyTest {
 	private BuyDAO dao;
 	@Autowired
 	private ProductDAO pdao;
+	@Autowired
+	private ImagesDAO idao;
+	
+	@Test
+	private void insert22() {
+//		ProductVO pvo=new ProductVO();
+//		pvo.setU_id("whdgus1234");
+//		pvo.setCa_no(1);
+//		pvo.setSca_no(1);
+//		pvo.setCompany("삼성");
+//		pvo.setPname("종현");
+//		pvo.setPrice(3);
+//		pvo.setQty(10);
+//		pdao.sellerInsertProduct(pvo);
+		
+
+//		ImagesVO ivo=new ImagesVO();
+//		ivo.setPno(1);
+//		ivo.setCon_img_1("aaa");
+//		ivo.setMain_img1("bbb");
+//		idao.insertImages(ivo);
+		
+		
+	}
+	
+	
 	@Test
 	public void buyProductTest() {
 		BuyVO vo=new BuyVO();

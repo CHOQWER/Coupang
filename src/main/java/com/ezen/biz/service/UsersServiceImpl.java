@@ -33,6 +33,17 @@ public class UsersServiceImpl implements UsersService {
 	}
 	
 	
+	public void updateUser(UsersVO vo) {
+		dao.updateUser(vo);
+		
+	}
+	
+	public void deleteUser(String u_id) {
+		dao.deleteUser(u_id);
+		
+	}
+	
+	
 	
 
 

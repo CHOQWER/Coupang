@@ -17,6 +17,11 @@ public class ProductServiceImpl implements ProductService{
 	private ProductDAO dao;
 	
 	@Override
+	public int sellerGetPno() {
+		return dao.sellerGetPno();
+	}
+	
+	@Override
 	public void sellerInsertProduct(ProductVO vo) {
 		dao.sellerInsertProduct(vo);
 	}

@@ -15,7 +15,7 @@
 	}
 </style>
 <main>
-	<h2>관리자-> 판매내역 확인하기</h2>
+	<h2>판매자-> 판매내역 확인하기</h2>
 	
 	
 	<table class="table table-sm table-bordered">

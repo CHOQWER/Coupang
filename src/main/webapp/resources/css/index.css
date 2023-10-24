@@ -1,7 +1,19 @@
 body {
     padding: 0;
     margin: 0;
+    font-family: sans-serif;
 }
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.container{
+    height: auto;
+    min-height: 100vh;
+    position: relative;
+}
+
 header {
     width: 1020px;
     position: relative;
@@ -9,62 +21,63 @@ header {
     margin: 0 auto;
     padding-top: 32px;
     background: #fff;
-    
-}
-.catagory-menu{
-    position: relative;
-}
 
-.dropmenu{
-
-    position : absolute;
-    overflow: auto;
-    z-index : 1;
-    border: 1px solid black;
-    text-align: left;
-    background-color:#fff;
-    width: 560px;
-    height: auto;
-    font-weight: bold;
 }
-
-section {
-    display: flex;
-    width: 840px;
-    height: 91px;
-    margin: 0 auto;
-}
-
 .top-nav {
+    
     background-color: #f0f0f0;
-    display: flex;
-    justify-content: space-between;
     position: absolute;
+    display: block;
+    width: 100%;
     top: 0;
-    right: 0;
-    left: 0;
-    height: 32px;
+    height: 40px;
     z-index: 3;
 }
 
 .right-nav {
     display: flex;
-    margin: 3px 100px;
-    font-size: 0.5rem;
-    margin-left: 71.3%;    
+    float: right;
+    margin: -3px 110px;
+    font-size: 1rem;
 }
 
-.right-nav li {
-    margin: 5px;
+.right-nav li{
+    margin: 10px;
 }
 
+.main-bar {
+    display: flex;
+    
+}
+
+.catagory-menu:hover .hide-catagory{
+    display: block;
+}
+
+.hide-catagory ul li:hover ul{
+    display: block;
+}
+
+.hide-catagory{
+    position: absolute;
+    display: none;
+    width: 100%;
+  
+}
+
+
+.hide-catagory ul ul{
+    display: none;
+    width: 400%;
+
+}
 
 li {
     list-style: none;
-
 }
 
 .logo {
+
     margin-top: 2em;
     margin-left: 2em;
 }
@@ -86,7 +99,6 @@ li {
 }
 
 .search-box option {
-
     border: none;
 }
 
@@ -111,27 +123,15 @@ li {
     height: 20px;
     margin-right: 10px;
 }
-
-
-a {
-    text-decoration: none;
-    color: black;
-}
-
-
-
 .icon-menu {
-
     display: flex;
     list-style: none;
     padding: 0;
     margin-left: 20px;
 }
-
 .icon-menu li {
     display: inline-block;
-    margin: 0 10px;
-
+    margin: 5px;
 }
 
 .icon-menu li a {
@@ -144,20 +144,23 @@ a {
 
 .icon-menu li span {
     padding-top: 10%;
-    width: 70px;
+    width: 60px;
 }
 
 .icon-menu li img {
-    width: 50px;
+    width: 30px;
     height: 30px;
+}
+.icon-menu span{
+    font-size: 0.7rem;
+    text-align: center;
 }
 
 .menu {
     position: absolute;
     top: 60%;
-    left: 32%;
+    left: 10%;
     display: flex;
-    justify-content: space-between;
     margin: 30px auto;
 }
 
@@ -168,13 +171,3 @@ a {
 nav ul {
     display: flex;
 }
-
-
-
-
-main {
-    position: relative;
-    margin: 0 auto;
-
-}
-

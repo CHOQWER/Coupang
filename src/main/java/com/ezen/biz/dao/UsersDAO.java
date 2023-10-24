@@ -29,4 +29,13 @@ public class UsersDAO {
    public UsersVO pwdCheck(String id) {
 	   return mybatis.selectOne("UsersDAO.pwdCheck", id);
    }
+   
+   public void updateUser(UsersVO vo) {
+	   mybatis.update("UsersDAO.updateUser", vo);
+   }
+   
+   public void deleteUser(String u_id) {
+	   mybatis.update("UsersDAO.deleteUser", u_id);
+   }
+   
 }

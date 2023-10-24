@@ -23,5 +23,7 @@ public int cardChk(PaymentVO vo) {
 public List<PaymentVO> selectCardList(PaymentVO vo) {
 	return dao.selectCardList(vo);
 }
-
+public int deleteCard(PaymentVO vo) {	
+	return dao.deleteCard(vo);
+}
 }

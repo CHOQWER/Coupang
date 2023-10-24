@@ -11,4 +11,8 @@ public interface UsersService {
 	int idCheck(String id);
 	
 	UsersVO pwdCheck(String id);
+	
+	void updateUser(UsersVO vo);
+	
+	void deleteUser(String u_id);
 }

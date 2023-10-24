@@ -2,13 +2,13 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <%@ include file="/WEB-INF/views/include/header.jsp" %>
-<html>
-<head>
-	<title>메인페이지</title>
-</head>
-<body>
+<link rel="stylesheet" href="../resources/css/main.css">
 
+<main>
+        <div class="slider">
+            <!--<img src="img/할인이벤트.jpg" alt="">-->
+        </div>
+</main>
+</div>
 
-</body>
-</html>
 <%@ include file="/WEB-INF/views/include/footer.jsp" %>

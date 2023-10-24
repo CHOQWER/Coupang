@@ -23,11 +23,12 @@ public class NoticeController {
 	@GetMapping("/notice")
 	public String notice(NoticeVO vo, Model model) {
 		log.info(vo);
-//		if(vo.getType()==null)
-			vo.setType("1");
+		if(vo.getType()==null)
+			vo.setType("0");
 		List<NoticeVO> list=service.selectNoticeList(vo);
 		log.info(list);
 		model.addAttribute("list", list);
+		model.addAttribute("vo", vo);
 		return "admin/noticeList";
 	
 	}
@@ -45,13 +46,5 @@ public class NoticeController {
 		service.deleteNotice(vo);//삭제작업
 		return "forward:noticeList.do";
 	}
-	
-//	@RequestMapping(value = "/notice")
-//	public String selectNoticeList(NoticeVO vo, Model model) {
-//		//게시글 전체 목록 작업	
-//		List<NoticeVO> list=service.selectNoticeList(vo);
-//		log.info(list);
-//		model.addAttribute("list", list);
-//		return "admin/noticeList";
-//	}
+
 }

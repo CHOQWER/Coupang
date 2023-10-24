@@ -31,16 +31,25 @@
   	<!-- id 중복 체크 -->
   	<select id="idCheck" parameterType="String" resultType="int">
   		select count(*) from users where u_id=#{u_id}
-  	</select> 	
+  	</select>  	
   	
   	
-  	<!-- 회원 정보 수정 -->
+  	<!-- 회원 정보 수정 -->  	
+  	<update id="updateUser" >
+  		update users set u_name=#{u_name}, u_mobile=#{u_mobile},u_email=#{u_email}, u_post_no=#{u_post_no},
+  		u_addr1=#{u_addr1},u_addr2=#{u_addr2} where u_id=#{u_id}
+  	</update>  	
+  	
+  	<!--  회원 탈퇴 -->
+  	<update id="deleteUser">
+  		update users set disp='n' where u_id=#{u_id}
+  	</update>
   	
   	<!-- 와우 멤버십 가입 -->
   	
   	<!--  결제수단 ? -->
   	
-  	<!--  회원 탈퇴 -->
+  	
   	
   	
   	

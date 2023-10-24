@@ -55,18 +55,30 @@ public class UsersController {
 
 		}
 	}
-
+	//로그아웃
 	@RequestMapping("/logout")
 	public String logout(HttpServletRequest request) {
 		request.getSession().invalidate();
 		return "forward:/";
 	}
-
-	@GetMapping("/register")
+	
+	//회원탈퇴
+	@PostMapping("withdrawal")
+	public String deleteUser(UsersVO vo, String u_id, HttpSession session) {		
+		service.deleteUser(vo.getU_id());		
+		System.out.println("탈퇴");
+		session.invalidate();
+		return "forward:/";
+	}
+	
+	
+	//회원가입 페이지로 이동
+	@RequestMapping("/register")
 	public String register() {
 		return "users/register";
 	}
 
+	// 회원가입+암호화
 	@PostMapping("/register")
 	public String register(UsersVO vo) {
 		// db에 삽입작업-비밀번호 암호화 후
@@ -86,48 +98,27 @@ public class UsersController {
 		if (flag == 1)
 			result = "Y";
 		return result;
-
 	}
-
-	// 마이 페이지
-	@RequestMapping("/mypage")
-	public String mypage(Model model, UsersVO vo, HttpServletRequest request) {	
-		log.info(request.getSession());		
-		HttpSession session=request.getSession();
-		//log.info(session.getId());
-		if (session.getAttribute("vo") == null) {
-			return "users/login";
-		} else {			
-			vo=service.selectMember(request.getSession().getId());
-			model.addAttribute("vo",vo);
-			return "users/mypage";
-		}		
-	}
-
-	// 회원정보 수정시 회원정보 재확인 화면
+	
+	
 	@RequestMapping("/usercheck")
 	public String userCheck(Model model, UsersVO vo, HttpServletRequest request) {
-		HttpSession session=request.getSession();
-		if (session.getAttribute("vo") == null) {
-			return "forward:/";
-		} else {			
-			vo=service.selectMember(request.getSession().getId());
-			model.addAttribute("vo",vo);
-			return "users/usercheck";
-		}	
+			HttpSession session=request.getSession();				
+			if (session.getAttribute("vo") == null) {
+				return "forward:/";
+			} else {
+				vo=service.selectMember(request.getSession().getId());
+				model.addAttribute("vo",vo);
+				return "users/usercheck";
+			}				
 		
 	}
-	// 회원정보 수정 페이지로 들어갈시 비밀번호 재확인
-	@RequestMapping("/pwdcheck")
-	public String pwdCheck() {
-		return "users/userceck";
-	}	
 	
 	// 회원정보 수정 페이지로 들어갈시 비밀번호 재확인
 	@PostMapping("/pwdcheck")
 	public String pwdCheck(UsersVO vo, Model model, HttpServletRequest request) {
 		UsersVO v = service.selectMember(vo.getU_id());
-		if (v == null) {
+		if (v == null) {  
 			model.addAttribute("error", "비밀번호를 입력해주세요");
 			return "forward:/";
 		} else {// 패스워드 일치 확인
@@ -135,15 +126,38 @@ public class UsersController {
 				// 패스워드 일치
 				HttpSession session = request.getSession();
 				session.setAttribute("vo", v);
-				return "users/mypage";
+				return "users/updatemypage";
 			} else {
 				model.addAttribute("error", "패스워드가 다릅니다.");
 				return "users/usercheck";
 			}
-
 		}
 	}
 	
+	@GetMapping("/mypage")
+	public String myPage(Model model, UsersVO vo, HttpServletRequest request, HttpSession session) { 
+		vo=(UsersVO) session.getAttribute("vo");
+		if(vo==null) {
+			model.addAttribute("error1","로그인이 필요한 서비스입니다");
+			return "users/login";
+		} else {	
+			vo=(UsersVO) session.getAttribute("vo");
+			service.selectMember(vo.getU_id());
+			return "users/mypage";
+		}		
+	}
 	
-
+	
+	@PostMapping("/updateUser")
+	   public String updateUser(UsersVO vo, HttpSession session) {
+	       service.updateUser(vo);	       
+	       // 데이터베이스에서 업데이트된 정보 다시 로드
+	       UsersVO updatedUser = service.selectMember(vo.getU_id());	       
+	       // 세션에 업데이트된 정보 저장
+	       session.setAttribute("vo", updatedUser);	       
+	       return "redirect:mypage"; 
+	   }
+	
+	
+	
 }

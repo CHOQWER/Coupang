@@ -11,4 +11,8 @@ public interface PaymentService {
 	void insertCard(PaymentVO vo);
 	
 	int cardChk(PaymentVO vo);
+	
+	int deleteCard(PaymentVO vo);
+	
+	
 }

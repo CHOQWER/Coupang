@@ -28,4 +28,9 @@ public int cardcheck(PaymentVO vo) {
 public List<PaymentVO> selectCardList(PaymentVO vo) {
 	return mybatis.selectList("PaymentDAO.selectCardList",vo); 
 }
+
+public int deleteCard(PaymentVO vo) {
+	return mybatis.delete("PaymentDAO.deleteCard",vo);
+	
+}
 }

@@ -1,69 +1,70 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>제품 목록</title>
-<link rel="stylesheet" href="/resources/css/bootstrap.min.css">
-<link rel="stylesheet" href="/resources/css/common.css">
-<script src="/resources/js/jquery-3.6.3.min.js"></script>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+<%@ include file="/WEB-INF/views/include/header.jsp" %>
+
+<link rel="stylesheet" href="../resources/css/productlist.css">
+
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script type="text/javascript" src="/resources/js/common.js"></script>
+<link rel="stylesheet" href="/resources/star-rating/css/star-rating.css"
+	media="all" type="text/css" />
+<link rel="stylesheet"
+	href="/resources/star-rating/themes/krajee-svg/theme.css" media="all"
+	type="text/css" />
+<script src="/resources/star-rating/js/star-rating.min.js"
+	type="text/javascript"></script>
+<script src="/resources/star-rating/themes/krajee-svg/theme.min.js"
+	type="text/javascript"></script>
 
-<script
-	src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.js"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/additional-methods.js"></script>
-<script src="/resources/js/fileupload_validate.js"></script>
-</head>
-<style>
-#new {
-	width: 700px;
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	gap: 10px;
-}
 
-#new ul {
-	list-style-type: none;
-	text-align: center;
-}
 
-img {
-	width: 300px;
-	height: 300px;
-	padding-top: 10px;
-}
-
-.img_list {
-	margin: 5px;
-	padding: 2px;
-}
-</style>
-<body>
-
-	<table>
-		<section id="new">
-			<c:forEach items="${list}" var="vo">
-
-				<div class="item">
-					<ul>
-						<li><a href="ProductView"></a>
-							<div class="img_list">
-								<img src="imgDown?imgName=${vo.main_img1}">
-							</div></li>
-
-						<li id="title"> <a href="ProductView?pno=${vo.pno}"> ${vo.pname} </a></li>
-
-						<li id="price">${vo.price}</li>
-						<li id="price">${vo.dis_price}</li>
-					</ul>
-				</div>
-			</c:forEach>
-		</section>
-	</table>
-
+	<main>
+        <div class="cate-nav">쿠팡홈 > 태블릿PC > 태블릿PC </div>
+            
+            <div class="contents">
+            <div class="aside">
+                <div class="search-company">
+                    <h2>브랜드</h2>
+                    <ul>
+                        <li>삼성전자</li>
+                        <li>애플</li>
+                        <li>아이뮤즈</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="article">
+                <h2>태블릿</h2>
+                <hr>
+            <div class="prod-grid">
+                <c:forEach items="${list}" var="vo" varStatus="idx" >
+                	<div class="prodlink">
+                	
+               
+                    	<a href="ProductView?pno=${vo.pno}">
+                    	<div>
+                      		<img class="prodimg" src="imgDown?imgName=${vo.main_img1}" alt="메인이미지">
+                   		</div>        
+                        <div>    
+                    	<span><a href="ProductView?pno=${vo.pno}">${vo.pname}</a></span><br>
+                    	<span>와우할인가</span>
+                    	<span><fmt:formatNumber value="${vo.price}" pattern="#,###"/></span><br>
+                    	<span><fmt:formatNumber value="${vo.dis_price}" pattern="#,###" /></span><br>
+                    	
+                    	<input id="avgscore" name="avgscore" value="${starlist[idx.index-1].get('AVG')}" 
+								class="rating rating-loading" data-size="sm" readonly="readonly" /><span>(${starlist[idx.index-1].get('CNT')})</span>
+						</div>          
+                        </a>
+                  </div>
+                </c:forEach>
+              </div>
+              
+           </div>
+    </main>    
+  
+	
 	<!-- 페이지 -->
 	<div id="pagediv">
 		<nav aria-label="Standard pagination example">
@@ -98,8 +99,8 @@ img {
 				</c:if>
 			</ul>
 		</nav>
-		<!-- paging end -->
 	</div>
+	<!-- paging end -->
+</div>	
 
-</body>
-</html>
+<%@ include file="/WEB-INF/views/include/footer.jsp" %>

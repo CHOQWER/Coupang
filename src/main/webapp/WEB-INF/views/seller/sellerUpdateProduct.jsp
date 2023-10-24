@@ -66,7 +66,7 @@
 			</tr> -->
 		</table>
 			<div class="btn">
-				<button type="submit" class="btn btn-success">상품 등록</button> &nbsp; 
+				<button type="submit" class="btn btn-success">상품 수정</button> &nbsp; 
 
 			    <button type="reset" class="btn btn-secondary">다시 입력</button>
 		    </div>

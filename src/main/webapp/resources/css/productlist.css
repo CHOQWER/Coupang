@@ -1,0 +1,64 @@
+.cate-nav {
+    height: 38px;
+    font-size: 12px;
+    border-top: 3px solid  #f0f0f0; 
+    width: 1028px;
+    margin: 0 auto;
+    line-height: 2.5rem;
+}
+.contents{
+    display: flex;
+    width: 1028px;
+    margin: 0 auto;
+}
+
+.aside{
+
+    float: left;
+    width: 200px;
+
+    
+}
+
+.article{
+    width: 1080px;
+    float: right;
+
+}
+
+
+.prodlist li {
+    list-style: none;
+}
+
+.prod-grid{
+	border: 1px solid transparent;
+    text-decoration: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+	
+}
+
+.prodimg{
+    width: 300px;
+}
+
+.prodimg img {
+
+        max-width: 80px; 
+        height: auto;
+   }
+
+.prodlink:hover {
+    
+    cursor: pointer;
+    border: 1px solid #007bff;
+    box-sizing: border-box;
+}
+
+
+.prodlist li {
+    margin: 0; 
+}
+

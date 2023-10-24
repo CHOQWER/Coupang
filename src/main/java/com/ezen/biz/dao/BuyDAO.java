@@ -12,22 +12,29 @@ import com.ezen.biz.dto.BuyVO;
 public class BuyDAO {
 	@Autowired
 	private SqlSessionTemplate mybatis;
-	
+
 	/*
 	 * public void sellerInsertProduct(BuyVO vo) {
 	 * mybatis.insert("BuyDAO.sellerInsertProduct", vo); }
 	 */
-	//판매자 -> 환불받기
+	// 판매자 -> 환불받기
+
+	public void sellerInsertProduct(BuyVO vo) {
+		mybatis.insert("BuyDAO.sellerInsertProduct", vo);
+	}
+
 	public void refundProduct(BuyVO vo) {
 		mybatis.delete("BuyDAO.refundProduct", vo);
 	}
-	//관리자가 구매내역 확인
+
+	// 관리자가 구매내역 확인
 	public List<BuyVO> adminSelectBuyList(BuyVO vo) {
-		return mybatis.selectList("BuyDAO.adminSelectBuyList",vo);
+		return mybatis.selectList("BuyDAO.adminSelectBuyList", vo);
 	}
-	//판매자가 구매내역(상품별 매출) 확인
+
+	// 판매자가 구매내역(상품별 매출) 확인
 	public List<BuyVO> sellerSelectBuyList(BuyVO vo) {
-		return mybatis.selectList("BuyDAO.sellerSelectBuyList",vo);
+		return mybatis.selectList("BuyDAO.sellerSelectBuyList", vo);
 	}
-	
+
 }

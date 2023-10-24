@@ -12,7 +12,7 @@
 <div class="member">
 		<h1 style="text-align: center;"></h1>
 		<br>		
-		<form action="/pwdcheck" method="post">			
+		<form action="pwdcheck" method="post">			
 			<div class="field">
 				<b>아이디</b>
 				<div class="field tel-number">

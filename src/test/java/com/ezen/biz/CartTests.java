@@ -25,7 +25,7 @@ public class CartTests {
 		CartVO vo=new CartVO();	
 			vo.setCno(2);
 			vo.setIno(1);
-			vo.setU_id("user2");
+			vo.setU_id("rhksdyd1234");
 			vo.setPno(3);
 			vo.setMain_img1("이미지3");
 			vo.setPname("LG 노트북");

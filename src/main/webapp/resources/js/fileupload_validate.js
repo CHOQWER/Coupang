@@ -5,6 +5,7 @@
 
  */
 
+
 $(document).ready(function(){
 	$("#uploadForm").validate({		
 		//규칙지정

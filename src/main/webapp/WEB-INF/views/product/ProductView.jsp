@@ -1,246 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>제품 상세 폐이지</title>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-</head>
-<style>
-body {
-	font-family: Arial, sans-serif;
-	margin: 0;
-	padding: 0;
-}
+<link rel="stylesheet" href="../resources/css/productview.css">
 
-.content {
-	max-width: 1200px;
-	margin: 0 auto;
-	background-color: #fff;
-	padding: 20px;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script type="text/javascript" src="/resources/js/common.js"></script>
+<link rel="stylesheet" href="/resources/star-rating/css/star-rating.css"
+	media="all" type="text/css" />
+<link rel="stylesheet"
+	href="/resources/star-rating/themes/krajee-svg/theme.css" media="all"
+	type="text/css" />
+<script src="/resources/star-rating/js/star-rating.min.js"
+	type="text/javascript"></script>
+<script src="/resources/star-rating/themes/krajee-svg/theme.min.js"
+	type="text/javascript"></script>
 
-.cate {
-	font-size: 14px;
-	color: #888;
-}
+<%@ include file="/WEB-INF/views/include/header.jsp" %>
 
-/* 좌측 메인/서브 이미지 스타일링 */
-.content-main {
-	display: flex;
-	margin-top: 50px;
-}
-
-.main-img {
-	padding: 10px;
-}
-
-.main-img img {
-	width: 410px;
-	height: auto;
-}
-
-.sub-img {
-	display: flex;
-	height: 100px;
-	justify-content: space-around;
-	flex-wrap: wrap;
-	gap: 10px;
-	margin-top: 50px;
-}
-
-.sub-img img {
-	width: 90PX;
-	height: 90PX;
-}
-
-/* 우측 구매 */
-.prod-buy {
-	border: 1px solid black;
-	padding: 10px;
-	background-color: #fff;
-	box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-}
-
-.prod-header {
-	margin-bottom: 10px;
-}
-
-.prod-company {
-	font-size: 14px;
-	font-weight: bold;
-	color: #888;
-}
-
-.prod-name {
-	font-size: 20px;
-	font-weight: bold;
-	color: #333;
-	margin-top: 5px;
-}
-
-.prod-review {
-	font-size: 14px;
-	color: blue
-}
-
-/* 가격 스타일링 */
-.prod-price {
-	margin-bottom: 10px;
-}
-
-.origin-price {
-	font-size: 18px;
-	color: #888;
-	text-decoration: line-through;
-}
-
-.sale-price {
-	font-size: 24px;
-	font-weight: bold;
-	color: red;
-}
-
-.prod-color {
-	margin-bottom: 10px;
-}
-
-.color-select a {
-	display: inline-block;
-	padding: 5px 10px;
-	margin-right: 10px;
-	border: 1px solid;
-	color: black;
-	text-decoration: none;
-}
-
-.prod-delivery {
-	font-size: 14px;
-	color: #888;
-	margin: 50px;
-}
-
-.prod-buy-footer {
-	display: flex;
-	align-items: center;
-}
-
-select {
-	width: 100px;
-	padding: 5px;
-	margin-right: 10px;
-}
-
-button {
-	background-color: #4285f4;
-	font-size: 1.1em;
-	color: #fff;
-	border: none;
-	padding: 10px 20px;
-	cursor: pointer;
-	width: 150px;
-	height: 70px;
-	transition: background-color 0.3s;
-}
-
-button:hover {
-	background-color: #4285f4;
-}
-
-.tab-title {
-	list-style: none;
-	display: flex;
-	justify-content: space-around;
-	background-color: #eee;
-	padding: 10px 0;
-}
-
-.tab-title li {
-	cursor: pointer;
-	padding: 10px 20px;
-	background-color: #ccc;
-	text-align: center;
-	border-radius: 5px;
-	user-select: none;
-}
-
-.tab-title li:hover {
-	background-color: #ddd;
-}
-
-.content {
-	background-color: #fff;
-	padding: 20px;
-	margin-top: 20px;
-	box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-}
-
-.content-info {
-	font-size: 16px;
-	color: #333;
-}
-
-.detail-img {
-	display: flex;
-	justify-content: space-between;
-	margin: 20px 0;
-}
-
-.detail-img img {
-	max-width: 48%;
-	height: auto;
-}
-
-.review {
-	background-color: #f0f0f0;
-	padding: 10px;
-	margin-top: 20px;
-}
-
-.review-userinfo {
-	font-weight: bold;
-	margin-top: 10px;
-}
-
-.review-content {
-	margin-top: 10px;
-}
-
-.prod-qa {
-	margin-top: 20px;
-}
-
-.prod-qa h2 {
-	font-size: 20px;
-	font-weight: bold;
-	margin-bottom: 10px;
-}
-
-.prod-qa ul {
-	list-style-type: disc;
-	padding-left: 20px;
-}
-
-.prod-answer {
-	font-weight: bold;
-	margin-top: 10px;
-}
-
-.prod-userqa {
-	font-weight: bold;
-	margin-top: 20px;
-}
-
-.prod-qa a {
-	text-decoration: none;
-	font-weight: bold;
-}
-</style>
-<body>
 	<section class="content">
 		<div class="cate">쿠팡홈 > 태블릿PC > 태블릿PC</div>
 
@@ -248,7 +26,7 @@ button:hover {
 		<div class="content-main">
 			<div class="main-img">
 				<img src="imgDown?imgName=${ivo.main_img1}" alt="메인이미지">
-				
+
 				<!-- 이미지가 null이면 표시 안되게 -->
 				<div class="sub-img">
 					<c:if test="${not empty ivo.main_img2}">
@@ -274,25 +52,37 @@ button:hover {
 				<div class="prod-header">
 
 					<div class="prod-company">${pvo.company}</div>
-					<div class="prod-name">${pvo.pname}</div>
-					<div class="prod-review">상품리뷰</div>
+					<div class="prod-name">${pvo.pname}</div> <hr>
+					<div class="prod-review">
+						<table>
+							<tr>
+								<td>
+								<input id="avgscore" name="avgscore" value="${map.get('AVG')}" 
+								class="rating rating-loading" data-size="sm" readonly="readonly" />
+								</td>
+								<td>
+								<a href="#target"><span id="span-cnt">${map.get('CNT')}건의 리뷰보기</span></a>
+								</td>
+							</tr>
+						</table>
+					</div>
 
 				</div>
 
 				<div class="prod-price">
-					<div class="origin-price">${pvo.price}</div>
-					<div class="sale-price">${pvo.dis_price}</div>
+					<div class="origin-price"><fmt:formatNumber value="${pvo.price}" pattern="#,###"/></div>
+					<div class="sale-price"><fmt:formatNumber value="${pvo.dis_price}" pattern="#,###"/></div>
 				</div>
 
 				<div class="prod-color">
 					<div class="color-option">
 						<div class="color-select">
-							<a href="">${pvo.color}</a>
+							${pvo.color}
 						</div>
 					</div>
 
 				</div>
-				
+
 				<!-- EX)와우 회원이면 무료배송+1일 뒤 도착예정, 일반 회원이면 배송비3000원+5일뒤도착예정 구현하기 -->
 				<div class="prod-delivery">
 					<p>무료배송</p>
@@ -300,7 +90,7 @@ button:hover {
 				</div>
 
 				<div class="prod-buy-footer">
-					
+
 					<!-- qty 만큼 선택하기..?? -->
 					<input type="number" placeholder="1" min="2" max="${pvo.qty}" />
 					<button>장바구니</button>
@@ -338,13 +128,48 @@ button:hover {
 				</c:if>
 			</div>
 
-
+			
+			<!-- 상품평 -->
+			<a name="target"> </a>
+			<hr>
+			<h2>상품평</h2>
+			
+			<!-- 로그인 상태에서만 리뷰 작성 칸 보이기 -->
+			<c:if test="${sessionScope.vo.u_id!=null}">
 			<div class="review">
-				상품평
-				<div class="review-userinfo">이** 판매자</div>
-				<div class="review-content">좋아요</div>
-			</div>
+				<label for="input-7-sm" class="control-label"></label> 
+				<input id="score" name="score" class="rating rating-loading" data-min="0"
+					data-max="5" data-step="0.5" data-size="sm">
+				<hr/>
 
+				글제목:<input type="text" maxlength="100" id="r_title" name="r_title"
+					required="required"> <br>
+				리뷰:<input type="text" maxlength="100"
+					id="content" name="content" size="50" required="required"> <br>
+				파일찾기:<input type="file" id="r_photo"> <br>
+				<button type="button" onclick="saveStar()">리뷰 남기기</button>
+			</div>
+			</c:if>
+			
+			<nav>
+				<input type="hidden" name="page" id="page" value="0">
+				<button type="button" id="btn_next" style="display: none" onclick="getStar()">더보기</button>
+			</nav> <br> 
+			<input type="hidden" name="page" id="page" value="0">
+			
+			
+			
+			<!-- 리뷰 inner html 반복할곳 -->
+			<table id="tbl_star">
+				
+			</table>
+			
+			
+			<button type="button" id="btn_next" style="display: none"
+				onclick="getStar()">더보기</button>
+			</ul>
+			
+			<hr>
 			<div class="prod-qa">
 				<h2>상품문의</h2>
 				<ul>
@@ -363,7 +188,150 @@ button:hover {
 			</div>
 		</div>
 	</section>
+</div>
+
+<%@ include file="/WEB-INF/views/include/footer.jsp" %>
+
+<script type="text/javascript">
+
+/*==========================================*/
+$(document).ready(function(){
+		$("#page").val(0);
+		getStar();
+	});	
+	
+/*=============================================
+* 스타레이팅 초기화
+*=============================================*/
+function newStar(){
+	console.log("newStar");
+	// loding 중인 별점을 보여주는 작업
+	let ratingStar=$(".rating-loading");
+	if(ratingStar.length){//별점보여주기가 1개 이상 있으면
+		ratingStar.removeClass("rating-loading").addClass("rating-loading").rating();
+	}
+	
+	//재생성시 크기가 중간 사이즈 고정되는 버그로 작은사이즈로 일괄 변경 추가
+	$(".rating-container").removeClass("rating-md rating-sm");
+	$(".rating-container").addClass("rating-sm");
+}
 
 
-</body>
-</html>
+/*===================================================
+Ajax 별점과 commemt  저장
+common.js doAjaxHtml(url, param, callback) 호출
+===================================================*/
+function saveStar(){
+	console.log("saveStar")
+	let content=$("#content").val().trim();
+	let r_title=$("#r_title").val().trim();
+	let r_photo=$("#r_photo").val().trim();
+	let score=$("#score").val();
+	
+	if(score==0){
+		alert("점수를 입력하세요.");
+		return;
+	}
+	
+	if(content==""){
+		alert("리뷰를 입력하세요.");
+		$("#content").focus();
+		return;
+	} 
+	
+	if(r_title==""){
+		alert("리뷰 제목을 입력하세요.");
+		$("#r_title").focus();
+		return;
+	}
+	
+	
+	let url="saveStar";//서블릿 매핑 주소
+	let param={"u_id":"${sessionScope.vo.u_id}",
+			   "pno":${pvo.pno}, 
+			   "score":score,
+			   "r_title":r_title,
+			   "r_content":content,
+			   "r_photo":r_photo,
+			   };
+	console.log(param);
+	doAjaxHtml(url, param, saveStarAfter);
+}
+
+function saveStarAfter(data){
+	console.log("saveStarAfter");
+	console.log(data);
+	let retData=JSON.parse(data);
+	$("#avgscore").rating("destroy");
+	$("#avgscore").val(retData.avgScore);
+	$("#avgscore").rating("create");
+	let spanCnt=document.getElementById("span-cnt");
+	console.log("data.cnt="+retData.cnt);
+	spanCnt.innerHTML=retData.cnt;
+	
+	$("#tbl_star").html("");
+	$("#page").val(0);
+
+	getStar();
+	
+	$("#score").rating("destroy");
+	$("#score").val(0);
+	$("#score").rating("create");
+	
+	$("#content").val("");
+	$("#r_title").val("");
+	$("#content").focus();
+	
+	newStar();
+}
+
+/*===================================================
+					별점 가져오기
+===================================================*/
+
+
+function getStar(){
+	console.log("getStar")
+	let url="getStar";
+	let param={"pno":${pvo.pno}, 
+			   "page":$("#page").val()*1+1
+			   };
+	//증가한 페이지를 적용
+	$("#page").val($("#page").val()*1+1);
+	console.log(param);
+	doAjax(url, param, getStarAfter);
+}
+	
+
+function getStarAfter(data){
+	console.log("getStarAfter");	
+	if(data=="err"){
+ 		// 표시할 자료 없음
+ 	}else{
+	 		console.log(data);	 
+	 		//data 배열에 있는 값을 tbl_star 에 html 태그로 조립해서 출력 
+	 		let starList=data.arr;
+	 		console.log(starList);
+	 		let html="";
+	 		for(let vo of starList){//js foreach
+	 			html+='<tr>';
+	 			html+='<td>';
+	 			html+='<input id="score" name="score" value='+vo.score+' class="rating rating-loading" data-size="sm" readonly="readonly">';
+	 			html+='</td>';
+	 			html+='<td>'+vo.u_id+' 님 : '+vo.r_title + vo.r_content +'</td>';
+	 			html+='</tr>';	 			
+	 		}//for
+	 		$("#tbl_star").append(html);
+	 		//let next=data.next;//true, false
+	 		//console.log(next);
+	 		if(data.next){//더보기 버튼을 보여주기
+	 			$("#btn_next").css("display","block");
+	 		}else $("#btn_next").css("display","none");
+	 		// loding 중인 별점을 보여주는 작업
+	 		newStar();
+ 	}
+}
+
+
+</script>
+

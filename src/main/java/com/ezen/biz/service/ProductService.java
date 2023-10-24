@@ -9,7 +9,9 @@ import com.ezen.biz.dto.SubCateVO;
 import com.ezen.biz.utils.Criteria;
 
 public interface ProductService {
-
+	
+	int sellerGetPno();
+	
 	// 제품 등록
 	void sellerInsertProduct(ProductVO vo);
 

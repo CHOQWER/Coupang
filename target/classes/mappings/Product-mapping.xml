@@ -4,6 +4,12 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="ProductDAO" >
   	
+  	<!-- 제품등록후 제품번호 받아오기 -->
+  	<select id="sellerGetPno" resultType="java.lang.Integer">
+  		select MAX(pno) from product
+  	</select>
+  	
+  	
   	<!-- 제품 등록 -->
 	<insert id="sellerInsertProduct">
   		insert into product(pno,u_id,ca_no,sca_no,company,pname,price,dis_price,content,color,qty) 
