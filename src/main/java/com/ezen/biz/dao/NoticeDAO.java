@@ -35,8 +35,8 @@ public class NoticeDAO {
 	}
 	
 	// 공지사항 검색
-	public NoticeVO getNoticeList(NoticeVO vo) {
-		return mybatis.selectOne("NoticeDAO.getNoticeList", vo);
+	public List<NoticeVO> getNoticeList(NoticeVO vo) {
+		return mybatis.selectList("NoticeDAO.getNoticeList", vo);
 	}
 	
 }

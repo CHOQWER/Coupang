@@ -19,6 +19,6 @@ public interface NoticeService {
 	List<NoticeVO> selectNoticeList(NoticeVO vo);
 
 	// 공지사항 검색
-	NoticeVO getNoticeList(NoticeVO vo);
+	List<NoticeVO> getNoticeList(NoticeVO vo);
 
 }

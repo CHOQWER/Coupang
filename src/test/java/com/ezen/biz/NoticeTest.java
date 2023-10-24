@@ -50,4 +50,10 @@ public class NoticeTest {
 		dao.selectNoticeList(vo);
 	}
 	
+	@Test
+	public void getNoticeList() {
+		NoticeVO vo=new NoticeVO();
+		vo.setSearchKeyword("쿠팡");
+		dao.getNoticeList(vo);
+	}
 }

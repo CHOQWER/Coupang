@@ -19,11 +19,13 @@
 				<c:when test="${sessionScope.vo==null}">
 					<li><a href="login">로그인</a></li>
 					<li><a href="register">회원가입</a></li>
+					<li><a href="notice">고객센터</a></li>
 				</c:when>
 				<c:otherwise>
 					<li>${sessionScope.vo.u_name}님</li>
 					<li><a href="seller">판매자 사이트로 이동</a>
 					<li><a href="logout">로그아웃</a></li>
+					<li><a href="notice">고객센터</a></li>
 				</c:otherwise>
 			</c:choose>
 		</ul>
