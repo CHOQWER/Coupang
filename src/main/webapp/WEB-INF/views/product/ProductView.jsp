@@ -316,11 +316,30 @@ function getStarAfter(data){
 	 		for(let vo of starList){//js foreach
 	 			html+='<tr>';
 	 			html+='<td>';
-	 			html+='<input id="score" name="score" value='+vo.score+' class="rating rating-loading" data-size="sm" readonly="readonly">';
+	 			html+='<img src='+vo.r_photo+' alt="" width="100" height="100">';
 	 			html+='</td>';
-	 			html+='<td>'+vo.u_id+' 님 : '+vo.r_title + vo.r_content +'</td>';
-	 			html+='</tr>';	 			
+	 			html+='<td>';
+	 			html+='<dl>';
+	 			html+='<dt>';
+	 			html+='<input id="score" name="score" value='+vo.score+' class="rating rating-loading" data-size="sm" readonly="readonly">';
+	 			html+='</dt>';
+	 			html+='<dt>'+vo.r_title;
+	 			html+='</dt>';
+	 			html+='<dt>'+vo.r_content;
+	 			html+='</dt>';
+	 			html+='<dl>';
+	 			html+='</td>';
+	 			html+='<td>';
+	 			html+='<dl>';
+	 			html+='<dt>' +vo.u_id ;
+	 			html+='</dt>';
+	 			html+='<dt>'+ vo.r_regdate;
+	 			html+='</dt>';
+	 			html+='</dl>';	
+	 			html+='</td>';
+	 			html+='</tr>';
 	 		}//for
+
 	 		$("#tbl_star").append(html);
 	 		//let next=data.next;//true, false
 	 		//console.log(next);
