@@ -8,7 +8,7 @@ import com.ezen.biz.dto.ProductVO;
 
 public interface ImagesService {
 
-	void insertImages(ProductVO vo);
+	void insertImages(ImagesVO ivo);
 
 
 

@@ -14,7 +14,7 @@ public class ImagesDAO {
 	@Autowired
 	private SqlSessionTemplate mybatis;
 	
-	 public void insertImages(ProductVO vo) {
+	 public void insertImages(ImagesVO vo) {
 		   mybatis.insert("ImagesDAO.insertImages", vo);
 }
 	 

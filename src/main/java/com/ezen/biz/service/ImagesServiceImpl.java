@@ -16,8 +16,8 @@ public class ImagesServiceImpl implements ImagesService {
 	private ImagesDAO dao;
 
 	@Override
-	public void insertImages(ProductVO vo) {
-		dao.insertImages(vo);
+	public void insertImages(ImagesVO ivo) {
+		dao.insertImages(ivo);
 	}
 
 }

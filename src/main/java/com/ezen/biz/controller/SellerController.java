@@ -27,7 +27,10 @@ import com.ezen.biz.service.BuyService;
 import com.ezen.biz.service.ImagesService;
 import com.ezen.biz.service.ProductService;
 
+import lombok.extern.log4j.Log4j;
+
 @Controller
+@Log4j
 public class SellerController {
 	@Autowired
 	private BuyService buyService;
@@ -69,50 +72,63 @@ public class SellerController {
 		
 	}
 	@PostMapping("sellerInsertProduct")
-	public String sellerInsertProduct(Model model,ProductVO pvo,ImagesVO ivo,
-			@RequestParam MultipartFile uploadFile)
+	public String sellerInsertProduct(Model model,ProductVO pvo,ImagesVO ivo, String company,
+			MultipartFile[] uploadFile)
 			throws IllegalStateException, IOException {
-
-		productService.sellerInsertProduct(pvo);
-	
-			int pno=productService.sellerGetPno();
-			//업로드 파일 처리
-			//MultipartFile uploadFile=vo.getUploadFile();
-			if(!uploadFile.isEmpty()) {//서버에 저장 작업
-				String filename=uploadFile.getOriginalFilename();
-				System.out.println("filename="+filename);
-				//서버에 저장
-				UUID uuid=UUID.randomUUID();
-				String saveFilename=uuid+"-"+filename;
-				uploadFile.transferTo(new File(imgPath+saveFilename));
-				//저장된 파일명을 vo 에 담는다
-				 ivo.setMain_img1(saveFilename);
-			}
-			imageService.insertImages(pvo);
+//			pvo.setCompany("종현이용");
+			log.info("company"+company);
+//			log.info(ivo);
+			productService.sellerInsertProduct(pvo);
+//			System.out.println("pvo.getCompany()2="+pvo.getCompany());
 			
-
+			ivo.setPno(productService.sellerGetPno());
+			UUID uuid=UUID.randomUUID();				
+			
+			int i=1;
+			for (MultipartFile multipartFile : uploadFile) {
+			
+				log.info("-------------------------------------");
+				log.info("Upload File Name: " + multipartFile.getOriginalFilename());
+				log.info("Upload File Size: " + multipartFile.getSize());
+				if(multipartFile.getSize()>0) {
+					log.info("i="+i);
+					String savefilename=uuid+"-"+multipartFile.getOriginalFilename();
+					File saveFile = new File(imgPath,savefilename);
+					try {
+						multipartFile.transferTo(saveFile);
+					} catch (Exception e) {
+						log.error(e.getMessage());
+					} // end catch	
+					switch (i) {
+					case 1:
+						ivo.setMain_img1(savefilename); 
+						break;
+					case 2:
+						ivo.setMain_img2(savefilename); 
+						break;
+					case 3:
+						ivo.setMain_img3(savefilename); 
+						break;
+					case 4:
+						ivo.setMain_img4(savefilename); 
+						break;
+					case 5:
+						ivo.setMain_img1(savefilename); 
+						break;
+					case 6:
+						ivo.setCon_img_1(savefilename); 
+						break;
+					case 7:
+						ivo.setCon_img_1(savefilename); 
+						break;
+					}
+				}
+				i++;
+			} // end for	
+			imageService.insertImages(ivo);
 		return "seller/sellerHome";
 	}
 	
-//	@PostMapping("sellerInsertImages")
-//	public String sellerInsertImages(Model model,ProductVO pvo,ImagesVO vo,@RequestParam MultipartFile uploadFile,ImagesVO ivo) 
-//			throws IllegalStateException, IOException {
-//		
-//		//업로드 파일 처리
-//		//MultipartFile uploadFile=vo.getUploadFile();
-//		if(!uploadFile.isEmpty()) {//서버에 저장 작업
-//			String filename=uploadFile.getOriginalFilename();
-//			System.out.println("filename="+filename);
-//			//서버에 저장
-//			UUID uuid=UUID.randomUUID();
-//			String saveFilename=uuid+"-"+filename;
-//			uploadFile.transferTo(new File(imgPath+saveFilename));
-//			//저장된 파일명을 vo 에 담는다
-//			 ivo.setMain_img1(saveFilename);
-//		}
-//		imageService.insertImages(pvo);
-//		return "seller/sellerHome";
-//	}
 	
 	// 판매자 상품등록 내역조회
 	@RequestMapping("sellerSellectMineProduct")
@@ -134,5 +150,37 @@ public class SellerController {
 		productService.sellerUpdateProduct(vo);
 		model.addAttribute("vo",vo);
 		return "seller/sellerHome";
+	}
+	
+	//테스트 -----------------------------------------------
+	
+	@GetMapping("/multiFileContent")
+	public String multiFileContentPost() {
+		return "seller/multiFileContent";
+	}
+	
+	@PostMapping("/multiFileContent")
+	public void multiFileContentPost(MultipartFile[] uploadFile,String title ,Model model) {
+		log.info(title);
+		int i=1;
+		for (MultipartFile multipartFile : uploadFile) {
+
+			log.info("-------------------------------------");
+			log.info("Upload File Name: " + multipartFile.getOriginalFilename());
+			log.info("Upload File Size: " + multipartFile.getSize());
+			if(multipartFile.getSize()>0) {
+
+				File saveFile = new File(imgPath, multipartFile.getOriginalFilename());
+				try {
+					multipartFile.transferTo(saveFile);
+				} catch (Exception e) {
+					log.error(e.getMessage());
+				} // end catch
+				log.info("i="+i);
+				//switch문...
+			}
+			i++;
+		} // end for
+
 	}
 }
