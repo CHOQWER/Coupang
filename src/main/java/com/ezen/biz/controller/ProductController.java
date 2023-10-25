@@ -24,7 +24,6 @@ import com.ezen.biz.dto.ImagesVO;
 import com.ezen.biz.dto.MainCateVO;
 import com.ezen.biz.dto.ProductVO;
 import com.ezen.biz.dto.SubCateVO;
-
 import com.ezen.biz.service.ProductService;
 import com.ezen.biz.service.ReviewService;
 import com.ezen.biz.utils.Criteria;
@@ -43,8 +42,6 @@ public class ProductController {
    private ReviewService rservice;
 
    private final String imgPath = "D:/upload/coupang/";
-   
-   private List<Map<String, Object>> catelist;
    
    @RequestMapping("/")
    public String showCategory(Model model, HttpServletRequest request) {
@@ -73,7 +70,10 @@ public class ProductController {
       }
       HttpSession cateSession = request.getSession();
       cateSession.setAttribute("catelist", catelist);
+<<<<<<< HEAD
       cateSession.setAttribute("subcates", subcatelist);
+=======
+>>>>>>> branch 'main' of https://github.com/CHOQWER/Coupang.git
       return "main";
    }
    
@@ -86,8 +86,6 @@ public class ProductController {
       model.addAttribute("pvo",pvo);
       model.addAttribute("ivo",ivo);
       model.addAttribute("map",map);
-      model.addAttribute("catelist", catelist);
-      System.out.println("catelist"+ catelist);
       return "product/ProductView";
    }
    
@@ -119,8 +117,6 @@ public class ProductController {
        PageMaker maker = new PageMaker(cri, cnt);
        model.addAttribute("pmaker", maker);
        model.addAttribute("starlist", starlist);
-       
-       model.addAttribute("catelist", catelist);
        return "product/ProductList";
    }
    

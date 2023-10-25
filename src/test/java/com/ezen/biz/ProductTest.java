@@ -8,7 +8,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.ezen.biz.dao.ImagesDAO;
 import com.ezen.biz.dao.ProductDAO;
-import com.ezen.biz.dto.ImagesVO;
 import com.ezen.biz.dto.ProductVO;
 
 import lombok.extern.log4j.Log4j;
