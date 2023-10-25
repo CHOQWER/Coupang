@@ -22,19 +22,23 @@ import lombok.extern.log4j.Log4j;
 public class CartController {
 	@Autowired
 	private CartService service;
-	@RequestMapping(value="/cart", method = RequestMethod.GET)
-	public String cart(Model model, HttpSession session, CartVO vo, UsersVO v) {
-		// 세션에서 로그인 정보를 받아옵니다.
-				v=(UsersVO) session.getAttribute("vo");
-				vo.setU_id(v.getU_id());
-				log.info(vo);
-				List<CartVO> list = service.selectCartList(vo);
-				// JSP 페이지로 리스트를 전달합니다.
-				model.addAttribute("list", list);
-				log.info(list);
-				return "cart/cart";
-			
-	}
+	 @RequestMapping(value="/cart", method = RequestMethod.GET)
+	   public String cart(Model model, HttpSession session, CartVO vo, UsersVO v) {
+	      // 세션에서 로그인 정보를 받아옵니다.            
+	            v=(UsersVO) session.getAttribute("vo");
+	            if(v==null) {
+	               model.addAttribute("error1","로그인이 필요한 서비스입니다");
+	               return "users/login";
+	            }else {
+	            vo.setU_id(v.getU_id());
+	            log.info(vo);
+	            List<CartVO> list = service.selectCartList(vo);
+	            // JSP 페이지로 리스트를 전달합니다.
+	            model.addAttribute("list", list);
+	            log.info(list);
+	            return "cart/cart";
+	            }
+	 }
 	
 	@RequestMapping("insertCart")
 	public String insertCart(CartVO vo, HttpSession session, Model model) {

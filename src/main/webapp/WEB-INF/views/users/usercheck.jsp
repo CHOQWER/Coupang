@@ -3,11 +3,22 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ include file="/WEB-INF/views/include/header.jsp"%>
 <link rel="stylesheet" href="/resources/css/signup.css">
+<style>
 
+	.message{
+    width: 1028px;     
+	margin: 0 auto;
+}
 
+	   
+	
+</style>
+
+	<div class="message">
 	<h1 style="margin-top: 50px">회원정보확인</h1>
 	${sessionScope.vo.u_id}님의 정보를 안전하게 보호하기 위해 비밀번호를 다시 한번 확인 합니다.
 	<hr>
+	</div>
 
 <div class="member">
 		<h1 style="text-align: center;"></h1>

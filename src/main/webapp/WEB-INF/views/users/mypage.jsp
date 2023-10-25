@@ -2,11 +2,17 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ include file="/WEB-INF/views/include/header.jsp"%>
-<html>
-<head>
-<title>마이페이지</title>
-</head>
+<style>
+	
+	.mypage {
+		width: 1028px;
+		margin: 0 auto;
+	}
+</style>
+
+
 <body>
+	<div class="mypage">
 	<form action="usercheck" method="post">
 	<h1>마이페이지</h1>
 	<p>아이디 : ${sessionScope.vo.u_id}</p>
@@ -33,7 +39,7 @@
 		<input type="hidden" name="u_id" value="${sessionScope.vo.u_id }">
 		<a href="withdrawal"><button>회원탈퇴</button></a>
 	</form>
-	
+	</div>
 </body>
-</html>
+
 <%@ include file="/WEB-INF/views/include/footer.jsp"%>

@@ -55,6 +55,10 @@ footer ul {
     list-style-type: none;
     display: inline-flex;
     
+   
+}
+	.footer-layer1 {
+	margin-top: 10px;
 }
 .footer_new .footer-layer2 {
     width: 1020px;
@@ -120,6 +124,8 @@ footer ul {
     width: 270px;
     font-size: 11px
 }
+
+
 
 #header,#gnb,#contents,#footer {
     position: relative    
