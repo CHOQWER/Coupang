@@ -22,6 +22,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.ezen.biz.dto.BuyVO;
 import com.ezen.biz.dto.ImagesVO;
 import com.ezen.biz.dto.ProductVO;
+import com.ezen.biz.dto.SubCateVO;
 import com.ezen.biz.dto.UsersVO;
 import com.ezen.biz.service.BuyService;
 import com.ezen.biz.service.ImagesService;
@@ -63,10 +64,20 @@ public class SellerController {
 		return "seller/adminSelectBuyList";
 	}
 	@GetMapping("sellerInsertProduct")
-	public String sellerInsertProduct(Model model, UsersVO v,
+	public String sellerInsertProduct(Model model, UsersVO v, 
 			HttpServletRequest request, HttpSession session,BuyVO vo) {
 		v=(UsersVO) session.getAttribute("vo");
 		vo.setU_id(v.getU_id());
+		
+	      
+//	      List<SubCateVO> list = productService.getSubCategory(ca_no);
+//	       model.addAttribute("ca_no", ca_no);    
+	      
+//	      HttpSession session = request.getSession();
+//	      session.getAttribute(subcatelist);
+
+	      
+	     
 		
 		return "seller/sellerInsertProduct";
 		
@@ -87,7 +98,7 @@ public class SellerController {
 			int i=1;
 			for (MultipartFile multipartFile : uploadFile) {
 			
-				log.info("-------------------------------------");
+				log.info("------------------------------------");
 				log.info("Upload File Name: " + multipartFile.getOriginalFilename());
 				log.info("Upload File Size: " + multipartFile.getSize());
 				if(multipartFile.getSize()>0) {

@@ -11,6 +11,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -46,9 +47,9 @@ public class ProductController {
    private List<Map<String, Object>> catelist;
    
    @RequestMapping("/")
-   public String showCategory(Model model) {
+   public String showCategory(Model model, HttpServletRequest request) {
       // 뷰로 보낼 전체 내용이 삽입된
-      catelist = new ArrayList<Map<String, Object>>();
+     List<Map<String, Object>> catelist= new ArrayList<Map<String, Object>>();
       List<Map<String, Object>> subcatelist = null;
       // DB 에서 CATE 목록 가져오기
       List<MainCateVO> cates = service.getCategory();
@@ -68,9 +69,11 @@ public class ProductController {
          }
          map.put("subcates", subcatelist);
          catelist.add(map);
-      }
-      model.addAttribute("catelist", catelist);
 
+      }
+      HttpSession cateSession = request.getSession();
+      cateSession.setAttribute("catelist", catelist);
+      cateSession.setAttribute("subcates", subcatelist);
       return "main";
    }
    

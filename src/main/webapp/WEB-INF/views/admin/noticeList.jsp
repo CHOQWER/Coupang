@@ -6,8 +6,8 @@
 <body>
 <div id="menu">
   <ul>
-      <li class="menu-item" data-type="notice">공지사항</li>
-      <li class="menu-item" data-type="faq">자주 묻는 질문(FAQ)</li>
+      <li class="menu-item" data-type="notice"><a href="notice?type=0">공지사항</a> </li>
+      <li class="menu-item" data-type="faq"><a href="notice?type=1">자주 묻는 질문(FAQ)</a></li>
   </ul>
 </div>
   <c:choose>
