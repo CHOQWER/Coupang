@@ -2,6 +2,7 @@ package com.ezen.biz.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Map;
 
@@ -63,12 +64,15 @@ public class ReviewController {
 			JsonArray arr = new JsonArray();
 			// json 객체 만들기
 			JsonObject data = null;
+			SimpleDateFormat dateFormat = new SimpleDateFormat("yy-MM-dd");
 			for (ReviewVO v : list) {
 				data = new JsonObject();
 				data.addProperty("u_id", v.getU_id());
 				data.addProperty("score", v.getScore());				
 				data.addProperty("r_title", v.getR_title());
-				data.addProperty("r_content", v.getR_content());				
+				data.addProperty("r_content", v.getR_content());
+				String r_regdate = dateFormat.format(v.getR_regdate());
+			    data.addProperty("r_regdate", r_regdate);
 				arr.add(data);
 			}
 			jObj.add("arr", arr);
@@ -82,6 +86,7 @@ public class ReviewController {
 
 
 }
+
 
 
 

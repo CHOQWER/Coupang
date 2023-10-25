@@ -11,6 +11,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,7 +24,6 @@ import com.ezen.biz.dto.ImagesVO;
 import com.ezen.biz.dto.MainCateVO;
 import com.ezen.biz.dto.ProductVO;
 import com.ezen.biz.dto.SubCateVO;
-
 import com.ezen.biz.service.ProductService;
 import com.ezen.biz.service.ReviewService;
 import com.ezen.biz.utils.Criteria;
@@ -43,12 +43,10 @@ public class ProductController {
 
    private final String imgPath = "D:/upload/coupang/";
    
-   private List<Map<String, Object>> catelist;
-   
    @RequestMapping("/")
-   public String showCategory(Model model) {
+   public String showCategory(Model model, HttpServletRequest request) {
       // 뷰로 보낼 전체 내용이 삽입된
-      catelist = new ArrayList<Map<String, Object>>();
+     List<Map<String, Object>> catelist= new ArrayList<Map<String, Object>>();
       List<Map<String, Object>> subcatelist = null;
       // DB 에서 CATE 목록 가져오기
       List<MainCateVO> cates = service.getCategory();
@@ -68,9 +66,10 @@ public class ProductController {
          }
          map.put("subcates", subcatelist);
          catelist.add(map);
-      }
-      model.addAttribute("catelist", catelist);
 
+      }
+      HttpSession cateSession = request.getSession();
+      cateSession.setAttribute("catelist", catelist);
       return "main";
    }
    
@@ -83,8 +82,6 @@ public class ProductController {
       model.addAttribute("pvo",pvo);
       model.addAttribute("ivo",ivo);
       model.addAttribute("map",map);
-      model.addAttribute("catelist", catelist);
-      System.out.println("catelist"+ catelist);
       return "product/ProductView";
    }
    
@@ -116,8 +113,6 @@ public class ProductController {
        PageMaker maker = new PageMaker(cri, cnt);
        model.addAttribute("pmaker", maker);
        model.addAttribute("starlist", starlist);
-       
-       model.addAttribute("catelist", catelist);
        return "product/ProductList";
    }
    

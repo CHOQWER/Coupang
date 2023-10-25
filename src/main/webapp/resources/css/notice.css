@@ -7,8 +7,14 @@
 	float: left;
 	margin: 20px;
 }
-.faq-content {
+#nolist{
+	margin: 0 auto;	
+}
+
+.faq-content,.notice-content {
+	width:1028px;
 	border-bottom: 1px solid #e0e0e0;
+	
 }
 .question {
 	font-size: 19px;
@@ -26,12 +32,17 @@
 [id$="-toggle"] {
 	margin-right: 15px;
 }
+#menu{
+	width: 1028px;
+	height: 80px;	
+	background: #4285f4;
+	margin: 0 auto;
+}
 #menu ul li{
 	float: left;
 	width: 25%;
 	height: 50px;
-	line-height: 50px;
+	line-height: 40px;
 	text-align: center;
-	background: #4285f4;
-	font-size: 30px;
+	font-size: 20px;
 }
