@@ -18,7 +18,6 @@
 		<typeAlias alias="review" type="com.ezen.biz.dto.ReviewVO" />
 		<typeAlias alias="cart" type="com.ezen.biz.dto.CartVO" />
 		<typeAlias alias="notice" type="com.ezen.biz.dto.NoticeVO" /> 
-		
   	</typeAliases>
   	
 	<mappers>

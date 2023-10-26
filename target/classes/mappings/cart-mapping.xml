@@ -14,7 +14,7 @@
   	
   	<!-- 장바구니 확인 -->
   	<select id="selectCartList" resultType="com.ezen.biz.dto.CartVO">
-  		select pno,u_id,main_img1,pname,price,dis_price,c_cnt from cart
+  		select u_id,main_img1,pname,price,dis_price,c_cnt from cart
   		where u_id=#{u_id} 
   	</select>
   	
