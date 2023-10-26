@@ -2,19 +2,14 @@ package com.ezen.biz.controller;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ezen.biz.dto.NoticeVO;
-import com.ezen.biz.dto.UsersVO;
 import com.ezen.biz.service.NoticeService;
 
 import lombok.extern.log4j.Log4j;
@@ -22,24 +17,14 @@ import lombok.extern.log4j.Log4j;
 @Controller
 @Log4j
 public class NoticeController {
-	// 태근
 	@Autowired
 	private NoticeService service;
 	
 	@GetMapping("notice")
 	public String notice(NoticeVO vo, Model model) {
-<<<<<<< HEAD
-		log.info(vo);
-		if(vo.getType()==null || vo.getType().equals("0"))
-=======
 		if(vo.getType()==null || vo.getType().equals("0")) {
->>>>>>> branch 'main' of https://github.com/CHOQWER/Coupang.git
 			vo.setType("0");
-<<<<<<< HEAD
-		else if (vo.getType().equals("1")) {
-=======
 		}else if ( vo.getType().equals("1")) {
->>>>>>> branch 'main' of https://github.com/CHOQWER/Coupang.git
 			vo.setType("1");
 		}
 		List<NoticeVO> list=service.selectNoticeList(vo);

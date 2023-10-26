@@ -19,7 +19,6 @@ import org.springframework.web.multipart.MultipartFile;
 import com.ezen.biz.dto.BuyVO;
 import com.ezen.biz.dto.ImagesVO;
 import com.ezen.biz.dto.ProductVO;
-import com.ezen.biz.dto.SubCateVO;
 import com.ezen.biz.dto.UsersVO;
 import com.ezen.biz.service.BuyService;
 import com.ezen.biz.service.ImagesService;
