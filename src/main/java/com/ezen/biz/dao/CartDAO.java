@@ -15,10 +15,14 @@ public class CartDAO {
 	@Autowired
 	private SqlSessionTemplate mybatis;
 	  
-	 public void insertCart(CartVO vo) {
-		   mybatis.insert("CartDAO.insertCart", vo);	
+	 public int insertCart(CartVO vo) {
+		   return mybatis.insert("CartDAO.insertCart", vo);	
 }
 	 public List<CartVO> selectCartList(CartVO vo) {
 			return mybatis.selectList("CartDAO.selectCartList",vo); 
-}   
+}
+	public int selectMaxCno(CartVO vo) {
+		return mybatis.selectOne("CartDAO.selectMaxCno",vo); 
+		
+	}   
 }

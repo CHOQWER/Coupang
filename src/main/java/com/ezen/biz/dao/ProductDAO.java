@@ -54,7 +54,11 @@ public class ProductDAO {
 	public ProductVO selectProductPno(int pno) {
 		return mybatis.selectOne("ProductDAO.selectProductPno", pno);
 	}
-
+	//상품페이지에서 장바구니로 넘기기
+	public ProductVO selectProductcartPno(int pno) {
+		System.out.println("selectProductcartpno");
+		return mybatis.selectOne("ProductDAO.selectProductcartPno", pno);
+	}
 	public ProductVO SelectProduct(ProductVO vo) {
 		return mybatis.selectOne("ProductDAO.selectProduct", vo);
 	}
