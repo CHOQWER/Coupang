@@ -22,6 +22,7 @@ import lombok.extern.log4j.Log4j;
 @Controller
 @Log4j
 public class NoticeController {
+	// 태근
 	@Autowired
 	private NoticeService service;
 	
