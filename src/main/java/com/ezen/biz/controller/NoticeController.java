@@ -22,6 +22,7 @@ public class NoticeController {
 	
 	@GetMapping("notice")
 	public String notice(NoticeVO vo, Model model) {
+		log.info(vo);
 		if(vo.getType()==null || vo.getType().equals("0")) {
 			vo.setType("0");
 		}else if ( vo.getType().equals("1")) {
@@ -31,6 +32,13 @@ public class NoticeController {
 		model.addAttribute("list", list);
 		model.addAttribute("vo", vo);
 		return "admin/noticeList";
+	}
+	
+	@RequestMapping("noticeNew")
+	public String insertNotice(@ModelAttribute("notice") NoticeVO vo) {
+		// 게시글 작성
+		service.insertNotice(vo);
+		return "redirect:noticeList";
 	}
 	
 	@RequestMapping("/updateNotice.do")
