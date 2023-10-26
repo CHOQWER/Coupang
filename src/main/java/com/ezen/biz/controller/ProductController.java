@@ -71,8 +71,6 @@ public class ProductController {
       HttpSession cateSession = request.getSession();
       cateSession.setAttribute("catelist", catelist);
 
-      cateSession.setAttribute("subcates", subcatelist);
-
       return "main";
    }
    
