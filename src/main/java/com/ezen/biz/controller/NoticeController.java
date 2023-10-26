@@ -49,7 +49,7 @@ public class NoticeController {
 	    if ("0".equals(type)) {
 	    	service.insertNotice(vo);
 	    } else if ("1".equals(type)) {
-	    	service.insertFAQ(vo);
+			/* service.insertFAQ(vo); */
 	    }
 	    return "redirect:notice";
 	}
