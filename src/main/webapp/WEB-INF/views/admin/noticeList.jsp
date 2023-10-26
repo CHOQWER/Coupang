@@ -11,18 +11,18 @@
   </ul>
 </div>
 <div id="nolist">
-  <c:choose>
-      <c:when test="${vo.type==0}">
-          <c:forEach items="${list}" var="item" varStatus="status">
-              <ul>
-                  <li class="notice-content">
-                      <button class="question" data-toggle="que${status.index}" data-content="ans${status.index}">
-                          <span id="que-toggle${status.index}">+</span><span>${item.n_title}</span>
-                      </button>
-                      <div class="answer" id="ans${status.index}">${item.n_content}</div>
-                  </li>
-              </ul>   
-            <div class="btn_rud">
+	<c:choose>
+		<c:when test="${vo.type==0}">
+			<c:forEach items="${list}" var="item" varStatus="status">
+				<ul>
+					<li class="notice-content">
+						<button class="question" data-toggle="que${status.index}" data-content="ans${status.index}">
+							<span id="que-toggle${status.index}">+</span><span>${item.n_title}</span>
+						</button>
+						<div class="answer" id="ans${status.index}">${item.n_content}</div>
+					</li>
+				</ul>   
+			<div class="btn_rud">
 			<c:if test="${sessionScope.vo.grade == '0'}">
 				<button type="button" id="btnEdit" onclick="noticeEdit()" class="btn btn-warning" >공지수정</button>
 				<button type="button" id="btnDelete" onclick="noticeDelete()" class="btn btn-danger" >공지삭제</button> 
@@ -30,19 +30,24 @@
 				<button type="reset" id="btnCancle" onclick="noticeCancle()" class="btn btn-info" style="display:none;">수정취소</button>
 			</c:if>
 			</div> 
-          </c:forEach>
-      </c:when>
-      <c:when test="${vo.type==1}">
-        <c:forEach items="${list}" var="item" varStatus="status">
-          <ul>
-              <li class="faq-content">
-                  <button class="question" data-toggle="que${status.index}" data-content="ans${status.index}">
-                      <span id="que-toggle${status.index}">+</span><span>${item.n_title}</span>
-                  </button>
-                  <div class="answer" id="ans${status.index}">${item.n_content}</div>
-              </li>
-          </ul>
-            <div class="btn_rud">
+			</c:forEach>
+			<div id="top-button">
+				<c:if test="${sessionScope.vo.grade == '0'}">
+				<a href="noticeNew"><button type="button" class="btn btn-primary">공지등록</button></a>
+				</c:if>
+			</div>
+		</c:when> 
+		<c:when test="${vo.type==1}">
+			<c:forEach items="${list}" var="item" varStatus="status">
+				<ul>
+					<li class="faq-content">
+						<button class="question" data-toggle="que${status.index}" data-content="ans${status.index}">
+							<span id="que-toggle${status.index}">+</span><span>${item.n_title}</span>
+						</button>
+						<div class="answer" id="ans${status.index}">${item.n_content}</div>
+					</li>
+				</ul>
+			<div class="btn_rud">
 			<c:if test="${sessionScope.vo.grade == '0'}">
 				<button type="button" id="btnEdit" onclick="noticeEdit()" class="btn btn-warning" >게시글 수정</button>
 				<button type="button" id="btnDelete" onclick="noticeDelete()" class="btn btn-danger" >게시글 삭제</button> 
@@ -50,10 +55,15 @@
 				<button type="reset" id="btnCancle" onclick="noticeCancle()" class="btn btn-info" style="display:none;">수정취소</button>
 			</c:if>
 			</div> 
-      </c:forEach>
-      </c:when>
-  </c:choose>
- </div>     	   
+			</c:forEach>
+			<div id="top-button">
+				<c:if test="${sessionScope.vo.grade == '0'}">
+				<a href="noticeNew"><button type="button" class="btn btn-primary">게시글 등록</button></a>
+				</c:if>
+			</div>
+		</c:when>
+	</c:choose>
+</div>
 <script>
 document.addEventListener("DOMContentLoaded", function () {
 	console.log("DOM is ready");
