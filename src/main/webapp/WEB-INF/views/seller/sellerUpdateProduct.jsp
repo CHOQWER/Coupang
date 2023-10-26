@@ -2,41 +2,42 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ page session="false" %>
+
 
 <main>
 	<form action="sellerUpdateProduct" method="post" >
 		<table class="table table-sm table-bordered">
-			<tr>
-				<th>판매자 아이디</th> <!-- 아이디 가져오기 -->
-				<td><input type="text" size="120" maxlength="50" name="u_id" id="u_id" placeholder="판매자 아이디" required>${u_id}</td>
-			</tr>
+		<h2>변경을 원하는 곳만 입력해주시기 바랍니다.   </h2>
+				<tr>
+					<th>판매자 아이디</th>
+					<td><p type="text" size="120" maxlength="50" name="u_id" id="u_id">${vo.u_id}</p></td>
+				</tr>
 	        <tr>
 				<th>카테고리 번호</th> <!--  옵션 선택 -->
-				<td><input type="text" size="120"  maxlength="30" name="ca_no" id="ca_no" placeholder="카테고리 번호 입력"></td>
+				<td><input type="text" size="120"  maxlength="30" name="ca_no" id="ca_no" placeholder="카테고리 번호 입력" values="${list.ca_no}">${list.ca_no}</td>
 			</tr>
 	        <tr>
 				<th>부 카테고리 번호</th> <!--  옵션 선택 -->
-				<td><input type="text" size="120"  maxlength="30" name="sca_no" id="sca_no" placeholder="부 카테고리 번호 입력"></td>
+				<td><input type="text" size="120"  maxlength="30" name="sca_no" id="sca_no" placeholder="부 카테고리 번호 입력" values="${list.sca_no}">${list.sca_no}</td>
 			</tr>
 			<tr>
 				<th>제조회사</th>
 				<td><input type="text" size="120"  maxlength="7" name="company" id="company" 
-				  placeholder="제조회사 입력" required></td>
+				  placeholder="제조회사 입력" >${list.company}</td>
 			</tr>
 			<tr>
 				<th>상품명</th>
 				<td><input type="text" size="120"  maxlength="7" name="pname" id="pname" 
-				   placeholder="상품명입력" required>${pno}</td>
+				   placeholder="상품명입력" >${list.pname}</td>
 			</tr>
 	        <tr>
 				<th>할인 전 가격</th> <!-- 할인가격 보다 같거나 커야함 -->
 				<td><input type="text" size="120"  maxlength="7" name="price" id="price" 
-				   placeholder="가격입력(할인 후 입력과 같게 입력할수있습니다.)" required></td>
+				   placeholder="가격입력(할인 후 입력과 같게 입력할수있습니다.)" >${list.price}</td>
 			</tr>
 	        <th>할인 후 가격</th>
 				<td><input type="text" size="120"  maxlength="7" name="dis_price" id="dis_price" 
-				  placeholder="최대 MAX할인가격입력" required></td>
+				  placeholder="최대 MAX할인가격입력" >${list.dis_price}</td>
 			</tr>
 	        <tr>
 				<th>상세 설명</th>
@@ -45,18 +46,18 @@
 			<tr>
 				<th>색상</th> 
 				<td><input type="text" size="120"  maxlength="7" name="color" id="color" 
-				   placeholder="색상입력" ></td>
+				   placeholder="색상입력" >${list.color}</td>
 			</tr>
 			<tr>
 				<th>판매 가능 개수</th>
 				<td><input type="text" size="120"  maxlength="7" name="qty" id="qty" 
-				  placeholder="판매 등록 개수 입력" required></td>
+				  placeholder="판매 등록 개수 입력" >${list.qty}</td>
 			</tr>
 
 		</table>
 			<div class="btn">
 				<button type="submit" class="btn btn-success">상품 수정</button> &nbsp; 
-
+				<!-- <button type="submit" class="btn btn-success">상품 삭제</button> &nbsp;  -->
 			    <button type="reset" class="btn btn-secondary">다시 입력</button>
 		    </div>
 	</form>

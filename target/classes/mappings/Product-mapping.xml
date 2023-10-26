@@ -116,14 +116,7 @@
 		product where sca_no=#{sca_no} and disp='y' and company=#{company}
 	</select>
   	
-  	
-  	
-  	
-  	
-  	
-  	
-  	
-  	
+	
   	
   	
   	

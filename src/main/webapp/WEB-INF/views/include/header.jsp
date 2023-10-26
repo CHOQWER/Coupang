@@ -57,7 +57,7 @@
 						<!-- 카테고리에 대한 하위 서브카테고리 표시 -->
 						<ul>
 							<c:forEach items="${cate.get('subcates')}" var="sub">
-							<li><a href="ProductList?sca_no=${sub.get('sno')}&pageNum=1">${sub.get('sname')}</a></li>						
+							<li><a href="ProductList?sca_no=${sub.get('sno')}&pageNum=1&cate_name=${cate.get('name')}&subcate_name=${sub.get('sname')}">${sub.get('sname')}</a></li>						
 							</c:forEach> 
 						</ul>
 						</c:forEach>
