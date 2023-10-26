@@ -47,7 +47,7 @@
   	
   	<!-- 와우 멤버십 가입 -->
   	<update id="updateMember">
-  		update users set grade=3 where u_id=#{u_id}
+  		update users set grade='3' where u_id=#{u_id}
   	</update>
   	
   	
