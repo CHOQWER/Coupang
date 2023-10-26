@@ -35,7 +35,7 @@ public class UsersTest {
 			vo.setU_post_no(0);
 			vo.setU_addr1("서울시 관악구");
 			vo.setU_addr2("신림동");
-			vo.setGrade(0);
+			//vo.setGrade(0);
 			dao.insertMember(vo);
 		}
 	
