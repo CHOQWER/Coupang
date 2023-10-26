@@ -34,6 +34,13 @@ public class NoticeController {
 		return "admin/noticeList";
 	}
 	
+	@RequestMapping("noticeNew")
+	public String insertNotice(@ModelAttribute("notice") NoticeVO vo) {
+		// 게시글 작성
+		service.insertNotice(vo);
+		return "redirect:noticeList";
+	}
+	
 	@RequestMapping("/updateNotice.do")
 	public String updateNotice(@ModelAttribute("notice") NoticeVO vo) {
 		// 공지사항 수정 작업
