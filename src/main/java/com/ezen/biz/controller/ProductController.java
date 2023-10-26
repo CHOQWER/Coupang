@@ -35,7 +35,7 @@ import lombok.extern.log4j.Log4j;
 @Controller
 @Log4j
 public class ProductController {
-
+//깃허브소라
    @Autowired
    private ProductService service;
    
@@ -108,6 +108,7 @@ public class ProductController {
        //sca_no로 company검색
        List<ProductVO> clist=service.selectCompany(sca_no);
        model.addAttribute("clist",clist);
+       System.out.println("clist"+clist);
     
        //평점정보
        Map<String, Number> map = null;
@@ -134,7 +135,7 @@ public class ProductController {
        vo.setCompany(company);
        int tot = service.selectRowCount(vo);
       
-        PageMaker pMaker = new PageMaker(cri, tot);
+       PageMaker pMaker = new PageMaker(cri, tot);
        boolean next = pMaker.nextPageScore();
        
        int cnt = service.selectRowCount(sca_no);
