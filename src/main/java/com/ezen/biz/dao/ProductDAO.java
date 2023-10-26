@@ -87,5 +87,18 @@ public class ProductDAO {
 	public ImagesVO selectImgPno(int pno) {
 		return mybatis.selectOne("ProductDAO.selectImgPno", pno);
 	}
+	
+	
+	// 회사 전체 조회(sca_no 받아서)
+	public List<ProductVO> selectCompany(int sca_no) {
+			return mybatis.selectList("ProductDAO.selectCompany", sca_no);
+	}
+	
+	// 회사별 상품 전체 조회서
+	public List<ProductVO> selectCompanylist(ProductVO vo){
+		return mybatis.selectList("ProductDAO.selectCompanylist", vo);
+	}
+
+
 
 }

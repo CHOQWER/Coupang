@@ -82,4 +82,16 @@ public class ProductServiceImpl implements ProductService{
 		return dao.sellerSellectMineProduct(vo);
 	}
 
+	@Override
+	public List<ProductVO> selectCompany(int sca_no) {
+		return dao.selectCompany(sca_no);
+	}
+
+	@Override
+	public List<ProductVO> selectCompanylist(ProductVO vo,Criteria cri) {
+		return dao.selectCompanylist(vo);
+	}
+	
+	
+
 }
