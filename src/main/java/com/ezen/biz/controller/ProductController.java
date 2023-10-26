@@ -163,6 +163,11 @@ public class ProductController {
 	   return "product/ProductList";
    }
    
+   
+   //소라가 수정한부분로ㅑㅕㄴ도랴ㅕㄴㄷ로ㅕㅑ로ㅑㅕㄴㄹ호ㅕㅑㅣ호ㅑ기ㅕ호ㅑㅕ고겨ㅑㅣ
+   
+   
+   
    @GetMapping("imgDown")
    public void imgDown(@RequestParam String imgName, HttpServletRequest request, HttpServletResponse response)
          throws IOException {
