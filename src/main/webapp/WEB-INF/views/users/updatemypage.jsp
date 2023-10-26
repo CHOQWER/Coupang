@@ -9,10 +9,14 @@
 
 
 <form action="updateUser" method="post">
-	<h1>마이페이지</h1>	
-	<p>아이디 : <input type="text" name="u_id" id="u_id" value="${vo.u_id}" readonly="readonly"></p>	
-	<p>이 름 : <input type="text" name="u_name" id="u_name" value="${vo.u_name}" ></p>	
-	<p>전화번호 : <input type="text" name="u_mobile" id="u_mobile" value="${vo.u_mobile}"></p>		
+	<h1>회원정보수정</h1>	
+	<label for="userid">아이디</label> 
+	<input type="text" name="u_id" id="userid" value="${vo.u_id}" readonly="readonly">	
+	<label for="fullname">이름</label>
+	<input type="text" name="u_name" id="fullname" value="${vo.u_name}" >	
+	<label for="tel">전화번호</label>	
+	<input type="text" name="u_mobile" id="u_mobile" value="${vo.u_mobile}">
+			
 	<p>이메일 : <input type="email" name="u_email" id="u_email" value="${vo.u_email}"></p>
 	<c:if test="${vo.grade==0 }">
 	<p>등 급 : 관리자</p>

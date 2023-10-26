@@ -14,8 +14,7 @@
 </head>
 
 <body>
-<div class="container">
-   
+<div class="container">   
     <header>
         <nav class="top-nav">
             <ul class="right-nav">
@@ -27,7 +26,7 @@
 					</c:when>
 					<c:when test="${sessionScope.vo.grade==0}">
 						<li>${sessionScope.vo.u_name}님</li>
-						<li><a href="seller">판매자 사이트로 이동</a>
+						<li><a href="seller">관리자 사이트로 이동</a>
 						<li><a href="logout">로그아웃</a></li>
 						<li><a href="notice">고객센터</a></li>
 					</c:when>
@@ -91,7 +90,7 @@
 
 			<ul class="icon-menu">
 				<li><a href="mypage"> <img src="resources/img/2815428.png"
-						alt="마이폐이지" style="width: 30px;"> <span>마이쿠팡</span>
+						alt="마이페이지" style="width: 30px;"> <span>마이쿠팡</span>
 				</a></li>
 
 				<li><a href="cart"> <img src="resources/img/cart.png"
@@ -103,13 +102,11 @@
 		<nav>
 			<ul class="menu">
 				<ul class="gnb-menu-scroll">
-					<li class="gnb-menu-item"><a href="" class=""> <img
-							class="" src=""> <span>로켓배송</span>
+					<li class="gnb-menu-item"><a href="" class=""> <img	class="" src=""> <span>로켓배송</span>
 					</a></li>
 					<li><a href="">이벤트/쿠폰</a></li>
 				</ul>
 			</ul>
 		</nav>
 	</header>
-
 

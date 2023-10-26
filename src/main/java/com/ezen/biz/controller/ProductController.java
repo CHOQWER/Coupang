@@ -70,6 +70,10 @@ public class ProductController {
       }
       HttpSession cateSession = request.getSession();
       cateSession.setAttribute("catelist", catelist);
+<<<<<<< HEAD
+      cateSession.setAttribute("subcates", subcatelist);
+=======
+>>>>>>> branch 'main' of https://github.com/CHOQWER/Coupang.git
       return "main";
    }
    

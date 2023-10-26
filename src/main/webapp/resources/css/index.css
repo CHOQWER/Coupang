@@ -50,6 +50,8 @@ header {
     
 }
 
+
+/************* 카테고리 쪽 효과*******************/
 .catagory-menu:hover .hide-catagory{
     display: block;
 }
@@ -61,16 +63,15 @@ header {
 .hide-catagory{
     position: absolute;
     display: none;
-    width: 100%;
-  
+    width: 100%;  
 }
-
 
 .hide-catagory ul ul{
     display: none;
     width: 400%;
-
 }
+/**************카테고리 쪽 효과 끝**************** */
+
 
 li {
     list-style: none;

@@ -6,8 +6,13 @@
 
 <div id="menu">
   <ul>
+<<<<<<< HEAD
+      <li class="menu-item" data-type="notice"><a href="notice?type=0">공지사항</a> </li>
+      <li class="menu-item" data-type="faq"><a href="notice?type=1">자주 묻는 질문(FAQ)</a></li>
+=======
       <li id="notice-title" class="menu-item" data-type="notice" ><a href="notice?type=0">공지사항</a> </li>     
       <li id="faq-title" class="menu-item" data-type="faq" ><a href="notice?type=1">자주 묻는 질문</a></li>
+>>>>>>> branch 'main' of https://github.com/CHOQWER/Coupang.git
   </ul>
 </div>
 <div id="nolist">

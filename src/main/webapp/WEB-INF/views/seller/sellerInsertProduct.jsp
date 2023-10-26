@@ -25,31 +25,26 @@
 				<tr>
 					<th>판매자 아이디</th>
 					<!-- 아이디 가져오기 -->
-					<td><input type="text" size="120" maxlength="50" name="u_id"
-						id="u_id" value="${vo.u_id}" readonly="readonly"></td>
+					<td><p type="text" size="120" maxlength="50" name="u_id"
+							id="u_id">${vo.u_id}</p></td>
 				</tr>
 
-				<%-- 			<tr>
-				<label for="assNumber">카테고리 번호</label>
-				<select>
-					<option value=""></option>
-					<c:forEach var="list" items="${result}">
-						<option value="${list.beverage}">${list.beverage}</option>
-					</c:forEach>
-				</select>
-			</tr> --%>
-
 				<tr>
-					<th>카테고리 번호</th>
-					<!--  옵션 선택 -->
-					<td><input type="text" size="120" maxlength="30" name="ca_no"
-						id="ca_no" placeholder="카테고리 번호 입력"></td>
+					<th>카테고리</th>
+					<select>
+						<c:forEach items="${catelist}" var="cate">
+							<option><a href="#" onclick="changeSubcate()">${cate.get('name')}</a></option>
+						</c:forEach>
 				</tr>
 				<tr>
 					<th>부 카테고리 번호</th>
-					<!--  옵션 선택 -->
-					<td><input type="text" size="120" maxlength="30" name="sca_no"
-						id="sca_no" placeholder="부 카테고리 번호 입력"></td>
+					<select>
+					<%-- <c:forEach items="${cate.get('subcates')}" var="sub"> --%>
+						<c:forEach items="${cate.get('subcates')}" var="sub">
+							<option><a href="ProductList?sca_no=${sub.get('sno')}&pageNum=${pmaker.cri.pageNum}">${sub.get('sname')}</a></option>
+							
+						</c:forEach>
+					</select>
 				</tr>
 				<tr>
 					<th>제조회사</th>
@@ -90,106 +85,106 @@
 				</tr>
 
 
-			<tr>
-				<th>메인 이미지 1</th>
-				<td>
-					<div class="form-group row">
-						<label for="file" class="col-sm-2 col-form-label">파일첨부</label>
-						<div class="col-sm-10">
-							<input type="file" name="uploadFile" id="uploadFile"
-								accept="image/*" onchange="uploadFileCheck()"
-								required="required"> <small class="text-muted">(파일크기
-								: 10MB / 이미지 파일만 가능)</small> <small id="file" class="text-info"></small>
+				<tr>
+					<th>메인 이미지 1</th>
+					<td>
+						<div class="form-group row">
+							<label for="file" class="col-sm-2 col-form-label">파일첨부</label>
+							<div class="col-sm-10">
+								<input type="file" name="uploadFile" id="uploadFile"
+									accept="image/*" onchange="uploadFileCheck()"
+									required="required"> <small class="text-muted">(파일크기
+									: 10MB / 이미지 파일만 가능)</small> <small id="file" class="text-info"></small>
+							</div>
 						</div>
-					</div>
-				</td>
-			</tr>
-			<tr>
-				<th>메인 이미지 2</th>
-				<td>
-					<div class="form-group row">
-						<label for="file" class="col-sm-2 col-form-label">파일첨부</label>
-						<div class="col-sm-10">
-							<input type="file" name="uploadFile" id="uploadFile"
-								accept="image/*" onchange="uploadFileCheck()"> <small
-								class="text-muted">(파일크기 : 10MB / 이미지 파일만 가능)</small> <small
-								id="file" class="text-info"></small>
+					</td>
+				</tr>
+				<tr>
+					<th>메인 이미지 2</th>
+					<td>
+						<div class="form-group row">
+							<label for="file" class="col-sm-2 col-form-label">파일첨부</label>
+							<div class="col-sm-10">
+								<input type="file" name="uploadFile" id="uploadFile"
+									accept="image/*" onchange="uploadFileCheck()"> <small
+									class="text-muted">(파일크기 : 10MB / 이미지 파일만 가능)</small> <small
+									id="file" class="text-info"></small>
+							</div>
 						</div>
-					</div>
-				</td>
-			</tr>
-			<tr>
-				<th>메인 이미지 3</th>
-				<td>
-					<div class="form-group row">
-						<label for="file" class="col-sm-2 col-form-label">파일첨부</label>
-						<div class="col-sm-10">
-							<input type="file" name="uploadFile" id="uploadFile"
-								accept="image/*" onchange="uploadFileCheck()"> <small
-								class="text-muted">(파일크기 : 10MB / 이미지 파일만 가능)</small> <small
-								id="file" class="text-info"></small>
+					</td>
+				</tr>
+				<tr>
+					<th>메인 이미지 3</th>
+					<td>
+						<div class="form-group row">
+							<label for="file" class="col-sm-2 col-form-label">파일첨부</label>
+							<div class="col-sm-10">
+								<input type="file" name="uploadFile" id="uploadFile"
+									accept="image/*" onchange="uploadFileCheck()"> <small
+									class="text-muted">(파일크기 : 10MB / 이미지 파일만 가능)</small> <small
+									id="file" class="text-info"></small>
+							</div>
 						</div>
-					</div>
-				</td>
-			</tr>
-			<tr>
-				<th>메인 이미지 4</th>
-				<td>
-					<div class="form-group row">
-						<label for="file" class="col-sm-2 col-form-label">파일첨부</label>
-						<div class="col-sm-10">
-							<input type="file" name="uploadFile" id="uploadFile"
-								accept="image/*" onchange="uploadFileCheck()"> <small
-								class="text-muted">(파일크기 : 10MB / 이미지 파일만 가능)</small> <small
-								id="file" class="text-info"></small>
+					</td>
+				</tr>
+				<tr>
+					<th>메인 이미지 4</th>
+					<td>
+						<div class="form-group row">
+							<label for="file" class="col-sm-2 col-form-label">파일첨부</label>
+							<div class="col-sm-10">
+								<input type="file" name="uploadFile" id="uploadFile"
+									accept="image/*" onchange="uploadFileCheck()"> <small
+									class="text-muted">(파일크기 : 10MB / 이미지 파일만 가능)</small> <small
+									id="file" class="text-info"></small>
+							</div>
 						</div>
-					</div>
-				</td>
-			</tr>
-			<tr>
-				<th>메인 이미지 5</th>
-				<td>
-					<div class="form-group row">
-						<label for="file" class="col-sm-2 col-form-label">파일첨부</label>
-						<div class="col-sm-10">
-							<input type="file" name="uploadFile" id="uploadFile"
-								accept="image/*" onchange="uploadFileCheck()"> <small
-								class="text-muted">(파일크기 : 10MB / 이미지 파일만 가능)</small> <small
-								id="file" class="text-info"></small>
+					</td>
+				</tr>
+				<tr>
+					<th>메인 이미지 5</th>
+					<td>
+						<div class="form-group row">
+							<label for="file" class="col-sm-2 col-form-label">파일첨부</label>
+							<div class="col-sm-10">
+								<input type="file" name="uploadFile" id="uploadFile"
+									accept="image/*" onchange="uploadFileCheck()"> <small
+									class="text-muted">(파일크기 : 10MB / 이미지 파일만 가능)</small> <small
+									id="file" class="text-info"></small>
+							</div>
 						</div>
-					</div>
-				</td>
-			</tr>
-			<br>
-			<br>
-			<tr>
-				<th>상세 설명 이미지 1</th>
-				<td>
-					<div class="form-group row">
-						<label for="file" class="col-sm-2 col-form-label">파일첨부</label>
-						<div class="col-sm-10">
-							<input type="file" name="uploadFile" id="uploadFile"
-								accept="image/*" onchange="uploadFileCheck()"
-								required="required"> <small class="text-muted">(파일크기
-								: 10MB / 이미지 파일만 가능)</small> <small id="file" class="text-info"></small>
+					</td>
+				</tr>
+				<br>
+				<br>
+				<tr>
+					<th>상세 설명 이미지 1</th>
+					<td>
+						<div class="form-group row">
+							<label for="file" class="col-sm-2 col-form-label">파일첨부</label>
+							<div class="col-sm-10">
+								<input type="file" name="uploadFile" id="uploadFile"
+									accept="image/*" onchange="uploadFileCheck()"
+									required="required"> <small class="text-muted">(파일크기
+									: 10MB / 이미지 파일만 가능)</small> <small id="file" class="text-info"></small>
+							</div>
 						</div>
-					</div>
-				</td>
-			</tr>
-			<tr>
-				<th>상세 설명 이미지 2</th>
-				<td>
-					<div class="form-group row">
-						<label for="file" class="col-sm-2 col-form-label">파일첨부</label>
-						<div class="col-sm-10">
-							<input type="file" name="uploadFile" id="uploadFile"
-								accept="image/*" onchange="uploadFileCheck()"> <small
-								class="text-muted">(파일크기 : 10MB / 이미지 파일만 가능)</small> <small
-								id="file" class="text-info"></small>
+					</td>
+				</tr>
+				<tr>
+					<th>상세 설명 이미지 2</th>
+					<td>
+						<div class="form-group row">
+							<label for="file" class="col-sm-2 col-form-label">파일첨부</label>
+							<div class="col-sm-10">
+								<input type="file" name="uploadFile" id="uploadFile"
+									accept="image/*" onchange="uploadFileCheck()"> <small
+									class="text-muted">(파일크기 : 10MB / 이미지 파일만 가능)</small> <small
+									id="file" class="text-info"></small>
+							</div>
 						</div>
-					</div>
-				</td>
-			</tr>
+					</td>
+				</tr>
 			</table>
 			<div class="btn">
 				<button type="submit" class="btn btn-success">상품 등록</button>
