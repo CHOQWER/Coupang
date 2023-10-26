@@ -30,16 +30,17 @@ import lombok.extern.log4j.Log4j;
 
 @Controller
 @Log4j
+
 public class CartController {
 	@Autowired
 	private CartService service;
 	@Autowired
 	private ProductService pservice;
-
+	
 //	private final String imgPath = "D:/upload/coupang/";
 	
 	@RequestMapping(value = "/cart", method = RequestMethod.GET)
-	public String cart(Model model, HttpSession session, CartVO vo, UsersVO v) {
+	public String cart(Model model, HttpSession session, CartVO vo, UsersVO v, ProductVO pvo) {
 		// 세션에서 로그인 정보를 받아옵니다.
 		v = (UsersVO) session.getAttribute("vo");
 		if (v == null) {
@@ -48,7 +49,7 @@ public class CartController {
 		} else {
 			vo.setU_id(v.getU_id());
 			List<CartVO> list = service.selectCartList(vo);
-	
+		
 			// JSP 페이지로 리스트를 전달합니다.
 			model.addAttribute("list", list);
 			return "cart/cart";

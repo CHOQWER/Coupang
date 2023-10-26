@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>  
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"  %>
-<%@ include file="/WEB-INF/views/include/header.jsp" %>
 <link rel="stylesheet" href="/resources/css/cart.css">
-<body>
+<%@ include file="/WEB-INF/views/include/header.jsp" %>
+
+
     <form action="cart" method="get">
     <div class="card">
         <div class="col">${sessionScope.vo.u_id}</div>
@@ -15,11 +16,11 @@
                     </div>
                 </div>    
                 <div class="row border-top border-bottom">
-    <div class="col-2">
-        <c:forEach items="${list}" var="vo">            
-            <ul>  
-            	<li><img src="imgDown?imgName=${vo.main_img1}"></li>          
-                <li class="col"><a href="http://localhost:8080/ProductView?${vo.pno}">${vo.pname}</a></li>
+    	<div class="col-2">
+            	<c:forEach items="${list}" var="vo">
+            	<ul class="col123">  
+            	<li><img src="imgDown?imgName=${vo.main_img1}" style="width: 78px; height: 78px;"></li>   	             
+                <li class="col"><a href="ProductView?pno=${vo.pno}">${vo.pname}</a></li>
                 <li class="col">${vo.c_cnt}</li>
                 <c:if test="${sessionScope.vo.grade==2 }">
                 <li class="col">${vo.price}</li>
@@ -27,10 +28,12 @@
                 <c:if test="${sessionScope.vo.grade==3 }">
                 <li class="col">${vo.dis_price}</li>
                 </c:if>
-            </ul>
-        </c:forEach>
+                </ul>
+                   </c:forEach>
+     
     </div>
 </div>
+
                 <div class="back-to-shop"><a href="mypage">&leftarrow;&nbsp;&nbsp;뒤로가기</a><span class="text-muted"></span></div>
             </div>
             <div class="col-md-4 summary">
@@ -51,15 +54,18 @@
                     <p>배송지</p>
                     <input id="code" placeholder="배송지를 입력해주세요">
                 </form> -->
+                
                 <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
-                    <div class="col">총구매금액</div>
-                    <div class="col">100,000원</div>
+                    <div class="col">총구매금액</div>    
+              <div class="col">100,000</div>               
+                      
                 </div>
                 <button class="btn">구매하기</button>
             </div>
         </div>
-        
-    </div>
+        </div>    
     </form>
-</body>
+    
+</div>
+
 <%@ include file="/WEB-INF/views/include/footer.jsp" %>

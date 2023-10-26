@@ -9,7 +9,6 @@
 <%@ include file="/WEB-INF/views/include/header.jsp"%>
 
 <link rel="stylesheet" href="../resources/css/productlist.css">
-
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script type="text/javascript" src="/resources/js/common.js"></script>
 <link rel="stylesheet" href="/resources/star-rating/css/star-rating.css"
@@ -70,29 +69,28 @@
 					</div>
 				</c:forEach>
 			</div>
-
+			<hr>
 		</div>
 </main>
-
-
+ 							
 <!-- 페이지 -->
-<div id="pagediv">
-	<nav aria-label="Standard pagination example">
-		<ul class="pagination">
+<nav aria-label="...">
+        <ul class="pagination">
+		
 			<c:if test="${pmaker.prev}">
-				<li class="page-item"><a class="page-link"
+				<li class="page-item disabled"><a class="page-link"
 					href="ProductList?sca_no=${list.get(0).getSca_no()}&pageNum=${pmaker.beginPage-1}"
 					aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
 				</a></li>
 			</c:if>
 
-			<c:forEach begin="${pmaker.beginPage}" end="${pmaker.endPage}"
-				var="i">
+			<c:forEach begin="${pmaker.beginPage}" end="${pmaker.endPage}" var="i">
 				<c:choose>
 					<c:when test="${i != pmaker.criteria.pageNum}">
 						<li class="page-item"><a class="page-link"
 							href="ProductList?sca_no=${list.get(0).getSca_no()}&pageNum=${i}">${i}</a>
 						</li>
+						<li class="page-item"><a class="page-link" href=""ProductList?sca_no=${list.get(0).getSca_no()}&pageNum=${i}">${i}</a></li>
 					</c:when>
 					<c:otherwise>
 						<li class="page-item"><a class="page-link"
