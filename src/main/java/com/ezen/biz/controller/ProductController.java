@@ -35,8 +35,7 @@ import lombok.extern.log4j.Log4j;
 @Controller
 @Log4j
 public class ProductController {
-//깃허브소라
-	// 깃허브
+
    @Autowired
    private ProductService service;
    
@@ -74,7 +73,7 @@ public class ProductController {
       cateSession.setAttribute("catelist", catelist);
       return "main";
    }
-   
+   //ㄴ이ㅏ려ㅑㅗㅎ제ㅕㅑㄷ호제ㅐㅕㅑㅗㄷㅎ재댜ㅕ호[재ㅑ도해[ㅈ댜ㅗ해[ㅑㅈ도해쟈ㅗ
    
    @GetMapping("ProductView")
    public String ProductView(ProductVO pvo,ImagesVO ivo, Model model, @RequestParam int pno) {
