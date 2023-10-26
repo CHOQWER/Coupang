@@ -73,8 +73,14 @@
 				</div>
 
 				<div class="prod-price">
+				<c:if test="${sessionScope.vo.grade==2 }">
+					<div class="origin-price"><fmt:formatNumber value="${pvo.dis_price}" pattern="#,###"/></div>
+					<div class="sale-price"><fmt:formatNumber value="${pvo.price}" pattern="#,###"/></div>
+				</c:if>
+				<c:if test="${sessionScope.vo.grade==3 }">
 					<div class="origin-price"><fmt:formatNumber value="${pvo.price}" pattern="#,###"/></div>
 					<div class="sale-price"><fmt:formatNumber value="${pvo.dis_price}" pattern="#,###"/></div>
+				</c:if>
 				</div>
 
 				<div class="prod-color">
@@ -96,11 +102,11 @@
 
 					<!-- qty 만큼 선택하기..?? -->
 					
-					<input type="number" name="c_cnt" id="c_cnt" placeholder="1" min="1" max="${pvo.qty}"/>			
+					<input type="number" name="c_cnt" id="c_cnt" value="1" placeholder="1" min="1" max="${pvo.qty}"/>			
 					<button onclick="cartSubmit()">장바구니</button>					
 					<!-- <button onclick="buySubmit()">구매하기</button> -->
 				</div>
-
+				<!-- <input type="hidden" name=""> -->
 
 			</div>
 		</div>
