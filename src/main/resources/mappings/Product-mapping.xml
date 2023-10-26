@@ -35,7 +35,7 @@
   	</select>
   	
   	 <!-- // 판매자 상품등록 내역조회 -->
-  	<select id="sellerSellectMineProduct" resultType="product">
+  	<select id="sellerSelectMineProduct" resultType="product">
   		select * from product where u_id=#{u_id}
   	</select>
   	

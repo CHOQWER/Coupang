@@ -25,7 +25,7 @@ public interface ProductService {
 	List<ProductVO> selectProductList();
 	
 	// 판매자 상품등록 내역조회
-	List<ProductVO> sellerSellectMineProduct(ProductVO vo);
+	List<ProductVO> sellerSelectMineProduct(ProductVO vo);
 	
 	// 
 	ProductVO SelectProduct(ProductVO vo);

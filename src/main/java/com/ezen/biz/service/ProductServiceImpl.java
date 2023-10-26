@@ -78,7 +78,7 @@ public class ProductServiceImpl implements ProductService{
 
 
 	@Override
-	public List<ProductVO> sellerSellectMineProduct(ProductVO vo) {
+	public List<ProductVO> sellerSelectMineProduct(ProductVO vo) {
 		return dao.sellerSellectMineProduct(vo);
 	}
 

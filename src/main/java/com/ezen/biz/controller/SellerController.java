@@ -18,9 +18,12 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.ezen.biz.dto.BuyVO;
 import com.ezen.biz.dto.ImagesVO;
+import com.ezen.biz.dto.MainCateVO;
 import com.ezen.biz.dto.ProductVO;
+import com.ezen.biz.dto.SubCateVO;
 import com.ezen.biz.dto.UsersVO;
 import com.ezen.biz.service.BuyService;
+import com.ezen.biz.service.CategoryService;
 import com.ezen.biz.service.ImagesService;
 import com.ezen.biz.service.ProductService;
 
@@ -35,6 +38,8 @@ public class SellerController {
 	private ProductService productService;
 	@Autowired
 	private ImagesService imageService;
+	@Autowired
+	private CategoryService cateService;
 	
 //	@Autowired
 //	private ProductService productService;
@@ -61,19 +66,15 @@ public class SellerController {
 	}
 	@GetMapping("sellerInsertProduct")
 	public String sellerInsertProduct(Model model, UsersVO v, 
-			HttpServletRequest request, HttpSession session,BuyVO vo) {
+			 HttpSession session,BuyVO vo) {
 		v=(UsersVO) session.getAttribute("vo");
 		vo.setU_id(v.getU_id());
 		
-	      
-//	      List<SubCateVO> list = productService.getSubCategory(ca_no);
-//	       model.addAttribute("ca_no", ca_no);    
-	      
-//	      HttpSession session = request.getSession();
-//	      session.getAttribute(subcatelist);
-
-	      
-	     
+		//카테 / 서브카테 반응
+		List<MainCateVO> mCate=cateService.selectMCateList();
+		model.addAttribute("mCate", mCate);
+		List<SubCateVO> sCate=cateService.selectSCateList();
+		model.addAttribute("sCate", sCate);
 		
 		return "seller/sellerInsertProduct";
 		
@@ -138,12 +139,15 @@ public class SellerController {
 	
 	
 	// 판매자 상품등록 내역조회
-	@RequestMapping("sellerSellectMineProduct")
+	@RequestMapping("sellerSelectMineProduct")
 	public String sellerSelectProduct(Model model,ProductVO vo) {
-		List<ProductVO> list=productService.sellerSellectMineProduct(vo);
+		
+		List<ProductVO> list=productService.sellerSelectMineProduct(vo);
+		System.out.println("sellerSelectMineProduct vo="+vo);
 		model.addAttribute("list",list);
-		return "seller/sellerSellectMineProduct";
+		return "seller/sellerSelectMineProduct";
 	}
+	
 	//판매자 업데이트 팝업창 이동
 	@GetMapping("sellerUpdateProduct")
 	public String sellerUpdateProduct() {
@@ -159,7 +163,6 @@ public class SellerController {
 		return "seller/sellerHome";
 	}
 	
-	//테스트 -----------------------------------------------
 	
 	@GetMapping("/multiFileContent")
 	public String multiFileContentPost() {
