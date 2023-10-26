@@ -165,7 +165,7 @@ public class UsersController {
 	
 	@PostMapping("membership")
 	public String memberShip(UsersVO vo, HttpSession session) {
-		service.updateMember(vo);
+		 service.updateMember(vo);
 		 UsersVO updatedUser = service.selectMember(vo.getU_id());
 		 session.setAttribute("vo", updatedUser);
 		return "users/membership";
