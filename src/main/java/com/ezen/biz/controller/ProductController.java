@@ -24,7 +24,6 @@ import com.ezen.biz.dto.ImagesVO;
 import com.ezen.biz.dto.MainCateVO;
 import com.ezen.biz.dto.ProductVO;
 import com.ezen.biz.dto.SubCateVO;
-
 import com.ezen.biz.service.ProductService;
 import com.ezen.biz.service.ReviewService;
 import com.ezen.biz.utils.Criteria;
@@ -48,7 +47,7 @@ public class ProductController {
    public String showCategory(Model model, HttpServletRequest request) {
       // 뷰로 보낼 전체 내용이 삽입된
      List<Map<String, Object>> catelist= new ArrayList<Map<String, Object>>();
-      List<Map<String, Object>> subcatelist = null;
+     List<Map<String, Object>> subcatelist = null;
       // DB 에서 CATE 목록 가져오기
       List<MainCateVO> cates = service.getCategory();
       List<SubCateVO> subcates = null;
@@ -88,7 +87,8 @@ public class ProductController {
    
 
    @RequestMapping("ProductList")
-   public String ProductList(ProductVO vo, @RequestParam int sca_no, @RequestParam(required = false, defaultValue = "1") int pageNum, Model model) {
+   public String ProductList(ProductVO vo, @RequestParam String cate_name,@RequestParam String subcate_name,
+		   	@RequestParam int sca_no, @RequestParam(required = false, defaultValue = "1") int pageNum, Model model) {
        // 폐이징 관련 작업
 	   Criteria cri = new Criteria();
        cri.setPageNum(pageNum);
@@ -108,7 +108,7 @@ public class ProductController {
        //sca_no로 company검색
        List<ProductVO> clist=service.selectCompany(sca_no);
        model.addAttribute("clist",clist);
-       System.out.println("clist"+clist);
+
     
        //평점정보
        Map<String, Number> map = null;
@@ -119,7 +119,8 @@ public class ProductController {
            starlist.add(map);
        }
        model.addAttribute("starlist", starlist);
-       
+       model.addAttribute("cate_name",cate_name);
+       model.addAttribute("subcate_name",subcate_name);
        return "product/ProductList";
    }
    
@@ -149,8 +150,6 @@ public class ProductController {
        
        List<ProductVO> list = service.selectCompanylist(vo, cri);
        model.addAttribute("list", list);
-  
-       
        Map<String, Number> map = null;
        List<Map<String, Number>> starlist= new ArrayList<Map<String,Number>>();
        for (ProductVO product : list) {
