@@ -29,7 +29,6 @@
 							id="u_id">${vo.u_id}</p></td>
 				</tr>
 
-
 				<tr>
 					<td>
 					<label for="mCate">메인카테고리</label>
@@ -55,10 +54,6 @@
 						</div>
 						</td>
 				</tr>
-
-
-
-
 
 				<tr>
 					<th>제조회사</th>
