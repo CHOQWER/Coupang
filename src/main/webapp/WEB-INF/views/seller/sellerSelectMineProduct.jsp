@@ -16,7 +16,8 @@
 </style>
 <script type="text/javascript">
 function openPop(){
-    var popup = window.open('/sellerUpdateProduct', '', 'width=700px,height=800px,scrollbars=yes');
+    var popup = window.open('/sellerUpdateProduct?pno=+${BL.pno}+&ca_no=${BL.ca_no}&sca_no=${BL.sca_no}&company=${BL.company}', '', 'width=700px,height=800px,scrollbars=yes');
+    /* '/sellerUpdateProduct' */
 }
 </script>
 <main>
@@ -39,12 +40,12 @@ function openPop(){
 	<c:forEach items="${list}" var="BL"  varStatus="status"> 
 			<tr>
 				<td>${status.index}</td>
- 				<td>${BL.pno} </td>
+ 				<td><p id="pno"> ${BL.pno}</p></td>
 				<td>${BL.u_id}</td>
 				<td>${BL.ca_no}</td> 
 				<td>${BL.sca_no}</td>
 				<td>${BL.company}</td>
-				<td><a href="#none" target="_blank" onclick="openPop()">${BL.pname}</a></td>
+				<td><a href="#" target="_blank" onclick="openPop()">${BL.pname}</a></td>
 				<td><fmt:formatNumber value="${BL.price}" type="currency" currencySymbol="\\"> </fmt:formatNumber>  </td>
 				<td><fmt:formatNumber value="${BL.dis_price}" type="currency" currencySymbol="\\"> </fmt:formatNumber>  </td>
 				<td>${BL.content}</td>
@@ -53,4 +54,4 @@ function openPop(){
 			</tr>	
 		</c:forEach>
 </main>
-
+<%-- sellerUpdateProduct?pno=${BL.pno}&ca_no=${BL.ca_no}&sca_no=${BL.sca_no}&company=${BL.company}--%>

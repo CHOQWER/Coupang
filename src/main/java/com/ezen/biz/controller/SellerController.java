@@ -2,6 +2,7 @@ package com.ezen.biz.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.http.HttpRequest;
 import java.util.List;
 import java.util.UUID;
 
@@ -14,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.ezen.biz.dto.BuyVO;
@@ -50,14 +52,7 @@ public class SellerController {
 	public String home() {
 		return "seller/sellerHome";
 	}
-	@RequestMapping("sellerMainPage")
-	public String sellerMainPage(Model model,BuyVO vo) {
-		
-		vo.setU_id("whdgus1234");
-		List<BuyVO> list=buyService.sellerSelectBuyList(vo);
-		model.addAttribute("list",list);
-		return "seller/sellerMainPage";
-	}
+
 	@GetMapping("sellerInsertProduct")
 	public String sellerInsertProduct(Model model, UsersVO v, 
 			 HttpSession session,BuyVO vo) {
@@ -130,17 +125,8 @@ public class SellerController {
 			imageService.insertImages(ivo);
 		return "seller/sellerHome";
 	}
-	
-
-	@RequestMapping("adminSelectBuyList")
-	public String adminSelectBuyList(Model model,BuyVO vo) {
-		List<BuyVO> list=buyService.adminSelectBuyList(vo);
-		model.addAttribute("list",list);
-		return "seller/adminSelectBuyList";
-	}
-
-	
-	
+		
+		
 	// 판매자 상품등록 내역조회
 	@RequestMapping("sellerSelectMineProduct")
 	public String sellerSelectProduct(Model model,ProductVO vo, HttpSession session,UsersVO v) {
@@ -155,19 +141,56 @@ public class SellerController {
 	}
 	
 	//판매자 업데이트 팝업창 이동
-	@GetMapping("sellerUpdateProduct")
-	public String sellerUpdateProduct() {
-		return "seller/sellerUpdateProduct";
+			@GetMapping("sellerUpdateProduct")
+			public String sellerUpdateProduct(UsersVO v,HttpSession session,ProductVO vo
+					) {
+				v=(UsersVO) session.getAttribute("vo");
+				vo.setU_id(v.getU_id());
+				
+		
+				
+
+				return "seller/sellerUpdateProduct";
+			}
+			//판매자 업데이트 팝업창 이동
+			@PostMapping("sellerUpdateProduct")
+			public String sellerUpdateProduct(Model model,ProductVO vo,
+					@RequestParam int pno,@RequestParam int ca_no,@RequestParam int sca_no,@RequestParam String company) {
+				UsersVO uvo=new UsersVO();
+				vo.setU_id(uvo.getU_id());
+				
+				vo.setPno(pno);
+				vo.setCa_no(sca_no);
+				vo.setSca_no(sca_no);
+				vo.setCompany(company);
+				System.out.println("vo="+vo);
+				
+				productService.sellerUpdateProduct(vo);
+				model.addAttribute("vo",vo);
+				return "seller/sellerHome";
+			}
+	
+	
+	
+	
+
+	@RequestMapping("sellerMainPage")
+	public String sellerMainPage(Model model,BuyVO vo) {
+		
+		vo.setU_id("whdgus1234");
+		List<BuyVO> list=buyService.sellerSelectBuyList(vo);
+		model.addAttribute("list",list);
+		return "seller/sellerMainPage";
 	}
-	//판매자 업데이트 팝업창 이동
-	@PostMapping("sellerUpdateProduct")
-	public String sellerUpdateProduct(Model model,ProductVO vo) {
-		UsersVO uvo=new UsersVO();
-		vo.setU_id(uvo.getU_id());
-		productService.sellerUpdateProduct(vo);
-		model.addAttribute("vo",vo);
-		return "seller/sellerHome";
+	@RequestMapping("adminSelectBuyList")
+	public String adminSelectBuyList(Model model,BuyVO vo) {
+		List<BuyVO> list=buyService.adminSelectBuyList(vo);
+		model.addAttribute("list",list);
+		return "seller/adminSelectBuyList";
 	}
+
+	
+
 	
 	
 	@GetMapping("/multiFileContent")
