@@ -192,6 +192,7 @@ nav ul {
   }
   
   .side-bar {
+  	z-index: 1;
     background-color: black;
     width: var(--side-bar-width);
     min-height: var(--side-bar-height);   /* 사이드바의 높이를 전체 화면 높이의 90%로 지정 */
