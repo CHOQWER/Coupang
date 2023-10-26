@@ -4,7 +4,7 @@
 <%@ include file="/WEB-INF/views/include/header.jsp" %>
 <link rel="stylesheet" href="/resources/css/cart.css">
 <body>
-    
+    <form action="cart" method="get">
     <div class="card">
         <div class="col">${sessionScope.vo.u_id}</div>
         <div class="row">
@@ -15,20 +15,22 @@
                     </div>
                 </div>    
                 <div class="row border-top border-bottom">
-                        <div class="col-2">
-                        <c:forEach items="${list}" var="vo">
-                        <img src="/resources/img/cart.png">
-                        <ul>
-                        <%-- <li class="col">${sessionScope.vo.cate}</li> --%>
-                        <li class="col">${vo.pname}</li>
-                        <li class="col">${vo.c_cnt}</li>
-                        <li class="col">${vo.price}</li>
-                        <li class="col">${vo.dis_price}</li>
-                        
-                        </ul>
-                        </c:forEach>  
-                        </div>
-                </div>
+    <div class="col-2">
+        <c:forEach items="${list}" var="vo">            
+            <ul>  
+            	<li><img src="imgDown?imgName=${vo.main_img1}"></li>          
+                <li class="col"><a href="http://localhost:8080/ProductView?${vo.pno}">${vo.pname}</a></li>
+                <li class="col">${vo.c_cnt}</li>
+                <c:if test="${sessionScope.vo.grade==2 }">
+                <li class="col">${vo.price}</li>
+                </c:if>
+                <c:if test="${sessionScope.vo.grade==3 }">
+                <li class="col">${vo.dis_price}</li>
+                </c:if>
+            </ul>
+        </c:forEach>
+    </div>
+</div>
                 <div class="back-to-shop"><a href="mypage">&leftarrow;&nbsp;&nbsp;뒤로가기</a><span class="text-muted"></span></div>
             </div>
             <div class="col-md-4 summary">
@@ -58,5 +60,6 @@
         </div>
         
     </div>
+    </form>
 </body>
 <%@ include file="/WEB-INF/views/include/footer.jsp" %>

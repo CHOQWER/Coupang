@@ -46,15 +46,19 @@ public class ProductDAO {
 	}
 
 	// 판매자 상품등록 내역조회
-	public List<ProductVO> sellerSellectMineProduct(ProductVO vo) {
-		return mybatis.selectList("ProductDAO.sellerSellectMineProduct", vo);
+	public List<ProductVO> sellerSelectMineProduct(ProductVO vo) {
+		return mybatis.selectList("ProductDAO.sellerSelectMineProduct", vo);
 	}
 
 	// pno로 상품정보 조회
 	public ProductVO selectProductPno(int pno) {
 		return mybatis.selectOne("ProductDAO.selectProductPno", pno);
 	}
-
+	//상품페이지에서 장바구니로 넘기기
+	public ProductVO selectProductcartPno(int pno) {
+		System.out.println("selectProductcartpno");
+		return mybatis.selectOne("ProductDAO.selectProductcartPno", pno);
+	}
 	public ProductVO SelectProduct(ProductVO vo) {
 		return mybatis.selectOne("ProductDAO.selectProduct", vo);
 	}
