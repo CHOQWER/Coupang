@@ -29,7 +29,8 @@
 		<mapper resource="mappings/cart-mapping.xml"/>
 		<mapper resource="mappings/Notice-mapping.xml"/> 
 		<mapper resource="mappings/Seller-mapping.xml"/>		
-		<mapper resource="mappings/review-mapping.xml"/>
-		<mapper resource="mappings/cart-mapping.xml"/>
+		<mapper resource="mappings/review-mapping.xml"/> 
+		<mapper resource="mappings/Images-mapping.xml"/>
+		<mapper resource="mappings/cate-mapping.xml"/>
 	</mappers>
 </configuration>

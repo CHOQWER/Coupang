@@ -1,5 +1,7 @@
 package com.ezen.biz;
 
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,8 +10,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.ezen.biz.dao.ImagesDAO;
 import com.ezen.biz.dao.ProductDAO;
-import com.ezen.biz.dto.ImagesVO;
 import com.ezen.biz.dto.ProductVO;
+import com.ezen.biz.utils.Criteria;
 
 import lombok.extern.log4j.Log4j;
 
@@ -75,5 +77,27 @@ public class ProductTest {
 //	 @Test public void sellerdeleteProductTest() { ProductVO vo=new ProductVO();
 //	 	vo.setPno(253); dao.sellerdeleteProduct(vo); }
 //	
+	
+	@Test
+	public void selectCompany() {
+		ProductVO vo=new ProductVO();
+		Criteria cri=new Criteria();
+		vo.setCompany("삼성전자");
+		vo.setSca_no(1);
+		List<ProductVO> list=dao.selectCompanylist(vo, cri);
+		log.info(list);
+		
+	}
+	
+	@Test
+	public void selectCompanytest() {
+		ProductVO vo=new ProductVO();
+		vo.setSca_no(2);
+		vo.setCompany("삼성전자");
+		int count=dao.selectRowCount(vo);
+		log.info(count);
+		
+	}
 
 }
+

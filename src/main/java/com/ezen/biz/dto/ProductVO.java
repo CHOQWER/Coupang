@@ -18,3 +18,5 @@ public class ProductVO {
 	
 	private String main_img1;
 }
+
+

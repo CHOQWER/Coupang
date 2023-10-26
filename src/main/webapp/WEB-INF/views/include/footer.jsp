@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="../resources/css/footer.css">
 
-	<div id='wrap'>
+	<div id="wrap"> 
 		<footer>
 			<div>
 				<nav>
@@ -46,7 +46,7 @@
 					</div>
 				</div>
 			</footer>
-		</footer>
+	 </footer> 
 	</div>
 </body>
 </html>

@@ -44,6 +44,12 @@ public class UsersServiceImpl implements UsersService {
 	}
 	
 	
+	public void updateMember(UsersVO vo) {
+		dao.updateMember(vo);
+		
+	}
+	
+	
 	
 
 

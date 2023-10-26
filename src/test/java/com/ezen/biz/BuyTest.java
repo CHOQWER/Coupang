@@ -10,7 +10,6 @@ import com.ezen.biz.dao.BuyDAO;
 import com.ezen.biz.dao.ImagesDAO;
 import com.ezen.biz.dao.ProductDAO;
 import com.ezen.biz.dto.BuyVO;
-import com.ezen.biz.dto.ImagesVO;
 import com.ezen.biz.dto.ProductVO;
 
 import lombok.extern.log4j.Log4j;

@@ -38,4 +38,8 @@ public class UsersDAO {
 	   mybatis.update("UsersDAO.deleteUser", u_id);
    }
    
+   public void updateMember(UsersVO vo) {
+	   mybatis.update("UsersDAO.updateMember", vo);
+   }
+   
 }
