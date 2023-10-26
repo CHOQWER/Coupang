@@ -12,7 +12,7 @@
 </div>
 <div id="nolist">
 	<c:choose>
-		<c:when test="${vo.type==0}">
+		<c:when test="${param.type == '0'}">
 			<c:forEach items="${list}" var="item" varStatus="status">
 				<ul>
 					<li class="notice-content">
@@ -24,11 +24,21 @@
 				</ul>
 			<div class="btn_rud">
 			<c:if test="${sessionScope.vo.grade == '0'}">
-				<button type="button" id="btnEdit" onclick="noticeEdit()" class="btn btn-warning" >공지수정</button>&nbsp; 
-				<button type="button" id="btnDelete" onclick="noticeDelete()" class="btn btn-danger" >공지삭제</button> 
+				<button type="button" id="btnEdit" onclick="editNotice(${item.nno})" class="btn btn-warning" >공지수정</button>&nbsp; 
+				<button type="button" id="btnDelete" onclick="deleteNotice(${item.nno})" class="btn btn-danger" >공지삭제</button> 
 				<button type="submit" id="btnSave" onclick="noticeSave()" class="btn btn-primary" style="display:none;">공지저장</button> 
 				<button type="reset" id="btnCancle" onclick="noticeCancle()" class="btn btn-info" style="display:none;">수정취소</button>
 			</c:if>
+			<!-- Edit Form (initially hidden) 
+			<div id="editForm" style="display: none;">
+			    <form action="updateNotice.do" method="post">
+			        <input type="hidden" name="nno" value="${item.nno}">
+			        <input type="text" name="n_title" value="${item.n_title}">
+			        <textarea name="n_content">${item.n_content}</textarea>
+			        <button type="submit" class="btn btn-primary">Save</button>
+			    </form>
+			</div> -->
+			
 			</div> 
 			</c:forEach>
 			<div id="top-button">
@@ -37,7 +47,7 @@
 				</c:if>
 			</div>
 		</c:when> 
-		<c:when test="${vo.type==1}">
+		<c:when test="${param.type == '1'}">
 			<c:forEach items="${list}" var="item" varStatus="status">
 				<ul>
 					<li class="faq-content">
@@ -49,11 +59,21 @@
 				</ul>
 			<div class="btn_rud">
 			<c:if test="${sessionScope.vo.grade == '0'}">
-				<button type="button" id="btnEdit" onclick="noticeEdit()" class="btn btn-warning" >게시글 수정</button>&nbsp; 
-				<button type="button" id="btnDelete" onclick="noticeDelete()" class="btn btn-danger" >게시글 삭제</button> 
+				<button type="button" id="btnEdit" onclick="editNotice(${item.nno})" class="btn btn-warning" >게시글 수정</button>&nbsp; 
+				<button type="button" id="btnDelete" onclick="deleteNotice(${item.nno})" class="btn btn-danger" >게시글 삭제</button> 
 				<button type="submit" id="btnSave" onclick="noticeSave()" class="btn btn-primary" style="display:none;">게시글 저장</button> 
 				<button type="reset" id="btnCancle" onclick="noticeCancle()" class="btn btn-info" style="display:none;">수정취소</button>
 			</c:if>
+			<!-- Edit Form (initially hidden) 
+			<div id="editForm" style="display: none;">
+			    <form action="updateNotice.do" method="post">
+			        <input type="hidden" name="nno" value="${item.nno}">
+			        <input type="text" name="n_title" value="${item.n_title}">
+			        <textarea name="n_content">${item.n_content}</textarea>
+			        <button type="submit" class="btn btn-primary">Save</button>
+			    </form>
+			</div> -->
+			
 			</div> 
 			</c:forEach>
 			<div id="top-button">
@@ -110,6 +130,33 @@ function toggleAnswer(question, answerId) {
         toggleIcon.textContent = "-";
     }
 }
+
+/*function deleteNotice(nno) {
+    if (confirm("Are you sure you want to delete this notice?")) {
+        $.ajax({
+            url: '/deleteNotice.do',
+            method: 'GET',
+            data: { nno: nno },
+            success: function () {
+                // Reload the page or update the notice list
+                location.reload();
+            },
+            error: function () {
+                alert("Failed to delete the notice.");
+            }
+        });
+    }
+}
+
+function editNotice(nno) {
+    const editForm = document.getElementById("editForm");
+    if (editForm.style.display === "none") {
+        editForm.style.display = "block";
+    } else {
+        editForm.style.display = "none";
+    }
+}
+*/
 </script>
 
 <%@ include file="/WEB-INF/views/include/footer.jsp"%>

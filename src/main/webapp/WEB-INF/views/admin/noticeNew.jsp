@@ -19,9 +19,9 @@
                     <form action="noticeNew" id="noticeForm" method="post">
                         <table class="table">
                             <tr>
-                                <select name="type" id="noticeType">
+                                <select id="noticeType">
                                     <option value="0" name="type" selected>공지사항</option>
-                                    <option value="1">자주 묻는 질문</option>
+                                    <option value="1" name="type">자주 묻는 질문</option>
                                 </select>
                             </tr>
                             <tr>
@@ -58,7 +58,7 @@
         var selectedOption = this.value;
         var form = document.getElementById("noticeForm");
         if (selectedOption === "0") {
-            form.action = "noticeNew?type=notice";
+            form.action = "noticeNew?type=0";
         } else if (selectedOption === "1") {
             form.action = "noticeNew?type=1";
         }
