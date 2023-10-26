@@ -51,10 +51,10 @@
 
 					<!--카테고리 올려놓을 시 메뉴보여주기-->
 					<aside class="side-bar">
-						<ul>
+						<ul style="padding-left: 30px;">
 							<li><c:forEach items="${catelist}" var="cate">
 									<li><a href="#"><i class="fa-solid fa-cat"></i>${cate.get('name')}</a>
-										<ul>
+										<ul style="padding-left: 10px;">
 											<c:forEach items="${cate.get('subcates')}" var="sub">
 												<li>
 													<a href="ProductList?sca_no=${sub.get('sno')}&pageNum=1&cate_name=${cate.get('name')}&subcate_name=${sub.get('sname')}">${sub.get('sname')}</a></li>

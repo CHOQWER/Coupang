@@ -90,7 +90,7 @@
 						<li class="page-item"><a class="page-link"
 							href="ProductList?sca_no=${list.get(0).getSca_no()}&pageNum=${i}">${i}</a>
 						</li>
-						<li class="page-item"><a class="page-link" href=""ProductList?sca_no=${list.get(0).getSca_no()}&pageNum=${i}">${i}</a></li>
+						<li class="page-item"><a class="page-link" href="ProductList?sca_no=${list.get(0).getSca_no()}&pageNum=${i}">${i}</a></li>
 					</c:when>
 					<c:otherwise>
 						<li class="page-item"><a class="page-link"

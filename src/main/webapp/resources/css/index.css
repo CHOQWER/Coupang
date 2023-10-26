@@ -5,9 +5,8 @@ body {
 }
 a {
     text-decoration: none !important;
-    color: black !important;
+    color: black;
 }
-
 .container{
     height: auto;
     min-height: 100vh;
@@ -61,15 +60,74 @@ header {
 }
 
 .side-bar{
+	z-index:1;
     position: absolute;
     display: none;
-    
+    background-color: #fff;
+    width: var(--side-bar-width);
+    min-height: var(--side-bar-height); 
+    margin-top: calc((100vh - var(--side-bar-height)) / 2);
+    transition: .5s; 
+    border: 1px solid #ddd; 
+    box-shadow:-1px 4px 5px rgba(0,0,0,0.3);
+   
 }
 
 .side-bar ul ul{
     display: none;
-    width: 400%;
+    width: 200%;
+
+    margin-left: 1px;
 }
+
+a {
+    color: inherit;   
+  }
+  
+  .side-bar > ul ul {
+    display: none;
+  }
+ 
+ /* 사이드바의 너비와 높이를 변수를 통해 통제 */
+  :root {
+    --side-bar-width: 270px;
+    --side-bar-height: auto;
+  }
+  
+ /* 모든 메뉴의 a에 속성값 부여 */
+  .side-bar ul > li > a {
+    display: block;
+    color: black;
+    font-size: 0.9rem;
+    font-weight: bold;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    transition: .4s;
+    
+  }
+  
+  /* 자식의 position이 absolute일 때 자식을 영역 안에 가두어 준다 */
+  .side-bar > ul > li {
+    position: relative;
+  }
+  
+  /* 모든 메뉴가 마우스 인식 시 반응 */
+  .side-bar ul > li:hover > a {
+  	border-bottom: 2px solid #4285f4;
+  	color: #4285f4;
+  }
+  
+  /* 1차 메뉴의 항목이 마우스 인식 시에 2차 메뉴 등장 */
+  .side-bar > ul > li:hover > ul {
+    display: block;
+    position: absolute;
+    background-color: #fff;
+    top: 0;         
+    left: 100%;    
+    width: 100%; 
+  }
+
 /**************카테고리 쪽 효과 끝**************** */
 
 
