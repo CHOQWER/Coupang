@@ -7,7 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.ezen.biz.dto.NoticeVO;
 import com.ezen.biz.service.NoticeService;
@@ -20,7 +22,7 @@ public class NoticeController {
 	@Autowired
 	private NoticeService service;
 	
-	@GetMapping("notice")
+	@RequestMapping("notice")
 	public String notice(NoticeVO vo, Model model) {
 		log.info(vo);
 		if(vo.getType()==null || vo.getType().equals("0")) {
@@ -34,14 +36,20 @@ public class NoticeController {
 		return "admin/noticeList";
 	}
 	
-	@RequestMapping("noticeNew")
-	public String insertNotice(@ModelAttribute("notice") NoticeVO vo) {
+	@RequestMapping(value = "noticeNew", method = RequestMethod.GET)
+	public String insertNotice() {
 		// 게시글 작성
+		return "admin/noticeNew";
+	}
+	@RequestMapping(value = "noticeNew", method = RequestMethod.POST)
+	public String insertNotice(NoticeVO vo) {
+		// 게시글 작성
+		String type = vo.getType();
 		service.insertNotice(vo);
-		return "redirect:noticeList";
+		return "redirect:notice";
 	}
 	
-	@RequestMapping("/updateNotice.do")
+	@RequestMapping(value = "/updateNotice.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public String updateNotice(@ModelAttribute("notice") NoticeVO vo) {
 		// 공지사항 수정 작업
 		service.updateNotice(vo);
