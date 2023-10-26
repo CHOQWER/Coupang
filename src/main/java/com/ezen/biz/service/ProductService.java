@@ -43,6 +43,8 @@ public interface ProductService {
 	
 	//pno로 제품검색
 	ProductVO selectProductPno(int pno);
+	//이미지까지 제품 장바구니로 넘기는거
+	ProductVO selectProductcartPno(int pno);
 	
 	ImagesVO selectImgPno(int pno);
 	

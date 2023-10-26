@@ -70,7 +70,10 @@ public class ProductServiceImpl implements ProductService{
 	public ProductVO selectProductPno(int pno) {
 		return dao.selectProductPno(pno);
 	}
-
+	@Override
+	public ProductVO selectProductcartPno(int pno) {
+		return dao.selectProductcartPno(pno);
+	}
 	@Override
 	public ImagesVO selectImgPno(int pno) {
 		return dao.selectImgPno(pno);
@@ -79,8 +82,9 @@ public class ProductServiceImpl implements ProductService{
 
 	@Override
 	public List<ProductVO> sellerSelectMineProduct(ProductVO vo) {
-		return dao.sellerSellectMineProduct(vo);
+		return dao.sellerSelectMineProduct(vo);
 	}
+	
 
 	@Override
 	public List<ProductVO> selectCompany(int sca_no) {
