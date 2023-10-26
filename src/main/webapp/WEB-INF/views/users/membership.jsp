@@ -44,6 +44,7 @@
 				</form>
 				
 
+				<%-- sadfasdfsadfasdfasdfasdfaasdf<form action="withdrawal" method="post"> 	
 				<%-- <form action="withdrawal" method="post">
 					<input type="hidden" name="u_id" value="${sessionScope.vo.u_id }">
 					<a href="withdrawal"><button>회원탈퇴</button></a>
