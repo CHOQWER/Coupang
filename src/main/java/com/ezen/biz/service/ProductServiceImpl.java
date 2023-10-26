@@ -89,9 +89,15 @@ public class ProductServiceImpl implements ProductService{
 
 	@Override
 	public List<ProductVO> selectCompanylist(ProductVO vo,Criteria cri) {
-		return dao.selectCompanylist(vo);
+		return dao.selectCompanylist(vo, cri);
 	}
-	
+
+	@Override
+	public int selectRowCount(ProductVO vo) {
+		return dao.selectRowCount(vo);
+	}
+
+
 	
 
 }
