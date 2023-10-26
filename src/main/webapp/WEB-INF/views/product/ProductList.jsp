@@ -25,7 +25,7 @@
 
 
 <main>
-	<div class="cate-nav">쿠팡홈 > 태블릿PC > 태블릿PC</div>
+	<div class="cate-nav">쿠팡홈 > ${cate_name} > ${subcate_name}</div>
 
 	<div class="contents">
 		<div class="aside">
@@ -44,7 +44,7 @@
 			</div>
 		</div>
 		<div class="article">
-			<h2>태블릿</h2>
+			<h2>${subcate_name}</h2>
 			<hr>
 			<div class="prod-grid">
 				<c:forEach items="${list}" var="vo" varStatus="idx">
