@@ -73,7 +73,7 @@ public class ProductController {
       cateSession.setAttribute("catelist", catelist);
       return "main";
    }
-   //ㄴ이ㅏ려ㅑㅗㅎ제ㅕㅑㄷ호제ㅐㅕㅑㅗㄷㅎ재댜ㅕ호[재ㅑ도해[ㅈ댜ㅗ해[ㅑㅈ도해쟈ㅗ
+
    
    @GetMapping("ProductView")
    public String ProductView(ProductVO pvo,ImagesVO ivo, Model model, @RequestParam int pno) {
@@ -162,12 +162,7 @@ public class ProductController {
 	   return "product/ProductList";
    }
    
-   
-   //소라가 수정한부분로ㅑㅕㄴ도랴ㅕㄴㄷ로ㅕㅑ로ㅑㅕㄴㄹ호ㅕㅑㅣ호ㅑ기ㅕ호ㅑㅕ고겨ㅑㅣ
-   
-   
-   
-   @GetMapping("imgDown")
+  @GetMapping("imgDown")
    public void imgDown(@RequestParam String imgName, HttpServletRequest request, HttpServletResponse response)
          throws IOException {
       // 파라메타값 받아오기
