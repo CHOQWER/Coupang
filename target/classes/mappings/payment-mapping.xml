@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="PaymentDAO">
+  	
+  	<!-- 카드등록 -->
+  	<insert id="insertCard">
+  		insert into payment(card_num,u_id,cvc,card_date,card_pwd)
+  		values(#{card_num},#{u_id},#{cvc},#{card_date},#{card_pwd})
+  	</insert>  	
+  	
+  	<!-- 카드 선택 -->
+  	<select id="selectCardList" resultType="com.ezen.biz.dto.PaymentVO">
+  		select card_num from payment 
+  		where u_id=#{u_id} 
+  	</select>
+  	
+  	<!-- 카드 중복체크 -->
+  	<select id="cardcheck" resultType="int">
+  		select count(*) from payment where card_num=#{card_num}
+  	</select>  	
+  	
+  	<delete id="deleteCard">
+  	delete from payment where card_num=#{card_num}
+  	</delete>
+</mapper>
