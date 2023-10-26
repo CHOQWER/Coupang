@@ -11,6 +11,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.ezen.biz.dao.ImagesDAO;
 import com.ezen.biz.dao.ProductDAO;
 import com.ezen.biz.dto.ProductVO;
+import com.ezen.biz.utils.Criteria;
 
 import lombok.extern.log4j.Log4j;
 
@@ -80,17 +81,21 @@ public class ProductTest {
 	@Test
 	public void selectCompany() {
 		ProductVO vo=new ProductVO();
+		Criteria cri=new Criteria();
 		vo.setCompany("삼성전자");
 		vo.setSca_no(1);
-		List<ProductVO> list=dao.selectCompanylist(vo);
+		List<ProductVO> list=dao.selectCompanylist(vo, cri);
 		log.info(list);
 		
 	}
 	
 	@Test
 	public void selectCompanytest() {
-		List<ProductVO> list= dao.selectCompany(2);
-		log.info(list);
+		ProductVO vo=new ProductVO();
+		vo.setSca_no(2);
+		vo.setCompany("삼성전자");
+		int count=dao.selectRowCount(vo);
+		log.info(count);
 		
 	}
 

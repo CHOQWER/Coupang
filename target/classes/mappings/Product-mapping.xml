@@ -86,14 +86,29 @@
     
     <!-- sca_no로 company list 조회 -->
     <select id="selectCompany" resultType="product">
-    	select DISTINCT company from product where sca_no=#{sca_no}
+    	select DISTINCT company,sca_no from product where sca_no=#{sca_no}
     </select>
     
-    <!-- sca_no, company 받아서 product list 조회 -->
-    <select id="selectCompanylist" resultType="product">
-    	select * from product where company=#{company} and sca_no=#{sca_no}
-    </select>
+    <!-- 회사별 제품 리스트 -->
+  	<select id="selectCompanylist" parameterType="criteria" resultType="product">
+		select * from (
+		select rownum rn, A.* from
+		(select
+			p.pno,main_img1,sca_no,pname,price,dis_price from product p, images i
+				where 1=1
+					and p.pno=i.pno and sca_no=#{sca_no} and company=#{company}) A
+		<![CDATA[
+  		 	where rownum<=#{pageNum}*#{rowsPerPage}
+  		 	) where rn>=#{pageNum}*#{rowsPerPage}-#{rowsPerPage}+1
+  		]]>
+  	</select>
   	
+  	
+  	<!-- 회사별 조회 전체 행의 갯수 (폐이징에 필요) -->
+	<select id="selectRowCountCompany" parameterType="product" resultType="java.lang.Integer">
+		select count(*) from
+		product where sca_no=#{sca_no} and disp='y' and company=#{company}
+	</select>
   	
   	
   	

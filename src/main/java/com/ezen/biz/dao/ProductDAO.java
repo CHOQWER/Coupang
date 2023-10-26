@@ -82,6 +82,8 @@ public class ProductDAO {
 	public int selectRowCount(int sca_no) {
 		return mybatis.selectOne("ProductDAO.selectRowCount", sca_no);
 	}
+	
+	
 
 	// 이미지 전체 조회(pno 받아서)
 	public ImagesVO selectImgPno(int pno) {
@@ -95,8 +97,18 @@ public class ProductDAO {
 	}
 	
 	// 회사별 상품 전체 조회서
-	public List<ProductVO> selectCompanylist(ProductVO vo){
-		return mybatis.selectList("ProductDAO.selectCompanylist", vo);
+	public List<ProductVO> selectCompanylist(ProductVO vo, Criteria cri){
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("sca_no", vo.getSca_no());
+		map.put("company", vo.getCompany());
+		map.put("pageNum", cri.getPageNum());
+		map.put("rowsPerPage", cri.getRowsPerPage());
+		return mybatis.selectList("ProductDAO.selectCompanylist", map);
+	}
+	
+	// 회사 클릭시 나오는 제품 총 수량(폐이징에 필요)
+		public int selectRowCount(ProductVO vo) {
+			return mybatis.selectOne("ProductDAO.selectRowCountCompany", vo);
 	}
 
 
