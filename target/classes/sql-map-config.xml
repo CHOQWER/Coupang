@@ -32,6 +32,6 @@
 		<mapper resource="mappings/Seller-mapping.xml"/>		
 		<mapper resource="mappings/review-mapping.xml"/> 
 		<mapper resource="mappings/Images-mapping.xml"/>
-	<!-- 	<mapper resource="mappings/cate-mapping.xml"/> -->
+		<!-- <mapper resource="mappings/cate-mapping.xml"/> -->
 	</mappers>
 </configuration>
