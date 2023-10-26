@@ -24,7 +24,7 @@
 				</ul>
 			<div class="btn_rud">
 			<c:if test="${sessionScope.vo.grade == '0'}">
-				<button type="button" id="btnEdit" onclick="noticeEdit()" class="btn btn-warning" >공지수정</button>
+				<button type="button" id="btnEdit" onclick="noticeEdit()" class="btn btn-warning" >공지수정</button>&nbsp; 
 				<button type="button" id="btnDelete" onclick="noticeDelete()" class="btn btn-danger" >공지삭제</button> 
 				<button type="submit" id="btnSave" onclick="noticeSave()" class="btn btn-primary" style="display:none;">공지저장</button> 
 				<button type="reset" id="btnCancle" onclick="noticeCancle()" class="btn btn-info" style="display:none;">수정취소</button>
@@ -49,7 +49,7 @@
 				</ul>
 			<div class="btn_rud">
 			<c:if test="${sessionScope.vo.grade == '0'}">
-				<button type="button" id="btnEdit" onclick="noticeEdit()" class="btn btn-warning" >게시글 수정</button>
+				<button type="button" id="btnEdit" onclick="noticeEdit()" class="btn btn-warning" >게시글 수정</button>&nbsp; 
 				<button type="button" id="btnDelete" onclick="noticeDelete()" class="btn btn-danger" >게시글 삭제</button> 
 				<button type="submit" id="btnSave" onclick="noticeSave()" class="btn btn-primary" style="display:none;">게시글 저장</button> 
 				<button type="reset" id="btnCancle" onclick="noticeCancle()" class="btn btn-info" style="display:none;">수정취소</button>
