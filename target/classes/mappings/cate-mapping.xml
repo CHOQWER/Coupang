@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="CategoryDAO">
+  	<resultMap type="com.ezen.biz.dto.MainCateVO" id="cateMap">
+	  	<id property="ca_no" column="ca_no"/>
+	  	<result property="cate_name" column="cate_name"/>
+	   	<collection property="subCateList" resultMap="scateMap"/>
+   </resultMap>
+	<resultMap type="com.ezen.biz.dto.SubCateVO" id="scateMap">
+	  	<result property="sca_no" column="sca_no"/>
+	  	<result property="subcate_name"   column="subcate_name"/>
+  	</resultMap>
+   <select id="selectMCateList" resultType="com.ezen.biz.dto.MainCateVO">
+   		select * from maincate
+   		order by ca_no
+   </select>
+    <select id="selectSCateList" resultType="com.ezen.biz.dto.SubCateVO">
+   		select * from subcate
+   		order by ca_no,sca_no
+   </select>  
+</mapper>

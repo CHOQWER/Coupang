@@ -29,23 +29,37 @@
 							id="u_id">${vo.u_id}</p></td>
 				</tr>
 
+
 				<tr>
-					<th>카테고리</th>
-					<select>
-						<c:forEach items="${catelist}" var="cate">
-							<option><a href="#" onclick="changeSubcate()">${cate.get('name')}</a></option>
-						</c:forEach>
-				</tr>
-				<tr>
-					<th>부 카테고리 번호</th>
-					<select>
-					<%-- <c:forEach items="${cate.get('subcates')}" var="sub"> --%>
-						<c:forEach items="${cate.get('subcates')}" var="sub">
-							<option><a href="ProductList?sca_no=${sub.get('sno')}&pageNum=${pmaker.cri.pageNum}">${sub.get('sname')}</a></option>
-							
-						</c:forEach>
+					<td>
+					<label for="mCate">메인카테고리</label>
+						<select name="mCate" id="mCate" onchange="subCateChange()">
+							<c:forEach items="${mCate}" var="m">
+								<option value="${m.ca_no}">${m.cate_name}</option>
+							</c:forEach>
+						</select>
+					</td>
+					
+					<td>
+					<label for="sCate">서브카테고리</label>
+					<select name="sCate" id="sCate">
+							<option value="1">JavaScript</option>
 					</select>
+
+						<div style="display: none">
+
+							<c:forEach items="${sCate}" var="s">
+								<div class="item${s.ca_no} ${s.sca_no}">${s.subcate_name}:${s.sca_no}</div>
+							</c:forEach>
+
+						</div>
+						</td>
 				</tr>
+
+
+
+
+
 				<tr>
 					<th>제조회사</th>
 					<td><input type="text" size="120" maxlength="7" name="company"
@@ -194,4 +208,37 @@
 		</form>
 	</main>
 </body>
+<script type="text/javascript">
+
+
+	$( document ).ready(function() {
+	    console.log( "ready!" );
+	    
+	    subCateChange();
+	});
+
+	function subCateChange(){
+		
+		 console.log($("#mCate").val()); 
+		
+		var selected = $("#mCate").val();// 선택한 값
+		
+		var opt = $(".item"+selected);
+		console.log("opt"+opt);
+		
+		var j;
+		var html="";
+		
+		for(i of opt){
+			j = $(i).html().split(":");
+			console.log(j);
+			
+			html += '<option value="' +j[1]+ '">' +j[0]+ '</option>';
+		}
+		
+		$("#sCate").html(html);
+		
+	}
+</script>
+
 </html>

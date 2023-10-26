@@ -21,7 +21,7 @@
 						</button>
 						<div class="answer" id="ans${status.index}">${item.n_content}</div>
 					</li>
-				</ul>   
+				</ul>
 			<div class="btn_rud">
 			<c:if test="${sessionScope.vo.grade == '0'}">
 				<button type="button" id="btnEdit" onclick="noticeEdit()" class="btn btn-warning" >공지수정</button>

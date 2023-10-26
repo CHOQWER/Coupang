@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ page session="false" %>
+
 <style>
 	#pagediv,#searchdiv{
 		display:flex;
@@ -20,7 +20,7 @@ function openPop(){
 }
 </script>
 <main>
-<h1> sellerSellectMineProduct</h1>
+<h1> sellerSelectMineProduct</h1>
 	<table class="table table-sm table-bordered">
 		 <tr>
 			<th>번호 인덱스</th>

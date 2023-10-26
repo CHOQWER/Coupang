@@ -6,8 +6,9 @@ import com.ezen.biz.dto.CartVO;
 
 public interface CartService {
 
-	void insertCart(CartVO vo);
+	int insertCart(CartVO vo);
 
 	List<CartVO> selectCartList(CartVO vo);
-
+	
+	int selectMaxCno(CartVO vo);
 }

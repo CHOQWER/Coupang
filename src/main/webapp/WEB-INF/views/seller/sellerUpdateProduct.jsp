@@ -42,28 +42,17 @@
 				<th>상세 설명</th>
 				<td><textarea name="content" id="content" cols="119" rows="10" maxlength="1000"></textarea></td>
 			</tr>
+			<tr>
 				<th>색상</th> 
 				<td><input type="text" size="120"  maxlength="7" name="color" id="color" 
 				   placeholder="색상입력" ></td>
 			</tr>
+			<tr>
 				<th>판매 가능 개수</th>
 				<td><input type="text" size="120"  maxlength="7" name="qty" id="qty" 
 				  placeholder="판매 등록 개수 입력" required></td>
 			</tr>
-			<!-- <tr>
-				<th>상세 설명 이미지</th>
-				<td>
-					<div class="form-group row">
-						<label for="file" class="col-sm-2 col-form-label">파일첨부</label>
-						<div class="col-sm-10">
-							<input type="file" name="main_img1" id="main_img1" accept="image/*"
-							onchange="uploadFileCheck()">
-							<small class="text-muted">(파일크기 : 10MB / 이미지 파일만 가능)</small>
-							<small id="file" class="text-info"></small>
-						</div>
-					</div>						
-				</td>
-			</tr> -->
+
 		</table>
 			<div class="btn">
 				<button type="submit" class="btn btn-success">상품 수정</button> &nbsp; 

@@ -26,16 +26,16 @@ public class UsersTest {
 		log.info("테스트");
 		
 		UsersVO vo=new UsersVO();		
-			vo.setU_id("user2");
+			vo.setU_id("admin");
 			vo.setU_pwd(encoder.encode("1234"));
-			vo.setU_name("유저");
+			vo.setU_name("관리자");
 			vo.setU_identity("111111-1111111");
 			vo.setU_mobile("010-0000-0000");
 			vo.setU_email("ezen1@naver.com");
 			vo.setU_post_no(0);
 			vo.setU_addr1("서울시 관악구");
 			vo.setU_addr2("신림동");
-			vo.setGrade("1");
+			vo.setGrade(0);
 			dao.insertMember(vo);
 		}
 	
