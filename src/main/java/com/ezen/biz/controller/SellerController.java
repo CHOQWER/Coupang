@@ -50,19 +50,13 @@ public class SellerController {
 	public String home() {
 		return "seller/sellerHome";
 	}
-	
 	@RequestMapping("sellerMainPage")
 	public String sellerMainPage(Model model,BuyVO vo) {
+		
 		vo.setU_id("whdgus1234");
 		List<BuyVO> list=buyService.sellerSelectBuyList(vo);
 		model.addAttribute("list",list);
 		return "seller/sellerMainPage";
-	}
-	@RequestMapping("adminSelectBuyList")
-	public String adminSelectBuyList(Model model,BuyVO vo) {
-		List<BuyVO> list=buyService.adminSelectBuyList(vo);
-		model.addAttribute("list",list);
-		return "seller/adminSelectBuyList";
 	}
 	@GetMapping("sellerInsertProduct")
 	public String sellerInsertProduct(Model model, UsersVO v, 
@@ -137,10 +131,22 @@ public class SellerController {
 		return "seller/sellerHome";
 	}
 	
+
+	@RequestMapping("adminSelectBuyList")
+	public String adminSelectBuyList(Model model,BuyVO vo) {
+		List<BuyVO> list=buyService.adminSelectBuyList(vo);
+		model.addAttribute("list",list);
+		return "seller/adminSelectBuyList";
+	}
+
+	
 	
 	// 판매자 상품등록 내역조회
 	@RequestMapping("sellerSelectMineProduct")
-	public String sellerSelectProduct(Model model,ProductVO vo) {
+	public String sellerSelectProduct(Model model,ProductVO vo, HttpSession session,UsersVO v) {
+		
+		v=(UsersVO) session.getAttribute("vo");
+		vo.setU_id(v.getU_id());
 		
 		List<ProductVO> list=productService.sellerSelectMineProduct(vo);
 		System.out.println("sellerSelectMineProduct vo="+vo);
