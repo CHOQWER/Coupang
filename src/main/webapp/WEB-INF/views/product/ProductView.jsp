@@ -21,7 +21,10 @@
 
 	<section class="content">
 		<div class="cate">쿠팡홈 > 태블릿PC > 태블릿PC</div>
-
+		
+		<form action="insertcart" method="post" id="frmDetail" name="frmDetail">
+			<input type="hidden" name="pno" value="${pvo.pno}">
+			<input type="hidden" name="ino" value="${ivo.ino }">
 		<!--좌측 메인/서브 이미지-->
 		<div class="content-main">
 			<div class="main-img">
@@ -92,15 +95,16 @@
 				<div class="prod-buy-footer">
 
 					<!-- qty 만큼 선택하기..?? -->
-					<input type="number" placeholder="1" min="2" max="${pvo.qty}" />
-					<button>장바구니</button>
-					<button>구매하기</button>
+					
+					<input type="number" name="c_cnt" id="c_cnt" placeholder="1" min="1" max="${pvo.qty}"/>			
+					<button onclick="cartSubmit()">장바구니</button>					
+					<!-- <button onclick="buySubmit()">구매하기</button> -->
 				</div>
 
 
 			</div>
 		</div>
-
+		</form>
 
 
 
@@ -193,6 +197,12 @@
 <%@ include file="/WEB-INF/views/include/footer.jsp" %>
 
 <script type="text/javascript">
+
+function cartSubmit(){
+	let frm=$("#frmDetail");
+	frm.attr("action","insertCart");
+	frm.submit();
+}
 
 /*==========================================*/
 $(document).ready(function(){

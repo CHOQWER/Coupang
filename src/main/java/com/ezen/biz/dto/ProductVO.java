@@ -15,5 +15,6 @@ public class ProductVO {
 	private int qty;
 	private Date p_regdate;
 	private String disp;
+	
 	private String main_img1;
 }
