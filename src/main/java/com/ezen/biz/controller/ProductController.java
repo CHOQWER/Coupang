@@ -24,6 +24,7 @@ import com.ezen.biz.dto.ImagesVO;
 import com.ezen.biz.dto.MainCateVO;
 import com.ezen.biz.dto.ProductVO;
 import com.ezen.biz.dto.SubCateVO;
+
 import com.ezen.biz.service.ProductService;
 import com.ezen.biz.service.ReviewService;
 import com.ezen.biz.utils.Criteria;
@@ -70,10 +71,9 @@ public class ProductController {
       }
       HttpSession cateSession = request.getSession();
       cateSession.setAttribute("catelist", catelist);
-
       return "main";
    }
-   
+
    
    @GetMapping("ProductView")
    public String ProductView(ProductVO pvo,ImagesVO ivo, Model model, @RequestParam int pno) {
@@ -89,18 +89,67 @@ public class ProductController {
 
    @RequestMapping("ProductList")
    public String ProductList(ProductVO vo, @RequestParam int sca_no, @RequestParam(required = false, defaultValue = "1") int pageNum, Model model) {
-      Criteria cri = new Criteria();
+       // 폐이징 관련 작업
+	   Criteria cri = new Criteria();
        cri.setPageNum(pageNum);
        cri.setRowsPerPage(6); // 6개씩 추출
        
-       // 특정 서브별(sca_no 값) 전체 개수 세기
        int tot = service.selectRowCount(sca_no);
        PageMaker pMaker = new PageMaker(cri, tot);
        boolean next = pMaker.nextPageScore();
        
+       int cnt = service.selectRowCount(sca_no);
+       PageMaker maker = new PageMaker(cri, cnt);
+       model.addAttribute("pmaker", maker);
+       
        List<ProductVO> list = service.selectProductList(sca_no, cri);
+       model.addAttribute("list",list);
+       
+       //sca_no로 company검색
+       List<ProductVO> clist=service.selectCompany(sca_no);
+       model.addAttribute("clist",clist);
+       System.out.println("clist"+clist);
+    
+       //평점정보
+       Map<String, Number> map = null;
+       List<Map<String, Number>> starlist= new ArrayList<Map<String,Number>>();
+       for (ProductVO product : list) {
+           int pno = product.getPno();
+           map=rservice.selectAvgCountScore(pno);
+           starlist.add(map);
+       }
+       model.addAttribute("starlist", starlist);
+       
+       return "product/ProductList";
+   }
+   
+   
+   @RequestMapping("companyList")
+   public String productListCompany(ProductVO vo, @RequestParam int sca_no, @RequestParam String company, @RequestParam(required = false, defaultValue = "1") int pageNum, Model model) {
+	   // 폐이징 관련 작업
+	   Criteria cri = new Criteria();
+       cri.setPageNum(pageNum);
+       cri.setRowsPerPage(6); // 6개씩 추출
+       
+       vo.setCa_no(sca_no);
+       vo.setCompany(company);
+       int tot = service.selectRowCount(vo);
+      
+       PageMaker pMaker = new PageMaker(cri, tot);
+       boolean next = pMaker.nextPageScore();
+       
+       int cnt = service.selectRowCount(sca_no);
+       PageMaker pmaker = new PageMaker(cri, cnt);
+       model.addAttribute("pmaker", pmaker);
+       
+       //sca_no로 company검색
+       List<ProductVO> clist=service.selectCompany(sca_no);
+       model.addAttribute("clist",clist);
+      
+       
+       List<ProductVO> list = service.selectCompanylist(vo, cri);
        model.addAttribute("list", list);
-
+  
        
        Map<String, Number> map = null;
        List<Map<String, Number>> starlist= new ArrayList<Map<String,Number>>();
@@ -109,15 +158,11 @@ public class ProductController {
            map=rservice.selectAvgCountScore(pno);
            starlist.add(map);
         }
-   
-       int cnt = service.selectRowCount(sca_no);
-       PageMaker maker = new PageMaker(cri, cnt);
-       model.addAttribute("pmaker", maker);
        model.addAttribute("starlist", starlist);
-       return "product/ProductList";
+	   return "product/ProductList";
    }
    
-   @GetMapping("imgDown")
+  @GetMapping("imgDown")
    public void imgDown(@RequestParam String imgName, HttpServletRequest request, HttpServletResponse response)
          throws IOException {
       // 파라메타값 받아오기

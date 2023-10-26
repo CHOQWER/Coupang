@@ -39,6 +39,8 @@ public interface ProductService {
 	
 	int selectRowCount(int sca_no);
 	
+	int selectRowCount(ProductVO vo);
+	
 	//pno로 제품검색
 	ProductVO selectProductPno(int pno);
 	
