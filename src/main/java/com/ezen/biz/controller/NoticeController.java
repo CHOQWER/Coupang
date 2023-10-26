@@ -23,10 +23,8 @@ public class NoticeController {
 	@GetMapping("notice")
 	public String notice(NoticeVO vo, Model model) {
 		log.info(vo);
-		if(vo.getType()==null || vo.getType().equals("0"))
 		if(vo.getType()==null || vo.getType().equals("0")) {
 			vo.setType("0");
-		}else if (vo.getType().equals("1")) {
 		}else if ( vo.getType().equals("1")) {
 			vo.setType("1");
 		}
