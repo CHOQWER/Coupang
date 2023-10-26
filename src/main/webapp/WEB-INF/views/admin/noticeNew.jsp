@@ -20,7 +20,7 @@
                         <table class="table">
                             <tr>
                                 <select name="type" id="noticeType">
-                                    <option value="0" name="type" selected>공지사항</option>
+                                    <option value="0">공지사항</option>
                                     <option value="1">자주 묻는 질문</option>
                                 </select>
                             </tr>
