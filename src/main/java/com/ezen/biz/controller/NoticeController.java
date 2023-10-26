@@ -27,18 +27,12 @@ public class NoticeController {
 	
 	@GetMapping("notice")
 	public String notice(NoticeVO vo, Model model) {
-<<<<<<< HEAD
 		log.info(vo);
 		if(vo.getType()==null || vo.getType().equals("0"))
-=======
 		if(vo.getType()==null || vo.getType().equals("0")) {
->>>>>>> branch 'main' of https://github.com/CHOQWER/Coupang.git
 			vo.setType("0");
-<<<<<<< HEAD
-		else if (vo.getType().equals("1")) {
-=======
+		}else if (vo.getType().equals("1")) {
 		}else if ( vo.getType().equals("1")) {
->>>>>>> branch 'main' of https://github.com/CHOQWER/Coupang.git
 			vo.setType("1");
 		}
 		List<NoticeVO> list=service.selectNoticeList(vo);
