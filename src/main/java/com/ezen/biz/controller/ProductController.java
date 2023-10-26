@@ -35,7 +35,7 @@ import lombok.extern.log4j.Log4j;
 @Controller
 @Log4j
 public class ProductController {
-
+	// 깃허브
    @Autowired
    private ProductService service;
    
