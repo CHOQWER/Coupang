@@ -18,6 +18,7 @@
 		<typeAlias alias="review" type="com.ezen.biz.dto.ReviewVO" />
 		<typeAlias alias="cart" type="com.ezen.biz.dto.CartVO" />
 		<typeAlias alias="notice" type="com.ezen.biz.dto.NoticeVO" /> 
+		
   	</typeAliases>
   	
 	<mappers>
@@ -31,6 +32,6 @@
 		<mapper resource="mappings/Seller-mapping.xml"/>		
 		<mapper resource="mappings/review-mapping.xml"/> 
 		<mapper resource="mappings/Images-mapping.xml"/>
-		<mapper resource="mappings/cate-mapping.xml"/>
+	<!-- 	<mapper resource="mappings/cate-mapping.xml"/> -->
 	</mappers>
 </configuration>
