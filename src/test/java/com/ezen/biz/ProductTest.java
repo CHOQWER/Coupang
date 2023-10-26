@@ -1,5 +1,7 @@
 package com.ezen.biz;
 
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -74,5 +76,23 @@ public class ProductTest {
 //	 @Test public void sellerdeleteProductTest() { ProductVO vo=new ProductVO();
 //	 	vo.setPno(253); dao.sellerdeleteProduct(vo); }
 //	
+	
+	@Test
+	public void selectCompany() {
+		ProductVO vo=new ProductVO();
+		vo.setCompany("삼성전자");
+		vo.setSca_no(1);
+		List<ProductVO> list=dao.selectCompanylist(vo);
+		log.info(list);
+		
+	}
+	
+	@Test
+	public void selectCompanytest() {
+		List<ProductVO> list= dao.selectCompany(2);
+		log.info(list);
+		
+	}
 
 }
+

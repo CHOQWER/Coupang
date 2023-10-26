@@ -28,12 +28,13 @@
             <div class="aside">
                 <div class="search-company">
                     <h2>브랜드</h2>
+                    
                     <ul>
-                        <li>삼성전자</li>
-                        <li>애플</li>
-                        <li>아이뮤즈</li>
+                    	<c:forEach items="${clist}" var="vo">
+                        <li><a href="companyList?company=${vo.company}&pageNum=1&sca_no=${vo.sca_no}}">${vo.company}</a></li>
+                    	 </c:forEach>
                     </ul>
-                </div>
+              	</div>
             </div>
             <div class="article">
                 <h2>태블릿</h2>

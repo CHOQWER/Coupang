@@ -156,8 +156,20 @@ public class UsersController {
 	       // 세션에 업데이트된 정보 저장
 	       session.setAttribute("vo", updatedUser);	       
 	       return "redirect:mypage"; 
-	   }
+	}
 	
+	@GetMapping("membership")
+	public String memberShip() {
+		return "users/membership";
+	}
+	
+	@PostMapping("membership")
+	public String memberShip(UsersVO vo, HttpSession session) {
+		 service.updateMember(vo);
+		 UsersVO updatedUser = service.selectMember(vo.getU_id());
+		 session.setAttribute("vo", updatedUser);
+		return "users/membership";
+	}
 	
 	
 }

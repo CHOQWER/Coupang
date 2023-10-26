@@ -15,4 +15,6 @@ public interface UsersService {
 	void updateUser(UsersVO vo);
 	
 	void deleteUser(String u_id);
+	
+	void updateMember(UsersVO vo);
 }

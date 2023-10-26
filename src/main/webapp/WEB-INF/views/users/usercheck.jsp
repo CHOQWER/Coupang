@@ -8,8 +8,8 @@
 	.message{
     width: 1028px;     
 	margin: 0 auto;
+	padding-top: 40px;
 }
-
 	   
 	
 </style>

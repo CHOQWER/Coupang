@@ -83,6 +83,17 @@
  	<select id="selectImgPno" resultType="images">
 			select * from images where pno=#{pno}
     </select>
+    
+    <!-- sca_no로 company list 조회 -->
+    <select id="selectCompany" resultType="product">
+    	select DISTINCT company from product where sca_no=#{sca_no}
+    </select>
+    
+    <!-- sca_no, company 받아서 product list 조회 -->
+    <select id="selectCompanylist" resultType="product">
+    	select * from product where company=#{company} and sca_no=#{sca_no}
+    </select>
+  	
   	
   	
   	

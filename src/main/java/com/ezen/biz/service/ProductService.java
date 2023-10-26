@@ -43,5 +43,10 @@ public interface ProductService {
 	ProductVO selectProductPno(int pno);
 	
 	ImagesVO selectImgPno(int pno);
+	
+	//회사별 검색
+	List<ProductVO> selectCompany(int sca_no);
+	
+	List<ProductVO> selectCompanylist(ProductVO vo,Criteria cri);
 
 }
