@@ -89,7 +89,8 @@ public class ProductController {
    @RequestMapping("ProductList")
    public String ProductList(ProductVO vo, @RequestParam String cate_name,@RequestParam String subcate_name,
 		   	@RequestParam int sca_no, @RequestParam(required = false, defaultValue = "1") int pageNum, Model model) {
-       // 폐이징 관련 작업
+       System.out.println("cate_name"+cate_name);
+	   // 폐이징 관련 작업
 	   Criteria cri = new Criteria();
        cri.setPageNum(pageNum);
        cri.setRowsPerPage(6); // 6개씩 추출
