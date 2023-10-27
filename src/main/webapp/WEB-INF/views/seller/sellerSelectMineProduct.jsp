@@ -15,10 +15,11 @@
 	}
 </style>
 <script type="text/javascript">
-function openPop(){
-    var popup = window.open('/sellerUpdateProduct?pno='+pno+'&sc_no='+sc_no ,'','width=700px,height=800px,scrollbars=yes');
-
+function openPop(pno) {
+    var popup = window.open('/sellerUpdateProduct?pno=' + pno , '', 'width=700px,height=800px,scrollbars=yes');
 }
+
+
 </script>
 <main>
 <h1> sellerSelectMineProduct</h1>
@@ -40,12 +41,12 @@ function openPop(){
 	<c:forEach items="${list}" var="BL"  varStatus="status"> 
 			<tr>
 				<td>${status.index}</td>
- 				<td><p id="pno"> ${BL.pno}</p></td>
-				<td>${BL.u_id}</td>
-				<td>${BL.ca_no}</td> 
-				<td>${BL.sca_no}</td>
-				<td>${BL.company}</td>
-				<td><a href="#" target="_blank" onclick="openPop(${BL.pno})">${BL.pname}</a></td>
+ 				<td><p id="pno" class="pno" name="pno"> ${BL.pno}</p></td>
+				<td id="u_id" class="u_id">${BL.u_id}</td>
+				<td id="ca_no" class="ca_no">${BL.ca_no}</td> 
+				<td id="sca_no" class="sca_no">${BL.sca_no}</td>
+				<td id="company" class="company">${BL.company}</td>
+				<td><input type="button" target="_blank" onclick="openPop(${BL.pno})">${BL.pname}</input</td>
 				<td><fmt:formatNumber value="${BL.price}" type="currency" currencySymbol="\\"> </fmt:formatNumber>  </td>
 				<td><fmt:formatNumber value="${BL.dis_price}" type="currency" currencySymbol="\\"> </fmt:formatNumber>  </td>
 				<td>${BL.content}</td>
