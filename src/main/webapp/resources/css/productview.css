@@ -1,3 +1,4 @@
+
 .content {
 	max-width: 1200px;
 	margin: 0 auto;
@@ -31,15 +32,15 @@
 }
 
 
-.main-img2 img{
-/* 마우스 효과 */
+/* .main-img2 img{
+마우스 효과
 	transition: all 0.2s linear;	
 }
-/* 효과 2 */
+효과 2
 .main-img2:hover img {
 	transform: scale(1.4);
 }
-
+ */
 
 .sub-img {
 	display: flex;
@@ -51,7 +52,7 @@
 }
 
 .sub-img img {
-	width: 90PX;
+	width: 70PX;
 	height: 90PX;
 }
 
