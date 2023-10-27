@@ -14,16 +14,32 @@
 .content-main {
 	display: flex;
 	margin-top: 50px;
+	width: 100%
 }
 
+
 .main-img {
-	padding: 10px;
+	padding: 10px;	
+	
 }
+
 
 .main-img img {
 	width: 410px;
 	height: auto;
+	
 }
+
+
+.main-img2 img{
+/* 마우스 효과 */
+	transition: all 0.2s linear;	
+}
+/* 효과 2 */
+.main-img2:hover img {
+	transform: scale(1.4);
+}
+
 
 .sub-img {
 	display: flex;
@@ -67,10 +83,10 @@
 	font-size: 14px;
 	color: blue
 }
-.prod-review span{
-	color:#4285f4;
-	font-weight: bold;
 
+.prod-review span {
+	color: #4285f4;
+	font-weight: bold;
 }
 
 .prod-price {
@@ -113,9 +129,6 @@
 	align-items: center;
 }
 
-
-
-
 .tab-title {
 	list-style: none;
 	display: flex;
@@ -156,9 +169,8 @@
 }
 
 .detail-img img {
-	max-width: 48%;
+	max-width: 80%;
 	height: auto;
-	
 }
 
 .review {
@@ -205,4 +217,3 @@
 	text-decoration: none;
 	font-weight: bold;
 }
-

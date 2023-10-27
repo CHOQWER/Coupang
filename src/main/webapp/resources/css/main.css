@@ -1,5 +1,8 @@
 main {
     position: relative;
-    margin: 0 auto;
-    
+    margin: 0 auto;    
+}
+
+.main_section1 {	
+	margin-top: 40px;
 }
