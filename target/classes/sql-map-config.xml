@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	
+	<settings>
+    	<setting name="jdbcTypeForNull" value="NULL" />
+    </settings> 
+
+	<typeAliases>
+		<typeAlias alias="buy" type="com.ezen.biz.dto.BuyVO"/>
+		<typeAlias alias="product" type="com.ezen.biz.dto.ProductVO"/>
+		<typeAlias alias="criteria" type="com.ezen.biz.utils.Criteria" />
+		<typeAlias alias="maincate" type="com.ezen.biz.dto.MainCateVO" />
+		<typeAlias alias="subcate" type="com.ezen.biz.dto.SubCateVO" />
+		<typeAlias alias="images" type="com.ezen.biz.dto.ImagesVO" />
+		<typeAlias alias="review" type="com.ezen.biz.dto.ReviewVO" />
+		<typeAlias alias="cart" type="com.ezen.biz.dto.CartVO" />
+		<typeAlias alias="notice" type="com.ezen.biz.dto.NoticeVO" /> 
+		
+  	</typeAliases>
+  	
+	<mappers>
+		<!-- =================Mappings======================= -->
+		<mapper resource="mappings/Buy-mapping.xml"/>
+		<mapper resource="mappings/Product-mapping.xml"/>
+		<mapper resource="mappings/users-mapping.xml"/> 
+		<mapper resource="mappings/payment-mapping.xml"/>
+		<mapper resource="mappings/cart-mapping.xml"/>
+		<mapper resource="mappings/Notice-mapping.xml"/> 
+		<mapper resource="mappings/Seller-mapping.xml"/>		
+		<mapper resource="mappings/review-mapping.xml"/> 
+		<mapper resource="mappings/Images-mapping.xml"/>
+	<!-- 	<mapper resource="mappings/cate-mapping.xml"/> -->
+	</mappers>
+</configuration>
