@@ -47,7 +47,7 @@
 </div>
 
                 <div class="back-to-shop"><a href="mypage">&leftarrow;&nbsp;&nbsp;뒤로가기</a><span class="text-muted"></span></div>
-                <button type="button" onclick="deleteCart1()">선택된 상품 삭제</button>
+                <button type="button" onclick="deleteCart2()">선택된 상품 삭제</button>
                 
             </div>
             <div class="col-md-4 summary">
@@ -71,7 +71,7 @@
                 
                 <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
                     <div class="col">총구매금액</div>       
-            		<div class="col">price</div>               
+            		<div class="col">구매금액</div>               
                     
                 </div>
                 
@@ -82,19 +82,21 @@
     </form>
     
 <script>
-function deleteCart1(){
-	const query = 'input[name="deleteCart"]:checked';
-	  const selectedEls = 
-	      document.querySelectorAll(query);
-	  
-	  // 선택된 목록에서 value 찾기
-	  var selectedItems = [];
-	  selectedEls.forEach((el) => {
-	    selectedItems.push(el.value);
-	  });
-	
-	 console.log("deleteCart?cnolist="+selectedItems);
-	 location.href="deleteCart?cnolist="+selectedItems;
+function deleteCart2() {
+    const checkboxes = document.querySelectorAll('input[name="deleteCart"]:checked');
+    const selectedItems = Array.from(checkboxes).map((checkbox) => checkbox.value);
+
+    if (selectedItems.length === 0) {
+        alert("삭제할 항목을 선택해주세요.");
+    } else {
+        const query = selectedItems.join('&cnolist=');
+        const url = 'deleteCart?cnolist=' + query;
+        location.href = url;
+    }
+}
+
+
+
 	/*
 	var checkboxes = document.getElementById("deleteCart");
 	var selectedItems = [];
@@ -104,7 +106,7 @@ function deleteCart1(){
         }
     }
 	console.log(selectedItems);*/
-}
+
 	
 </script>
 

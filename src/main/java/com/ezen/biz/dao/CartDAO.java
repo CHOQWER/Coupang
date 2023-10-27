@@ -27,5 +27,6 @@ public class CartDAO {
 	}
 	public int deleteCart(CartVO vo) {
 		return mybatis.delete("CartDAO.deleteCart",vo);
-	}   
+	}
+	
 }
