@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
 
 
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
@@ -34,9 +34,9 @@
 
 				<ul>
 					<c:forEach items="${clist}" var="vo">
-						<li><c:set var="encodedCompany"
-								value="${fn:escapeXml(vo.company)}" /> <a
-							href="companyList?company=${encodedCompany}&pageNum=1&sca_no=${vo.sca_no}&cate_name=${cate_name}&subcate_name=${subcate_name}">${vo.company}</a>
+						<li>
+						
+						<a href="companyList?company=${encodedCompany}&pageNum=1&sca_no=${vo.sca_no}&cate_name=${cate_name}&subcate_name=${subcate_name}">${vo.company}</a>
 						</li>
 					</c:forEach>
 				</ul>

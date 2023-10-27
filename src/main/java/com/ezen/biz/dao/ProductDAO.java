@@ -114,6 +114,18 @@ public class ProductDAO {
 		public int selectRowCount(ProductVO vo) {
 			return mybatis.selectOne("ProductDAO.selectRowCountCompany", vo);
 	}
+		
+	//메인 카테고리 선택 후 검색어로 조회
+		public List<ProductVO> selectSearchlist(ProductVO vo, Criteria cri){
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("ca_no", vo.getCa_no());
+			map.put("searchword", cri.getSearchword());
+			map.put("pageNum", cri.getPageNum());
+			map.put("rowsPerPage", cri.getRowsPerPage());
+			return mybatis.selectList("ProductDAO.selectSearchlist", map);
+		}
+		
+
 
 
 
