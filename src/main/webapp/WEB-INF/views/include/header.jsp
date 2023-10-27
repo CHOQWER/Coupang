@@ -7,10 +7,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="../resources/css/index.css?after">
+<link rel="stylesheet" href="../resources/css/index.css">
 <link rel="shortcut icon"
 	href="//image9.coupangcdn.com/image/coupang/favicon/v2/favicon.ico"
 	type="image/x-icon" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 </head>
 
 <body>
@@ -60,7 +61,8 @@
 													<a href="ProductList?sca_no=${sub.get('sno')}&pageNum=1&cate_name=${cate.get('name')}&subcate_name=${sub.get('sname')}">${sub.get('sname')}</a></li>
 											</c:forEach>
 										</ul>
-								</c:forEach></li>
+								</c:forEach>
+							</li>
 
 
 						</ul>

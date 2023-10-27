@@ -16,6 +16,9 @@
    type="text/javascript"></script>
 <script src="/resources/star-rating/themes/krajee-svg/theme.min.js"
    type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="/resources/css/zoomstyle.css">
+<script type="text/javascript" src="../resources/js/zoomslider.js" ></script>
+<script type="text/javascript" src="../resources/js/zoomscript.js" ></script>
 
 <%@ include file="/WEB-INF/views/include/header.jsp" %>
 
@@ -23,31 +26,40 @@
       <div class="cate">쿠팡홈 > 태블릿PC > 태블릿PC</div>
       
       <form action="insertcart" method="post" id="frmDetail" name="frmDetail">
+      
+      
          <input type="hidden" name="pno" value="${pvo.pno}">
          <input type="hidden" name="ino" value="${ivo.ino }">
       <!--좌측 메인/서브 이미지-->
       <div class="content-main">
-         <div class="main-img">
-            <div class="main-img2">
-            	<img src="imgDown?imgName=${ivo.main_img1}" alt="메인이미지">
+         
+         
+         <div class="main-img" id="img-container" >
+				<div id="lens"></div>
+				<img id="featured" src="imgDown?imgName=${ivo.main_img1}">
+		</div>
+			<!-- 이미지가 null이면 표시 안되게 -->
+			<div id="slide-wrapper" >
+				<div id="slider">
+					<div class="sub-img">
+					<c:if test="${not empty ivo.main_img1}">
+						<img class="thumbnail active" src="imgDown?imgName=${ivo.main_img1}">
+					</c:if>
+					<c:if test="${not empty ivo.main_img2}">
+						<img class="thumbnail" src="imgDown?imgName=${ivo.main_img2}">
+					</c:if>
+					<c:if test="${not empty ivo.main_img3}">
+						<img class="thumbnail" src="imgDown?imgName=${ivo.main_img3}">
+					</c:if>
+					<c:if test="${not empty ivo.main_img4}">
+						<img class="thumbnail" src="imgDown?imgName=${ivo.main_img4}">
+					</c:if>
+					<c:if test="${not empty ivo.main_img5}">
+						<img class="thumbnail" src="imgDown?imgName=${ivo.main_img5}">
+					</c:if>					
+				</div>	
+				</div>			
 			</div>
-            <!-- 이미지가 null이면 표시 안되게 -->
-            <div class="sub-img">
-               <c:if test="${not empty ivo.main_img2}">
-                  <a href=""><img src="imgDown?imgName=${ivo.main_img2}"
-                     alt="서브이미지"></a>
-               </c:if>
-               <c:if test="${not empty ivo.main_img3}">
-                  <img src="imgDown?imgName=${ivo.main_img3}" alt="서브이미지">
-               </c:if>
-               <c:if test="${not empty ivo.main_img4}">
-                  <img src="imgDown?imgName=${ivo.main_img4}" alt="서브이미지">
-               </c:if>
-               <c:if test="${not empty ivo.main_img5}">
-                  <img src="imgDown?imgName=${ivo.main_img5}" alt="서브이미지">
-               </c:if>
-            </div>
-         </div>
 
 
          <!--우측 구매하는 부분-->
@@ -199,7 +211,7 @@
          </div>
       </div>
    </section>
-</div>
+
 
 <%@ include file="/WEB-INF/views/include/footer.jsp" %>
 

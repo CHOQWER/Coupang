@@ -75,13 +75,15 @@ public class ProductController {
 
    
    @GetMapping("ProductView")
-   public String ProductView(ProductVO pvo,ImagesVO ivo, Model model, @RequestParam int pno) {
+   public String ProductView(ProductVO pvo,ImagesVO ivo, Model model, @RequestParam int pno,@RequestParam String cate_name, @RequestParam String subcate_name) {
       pvo=service.selectProductPno(pno);
       ivo=service.selectImgPno(pno);
       Map<String, Number> map = rservice.selectAvgCountScore(pno);
       model.addAttribute("pvo",pvo);
       model.addAttribute("ivo",ivo);
       model.addAttribute("map",map);
+      model.addAttribute("cate_name",cate_name);
+      model.addAttribute("subcate_name",subcate_name);
       return "product/ProductView";
    }
    
@@ -89,7 +91,6 @@ public class ProductController {
    @RequestMapping("ProductList")
    public String ProductList(ProductVO vo, @RequestParam String cate_name,@RequestParam String subcate_name,
 		   	@RequestParam int sca_no, @RequestParam(required = false, defaultValue = "1") int pageNum, Model model) {
-       System.out.println("cate_name"+cate_name);
 	   // 폐이징 관련 작업
 	   Criteria cri = new Criteria();
        cri.setPageNum(pageNum);
@@ -127,7 +128,7 @@ public class ProductController {
    
    
    @RequestMapping("companyList")
-   public String productListCompany(ProductVO vo, @RequestParam int sca_no, @RequestParam String company, @RequestParam(required = false, defaultValue = "1") int pageNum, Model model) {
+   public String productListCompany(ProductVO vo,@RequestParam String cate_name,@RequestParam String subcate_name,@RequestParam int sca_no, @RequestParam String company, @RequestParam(required = false, defaultValue = "1") int pageNum, Model model) {
 	   // 폐이징 관련 작업
 	   Criteria cri = new Criteria();
        cri.setPageNum(pageNum);
@@ -159,6 +160,8 @@ public class ProductController {
            starlist.add(map);
         }
        model.addAttribute("starlist", starlist);
+       model.addAttribute("cate_name",cate_name);
+       model.addAttribute("subcate_name",subcate_name);
 	   return "product/ProductList";
    }
    
