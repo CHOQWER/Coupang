@@ -27,12 +27,6 @@ function doAjax(url, param, callback) {
            }
 
        }
-       ,error: function(request, status, error){      // 통신 에러 발생시 처리
-           console.log("시스템 오류가 발생하였습니다.");
-           console.log(request);
-           console.log(status);
-           console.log(error); 
-       }
        ,beforeSend: function(xhr) {        // 통신을 시작할때 처리
             console.log("Ajax 요청 준비");
 

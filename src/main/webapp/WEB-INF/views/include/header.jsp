@@ -47,7 +47,7 @@
 
 			<div class="main-bar">
 				<div class="catagory-menu">
-					<a href=""><img src="resources/img/catagory.png" alt=""></a>
+					<a href="#"><img src="resources/img/catagory.png" alt=""></a>
 
 					<!--카테고리 올려놓을 시 메뉴보여주기-->
 					<aside class="side-bar">
