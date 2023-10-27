@@ -2,9 +2,8 @@
    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
-<link rel="stylesheet" href="../resources/css/productview.css">
-
+<!-- <script type="text/javascript" src="/resources/js/zoomscript.js" ></script> -->
+<link rel="stylesheet" href="/resources/css/productview.css">
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script type="text/javascript" src="/resources/js/common.js"></script>
 <link rel="stylesheet" href="/resources/star-rating/css/star-rating.css"
@@ -14,47 +13,77 @@
    type="text/css" />
 <script src="/resources/star-rating/js/star-rating.min.js"
    type="text/javascript"></script>
-<script src="/resources/star-rating/themes/krajee-svg/theme.min.js"
-   type="text/javascript"></script>
+<script src="/resources/star-rating/themes/krajee-svg/theme.min.js"  type="text/javascript"></script>   
 
+<script type="text/javascript">
+	
+	function selectImg(id){		
+		/* let a=document.ElementById("img1").src; */				
+		/* console.log(tmp); */
+		if(document.getElementById("img1")=="img1" || document.getElementById("")==null){
+			var tmp = document.getElementById("img1").getAttribute("src");	
+		}else if(document.getElementById("img2")=="img2") {
+			var tmp = document.getElementById("img2").getAttribute("src");	
+		} else if(document.getElementById("img3")=="img3") {
+			var tmp = document.getElementById("img3").getAttribute("src");	
+		} else if(document.getElementById("img4")=="img4") {
+			var tmp = document.getElementById("img4").getAttribute("src");	
+		} else if(document.getElementById("img5")=="img5") {
+			var tmp = document.getElementById("img5").getAttribute("src");	
+		}		
+		/* var tmp2 = document.getElementById("img2").getAttribute("src");
+		var tmp3 = document.getElementById("img3").getAttribute("src");
+		var tmp4 = document.getElementById("img4").getAttribute("src");
+		var tmp5 = document.getElementById("img5").getAttribute("src"); */
+		console.log(tmp);		
+	}
+	
+	/* "imgDown?imgName=${ivo.main_img1}" */
+</script>
 <%@ include file="/WEB-INF/views/include/header.jsp" %>
 
    <section class="content">
       <div class="cate">쿠팡홈 > 태블릿PC > 태블릿PC</div>
       
-      <form action="insertcart" method="post" id="frmDetail" name="frmDetail">
+      <form action="insertcart" method="post" id="frmDetail" name="frmDetail">      
          <input type="hidden" name="pno" value="${pvo.pno}">
          <input type="hidden" name="ino" value="${ivo.ino }">
       <!--좌측 메인/서브 이미지-->
-      <div class="content-main">
-         <div class="main-img">
-            <div class="main-img2">
-            	<img src="imgDown?imgName=${ivo.main_img1}" alt="메인이미지">
-			</div>
-            <!-- 이미지가 null이면 표시 안되게 -->
-            <div class="sub-img">
-               <c:if test="${not empty ivo.main_img2}">
-                  <a href=""><img src="imgDown?imgName=${ivo.main_img2}"
-                     alt="서브이미지"></a>
-               </c:if>
-               <c:if test="${not empty ivo.main_img3}">
-                  <img src="imgDown?imgName=${ivo.main_img3}" alt="서브이미지">
-               </c:if>
-               <c:if test="${not empty ivo.main_img4}">
-                  <img src="imgDown?imgName=${ivo.main_img4}" alt="서브이미지">
-               </c:if>
-               <c:if test="${not empty ivo.main_img5}">
-                  <img src="imgDown?imgName=${ivo.main_img5}" alt="서브이미지">
-               </c:if>
-            </div>
-         </div>
+      <div class="content-main">           
+			<!-- 이미지가 null이면 표시 안되게 -->
+			<!-- <div id="content-wrapper">	 -->		
+			
+			<div class="column">
+			<div id="img-container">
+				<div class="magnifier" style="background:url('tmp')" no-repeat;></div>
+				<img id="mainimg" src="imgDown?imgName=${ivo.main_img1}" alt="메인이미지">
+			</div>			
+				
+				<div id="slider">
+					<c:if test="${not empty ivo.main_img1}">
+						<img class="thumbnail active" id="img1" src="imgDown?imgName=${ivo.main_img1}" onclick="selectImg(id)">
+					</c:if>
+					<c:if test="${not empty ivo.main_img2}">
+						<img class="thumbnail" src="imgDown?imgName=${ivo.main_img2}" id="img2" onclick="selectImg()">
+					</c:if>
+					<c:if test="${not empty ivo.main_img3}">
+						<img class="thumbnail" src="imgDown?imgName=${ivo.main_img3}" id="img3" onclick="selectImg()">
+					</c:if>
+					<c:if test="${not empty ivo.main_img4}">
+						<img class="thumbnail" src="imgDown?imgName=${ivo.main_img4}" id="img4" onclick="selectImg()">
+					</c:if>
+					<c:if test="${not empty ivo.main_img5}">
+						<img class="thumbnail" src="imgDown?imgName=${ivo.main_img5}" id="img5" onclick="selectImg()">
+					</c:if>					
+				</div>
+		</div>
+		
+	<!-- </div> -->
 
 
          <!--우측 구매하는 부분-->
          <div class="prod-buy">
-
             <div class="prod-header">
-
                <div class="prod-company">${pvo.company}</div>
                <div class="prod-name">${pvo.pname}</div> <hr>
                <div class="prod-review">
@@ -110,7 +139,9 @@
             <!-- <input type="hidden" name=""> -->
 
          </div>
+         
       </div>
+      
       </form>
 
 
@@ -169,16 +200,16 @@
          <input type="hidden" name="page" id="page" value="0">
          
          
-         
+        
          <!-- 리뷰 inner html 반복할곳 -->
-         <table id="tbl_star">
-            
-         </table>
+		<table id="tbl_star">
+
+		</table>
          
          
          <button type="button" id="btn_next" style="display: none"
             onclick="getStar()">더보기</button>
-         </ul>
+
          
          <hr>
          <div class="prod-qa">
@@ -199,15 +230,18 @@
          </div>
       </div>
    </section>
-</div>
+
+
 
 <%@ include file="/WEB-INF/views/include/footer.jsp" %>
+<script type="text/javascript" src="/resources/js/zoomslider.js" ></script>
+<script type="text/javascript" src="/resources/js/zoomscript.js" ></script>
+
 
 <script type="text/javascript">
-
 function cartSubmit(){
    let frm=$("#frmDetail");
-   frm.attr("action","insertCart");
+   frm.attr("action","insertCart");   
    frm.submit();
 }
 
@@ -240,6 +274,7 @@ common.js doAjaxHtml(url, param, callback) 호출
 ===================================================*/
 function saveStar(){
    console.log("saveStar")
+   let rno=$("#rno").val();
    let content=$("#content").val().trim();
    let r_title=$("#r_title").val().trim();
    let r_photo=$("#r_photo").val().trim();
@@ -264,7 +299,9 @@ function saveStar(){
    
    
    let url="saveStar";//서블릿 매핑 주소
-   let param={"u_id":"${sessionScope.vo.u_id}",
+   let param={"rno":rno,
+		    "u_id":"${sessionScope.vo.u_id}",
+		    "grade":"${sessionScope.vo.grade}",
             "pno":${pvo.pno}, 
             "score":score,
             "r_title":r_title,
@@ -330,7 +367,7 @@ function getStarAfter(data){
           let starList=data.arr;
           console.log(starList);
           let html="";
-          for(let vo of starList){//js foreach
+          for(let vo of starList){//js foreach      	  
              html+='<tr>';
              html+='<td>';
              html+='<img src='+vo.r_photo+' alt="" width="100" height="100">';
@@ -352,21 +389,77 @@ function getStarAfter(data){
              html+='</dt>';
              html+='<dt>'+ vo.r_regdate;
              html+='</dt>';
-             html+='</dl>';   
+             html+='</dl>';
              html+='</td>';
+             html+='<td>';
+             html+='<button onclick="deleteReview('+vo.rno+')">삭제';
+             html+='</button>';
              html+='</tr>';
           }//for
+          
+ 	 		$("#tbl_star").append(html);
+	 		//let next=data.next;//true, false
+	 		//console.log(next);
+	 		if(data.next){//더보기 버튼을 보여주기
+	 			$("#btn_next").css("display","block");
+	 		}else $("#btn_next").css("display","none");
+	 		// loding 중인 별점을 보여주는 작업
+	 		newStar();
+          }
 
-          $("#tbl_star").append(html);
-          //let next=data.next;//true, false
-          //console.log(next);
-          if(data.next){//더보기 버튼을 보여주기
-             $("#btn_next").css("display","block");
-          }else $("#btn_next").css("display","none");
-          // loding 중인 별점을 보여주는 작업
-          newStar();
+}
+
+
+/* 관리자가 삭제가 안됨 반대로 기능
+ * 삭제버튼 에러나지만 기능은 가능
+ */
+function deleteReview(rno) {
+    // console.log(rno);
+    let grade = {"grade":"${sessionScope.vo.grade}"} // sessionScope.vo.grade 값 가져오기
+    console.log(grade);
+    
+    if (grade === "0") { // 
+    	alert("나가");
+    } else {
+    	if (confirm("정말로 별점을 삭제하시겠습니까?")) {
+            let url = "deleteReview";
+            let param = {"rno": rno};
+            console.log(param);
+            doAjax(url, param, deleteAfter);
+            location.reload();
+        }
     }
 }
 
+/*
+ function deleteAfter(data){
+	console.log(data);
+	location.reload();
+	if (data == "success") {
+        location.reload();
+    } else {
+        alert("별점 삭제 중 오류가 발생했습니다.");
+    }
+}
+*/
+
+/* function deleteReview(rno) {
+	//console.log(rno);
+	
+    if (confirm("정말로 별점을 삭제하시겠습니까?")) {
+        let url = "deleteReview";
+        let param = {"rno": rno};
+        console.log(param);
+        doAjax(url, param, function (data) {
+        	console.log("왓냐");
+        	if (data == "success") {
+                location.reload();
+            } else {
+                alert("별점 삭제 중 오류가 발생했습니다.");
+            }
+        });
+    }
+}
+*/
 
 </script>

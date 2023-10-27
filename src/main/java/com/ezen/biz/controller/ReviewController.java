@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -32,7 +33,7 @@ public class ReviewController {
 	
 	@RequestMapping("saveStar")
 	public void saveStar(ReviewVO vo, HttpServletResponse response) throws IOException {
-		// 별접 삽입
+		// 별점 삽입
 		service.insertReview(vo);
 		Map<String, Number> map = service.selectAvgCountScore(vo.getPno());
 		JsonObject ob = new JsonObject();
@@ -67,6 +68,7 @@ public class ReviewController {
 			SimpleDateFormat dateFormat = new SimpleDateFormat("yy-MM-dd");
 			for (ReviewVO v : list) {
 				data = new JsonObject();
+				data.addProperty("rno", v.getRno());
 				data.addProperty("u_id", v.getU_id());
 				data.addProperty("score", v.getScore());				
 				data.addProperty("r_title", v.getR_title());
@@ -83,20 +85,12 @@ public class ReviewController {
 			out.close();
 		}
 	}
-
+	
+	@PostMapping("deleteReview")
+    public void deleteReview(@RequestParam int rno) {
+		log.info("rno="+rno);
+		service.deleteReview(rno);	
+    }
 
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-	

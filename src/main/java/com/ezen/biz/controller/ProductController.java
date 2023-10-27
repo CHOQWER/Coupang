@@ -72,24 +72,30 @@ public class ProductController {
       cateSession.setAttribute("catelist", catelist);
       return "main";
    }
-
    
-   @GetMapping("ProductView")
-   public String ProductView(ProductVO pvo,ImagesVO ivo, Model model, @RequestParam int pno) {
-      pvo=service.selectProductPno(pno);
-      ivo=service.selectImgPno(pno);
-      Map<String, Number> map = rservice.selectAvgCountScore(pno);
-      model.addAttribute("pvo",pvo);
-      model.addAttribute("ivo",ivo);
-      model.addAttribute("map",map);
-      return "product/ProductView";
+   @RequestMapping("searchWord")
+   public String selectSearchlist(ProductVO vo, @RequestParam int ca_no, @RequestParam String searchWord, 
+		   @RequestParam(required = false, defaultValue = "1") int pageNum, Model model) {
+
+	   // 폐이징 관련 작업
+	   System.out.println("searchWord="+searchWord);
+	
+	   Criteria cri = new Criteria();
+       cri.setPageNum(pageNum);
+       cri.setSearchword(searchWord);
+       cri.setRowsPerPage(6); // 6개씩 추출
+	   vo.setCa_no(ca_no);
+	   
+	   List<ProductVO> list=service.selectSearchlist(vo,cri);
+       model.addAttribute("list",list);
+       
+       System.out.println("list"+list);
+	   return "product/ProductList";
    }
    
-
    @RequestMapping("ProductList")
-   public String ProductList(ProductVO vo, @RequestParam String cate_name,@RequestParam String subcate_name,
+   public String ProductList(ProductVO vo, @RequestParam String cate_name, @RequestParam String subcate_name,
 		   	@RequestParam int sca_no, @RequestParam(required = false, defaultValue = "1") int pageNum, Model model) {
-       System.out.println("cate_name"+cate_name);
 	   // 폐이징 관련 작업
 	   Criteria cri = new Criteria();
        cri.setPageNum(pageNum);
@@ -126,8 +132,24 @@ public class ProductController {
    }
    
    
+   @GetMapping("ProductView")
+   public String ProductView(ProductVO pvo,ImagesVO ivo, Model model, @RequestParam int pno,@RequestParam String cate_name, @RequestParam String subcate_name) {
+      pvo=service.selectProductPno(pno);
+      ivo=service.selectImgPno(pno);
+      Map<String, Number> map = rservice.selectAvgCountScore(pno);
+      model.addAttribute("pvo",pvo);
+      model.addAttribute("ivo",ivo);
+      model.addAttribute("map",map);
+      model.addAttribute("cate_name",cate_name);
+      model.addAttribute("subcate_name",subcate_name);
+      return "product/ProductView";
+   }
+   
+
+
+   
    @RequestMapping("companyList")
-   public String productListCompany(ProductVO vo, @RequestParam int sca_no, @RequestParam String company, @RequestParam(required = false, defaultValue = "1") int pageNum, Model model) {
+   public String productListCompany(ProductVO vo,@RequestParam String cate_name,@RequestParam String subcate_name,@RequestParam int sca_no, @RequestParam String company, @RequestParam(required = false, defaultValue = "1") int pageNum, Model model) {
 	   // 폐이징 관련 작업
 	   Criteria cri = new Criteria();
        cri.setPageNum(pageNum);
@@ -159,6 +181,8 @@ public class ProductController {
            starlist.add(map);
         }
        model.addAttribute("starlist", starlist);
+       model.addAttribute("cate_name",cate_name);
+       model.addAttribute("subcate_name",subcate_name);
 	   return "product/ProductList";
    }
    

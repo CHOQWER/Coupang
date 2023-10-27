@@ -30,5 +30,8 @@
   		]]>
   	</select>
   	
-  
+  	<delete id="deleteReview">
+  		delete from review where rno=#{rno}
+  	</delete>
+
   </mapper>
