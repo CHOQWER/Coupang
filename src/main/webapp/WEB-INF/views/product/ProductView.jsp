@@ -2,9 +2,8 @@
    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
-<link rel="stylesheet" href="../resources/css/productview.css">
-
+<!-- <script type="text/javascript" src="/resources/js/zoomscript.js" ></script> -->
+<link rel="stylesheet" href="/resources/css/productview.css">
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script type="text/javascript" src="/resources/js/common.js"></script>
 <link rel="stylesheet" href="/resources/star-rating/css/star-rating.css"
@@ -14,47 +13,77 @@
    type="text/css" />
 <script src="/resources/star-rating/js/star-rating.min.js"
    type="text/javascript"></script>
-<script src="/resources/star-rating/themes/krajee-svg/theme.min.js"
-   type="text/javascript"></script>
+<script src="/resources/star-rating/themes/krajee-svg/theme.min.js"  type="text/javascript"></script>   
 
+<script type="text/javascript">
+	
+	function selectImg(id){		
+		/* let a=document.ElementById("img1").src; */				
+		/* console.log(tmp); */
+		if(document.getElementById("img1")=="img1" || document.getElementById("")==null){
+			var tmp = document.getElementById("img1").getAttribute("src");	
+		}else if(document.getElementById("img2")=="img2") {
+			var tmp = document.getElementById("img2").getAttribute("src");	
+		} else if(document.getElementById("img3")=="img3") {
+			var tmp = document.getElementById("img3").getAttribute("src");	
+		} else if(document.getElementById("img4")=="img4") {
+			var tmp = document.getElementById("img4").getAttribute("src");	
+		} else if(document.getElementById("img5")=="img5") {
+			var tmp = document.getElementById("img5").getAttribute("src");	
+		}		
+		/* var tmp2 = document.getElementById("img2").getAttribute("src");
+		var tmp3 = document.getElementById("img3").getAttribute("src");
+		var tmp4 = document.getElementById("img4").getAttribute("src");
+		var tmp5 = document.getElementById("img5").getAttribute("src"); */
+		console.log(tmp);		
+	}
+	
+	/* "imgDown?imgName=${ivo.main_img1}" */
+</script>
 <%@ include file="/WEB-INF/views/include/header.jsp" %>
 
    <section class="content">
       <div class="cate">쿠팡홈 > 태블릿PC > 태블릿PC</div>
       
-      <form action="insertcart" method="post" id="frmDetail" name="frmDetail">
+      <form action="insertcart" method="post" id="frmDetail" name="frmDetail">      
          <input type="hidden" name="pno" value="${pvo.pno}">
          <input type="hidden" name="ino" value="${ivo.ino }">
       <!--좌측 메인/서브 이미지-->
-      <div class="content-main">
-         <div class="main-img">
-            <div class="main-img2">
-            	<img src="imgDown?imgName=${ivo.main_img1}" alt="메인이미지">
-			</div>
-            <!-- 이미지가 null이면 표시 안되게 -->
-            <div class="sub-img">
-               <c:if test="${not empty ivo.main_img2}">
-                  <a href=""><img src="imgDown?imgName=${ivo.main_img2}"
-                     alt="서브이미지"></a>
-               </c:if>
-               <c:if test="${not empty ivo.main_img3}">
-                  <img src="imgDown?imgName=${ivo.main_img3}" alt="서브이미지">
-               </c:if>
-               <c:if test="${not empty ivo.main_img4}">
-                  <img src="imgDown?imgName=${ivo.main_img4}" alt="서브이미지">
-               </c:if>
-               <c:if test="${not empty ivo.main_img5}">
-                  <img src="imgDown?imgName=${ivo.main_img5}" alt="서브이미지">
-               </c:if>
-            </div>
-         </div>
+      <div class="content-main">           
+			<!-- 이미지가 null이면 표시 안되게 -->
+			<!-- <div id="content-wrapper">	 -->		
+			
+			<div class="column">
+			<div id="img-container">
+				<div class="magnifier" style="background:url('tmp')" no-repeat;></div>
+				<img id="mainimg" src="imgDown?imgName=${ivo.main_img1}" alt="메인이미지">
+			</div>			
+				
+				<div id="slider">
+					<c:if test="${not empty ivo.main_img1}">
+						<img class="thumbnail active" id="img1" src="imgDown?imgName=${ivo.main_img1}" onclick="selectImg(id)">
+					</c:if>
+					<c:if test="${not empty ivo.main_img2}">
+						<img class="thumbnail" src="imgDown?imgName=${ivo.main_img2}" id="img2" onclick="selectImg()">
+					</c:if>
+					<c:if test="${not empty ivo.main_img3}">
+						<img class="thumbnail" src="imgDown?imgName=${ivo.main_img3}" id="img3" onclick="selectImg()">
+					</c:if>
+					<c:if test="${not empty ivo.main_img4}">
+						<img class="thumbnail" src="imgDown?imgName=${ivo.main_img4}" id="img4" onclick="selectImg()">
+					</c:if>
+					<c:if test="${not empty ivo.main_img5}">
+						<img class="thumbnail" src="imgDown?imgName=${ivo.main_img5}" id="img5" onclick="selectImg()">
+					</c:if>					
+				</div>
+		</div>
+		
+	<!-- </div> -->
 
 
          <!--우측 구매하는 부분-->
          <div class="prod-buy">
-
             <div class="prod-header">
-
                <div class="prod-company">${pvo.company}</div>
                <div class="prod-name">${pvo.pname}</div> <hr>
                <div class="prod-review">
@@ -110,7 +139,9 @@
             <!-- <input type="hidden" name=""> -->
 
          </div>
+         
       </div>
+      
       </form>
 
 
@@ -199,14 +230,18 @@
          </div>
       </div>
    </section>
-</div>
+
+
 
 <%@ include file="/WEB-INF/views/include/footer.jsp" %>
+<script type="text/javascript" src="/resources/js/zoomslider.js" ></script>
+<script type="text/javascript" src="/resources/js/zoomscript.js" ></script>
+
 
 <script type="text/javascript">
 function cartSubmit(){
    let frm=$("#frmDetail");
-   frm.attr("action","insertCart");
+   frm.attr("action","insertCart");   
    frm.submit();
 }
 
@@ -377,7 +412,7 @@ function getStarAfter(data){
 
 /* 관리자가 삭제가 안됨 반대로 기능
  * 삭제버튼 에러나지만 기능은 가능
- */*/
+ */
 function deleteReview(rno) {
     // console.log(rno);
     let grade = {"grade":"${sessionScope.vo.grade}"} // sessionScope.vo.grade 값 가져오기

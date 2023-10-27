@@ -1,5 +1,7 @@
 package com.ezen.biz.controller;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
+
 import java.io.File;
 import java.io.IOException;
 import java.net.http.HttpRequest;
@@ -135,44 +137,50 @@ public class SellerController {
 		vo.setU_id(v.getU_id());
 		
 		List<ProductVO> list=productService.sellerSelectMineProduct(vo);
-		System.out.println("sellerSelectMineProduct vo="+vo);
+		/* System.out.println("sellerSelectMineProduct vo="+list); */
 		model.addAttribute("list",list);
 		return "seller/sellerSelectMineProduct";
 	}
 	
 	//판매자 업데이트 팝업창 이동
 			@GetMapping("sellerUpdateProduct")
-			public String sellerUpdateProduct(UsersVO v,HttpSession session,ProductVO vo
-					) {
-				v=(UsersVO) session.getAttribute("vo");
-				vo.setU_id(v.getU_id());
+			public String sellerUpdateProduct(UsersVO v,HttpSession session,ProductVO vo,
+					Model model/* ,@RequestParam int pno */) {
 				
-		
+//				v=(UsersVO) session.getAttribute("vo");
+//				vo.setU_id(v.getU_id());
+				
+//				System.out.println("vo.getPno()"+vo.getPno());
+//				System.out.println("@RequestParam int pno"+pno);
+				
+//				model.addAttribute("pno",pno);
+				
+				System.out.println();
+				
+				vo=productService.selectProductPno(vo.getPno());
+				model.addAttribute("vo",vo);
 				
 
 				return "seller/sellerUpdateProduct";
 			}
 			//판매자 업데이트 팝업창 이동
-			@PostMapping("sellerUpdateProduct")
+			@PostMapping("sellerUpdateProduct") 
 			public String sellerUpdateProduct(Model model,ProductVO vo,
-					@RequestParam int pno,@RequestParam int ca_no,@RequestParam int sca_no,@RequestParam String company) {
-				UsersVO uvo=new UsersVO();
-				vo.setU_id(uvo.getU_id());
+					HttpSession session,UsersVO v,@RequestParam int pno) {
 				
-				vo.setPno(pno);
-				vo.setCa_no(sca_no);
-				vo.setSca_no(sca_no);
-				vo.setCompany(company);
-				System.out.println("vo="+vo);
+				v=(UsersVO) session.getAttribute("vo");
+				session.setAttribute("v", v);
 				
+				v=(UsersVO) session.getAttribute("vo");
+		
 				productService.sellerUpdateProduct(vo);
-				model.addAttribute("vo",vo);
-				return "seller/sellerHome";
+			
+				
+				return "seller/sellerSuccessPopup";
 			}
 	
 	
-	
-	
+
 
 	@RequestMapping("sellerMainPage")
 	public String sellerMainPage(Model model,BuyVO vo) {

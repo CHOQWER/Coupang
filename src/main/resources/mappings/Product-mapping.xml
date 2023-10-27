@@ -116,6 +116,19 @@
 		product where sca_no=#{sca_no} and disp='y' and company=#{company}
 	</select>
   	
+    <!-- 메인 카테고리 선택 후 검색어로 조회 -->
+  	<select id="selectSearchlist" parameterType="criteria" resultType="product">
+		select * from (
+		select rownum rn, A.* from
+		(select
+			p.pno,main_img1,sca_no,ca_no,pname,price,dis_price from product p, images i
+				where 1=1
+					and p.pno=i.pno and pname like <![CDATA[ '%'||#{searchword}||'%']]> and disp='y' and ca_no=#{ca_no}) A
+		<![CDATA[
+  		 	where rownum<=#{pageNum}*#{rowsPerPage}
+  		 	) where rn>=#{pageNum}*#{rowsPerPage}-#{rowsPerPage}+1
+  		]]>
+  	</select>
 	
   	
   	
