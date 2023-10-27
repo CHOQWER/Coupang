@@ -146,9 +146,7 @@ public class SellerController {
 					) {
 				v=(UsersVO) session.getAttribute("vo");
 				vo.setU_id(v.getU_id());
-				
-		
-				
+
 
 				return "seller/sellerUpdateProduct";
 			}
