@@ -7,6 +7,61 @@
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+ /* zoom관련@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+ 
+ #img-container{
+	/* z-index: 2; */
+	max-width: 500px;
+	position: relative;
+}
+
+.thumbnail{
+	object-fit: cover;
+	max-width: 180px;
+	max-height: 100px;
+	cursor: pointer;
+	opacity: 0.5;
+	margin: 5px;	
+
+}
+
+.thumbnail:hover{
+	opacity:1;
+}
+
+.active{
+	opacity: 1;
+}
+
+#slide-wrapper{
+	margin-top: 30px;
+	max-width: 500px;
+	display: flex;
+	min-height: 100px;
+	align-items: center;
+}
+
+#slider{
+	width: 440px;
+	display: flex;
+	flex-wrap: nowrap;
+	overflow-x: auto;
+
+}
+
+.magnifier {
+	width: 175px; 
+	height: 175px;
+	border:1px solid black;
+	position: absolute;
+	border-radius: 100%;	
+	display: none;
+	z-index:100;	
+	
+}
+
+/* zoom관련 끝 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+
 .cate {
 	font-size: 14px;
 	color: #888;
@@ -32,15 +87,8 @@
 }
 
 
-/* .main-img2 img{
-마우스 효과
-	transition: all 0.2s linear;	
-}
-효과 2
-.main-img2:hover img {
-	transform: scale(1.4);
-}
- */
+ 
+ 
 
 .sub-img {
 	display: flex;
@@ -51,10 +99,16 @@
 	margin-top: 50px;
 }
 
-.sub-img img {
-	width: 70PX;
-	height: 90PX;
+.slider img {
+	width: 65px;
+	height: 80px;
 }
+
+
+
+
+
+
 
 .prod-buy {
 	border: 1px solid black;

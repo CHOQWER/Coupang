@@ -21,13 +21,13 @@ body{
 /* #featured{
 	max-width: 500px;
 	max-height: 600px;
-
 	cursor: pointer;
 	border: 2px solid black;
 
-} */
+} */	
 
-.thumbnail{
+
+ .thumbnail{
 	object-fit: cover;
 	max-width: 180px;
 	max-height: 100px;
@@ -36,15 +36,16 @@ body{
 	margin: 5px;	
 
 }
-
-.thumbnail:hover{
+ 
+ /* .thumbnail:hover{
 	opacity:1;
 }
 
 .active{
 	opacity: 1;
-}
-/* 
+} 
+ */
+/*
 #slide-wrapper{
 	margin-top: 30px;
 	max-width: 500px;
@@ -96,13 +97,13 @@ body{
 	height: 35px;
 } */
 
-/* #img-container{
+ #img-container{
 	z-index: 1;
 	max-width: 500px;
 	position: relative;
-} */
+}
 
-#lens{
+#magnifier{
 	z-index: 2;
 	position: absolute;
 	height: 140px;
