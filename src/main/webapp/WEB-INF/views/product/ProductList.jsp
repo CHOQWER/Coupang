@@ -24,7 +24,7 @@
 
 
 <main>
-	<div class="cate-nav">쿠팡홈 > ${cate_name} > ${subcate_name}</div>
+	<div class="cate-nav"> 쿠팡홈 > ${cate_name} > ${subcate_name} </div>
 
 	<div class="contents">
 		<div class="aside">
@@ -35,7 +35,7 @@
 					<c:forEach items="${clist}" var="vo">
 						<li><c:set var="encodedCompany"
 								value="${fn:escapeXml(vo.company)}" /> <a
-							href="companyList?company=${encodedCompany}&pageNum=1&sca_no=${vo.sca_no}">${vo.company}</a>
+							href="companyList?company=${encodedCompany}&pageNum=1&sca_no=${vo.sca_no}&cate_name=${cate_name}&subcate_name=${subcate_name}">${vo.company}</a>
 						</li>
 					</c:forEach>
 				</ul>
@@ -50,13 +50,13 @@
 					<div class="prodlink">
 
 
-						<a href="ProductView?pno=${vo.pno}">
+						<a href="ProductView?pno=${vo.pno}&cate_name=${cate_name}&subcate_name=${subcate_name}">
 							<div>
 								<img class="prodimg" src="imgDown?imgName=${vo.main_img1}"
 									alt="메인이미지">
 							</div>
 							<div>
-								<span><a href="ProductView?pno=${vo.pno}">${vo.pname}</a></span><br>
+								<span><a href="ProductView?pno=${vo.pno}&cate_name=${cate.get('name')}&subcate_name=${sub.get('sname')}">${vo.pname}</a></span><br>
 								<span>와우할인가</span> <span><fmt:formatNumber
 										value="${vo.price}" pattern="#,###" /></span><br> <span><fmt:formatNumber
 										value="${vo.dis_price}" pattern="#,###" /></span><br> <input
