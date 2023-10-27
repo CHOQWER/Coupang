@@ -47,10 +47,11 @@ public class NoticeController {
 	    String type = vo.getType();
 	    // type을 이용하여 데이터 처리 또는 조건부 처리
 	    if ("0".equals(type)) {
-	    	service.insertNotice(vo);
+	    	 
 	    } else if ("1".equals(type)) {
-	    	service.insertFAQ(vo);
+
 	    }
+	    service.insertNotice(vo);
 	    return "redirect:notice";
 	}
 	

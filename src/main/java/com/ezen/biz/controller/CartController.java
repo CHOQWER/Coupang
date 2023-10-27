@@ -1,26 +1,25 @@
 package com.ezen.biz.controller;
 
-import java.io.BufferedOutputStream;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.net.URLEncoder;
+
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+
 import javax.servlet.http.HttpSession;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.ezen.biz.dao.ProductDAO;
+
 import com.ezen.biz.dto.CartVO;
-import com.ezen.biz.dto.ImagesVO;
+import com.ezen.biz.dto.PaymentVO;
 import com.ezen.biz.dto.ProductVO;
 import com.ezen.biz.dto.UsersVO;
 import com.ezen.biz.service.CartService;
@@ -49,7 +48,7 @@ public class CartController {
 		} else {
 			vo.setU_id(v.getU_id());
 			List<CartVO> list = service.selectCartList(vo);
-		
+			log.info(list);
 			// JSP 페이지로 리스트를 전달합니다.
 			model.addAttribute("list", list);
 			return "cart/cart";
@@ -83,37 +82,33 @@ public class CartController {
 		model.addAttribute("cno", cno);
 		return "cart/cart";
 	}
-
-//	@RequestMapping(value = "/cartList")
-//	public String selectCartList(Model model, CartVO vo) {
-//		List<CartVO> list = service.selectCartList(vo);
-//		model.addAttribute("list", list);
-//		return "member/mainhome";
-//	}
-//	/*
-//	 * @GetMapping("imgDown") public void imgDown(@RequestParam String imgName,
-//	 * HttpServletRequest request, HttpServletResponse response) throws IOException
-//	 * { // 파라메타값 받아오기 // 저장되어 있는 파일명 : filename -앞37자리 uuid String pathFilename =
-//	 * imgPath + imgName;
-//	 * 
-//	 * // 이미지를 다른이름으로 다운로드할 때 uuid제외한 파일명 수정 // 웹브라우저의 종류 확인 String agent =
-//	 * request.getHeader("User-Agent"); // ie 7 또는 edge boolean ieBrowser =
-//	 * (agent.indexOf("Trident") > -1) || (agent.indexOf("Edge") > -1); if
-//	 * (ieBrowser) { imgName = URLEncoder.encode(imgName,
-//	 * "utf-8").replace("\\", "%20");
-//	 * 
-//	 * } else {// edge, 파이어폭스, 크롬 imgName = new String(imgName.getBytes("utf-8"),
-//	 * "iso-8859-1");
-//	 * 
-//	 * } response.setContentType("image/jpg"); // 다운로드 되는 파일명 설정
-//	 * response.setHeader("Content-Disposition", "attachment;filename=" + imgName);
-//	 * FileInputStream in = new FileInputStream(pathFilename);// 파일 open // 출력할 곳
-//	 * BufferedOutputStream out = new
-//	 * BufferedOutputStream(response.getOutputStream()); int numRead; byte b[] = new
-//	 * byte[4096];// 4K만큼 while ((numRead = in.read(b, 0, b.length)) != -1) {
-//	 * out.write(b, 0, numRead); } // end while out.flush();// 버퍼에 남은것 출력
-//	 * in.close(); out.close(); }
-//	 */
-
+	/*
+	 * @PostMapping("/deleteCart") public String deleteCard(Model model, HttpSession
+	 * session, @RequestParam(value="cno",required=false) int cno, CartVO vo,UsersVO
+	 * v) { v=(UsersVO) session.getAttribute("vo"); vo.setU_id(v.getU_id());
+	 * vo.setCno(cno);
+	 * 
+	 * // 카드 삭제를 수행 int result = service.deleteCart(vo); if (result == 1) { // 삭제 성공
+	 * 시 메시지를 전달할 수 있습니다. model.addAttribute("success", "선택된 상품이 성공적으로 삭제되었습니다."); }
+	 * return "redirect:/cart"; }
+	 */
+	@RequestMapping("deleteCart")
+	public String deleteCard(Model model, HttpSession session, @RequestParam(value="cnolist",required=false) int[] cnolist,
+			CartVO vo,UsersVO v) {
+		v=(UsersVO) session.getAttribute("vo");
+		vo.setU_id(v.getU_id());
+	    vo.setCno(vo.getCno());
+	    
+	    // 카드 삭제를 수행
+	    int result = service.deleteCart(vo);
+	    if (result == 1) {
+	        // 삭제 성공 시 메시지를 전달할 수 있습니다.
+	        model.addAttribute("success", "장바구니에 담긴 상품이 성공적으로 삭제되었습니다.");
 	}
+	    return "redirect:/cart";
+	}
+}
+            
+   
+
 

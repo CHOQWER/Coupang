@@ -24,5 +24,8 @@ public class CartDAO {
 	public int selectMaxCno(CartVO vo) {
 		return mybatis.selectOne("CartDAO.selectMaxCno",vo); 
 		
+	}
+	public int deleteCart(CartVO vo) {
+		return mybatis.delete("CartDAO.deleteCart",vo);
 	}   
 }
