@@ -90,12 +90,15 @@ public class ProductTest {
 	}
 	
 	@Test
-	public void selectCompanytest() {
+	public void selectSearchlist() {
 		ProductVO vo=new ProductVO();
-		vo.setSca_no(2);
-		vo.setCompany("삼성전자");
-		int count=dao.selectRowCount(vo);
-		log.info(count);
+		Criteria cri=new Criteria();
+		cri.setSearchword("아이패드");
+		log.info("cri"+cri);
+		vo.setCa_no(3);
+		vo.setPname("아이패드");
+		List<ProductVO> list=dao.selectSearchlist(vo, cri);
+		log.info(list);
 		
 	}
 

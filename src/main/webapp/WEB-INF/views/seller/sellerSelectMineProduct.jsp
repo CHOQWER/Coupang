@@ -16,8 +16,8 @@
 </style>
 <script type="text/javascript">
 function openPop(){
-    var popup = window.open('/sellerUpdateProduct?pno=+${BL.pno}+&ca_no=${BL.ca_no}&sca_no=${BL.sca_no}&company=${BL.company}', '', 'width=700px,height=800px,scrollbars=yes');
-    /* '/sellerUpdateProduct' */
+    var popup = window.open('/sellerUpdateProduct?pno='+pno+'&sc_no='+sc_no ,'','width=700px,height=800px,scrollbars=yes');
+
 }
 </script>
 <main>
@@ -45,7 +45,7 @@ function openPop(){
 				<td>${BL.ca_no}</td> 
 				<td>${BL.sca_no}</td>
 				<td>${BL.company}</td>
-				<td><a href="#" target="_blank" onclick="openPop()">${BL.pname}</a></td>
+				<td><a href="#" target="_blank" onclick="openPop(${BL.pno})">${BL.pname}</a></td>
 				<td><fmt:formatNumber value="${BL.price}" type="currency" currencySymbol="\\"> </fmt:formatNumber>  </td>
 				<td><fmt:formatNumber value="${BL.dis_price}" type="currency" currencySymbol="\\"> </fmt:formatNumber>  </td>
 				<td>${BL.content}</td>
