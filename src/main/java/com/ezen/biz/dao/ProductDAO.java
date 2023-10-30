@@ -114,6 +114,20 @@ public class ProductDAO {
 		public int selectRowCount(ProductVO vo) {
 			return mybatis.selectOne("ProductDAO.selectRowCountCompany", vo);
 	}
+	
+	//메인 카테고리별 검색 리스트
+		public List<ProductVO> selectMainCateList(int ca_no, Criteria cri) {
+			Map<String, Integer> map = new HashMap<String, Integer>();
+			map.put("ca_no", ca_no);
+			map.put("pageNum", cri.getPageNum());
+			map.put("rowsPerPage", cri.getRowsPerPage());
+			return mybatis.selectList("ProductDAO.selectMainCateList", map);
+		}
+		
+	// 메인 카테고리 클릭시 나오는 제품 총 수량(폐이징에 필요)
+		public int selectRowCountCa(int ca_no) {
+			return mybatis.selectOne("ProductDAO.selectRowCountCa", ca_no);
+	}
 		
 	//메인 카테고리 선택 후 검색어로 조회
 		public List<ProductVO> selectSearchlist(ProductVO vo, Criteria cri){
@@ -124,6 +138,16 @@ public class ProductDAO {
 			map.put("rowsPerPage", cri.getRowsPerPage());
 			return mybatis.selectList("ProductDAO.selectSearchlist", map);
 		}
+		
+		
+	// 메인 카테고리 선택 후 검색어로 조회 제품 총 수량(폐이징에 필요)
+		public int selectRowCountword(int ca_no, Criteria cri) {
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("ca_no", ca_no);
+			map.put("searchword", cri.getSearchword());
+			return mybatis.selectOne("ProductDAO.selectRowCountword", map);
+		}
+		
 		
 
 
