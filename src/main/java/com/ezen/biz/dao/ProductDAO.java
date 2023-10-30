@@ -36,8 +36,8 @@ public class ProductDAO {
 	}
 
 	// 제품 삭제
-	public void sellerDeleteProduct(ProductVO vo) {
-		mybatis.delete("ProductDAO.deleteProduct", vo);
+	public void sellerDeleteProduct(int pno) {
+		mybatis.delete("ProductDAO.sellerDeleteProduct", pno);
 	}
 
 	// 전체 상품 목록 조회
@@ -90,7 +90,7 @@ public class ProductDAO {
 	
 
 	// 이미지 전체 조회(pno 받아서)
-	public ImagesVO selectImgPno(int pno) {
+	public ProductVO selectImgPno(int pno) {
 		return mybatis.selectOne("ProductDAO.selectImgPno", pno);
 	}
 	

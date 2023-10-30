@@ -130,32 +130,36 @@ public class SellerController {
 		
 		
 	// 판매자 상품등록 내역조회
-	@RequestMapping("sellerSelectMineProduct")
+	@GetMapping("sellerSelectMineProduct")
 	public String sellerSelectProduct(Model model,ProductVO vo, HttpSession session,UsersVO v) {
 		
 		v=(UsersVO) session.getAttribute("vo");
 		vo.setU_id(v.getU_id());
 		
+		System.out.println("vo.getPno()="+vo.getPno());
+		
+		
 		List<ProductVO> list=productService.sellerSelectMineProduct(vo);
 		/* System.out.println("sellerSelectMineProduct vo="+list); */
 		model.addAttribute("list",list);
-		return "seller/sellerSelectMineProduct";
+		return "seller/sellerSelectMineProduct"; 
+	}
+	@PostMapping("sellerSelectMineProduct")
+	public String sellerSelectProduct(Model model,ProductVO vo,@RequestParam int[] pno){
+		
+		for(int no:pno) {
+			vo.setPno(no);
+			imageService.sellerDeleteImages(no);
+			productService.sellerDeleteProduct(no);
+		}
+
+		return "redirect:sellerSelectMineProduct";
 	}
 	
 	//판매자 업데이트 팝업창 이동
 			@GetMapping("sellerUpdateProduct")
 			public String sellerUpdateProduct(UsersVO v,HttpSession session,ProductVO vo,
 					Model model/* ,@RequestParam int pno */) {
-				
-//				v=(UsersVO) session.getAttribute("vo");
-//				vo.setU_id(v.getU_id());
-				
-//				System.out.println("vo.getPno()"+vo.getPno());
-//				System.out.println("@RequestParam int pno"+pno);
-				
-//				model.addAttribute("pno",pno);
-				
-				System.out.println();
 				
 				vo=productService.selectProductPno(vo.getPno());
 				model.addAttribute("vo",vo);
@@ -182,13 +186,13 @@ public class SellerController {
 	
 
 
-	@RequestMapping("sellerMainPage")
+	@RequestMapping("sellerSelectBuyList")
 	public String sellerMainPage(Model model,BuyVO vo) {
 		
 		vo.setU_id("whdgus1234");
 		List<BuyVO> list=buyService.sellerSelectBuyList(vo);
 		model.addAttribute("list",list);
-		return "seller/sellerMainPage";
+		return "seller/sellerSelectBuyList";
 	}
 	@RequestMapping("adminSelectBuyList")
 	public String adminSelectBuyList(Model model,BuyVO vo) {
