@@ -15,5 +15,10 @@ public class ImagesDAO {
 	 public void insertImages(ImagesVO vo) {
 		   mybatis.insert("ImagesDAO.insertImages", vo);
 }
+
+	public void sellerDeleteImages(int pno) {
+		mybatis.delete("ImagesDAO.sellerDeleteImages", pno);
+		
+	}
 	 
 }

@@ -19,7 +19,7 @@ public interface ProductService {
 	void sellerUpdateProduct(ProductVO vo);
 
 	// 제품 삭제
-	void sellerDeleteProduct(ProductVO vo);
+	void sellerDeleteProduct(int pno);
 	
 	// 전체 상품조회
 	List<ProductVO> selectProductList();
@@ -46,13 +46,22 @@ public interface ProductService {
 	//이미지까지 제품 장바구니로 넘기는거
 	ProductVO selectProductcartPno(int pno);
 	
-	ImagesVO selectImgPno(int pno);
+	ProductVO selectImgPno(int pno);
 	
 	//회사별 검색
 	List<ProductVO> selectCompany(int sca_no);
 	
 	List<ProductVO> selectCompanylist(ProductVO vo,Criteria cri);
+	
+	//메인 카테고리로 검색
+	List<ProductVO> selectMainCateList(int ca_no, Criteria cri);
+	
+	int selectRowCountCa(int ca_no);
+	
 	//검색어로 검색
 	List<ProductVO> selectSearchlist(ProductVO vo, Criteria cri);
+	
+	
+	int selectRowCountword(int ca_no, Criteria cri);
 
 }
