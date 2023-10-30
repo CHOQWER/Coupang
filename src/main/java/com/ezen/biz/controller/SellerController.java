@@ -161,16 +161,6 @@ public class SellerController {
 			public String sellerUpdateProduct(UsersVO v,HttpSession session,ProductVO vo,
 					Model model/* ,@RequestParam int pno */) {
 				
-//				v=(UsersVO) session.getAttribute("vo");
-//				vo.setU_id(v.getU_id());
-				
-//				System.out.println("vo.getPno()"+vo.getPno());
-//				System.out.println("@RequestParam int pno"+pno);
-				
-//				model.addAttribute("pno",pno);
-				
-				System.out.println();
-				
 				vo=productService.selectProductPno(vo.getPno());
 				model.addAttribute("vo",vo);
 				
