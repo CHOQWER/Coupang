@@ -6,6 +6,8 @@ public interface ImagesService {
 
 	void insertImages(ImagesVO ivo);
 
+	void sellerDeleteImages(int pno);
+
 
 
 

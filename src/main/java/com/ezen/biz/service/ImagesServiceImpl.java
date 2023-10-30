@@ -15,4 +15,10 @@ public class ImagesServiceImpl implements ImagesService {
 		dao.insertImages(ivo);
 	}
 
+	@Override
+	public void sellerDeleteImages(int pno) {
+		dao.sellerDeleteImages(pno);
+		
+	}
+
 }

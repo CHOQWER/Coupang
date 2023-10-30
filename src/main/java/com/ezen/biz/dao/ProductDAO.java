@@ -36,8 +36,8 @@ public class ProductDAO {
 	}
 
 	// 제품 삭제
-	public void sellerDeleteProduct(ProductVO vo) {
-		mybatis.delete("ProductDAO.deleteProduct", vo);
+	public void sellerDeleteProduct(int pno) {
+		mybatis.delete("ProductDAO.sellerDeleteProduct", pno);
 	}
 
 	// 전체 상품 목록 조회

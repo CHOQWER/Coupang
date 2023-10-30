@@ -32,8 +32,8 @@ public class ProductServiceImpl implements ProductService{
 	}
 	
 	@Override
-	public void sellerDeleteProduct(ProductVO vo) {
-		dao.sellerDeleteProduct(vo);
+	public void sellerDeleteProduct(int pno) {
+		dao.sellerDeleteProduct(pno);
 	}
 
 	@Override
