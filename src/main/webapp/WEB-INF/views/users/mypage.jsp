@@ -48,16 +48,12 @@
 
 				<form action="withdrawal" method="post">
 					<input type="hidden" name="u_id" value="${sessionScope.vo.u_id }">
-					<a href="withdrawal"><button>회원탈퇴</button></a>
+					<a href="withdrawal"><button>회원탈퇴</button></a>					
 				</form>
 			</div>
 		</div>
 	</div>	
 </div>
 <!-- </div>  -->
-
-
-
-
 
 <%@ include file="/WEB-INF/views/include/footer.jsp"%>

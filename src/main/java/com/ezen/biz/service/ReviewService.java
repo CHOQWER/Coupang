@@ -19,5 +19,7 @@ public interface ReviewService {
 	Map<String, Number> selectAvgCountScore(int pno);
 	
 	List<ReviewVO> selectReviewScore(int pno,Criteria cri);
+
+	void deleteReview(int rno);
 	
 }

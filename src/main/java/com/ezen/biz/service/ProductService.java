@@ -52,5 +52,7 @@ public interface ProductService {
 	List<ProductVO> selectCompany(int sca_no);
 	
 	List<ProductVO> selectCompanylist(ProductVO vo,Criteria cri);
+	//검색어로 검색
+	List<ProductVO> selectSearchlist(ProductVO vo, Criteria cri);
 
 }

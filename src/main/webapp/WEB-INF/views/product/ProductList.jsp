@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
 
 
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
@@ -20,6 +20,7 @@
 	type="text/javascript"></script>
 <script src="/resources/star-rating/themes/krajee-svg/theme.min.js"
 	type="text/javascript"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous"> 
 
 
 
@@ -33,9 +34,9 @@
 
 				<ul>
 					<c:forEach items="${clist}" var="vo">
-						<li><c:set var="encodedCompany"
-								value="${fn:escapeXml(vo.company)}" /> <a
-							href="companyList?company=${encodedCompany}&pageNum=1&sca_no=${vo.sca_no}&cate_name=${cate_name}&subcate_name=${subcate_name}">${vo.company}</a>
+						<li>
+						
+						<a href="companyList?company=${encodedCompany}&pageNum=1&sca_no=${vo.sca_no}&cate_name=${cate_name}&subcate_name=${subcate_name}">${vo.company}</a>
 						</li>
 					</c:forEach>
 				</ul>
@@ -55,7 +56,7 @@
 								<img class="prodimg" src="imgDown?imgName=${vo.main_img1}"
 									alt="메인이미지">
 							</div>
-							<div>
+							<div >
 								<span><a href="ProductView?pno=${vo.pno}&cate_name=${cate.get('name')}&subcate_name=${sub.get('sname')}">${vo.pname}</a></span><br>
 								<span>와우할인가</span> <span><fmt:formatNumber
 										value="${vo.price}" pattern="#,###" /></span><br> <span><fmt:formatNumber

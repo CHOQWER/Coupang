@@ -45,7 +45,10 @@ public class ReviewDAO{
 		return mybatis.selectOne("ReviewDAO.selectRowCount", vo);
 	}
 	
+	// 리뷰삭제
+	public void deleteReview(int rno) {
+		mybatis.delete("ReviewDAO.deleteReview", rno);
+	}
 	
-	
-	
+
 }

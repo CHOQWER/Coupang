@@ -101,6 +101,11 @@ public class ProductServiceImpl implements ProductService{
 		return dao.selectRowCount(vo);
 	}
 
+	@Override
+	public List<ProductVO> selectSearchlist(ProductVO vo, Criteria cri) {
+		return dao.selectSearchlist(vo, cri);
+	}
+
 
 	
 
