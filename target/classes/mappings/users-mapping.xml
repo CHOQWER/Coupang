@@ -36,7 +36,7 @@
   	
   	<!-- 회원 정보 수정 -->  	
   	<update id="updateUser" >
-  		update users set u_name=#{u_name}, u_mobile=#{u_mobile},u_email=#{u_email}, u_post_no=#{u_post_no},
+  		update users set u_name=#{u_name},u_pwd=#{u_pwd}, u_mobile=#{u_mobile},u_email=#{u_email}, u_post_no=#{u_post_no},
   		u_addr1=#{u_addr1},u_addr2=#{u_addr2} where u_id=#{u_id}
   	</update>  	
   	

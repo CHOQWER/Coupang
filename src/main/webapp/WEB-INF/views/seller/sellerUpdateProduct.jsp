@@ -5,27 +5,6 @@
 
 <script type="text/javascript">
 
-/* $(function() {
-
-    $("#send").click( function() {
-
-         $('#send_form').submit();
-         setTimeout(function() {   
-             window.close();
-
-          }, 100);
-
-      });
-
-}); */
-
-/*  function  popupClose(){
-    $('#send_form').submit();
-    setTimeout(function() {   
-        window.close();
-
-     }, 100);
-}  */
 </script>
 <main>
 	<form action="sellerUpdateProduct?pno=${vo.pno}&u_id=${vo.u_id}" method="post" id="send_form">

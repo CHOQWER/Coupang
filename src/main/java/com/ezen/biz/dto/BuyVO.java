@@ -13,4 +13,5 @@ public class BuyVO {
 	private int price,dis_price,b_cnt,post_no;
 	private String addr1,addr2;
 	private Date b_regdate;
+	private String sta;
 }
