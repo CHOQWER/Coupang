@@ -192,7 +192,7 @@ public class ProductController {
    @GetMapping("ProductView")
    public String ProductView(ProductVO pvo,ImagesVO ivo, Model model, @RequestParam int pno,@RequestParam String cate_name, @RequestParam String subcate_name) {
       pvo=service.selectProductPno(pno);
-//      ivo=service.selectImgPno(pno);
+      ivo=service.selectImgPno(pno);
       Map<String, Number> map = rservice.selectAvgCountScore(pno);
       model.addAttribute("pvo",pvo);
       model.addAttribute("ivo",ivo);
