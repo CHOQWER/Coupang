@@ -36,8 +36,8 @@ public class ProductDAO {
 	}
 
 	// 제품 삭제
-	public void sellerDeleteProduct(ProductVO vo) {
-		mybatis.delete("ProductDAO.deleteProduct", vo);
+	public void sellerDeleteProduct(int pno) {
+		mybatis.delete("ProductDAO.sellerDeleteProduct", pno);
 	}
 
 	// 전체 상품 목록 조회
@@ -90,7 +90,7 @@ public class ProductDAO {
 	
 
 	// 이미지 전체 조회(pno 받아서)
-	public ImagesVO selectImgPno(int pno) {
+	public ProductVO selectImgPno(int pno) {
 		return mybatis.selectOne("ProductDAO.selectImgPno", pno);
 	}
 	
@@ -114,6 +114,42 @@ public class ProductDAO {
 		public int selectRowCount(ProductVO vo) {
 			return mybatis.selectOne("ProductDAO.selectRowCountCompany", vo);
 	}
+	
+	//메인 카테고리별 검색 리스트
+		public List<ProductVO> selectMainCateList(int ca_no, Criteria cri) {
+			Map<String, Integer> map = new HashMap<String, Integer>();
+			map.put("ca_no", ca_no);
+			map.put("pageNum", cri.getPageNum());
+			map.put("rowsPerPage", cri.getRowsPerPage());
+			return mybatis.selectList("ProductDAO.selectMainCateList", map);
+		}
+		
+	// 메인 카테고리 클릭시 나오는 제품 총 수량(폐이징에 필요)
+		public int selectRowCountCa(int ca_no) {
+			return mybatis.selectOne("ProductDAO.selectRowCountCa", ca_no);
+	}
+		
+	//메인 카테고리 선택 후 검색어로 조회
+		public List<ProductVO> selectSearchlist(ProductVO vo, Criteria cri){
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("ca_no", vo.getCa_no());
+			map.put("searchword", cri.getSearchword());
+			map.put("pageNum", cri.getPageNum());
+			map.put("rowsPerPage", cri.getRowsPerPage());
+			return mybatis.selectList("ProductDAO.selectSearchlist", map);
+		}
+		
+		
+	// 메인 카테고리 선택 후 검색어로 조회 제품 총 수량(폐이징에 필요)
+		public int selectRowCountword(int ca_no, Criteria cri) {
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("ca_no", ca_no);
+			map.put("searchword", cri.getSearchword());
+			return mybatis.selectOne("ProductDAO.selectRowCountword", map);
+		}
+		
+		
+
 
 
 

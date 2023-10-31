@@ -40,6 +40,10 @@ public class ReviewServiceImpl implements ReviewService {
 	public int selectRowCount(ReviewVO vo) {
 		return dao.selectRowCount(vo);
 	}
-	
-	
+
+	@Override
+	public void deleteReview(int rno) {
+		dao.deleteReview(rno);
+	}
+
 }

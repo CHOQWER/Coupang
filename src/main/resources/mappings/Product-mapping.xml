@@ -52,6 +52,7 @@
 				ON product.pno = images.pno
 					WHERE product.pno = #{pno}
   	</select>
+  	
   	<!-- 카테고리별 제품 리스트 -->
   	<select id="ProductListCate" parameterType="criteria"
 		resultType="product">
@@ -116,6 +117,52 @@
 		product where sca_no=#{sca_no} and disp='y' and company=#{company}
 	</select>
   	
+    
+    
+    <!-- 메인 카테고리 전체 행의 갯수 (폐이징에 필요) -->
+	<select id="selectRowCountCa" resultType="java.lang.Integer">
+		select count(*) from
+		product where ca_no=#{ca_no} and disp='y' 
+	</select>
+	
+    
+    
+    <!--메인 카테고리로 상품 조회 -->
+    	<select id="selectMainCateList" parameterType="criteria" resultType="product">
+		select * from (
+		select rownum rn, A.* from
+		(select
+			p.pno,main_img1,sca_no,ca_no,pname,price,dis_price from product p, images i
+				where 1=1
+					and p.pno=i.pno and ca_no=#{ca_no} and disp='y') A
+		<![CDATA[
+  		 	where rownum<=#{pageNum}*#{rowsPerPage}
+  		 	) where rn>=#{pageNum}*#{rowsPerPage}-#{rowsPerPage}+1
+  		]]>
+  	</select>
+  	
+  	
+    
+    
+    <!-- 메인 카테고리 선택 후 검색어로 조회 -->
+  	<select id="selectSearchlist" parameterType="criteria" resultType="product">
+		select * from (
+		select rownum rn, A.* from
+		(select
+			p.pno,main_img1,sca_no,ca_no,pname,price,dis_price from product p, images i
+				where 1=1
+					and p.pno=i.pno and pname like <![CDATA[ '%'||#{searchword}||'%']]> and disp='y' and ca_no=#{ca_no}) A
+		<![CDATA[
+  		 	where rownum<=#{pageNum}*#{rowsPerPage}
+  		 	) where rn>=#{pageNum}*#{rowsPerPage}-#{rowsPerPage}+1
+  		]]>
+  	</select>
+  	
+  	<!-- 메인 카테고리 선택 후 검색어로 조회 행의 갯수 (폐이징에 필요) -->
+	<select id="selectRowCountword" resultType="java.lang.Integer">
+		select count(*) from
+		product where ca_no=#{ca_no} and disp='y' and pname like <![CDATA[ '%'||#{searchword}||'%']]>
+	</select>
 	
   	
   	
