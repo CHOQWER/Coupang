@@ -90,6 +90,14 @@ public class ProductTest {
 	}
 	
 	@Test
+	public void selectRowCount() {
+		Criteria cri=new Criteria();
+		cri.setSearchword("875");
+		int result=dao.selectRowCountword(1,cri);
+		log.info(result);
+	}
+	
+	@Test
 	public void selectSearchlist() {
 		ProductVO vo=new ProductVO();
 		Criteria cri=new Criteria();

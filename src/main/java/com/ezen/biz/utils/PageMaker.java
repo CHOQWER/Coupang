@@ -121,17 +121,11 @@ public class PageMaker {
 		this.realEndPage = realEndPage;
 	}
 	
+ 
     public boolean nextPageScore() {
-    	boolean next=false;
-    	int totalPage = (int)Math.ceil(totalCount/(double)criteria.getRowsPerPage());//5
-        
-        if(totalPage<criteria.getPageNum()+1){
-            next = false;//다음페이지 보이지않도록
-        }else{
-            next = true;
-        }
-        return next;
-    }
+    	    return (endPage * criteria.getRowsPerPage() < totalCount);
+    	}
+    
 	@Override
 	public String toString() {
 		return "PageMaker [criteria=" + criteria + ", totalCount=" + totalCount + ", beginPage=" + beginPage

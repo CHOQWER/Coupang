@@ -70,27 +70,84 @@ public class ProductController {
       }
       HttpSession cateSession = request.getSession();
       cateSession.setAttribute("catelist", catelist);
+      System.out.println("catelist"+catelist);
       return "main";
    }
    
    @RequestMapping("searchWord")
-   public String selectSearchlist(ProductVO vo, @RequestParam int ca_no, @RequestParam String searchWord, 
+   public String selectSearchlist(ProductVO vo,  @RequestParam int ca_no, @RequestParam String cate_name, @RequestParam String searchWord, 
 		   @RequestParam(required = false, defaultValue = "1") int pageNum, Model model) {
-
+	  
 	   // 폐이징 관련 작업
-	   System.out.println("searchWord="+searchWord);
-	
 	   Criteria cri = new Criteria();
        cri.setPageNum(pageNum);
        cri.setSearchword(searchWord);
        cri.setRowsPerPage(6); // 6개씩 추출
 	   vo.setCa_no(ca_no);
 	   
+	   int tot = service.selectRowCountword(ca_no,cri);
+       PageMaker pMaker = new PageMaker(cri, tot);
+       boolean next = pMaker.nextPageScore();
+    
+       
+      model.addAttribute("searchWord",searchWord);
+       int cnt = service.selectRowCountword(ca_no,cri);
+       PageMaker maker = new PageMaker(cri, cnt);
+       model.addAttribute("pmaker", maker);
+       
+    
+	   
 	   List<ProductVO> list=service.selectSearchlist(vo,cri);
        model.addAttribute("list",list);
        
-       System.out.println("list"+list);
-	   return "product/ProductList";
+       Map<String, Number> map = null;
+       List<Map<String, Number>> starlist= new ArrayList<Map<String,Number>>();
+       for (ProductVO product : list) {
+           int pno = product.getPno();
+           map=rservice.selectAvgCountScore(pno);
+           starlist.add(map);
+       }
+       model.addAttribute("starlist", starlist);
+       model.addAttribute("cate_name",cate_name);
+       model.addAttribute("searchWord", searchWord);
+       
+       
+      
+	   return "product/productListSub";
+   }
+   
+   @RequestMapping("ProductListMainCate")
+   public String ProductListMainCate(ProductVO vo, @RequestParam String cate_name, 
+		   	@RequestParam int ca_no, @RequestParam(required = false, defaultValue = "1") int pageNum, Model model) {
+	   // 폐이징 관련 작업
+	   Criteria cri = new Criteria();
+       cri.setPageNum(pageNum);
+       cri.setRowsPerPage(6); // 6개씩 추출
+       
+       int tot = service.selectRowCountCa(ca_no);
+       PageMaker pMaker = new PageMaker(cri, tot);
+       boolean next = pMaker.nextPageScore();
+       
+       int cnt = service.selectRowCountCa(ca_no);
+       PageMaker maker = new PageMaker(cri, cnt);
+       model.addAttribute("pmaker", maker);
+       
+       List<ProductVO> list = service.selectMainCateList(ca_no, cri);
+       model.addAttribute("list",list);
+
+       
+       //평점정보
+       Map<String, Number> map = null;
+       List<Map<String, Number>> starlist= new ArrayList<Map<String,Number>>();
+       for (ProductVO product : list) {
+           int pno = product.getPno();
+           map=rservice.selectAvgCountScore(pno);
+           starlist.add(map);
+       }
+       model.addAttribute("starlist", starlist);
+       model.addAttribute("cate_name",cate_name);
+ 
+       return "product/productListSub";
    }
    
    @RequestMapping("ProductList")

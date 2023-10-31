@@ -106,6 +106,21 @@ public class ProductServiceImpl implements ProductService{
 		return dao.selectSearchlist(vo, cri);
 	}
 
+	@Override
+	public List<ProductVO> selectMainCateList(int ca_no, Criteria cri) {
+		return dao.selectMainCateList(ca_no, cri);
+	}
+
+	@Override
+	public int selectRowCountCa(int ca_no) {
+		return dao.selectRowCountCa(ca_no);
+	}
+
+	@Override
+	public int selectRowCountword(int ca_no, Criteria cri) {
+		return dao.selectRowCountword(ca_no, cri);
+	}
+
 
 	
 

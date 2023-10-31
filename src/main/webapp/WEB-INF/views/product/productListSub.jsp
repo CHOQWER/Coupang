@@ -16,12 +16,15 @@
 	type="text/javascript"></script>
 <script src="/resources/star-rating/themes/krajee-svg/theme.min.js"
 	type="text/javascript"></script>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous"> 
-
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+	crossorigin="anonymous">
 
 
 <main>
-	<div class="cate-nav"> 쿠팡홈 > ${cate_name} > ${subcate_name} </div>
+	<div class="cate-nav">쿠팡홈 > ${cate_name}</div>
 
 	<div class="contents">
 		<div class="aside">
@@ -29,31 +32,30 @@
 				<h2>브랜드</h2>
 
 				<ul>
-					<c:forEach items="${clist}" var="vo">
-						<li>
-						
-						<a href="companyList?company=${encodedCompany}&pageNum=1&sca_no=${vo.sca_no}&cate_name=${cate_name}&subcate_name=${subcate_name}">${vo.company}</a>
-						</li>
+					<c:forEach items="" var="vo">
+						<li><a href=""></a></li>
 					</c:forEach>
 				</ul>
 
 			</div>
 		</div>
 		<div class="article">
-			<h2>${subcate_name}</h2>
+			<h2>${cate_name}</h2>
 			<hr>
 			<div class="prod-grid">
 				<c:forEach items="${list}" var="vo" varStatus="idx">
 					<div class="prodlink">
 
 
-						<a href="ProductView?pno=${vo.pno}&cate_name=${cate_name}&subcate_name=${subcate_name}">
+						<a
+							href="ProductView?pno=${vo.pno}&cate_name=${cate_name}&subcate_name=${subcate_name}">
 							<div>
 								<img class="prodimg" src="imgDown?imgName=${vo.main_img1}"
 									alt="메인이미지">
 							</div>
-							<div >
-								<span><a href="ProductView?pno=${vo.pno}&cate_name=${cate.get('name')}&subcate_name=${sub.get('sname')}">${vo.pname}</a></span><br>
+							<div>
+								<span><a
+									href="ProductView?pno=${vo.pno}&cate_name=${cate.get('name')}&subcate_name=${sub.get('sname')}">${vo.pname}</a></span><br>
 								<span>와우할인가</span> <span><fmt:formatNumber
 										value="${vo.price}" pattern="#,###" /></span><br> <span><fmt:formatNumber
 										value="${vo.dis_price}" pattern="#,###" /></span><br> <input
@@ -68,12 +70,13 @@
 			</div>
 			<hr>
 			<!-- 페이지 -->
-			<nav aria-label="..." style="justify-content: center;margin-left: 45%; margin-top:3%">
+			<nav aria-label="..."
+				style="justify-content: center; margin-left: 45%; margin-top: 3%">
 				<ul class="pagination">
 
 					<c:if test="${pmaker.prev}">
 						<li class="page-item disabled"><a class="page-link"
-							href="ProductList?sca_no=${list.get(0).getSca_no()}&pageNum=${pmaker.beginPage-1}&cate_name=${cate.get('name')}"
+							href="searchWord?ca_no=${list.get(0).getCa_no()}&pageNum=${pmaker.beginPage-1}&cate_name=${cate_name}&searchWord=${searchWord}"
 							aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
 						</a></li>
 					</c:if>
@@ -83,7 +86,7 @@
 						<c:choose>
 							<c:when test="${i != pmaker.criteria.pageNum}">
 								<li class="page-item"><a class="page-link"
-									href="ProductList?sca_no=${list.get(0).getSca_no()}&pageNum=${i}&cate_name=${cate.get('name')}&subcate_name=${sub.get('sname')}">${i}</a>
+									href="searchWord?ca_no=${list.get(0).getCa_no()}&pageNum=${i}&cate_name=${cate_name}&searchWord=${searchWord}">${i}</a>
 								</li>
 
 							</c:when>
@@ -96,44 +99,8 @@
 
 					<c:if test="${pmaker.next}">
 						<li class="page-item"><a class="page-link"
-							href="ProductList?sca_no=${list.get(0).getSca_no()}&pageNum=${pmaker.endPage + 1}"
-							aria-label="Next"> <span aria-hidden="true">&raquo;</span>
-						</a></li>
-					</c:if>
-				</ul>
-			</nav>
-			
-			<!--서치워드 페이지 -->
-			<nav aria-label="..." style="justify-content: center;margin-left: 45%; margin-top:3%">
-				<ul class="pagination">
-
-					<c:if test="${pmaker.prev}">
-						<li class="page-item disabled"><a class="page-link"
-							href="ProductList?sca_no=${list.get(0).getSca_no()}&pageNum=${pmaker.beginPage-1}&cate_name=${cate.get('name')}"
-							aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-						</a></li>
-					</c:if>
-
-					<c:forEach begin="${pmaker.beginPage}" end="${pmaker.endPage}"
-						var="i">
-						<c:choose>
-							<c:when test="${i != pmaker.criteria.pageNum}">
-								<li class="page-item"><a class="page-link"
-									href="ProductList?sca_no=${list.get(0).getSca_no()}&pageNum=${i}&cate_name=${cate.get('name')}&subcate_name=${sub.get('sname')}">${i}</a>
-								</li>
-
-							</c:when>
-							<c:otherwise>
-								<li class="page-item"><a class="page-link"
-									style="font-weight: bold; color: black">${i}</a></li>
-							</c:otherwise>
-						</c:choose>
-					</c:forEach>
-
-					<c:if test="${pmaker.next}">
-						<li class="page-item"><a class="page-link"
-							href="ProductList?sca_no=${list.get(0).getSca_no()}&pageNum=${pmaker.endPage + 1}"
-							aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+							href="${pmaker.makeQuery(pmaker.endPage + 1)}&searchWord=${searchWord}" aria-label="Next">
+								<span aria-hidden="true">&raquo;</span>
 						</a></li>
 					</c:if>
 				</ul>
