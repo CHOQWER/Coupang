@@ -48,7 +48,11 @@
       <form action="insertcart" method="post" id="frmDetail" name="frmDetail">      
          <input type="hidden" name="pno" value="${pvo.pno}">
          <input type="hidden" name="ino" value="${ivo.ino }">
-      <!--좌측 메인/서브 이미지-->
+      <!--좌측 메인/서브 이미지-->w 
+      
+      
+      
+      
       <div class="content-main">           
 			<!-- 이미지가 null이면 표시 안되게 -->
 			<!-- <div id="content-wrapper">	 -->		
