@@ -145,6 +145,10 @@ public class ProductDAO {
 			map.put("rowsPerPage", cri.getRowsPerPage());
 			return mybatis.selectList("ProductDAO.selectSearchlist", map);
 		}
+
+		public ProductVO selectProductbuyPno(int pno) {
+			return mybatis.selectOne("ProductDAO.selectProductbuyPno", pno);
+		}
 		
 		
 	// 메인 카테고리 선택 후 검색어로 조회 제품 총 수량(폐이징에 필요)

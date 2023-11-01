@@ -80,7 +80,7 @@ public class UsersTest {
 		vo.setU_email("um@gmail.com");
 		vo.setU_post_no(12345);
 		vo.setU_addr1("하길로70");			
-		dao.updateMember(vo);
+		/* dao.updateMember(vo); */
 		System.out.println(vo);
 	}
 }

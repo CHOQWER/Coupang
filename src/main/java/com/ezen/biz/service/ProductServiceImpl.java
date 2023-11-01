@@ -74,6 +74,9 @@ public class ProductServiceImpl implements ProductService{
 	public ProductVO selectProductcartPno(int pno) {
 		return dao.selectProductcartPno(pno);
 	}
+	public ProductVO selectProductbuyPno(int pno) {
+		return dao.selectProductbuyPno(pno);
+	}
 	@Override
 	public ImagesVO selectImgPno(int pno) {
 		return dao.selectImgPno(pno);

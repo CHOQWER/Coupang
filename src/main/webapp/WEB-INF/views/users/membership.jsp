@@ -17,7 +17,7 @@
 			<li id="side-menu-list"><a href="mypage">개인정보확인/수정</a></li>
 			<li id="side-menu-list"><a href="#">결제수단 관리</a></li>
 			<li id="side-menu-list"><a href="#">주문목록/배송조회</a></li>
-			<li id="side-menu-list"><a href="#">와우 멤버십</a></li>
+			<li id="side-menu-list"><a href="membership">와우 멤버십</a></li>
 			<li id="side-menu-list"><a href="#">리뷰관리</a></li>
 			<li id="side-menu-list"><a href="delivery?u_id=${sessionScope.vo.u_id}">배송지 관리</a></li>
 		</ul>

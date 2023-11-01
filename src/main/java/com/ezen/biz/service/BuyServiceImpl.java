@@ -17,10 +17,6 @@ public class BuyServiceImpl implements BuyService {
 	@Autowired
 	private DeliveryDAO ddao;
 
-	@Override
-	public void insertBuy(BuyVO vo) {
-		 dao.insertBuy(vo);
-	}
 
 	//환불하기- 판매자
 	//상품구매후 취소
@@ -39,6 +35,11 @@ public class BuyServiceImpl implements BuyService {
 	@Override
 	public List<BuyVO> sellerSelectBuyList(BuyVO vo) {
 		return dao.sellerSelectBuyList(vo);
+	}
+	//구매사이트로 이동 
+	public int insertBuy(BuyVO vo) {	
+			
+		return dao.insertBuy(vo);
 	}
 	//구매하기 후->판매자 판매 확인 o/x  
 	@Override
@@ -75,4 +76,11 @@ public class BuyServiceImpl implements BuyService {
 		return ddao.deleteDeli(dno);
 	}
 
+	@Override
+	public List<BuyVO> selectBuyList(BuyVO vo) {
+		
+		return dao.selectBuyList(vo);
+	}
+
+	
 }
