@@ -24,7 +24,7 @@
 	<div id="mypage-section">
 		<div class="top-mypage">
 			<div class="mypage">
-				<form action="membership" method="post">
+				<form action="membership" method="post"  id="wowsecession" name="wowsecession">
 					<c:if test="${sessionScope.vo.grade==0 }">
 						<p>등 급 : 관리자</p>						
 					</c:if>					
@@ -33,16 +33,17 @@
 					</c:if>
 					<c:if test="${sessionScope.vo.grade==2 }">
 						<p>등 급 : 일반회원</p>
-						<button type="submit">와우회원등록</button>	
+						<button type="submit">와우회원등록</button>
+						
 						<input type="hidden" name="u_id" value="${sessionScope.vo.u_id }">											
 					</c:if>
 					<c:if test="${sessionScope.vo.grade==3 }">
-						<p>등 급 : 와우회원</p>
-						<button type="submit">와우회원탈퇴</button>
-					</c:if>										
-					
+						<p>등 급 : 와우회원</p>					
+						<button onclick="wowsecession()">와우회원탈퇴</button>	
+						<input type="hidden" name="u_id" value="${sessionScope.vo.u_id }">	
+					</c:if>
 				</form>
-				
+					
 
 				<%-- sadfasdfsadfasdfasdfasdfaasdf<form action="withdrawal" method="post"> 	
 				<%-- <form action="withdrawal" method="post">
@@ -57,6 +58,13 @@
 
 
 
-
-
 <%@ include file="/WEB-INF/views/include/footer.jsp"%>
+
+<script>
+	function wowsecession() {	
+			   let secess=$("#wowsecession");
+			   secess.attr("action","wowsecession");   
+			   secess.submit();
+			}
+	
+</script>

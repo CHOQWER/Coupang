@@ -100,7 +100,7 @@ public class UsersController {
 		return result;
 	}
 	
-	
+	//회원정보 수정 페이지들어가면 아이디, 비밀번호 재확인용
 	@RequestMapping("/usercheck")
 	public String userCheck(Model model, UsersVO vo, HttpServletRequest request) {
 			HttpSession session=request.getSession();				
@@ -162,14 +162,34 @@ public class UsersController {
 	public String memberShip() {
 		return "users/membership";
 	}
-	
+
+	//와우 멤버십 가입
 	@PostMapping("membership")
 	public String memberShip(UsersVO vo, HttpSession session) {
-		 service.updateMember(vo);		 
+		 service.wowupdate(vo);		 
 		 UsersVO updatedUser = service.selectMember(vo.getU_id());	  
 		 session.setAttribute("vo", updatedUser);	  
 		return "redirect:membership";
 	}
 	
+	//와우 멤버십 탈퇴
+	@PostMapping("wowsecession")
+	public String wowsecession(UsersVO vo, HttpSession session) {
+		 service.wowsecess(vo);
+		 UsersVO updatedUser = service.selectMember(vo.getU_id());	  
+		 session.setAttribute("vo", updatedUser);
+		 return "redirect:membership";
+		 		
+	}
+	
+	// 결제하기
+	@GetMapping("apibtn")
+	public String apibtn(UsersVO vo, HttpSession session) {
+		/*
+		 * UsersVO updatedUser = service.selectMember(vo.getU_id());
+		 * session.setAttribute("vo", updatedUser);
+		 */
+		return "payment/test";
+	}	
 	
 }

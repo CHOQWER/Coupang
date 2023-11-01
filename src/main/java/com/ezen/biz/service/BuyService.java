@@ -6,6 +6,11 @@ import com.ezen.biz.dto.BuyVO;
 import com.ezen.biz.dto.DeliveryVO;
 
 public interface BuyService {
+	void sellerStaY(BuyVO vo);
+	
+	void sellerStaN(BuyVO vo);
+	
+	void insertBuy(BuyVO vo);
 
 	void refundProduct(BuyVO vo);
 
@@ -19,5 +24,7 @@ public interface BuyService {
 	int insertDeli(DeliveryVO vo);
 	
 	int deleteDeli(int dno);
+
+	List<BuyVO> sellerBeforeDelivery(BuyVO vo);
 
 }
