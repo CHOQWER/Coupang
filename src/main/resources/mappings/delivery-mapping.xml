@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+ <mapper namespace="DeliveryDao" >
+ 	
+ 	
+ 	<!--u_id로 배송지 조회  -->
+ 	<select id="selectDeli" resultType="com.ezen.biz.dto.DeliveryVO">
+		select * from delivery where u_id=#{u_id}
+	</select>
+	
+	<!--배송지 추가 -->
+	<insert id="insertDeli" parameterType="com.ezen.biz.dto.DeliveryVO">
+		INSERT INTO delivery (dno, u_id, u_name,u_mobile,post_no,addr1,addr2)
+		VALUES (SEQ_DELIVERY.nextval,#{u_id},#{u_name},#{u_mobile},#{post_no},#{addr1},#{addr2})
+	</insert>
+	
+	<!-- 배송지 삭제 -->
+	<delete id="deleteDeli">
+		delete from delivery where dno=#{dno}
+	</delete>
+	
+ 
+ 
+ </mapper>

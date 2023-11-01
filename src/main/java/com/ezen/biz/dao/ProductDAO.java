@@ -1,5 +1,6 @@
 package com.ezen.biz.dao;
 
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -90,7 +91,7 @@ public class ProductDAO {
 	
 
 	// 이미지 전체 조회(pno 받아서)
-	public ProductVO selectImgPno(int pno) {
+	public ImagesVO selectImgPno(int pno) {
 		return mybatis.selectOne("ProductDAO.selectImgPno", pno);
 	}
 	
@@ -147,6 +148,11 @@ public class ProductDAO {
 			map.put("searchword", cri.getSearchword());
 			return mybatis.selectOne("ProductDAO.selectRowCountword", map);
 		}
+		
+	// 랜덤상품 10개
+		public List<ProductVO> randomProduct() {
+			return mybatis.selectList("ProductDAO.randomProduct");
+		}	
 		
 		
 

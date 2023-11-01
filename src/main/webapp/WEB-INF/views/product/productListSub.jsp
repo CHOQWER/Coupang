@@ -28,16 +28,7 @@
 
 	<div class="contents">
 		<div class="aside">
-			<div class="search-company">
-				<h2>브랜드</h2>
-
-				<ul>
-					<c:forEach items="" var="vo">
-						<li><a href=""></a></li>
-					</c:forEach>
-				</ul>
-
-			</div>
+			
 		</div>
 		<div class="article">
 			<h2>${cate_name}</h2>

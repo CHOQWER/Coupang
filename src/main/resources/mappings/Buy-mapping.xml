@@ -18,4 +18,7 @@
 	<select id="sellerSelectBuyList" resultType="buy">
 		select * from buy where u_id=#{u_id,jdbcType=NVARCHAR}
 	</select>
+	
+
+	
 </mapper>

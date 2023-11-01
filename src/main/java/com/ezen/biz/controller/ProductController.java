@@ -44,7 +44,7 @@ public class ProductController {
    private final String imgPath = "D:/upload/coupang/";
    
    @RequestMapping("/")
-   public String showCategory(Model model, HttpServletRequest request) {
+   public String showCategory(ProductVO vo,Model model, HttpServletRequest request) {
       // 뷰로 보낼 전체 내용이 삽입된
      List<Map<String, Object>> catelist= new ArrayList<Map<String, Object>>();
      List<Map<String, Object>> subcatelist = null;
@@ -70,7 +70,22 @@ public class ProductController {
       }
       HttpSession cateSession = request.getSession();
       cateSession.setAttribute("catelist", catelist);
-      System.out.println("catelist"+catelist);
+      
+      //랜덤상품
+      List<ProductVO> plist=service.randomProduct();
+      model.addAttribute("plist", plist);
+      
+      Map<String, Number> map = null;
+      List<Map<String, Number>> starlist= new ArrayList<Map<String,Number>>();
+      for (ProductVO product : plist) {
+          int pno = product.getPno();
+          map=rservice.selectAvgCountScore(pno);
+          starlist.add(map);
+      }
+      model.addAttribute("starlist", starlist);
+      
+      
+      
       return "main";
    }
    
@@ -243,7 +258,8 @@ public class ProductController {
 	   return "product/ProductList";
    }
    
-  @GetMapping("imgDown")
+
+   @GetMapping("imgDown")
    public void imgDown(@RequestParam String imgName, HttpServletRequest request, HttpServletResponse response)
          throws IOException {
       // 파라메타값 받아오기
@@ -277,5 +293,8 @@ public class ProductController {
       in.close();
       out.close();
    }
+
+
+
 
 }

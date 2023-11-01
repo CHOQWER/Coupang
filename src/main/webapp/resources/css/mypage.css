@@ -63,3 +63,25 @@
   .top-mypage {  	
   	margin: 60px;  	
   }
+  
+  .mypage-deli{
+ 	border: 1px solid #ccc;
+  	width: 95%;
+  	margin: 20px auto;
+  	padding-right: 20px;
+  	padding-bottom: 40px;
+ 
+  }
+  .mypage-deli ul li{
+  	padding: 3px;
+  
+  }
+  
+  .address-btn{
+  width: 70px;
+  height: 30px;
+  background-color: white;
+  border: 1px solid #ccc;
+  float: right;
+  }
+  
