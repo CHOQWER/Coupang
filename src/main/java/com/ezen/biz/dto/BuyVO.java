@@ -10,7 +10,8 @@ public class BuyVO {
 	private String u_id;
 	private int pno;
 	private String pname;
-	private int price,dis_price,b_cnt,post_no;
+	private int price,dis_price,b_cnt,c_cnt,post_no;
 	private String addr1,addr2;
 	private Date b_regdate;
+	private String sta;
 }

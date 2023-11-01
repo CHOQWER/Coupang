@@ -124,6 +124,10 @@ public class ProductDAO {
 			map.put("rowsPerPage", cri.getRowsPerPage());
 			return mybatis.selectList("ProductDAO.selectSearchlist", map);
 		}
+
+		public ProductVO selectProductbuyPno(int pno) {
+			return mybatis.selectOne("ProductDAO.selectProductbuyPno", pno);
+		}
 		
 
 

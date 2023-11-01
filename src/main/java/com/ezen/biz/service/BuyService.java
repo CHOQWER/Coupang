@@ -12,4 +12,8 @@ public interface BuyService {
 
 	List<BuyVO> sellerSelectBuyList(BuyVO vo);
 
+	int insertBuy(BuyVO vo);
+
+	List<BuyVO> selectBuyList(BuyVO vo);
+	
 }

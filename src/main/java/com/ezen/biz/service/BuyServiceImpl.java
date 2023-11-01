@@ -31,5 +31,17 @@ public class BuyServiceImpl implements BuyService {
 	public List<BuyVO> sellerSelectBuyList(BuyVO vo) {
 		return dao.sellerSelectBuyList(vo);
 	}
+	//구매사이트로 이동 
+	public int insertBuy(BuyVO vo) {	
+			
+		return dao.insertBuy(vo);
+	}
 
+	@Override
+	public List<BuyVO> selectBuyList(BuyVO vo) {
+		
+		return dao.selectBuyList(vo);
+	}
+
+	
 }
