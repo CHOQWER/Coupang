@@ -103,7 +103,7 @@ public class ProductDAO {
 	
 	public List<ProductVO> selectCompanyCa(int ca_no) {
 		return mybatis.selectList("ProductDAO.selectCompany", ca_no);
-}
+	}
 
 	
 	

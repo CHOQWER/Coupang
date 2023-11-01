@@ -35,7 +35,7 @@
 					<c:forEach items="${clist}" var="vo">
 						<li>
 						
-						<a href="">${vo.company}</a>
+						<a href="companyList?company=${encodedCompany}&pageNum=1&ca_no=${vo.ca_no}&cate_name=${cate_name}">${vo.company}</a>
 						</li>
 					</c:forEach>
 				</ul>
