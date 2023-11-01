@@ -175,7 +175,7 @@ public class UsersController {
 	}
 	
 	//와우 멤버십 탈퇴
-	@PostMapping("wowsecession")
+	@RequestMapping("wowsecession")
 	public String wowsecession(UsersVO vo, HttpSession session) {
 		 service.wowsecess(vo);
 		 UsersVO updatedUser = service.selectMember(vo.getU_id());	  
