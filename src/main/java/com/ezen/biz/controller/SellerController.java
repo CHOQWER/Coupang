@@ -70,7 +70,7 @@ public class SellerController {
 		
 	}
 	@PostMapping("sellerInsertProduct")
-	public String sellerInsertProduct(Model model,ProductVO pvo,ImagesVO ivo, String company,int ca_no,int sca_no,
+	public String sellerInsertProduct(Model model,ProductVO pvo,ImagesVO ivo, String company,HttpServletRequest request,
 			MultipartFile[] uploadFile)
 			throws IllegalStateException, IOException {
 			

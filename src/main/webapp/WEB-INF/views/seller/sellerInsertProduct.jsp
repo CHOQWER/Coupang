@@ -21,8 +21,6 @@
 	<main>
 		<form action="sellerInsertProduct" method="post"
 			enctype="multipart/form-data" id="uploadForm" name="uploadForm">
-			<input type="hidden" name="ca_no" value="${list.ca_no}" >
-			<input type="hidden" name="sca_no" value="${list.sca_no}" >
 			
 			<table class="table table-sm table-bordered">
 				<tr>
@@ -31,20 +29,24 @@
 					<td><p type="text" size="120" maxlength="50" name="u_id"
 							id="u_id">${vo.u_id}</p></td>
 				</tr>
-
 				<tr>
+					<th><label for="mCate">메인카테고리</label></th>
+				
 					<td>
-					<label for="mCate">메인카테고리</label>
-						<select name="mCate" id="mCate" onchange="subCateChange()" >
+					
+						<select name="ca_no"id="mCate" onchange="subCateChange()" >
 							<c:forEach items="${mCate}" var="m">
 								<option value="${m.ca_no}">${m.cate_name}</option>
 							</c:forEach>
 						</select>
 					</td>
-					
-						<td>
+				</tr>
+				<tr>	
+					<th>	
 						<label for="sCate">서브카테고리</label>
-						<select name="sCate" id="sCate" >
+					</th>
+						<td>
+						<select name="sca_no" id="sCate" >
 								<option value="1">JavaScript</option>
 						</select>
 	
