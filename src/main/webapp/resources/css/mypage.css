@@ -1,87 +1,85 @@
-.container{
-    margin: 0 auto;   
+.container {
+	margin: 0 auto;
 }
 
- body{            
-    display: flex;
- }
-   
-  .main{     
-    height: auto;
-    min-height: 100vh;
-    position: relative;
-  }
+body {
+	display: flex;
+}
 
-  #top-nav {
-      background-color: rgb(66, 133, 244); 
-      color: white;
-      width: 1028px;
-      height: 70px;
-  }
-  
-  #side-menu {
-      background-color: rgb(249, 249, 249);              
-      width: 190px; 
-      height: 600px;
-      float: left;
-      color: black;                            
-  }
-            
-  #mypage-section {
-      
-      color: black;
-      width: 838px; 
-      height: 600px;
-      float: left;
-  }  
-  
-  ul{
-    list-style-type: none;
-    text-align: left;
-    margin-left: -30px;
-    list-style-position: inside;
-  }
+.main {
+	height: auto;
+	min-height: 100vh;
+	position: relative;
+}
 
-  #top-side {
-    font-weight: bold;
-    padding-bottom: 30px;    
-  }
-  
-  #side-menu-list{
-    margin-top: 25px;
-  }
+#top-nav {
+	margin-top: 20px; 
+	background-color: rgb(66, 133, 244);
+	color: white;
+	width: 1028px;
+	height: 70px;
+}
 
-  a {
-    text-decoration: none; 
-    color: black;
-  }
-  
-   #side-menu a:active, a:hover {   
-    color: rgb(61, 130, 247);       
-  } 
-  
-  .top-mypage {  	
-  	margin: 60px;  	
-  }
-  
-  .mypage-deli{
- 	border: 1px solid #ccc;
-  	width: 95%;
-  	margin: 20px auto;
-  	padding-right: 20px;
-  	padding-bottom: 40px;
- 
-  }
-  .mypage-deli ul li{
-  	padding: 3px;
-  
-  }
-  
-  .address-btn{
-  width: 70px;
-  height: 30px;
-  background-color: white;
-  border: 1px solid #ccc;
-  float: right;
-  }
-  
+#side-menu {
+	background-color: rgb(249, 249, 249);
+	width: 190px;
+	height: 600px;
+	float: left;
+	color: black;
+}
+
+#mypage-section {
+	color: black;
+	width: 838px;
+	height: 600px;
+	float: left;
+}
+
+ul {
+	list-style-type: none;
+	text-align: left;
+	margin-left: -30px;
+	list-style-position: inside;
+}
+
+#top-side {
+	font-weight: bold;
+	padding-bottom: 30px;
+}
+
+#side-menu-list {
+	margin-top: 25px;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
+
+#side-menu a:active, a:hover {
+	color: rgb(61, 130, 247);
+}
+
+.top-mypage {
+	margin: 60px;
+}
+
+.mypage-deli {
+	border: 1px solid #ccc;
+	width: 95%;
+	margin: 20px auto;
+	padding-right: 20px;
+	padding-bottom: 40px;
+}
+
+.mypage-deli ul li {
+	padding: 3px;
+}
+
+.address-btn {
+	width: 70px;
+	height: 30px;
+	background-color: white;
+	border: 1px solid #ccc;
+	float: right;
+}
