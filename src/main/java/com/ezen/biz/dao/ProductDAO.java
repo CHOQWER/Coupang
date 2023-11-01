@@ -90,7 +90,7 @@ public class ProductDAO {
 	
 
 	// 이미지 전체 조회(pno 받아서)
-	public ProductVO selectImgPno(int pno) {
+	public ImagesVO selectImgPno(int pno) {
 		return mybatis.selectOne("ProductDAO.selectImgPno", pno);
 	}
 	

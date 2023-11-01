@@ -1,6 +1,8 @@
 package com.ezen.biz.controller;
 
+import java.io.IOException;
 import java.util.List;
+import java.util.Locale;
 
 import javax.servlet.http.HttpSession;
 
@@ -9,6 +11,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -100,5 +103,9 @@ public class PaymentController {
 	        model.addAttribute("success", "카드가 성공적으로 삭제되었습니다.");
 	}
 	    return "redirect:/payment";
-	}	
+	}
+	
+	
+	
+	
 }

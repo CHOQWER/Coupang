@@ -46,8 +46,13 @@
   	</update>
   	
   	<!-- 와우 멤버십 가입 -->
-  	<update id="updateMember">
+  	<update id="wowupdate">
   		update users set grade='3' where u_id=#{u_id}
+  	</update>
+  	
+  	<!-- 와우 멤버십 탈퇴 -->
+  	<update id="wowsecess">
+  		update users set grade='2' where u_id=#{u_id}
   	</update>
   	
   	

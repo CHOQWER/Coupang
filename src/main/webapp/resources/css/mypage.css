@@ -1,12 +1,12 @@
 .container{
-	 margin: 0 auto;	
+    margin: 0 auto;   
 }
 
  body{            
     display: flex;
  }
-	
-  .main{  	
+   
+  .main{     
     height: auto;
     min-height: 100vh;
     position: relative;
@@ -56,10 +56,32 @@
     color: black;
   }
   
-   #side-menu a:active, a:hover {	
+   #side-menu a:active, a:hover {   
     color: rgb(61, 130, 247);       
   } 
   
-  .top-mypage {  	
-  	margin: 60px;  	
+  .top-mypage {     
+     margin: 60px;     
   }
+  
+  .mypage-deli{
+    border: 1px solid #ccc;
+     width: 95%;
+     margin: 20px auto;
+     padding-right: 20px;
+     padding-bottom: 40px;
+ 
+  }
+  .mypage-deli ul li{
+     padding: 3px;
+  
+  }
+  
+  .address-btn{
+  width: 70px;
+  height: 30px;
+  background-color: white;
+  border: 1px solid #ccc;
+  float: right;
+  }
+  

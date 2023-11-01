@@ -1,4 +1,5 @@
 $(document).ready(function () {
+ 	   
 	var nativeWidth = 0;
 	var nativeHeight = 0;
   $("#img-container").mousemove(function (e) {
