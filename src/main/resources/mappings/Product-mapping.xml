@@ -150,14 +150,14 @@
 		disp='y' and company=#{company}
 	</select>
 
-	<!-- 회사별 조회 전체 행의 갯수 Ca (폐이징에 필요) -->
+	<!-- 회사별 조회 전체 행의 갯수 Ca (폐이징에 필요) 
 	<select id="selectRowCountCa" parameterType="product"
 		resultType="java.lang.Integer">
 		select count(*) from
 		product where ca_no=#{ca_no} and
 		disp='y' and company=#{company}
-	</select>
-
+	</select>-->
+ 
 
 	<!-- 메인 카테고리 전체 행의 갯수 (폐이징에 필요) -->
 	<select id="selectRowCountCa" resultType="java.lang.Integer">
