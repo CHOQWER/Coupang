@@ -134,6 +134,7 @@ public class UsersController {
 		}
 	}
 	
+	//마이 페이지 들어가기
 	@GetMapping("/mypage")
 	public String myPage(Model model, UsersVO vo, HttpServletRequest request, HttpSession session) { 
 		vo=(UsersVO) session.getAttribute("vo");
@@ -147,7 +148,7 @@ public class UsersController {
 		}		
 	}
 	
-	
+	//유저 정보 수정
 	@PostMapping("/updateUser")
 	   public String updateUser(UsersVO vo, HttpSession session) {
 	       service.updateUser(vo);	       
@@ -157,6 +158,7 @@ public class UsersController {
 	       session.setAttribute("vo", updatedUser);	       
 	       return "redirect:mypage"; 
 	}
+	
 	
 	@GetMapping("membership")
 	public String memberShip() {
