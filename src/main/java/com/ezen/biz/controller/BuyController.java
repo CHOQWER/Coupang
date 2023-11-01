@@ -51,8 +51,6 @@ public class BuyController {
 		return "users/insertdeli";
 	 }
 	 
-	 
-	 
 	 @PostMapping("insertDeli")
 	 public String insertDeli(DeliveryVO vo, @RequestParam String u_id, Model model) {
 		 int result=service.insertDeli(vo);

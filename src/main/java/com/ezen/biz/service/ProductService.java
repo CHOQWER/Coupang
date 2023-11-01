@@ -54,6 +54,8 @@ public interface ProductService {
 	//회사별 검색
 	List<ProductVO> selectCompany(int sca_no);
 	
+	List<ProductVO> selectCompanyCa(int ca_no);
+	
 	List<ProductVO> selectCompanylist(ProductVO vo,Criteria cri);
 	
 	//메인 카테고리로 검색

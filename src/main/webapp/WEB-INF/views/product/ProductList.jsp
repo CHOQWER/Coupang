@@ -43,8 +43,8 @@
 
 			</div>
 		</div>
-		<div class="article">
-			<h2>${subcate_name}</h2>
+		<div class="article" >
+			<h2 >${subcate_name}</h2>
 			<hr>
 			<div class="prod-grid">
 				<c:forEach items="${list}" var="vo" varStatus="idx">

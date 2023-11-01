@@ -93,6 +93,12 @@ public class ProductServiceImpl implements ProductService{
 	public List<ProductVO> selectCompany(int sca_no) {
 		return dao.selectCompany(sca_no);
 	}
+	
+	@Override
+	public List<ProductVO> selectCompanyCa(int ca_no) {
+			return dao.selectCompanyCa(ca_no);
+	}
+
 
 	@Override
 	public List<ProductVO> selectCompanylist(ProductVO vo,Criteria cri) {
@@ -128,6 +134,7 @@ public class ProductServiceImpl implements ProductService{
 	public List<ProductVO> randomProduct() {
 		return dao.randomProduct();
 	}
+
 
 
 	

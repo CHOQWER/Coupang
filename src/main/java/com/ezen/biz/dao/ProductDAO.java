@@ -101,6 +101,12 @@ public class ProductDAO {
 			return mybatis.selectList("ProductDAO.selectCompany", sca_no);
 	}
 	
+	public List<ProductVO> selectCompanyCa(int ca_no) {
+		return mybatis.selectList("ProductDAO.selectCompany", ca_no);
+}
+
+	
+	
 	// 회사별 상품 전체 조회서
 	public List<ProductVO> selectCompanylist(ProductVO vo, Criteria cri){
 		Map<String, Object> map = new HashMap<String, Object>();
