@@ -61,6 +61,12 @@ public class UsersServiceImpl implements UsersService {
 		dao.wowsecess(vo);
 		
 	}
+
+//	@Override
+//	public void updateMember(UsersVO vo) {
+//		// TODO Auto-generated method stub
+//		
+//	}
 	
 	
 	

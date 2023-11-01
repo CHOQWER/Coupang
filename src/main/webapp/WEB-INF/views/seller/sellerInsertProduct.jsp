@@ -35,7 +35,7 @@
 				<tr>
 					<td>
 					<label for="mCate">메인카테고리</label>
-						<select name="mCate" id="mCate" onchange="subCateChange()" name="mCate">
+						<select name="mCate" id="mCate" onchange="subCateChange()" >
 							<c:forEach items="${mCate}" var="m">
 								<option value="${m.ca_no}">${m.cate_name}</option>
 							</c:forEach>
