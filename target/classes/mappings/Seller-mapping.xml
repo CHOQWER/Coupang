@@ -13,11 +13,11 @@
 			select * from buy where u_id=#{u_id} and sta='r'
 		</select>
 		
-		<update id="sellerStaY">
+		<update id="sellerStaY" >
 			update buy set sta='y' where bno=#{bno}
 		</update>
 		
-		<update id="sellerStaN">
+		<update id="sellerStaN" >
 			update buy set sta='n' where bno=#{bno}
 		</update>
 		

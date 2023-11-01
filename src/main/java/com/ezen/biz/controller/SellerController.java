@@ -46,8 +46,6 @@ public class SellerController {
 	@Autowired
 	private CategoryService cateService;
 	
-//	@Autowired
-//	private ProductService productService;
 	
 	private final String imgPath="D:/upload/img/";
 	
@@ -213,16 +211,31 @@ public class SellerController {
 	
 	
 	@PostMapping("sellerBeforeDelivery")
-	public String sellerBeforeDelivery(BuyVO vo,BuyDAO dao, HttpServletRequest request,@RequestParam int[] bno) {
+	public String sellerBeforeDelivery(BuyVO vo,BuyDAO dao,
+			@RequestParam int[] bno,@RequestParam int[] sta) {
+		for(int i=0;i<bno.length;i++) {
+			System.out.println("bno[i]="+bno[i]);
+			System.out.println("sta[i]="+sta[i]);
+			
+			if(sta[i]==0) {
+				vo.setBno(bno[i]);
+				System.out.println("====="+vo);
+				buyService.sellerStaY(vo);
 
-		for(int b:bno) {
-		vo.setBno(b);
-		System.out.println(b);
+			}else if(sta[i]==1) {
+				vo.setBno(bno[i]);
+				System.out.println("-----"+vo);
+				buyService.sellerStaN(vo);
+			}
+			
 		}
+		
+//		for(int b:bno) {
+//		vo.setBno(b);
+//		
 //		for(String s:sta) {
 //			System.out.println("s는??"+s);
 //		if(s.equals("0")) {
-//
 //			dao.sellerStaY(vo);
 //			System.out.println("구매 승인 입니다.");
 //			
@@ -232,6 +245,8 @@ public class SellerController {
 //			dao.sellerStaN(vo);
 //			System.out.println("구매 취소 입니다.");
 //		}
+//		}
+//		
 //	}
 		return "seller/sellerBeforeDelivery";
 	}

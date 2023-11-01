@@ -17,11 +17,16 @@ public class BuyDAO {
 	 * public void sellerInsertProduct(BuyVO vo) {
 	 * mybatis.insert("BuyDAO.sellerInsertProduct", vo); }
 	 */
+	//구매하기 후->판매자 판매 확인 o/x  
+	public List<BuyVO> sellerBeforeDelivery(BuyVO vo) {
+		return mybatis.selectList("sellerDAO.sellerBeforeDelivery", vo);
+	}
+	
 	public void sellerStaY(BuyVO vo) {
-		 mybatis.insert("sellerDAO.sellerStaY", vo);
+		 mybatis.update("sellerDAO.sellerStaY", vo);
 	}
 	public void sellerStaN(BuyVO vo) {
-		 mybatis.insert("sellerDAO.sellerStaN", vo);
+		 mybatis.update("sellerDAO.sellerStaN", vo);
 	}
 	
 	//구매자  -> 구매하기
@@ -46,9 +51,6 @@ public class BuyDAO {
 	public List<BuyVO> sellerSelectBuyList(BuyVO vo) {
 		return mybatis.selectList("BuyDAO.sellerSelectBuyList", vo);
 	}
-	//구매하기 후->판매자 판매 확인 o/x  
-	public List<BuyVO> sellerBeforeDelivery(BuyVO vo) {
-		return mybatis.selectList("sellerDAO.sellerBeforeDelivery", vo);
-	}
+
 
 }
