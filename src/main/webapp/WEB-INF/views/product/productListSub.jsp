@@ -24,14 +24,26 @@
 
 
 <main>
-	<div class="cate-nav">쿠팡홈 > ${cate_name}</div>
+	<div class="cate-nav"> 쿠팡홈 > ${cate_name}</div>
 
 	<div class="contents">
 		<div class="aside">
-			
+			<div class="search-company">
+				<h2>브랜드</h2>
+
+				<ul>
+					<c:forEach items="${clist}" var="vo">
+						<li>
+						
+						<a href="">${vo.company}</a>
+						</li>
+					</c:forEach>
+				</ul>
+
+			</div>
 		</div>
 		<div class="article">
-			<h2>${cate_name}</h2>
+			<h2 style="margin-left: 50px;">${cate_name}</h2>
 			<hr>
 			<div class="prod-grid">
 				<c:forEach items="${list}" var="vo" varStatus="idx">
