@@ -103,7 +103,7 @@ public class ProductDAO {
 	
 	public List<ProductVO> selectCompanyCa(int ca_no) {
 		return mybatis.selectList("ProductDAO.selectCompany", ca_no);
-}
+	}
 
 	
 	
@@ -144,6 +144,10 @@ public class ProductDAO {
 			map.put("pageNum", cri.getPageNum());
 			map.put("rowsPerPage", cri.getRowsPerPage());
 			return mybatis.selectList("ProductDAO.selectSearchlist", map);
+		}
+
+		public ProductVO selectProductbuyPno(int pno) {
+			return mybatis.selectOne("ProductDAO.selectProductbuyPno", pno);
 		}
 		
 		

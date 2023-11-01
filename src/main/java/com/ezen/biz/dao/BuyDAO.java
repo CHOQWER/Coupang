@@ -29,10 +29,6 @@ public class BuyDAO {
 		 mybatis.update("sellerDAO.sellerStaN", vo);
 	}
 	
-	//구매자  -> 구매하기
-	public void insertBuy(BuyVO vo) {
-		mybatis.insert("BuyDAO.insertBuy", vo);
-	}
 	// 판매자 -> 환불받기
 	public void sellerInsertProduct(BuyVO vo) {
 		mybatis.insert("BuyDAO.sellerInsertProduct", vo);
@@ -51,6 +47,11 @@ public class BuyDAO {
 	public List<BuyVO> sellerSelectBuyList(BuyVO vo) {
 		return mybatis.selectList("BuyDAO.sellerSelectBuyList", vo);
 	}
-
-
+	//장바구니에서 구매홈페이지로 이동
+	public int insertBuy(BuyVO vo) {
+	   return mybatis.insert("BuyDAO.insertBuy", vo);
+	}
+	public List<BuyVO> selectBuyList(BuyVO vo) {
+		return mybatis.selectList("BuyVO.selectBuyList",vo);
+	}
 }
