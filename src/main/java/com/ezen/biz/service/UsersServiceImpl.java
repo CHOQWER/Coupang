@@ -1,9 +1,12 @@
 package com.ezen.biz.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ezen.biz.dao.UsersDAO;
+import com.ezen.biz.dto.BuyVO;
 import com.ezen.biz.dto.UsersVO;
 
 
@@ -12,6 +15,10 @@ public class UsersServiceImpl implements UsersService {
 	
 	@Autowired
 	private UsersDAO dao;
+	
+	public List<BuyVO>  delivseryStatus(UsersVO vo) {
+		return dao.delivseryStatus(vo);
+	}
 	
 	public void insertMember(UsersVO vo) {
 		dao.insertMember(vo);

@@ -57,7 +57,9 @@ public class CartController {
 	}
 
 	@RequestMapping("insertCart")
-	public String insertCart(CartVO vo, HttpSession session, Model model) {
+	public String insertCart(CartVO vo, HttpSession session, Model model,@RequestParam int pno) {
+		System.out.println("pno="+pno);
+		
 	    UsersVO v = (UsersVO) session.getAttribute("vo");
 	    // 사용자 아이디로 장바구니 조회 model에 담아서 page 이동
 	    // 로그인이 안되있으면 로그인 홈페이지로
@@ -67,7 +69,6 @@ public class CartController {
 	    
 	    // CartVO에 있는 pno를 이용해서 product 테이블에서 필요한 데이터 조회
 	    ProductVO pvo = pservice.selectProductcartPno(vo.getPno());
-	    
 	    // CartVO에 세팅
 	    vo.setU_id(v.getU_id());
 	    vo.setMain_img1(pvo.getMain_img1());
@@ -81,7 +82,7 @@ public class CartController {
 	    // cno로 cart 테이블에서 조회
 	    List<CartVO> list = service.selectCartList(vo);
 	    model.addAttribute("list", list);
-
+	    
 	    return "cart/cart";
 	}
 	/*

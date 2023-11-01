@@ -21,6 +21,9 @@
 	<main>
 		<form action="sellerInsertProduct" method="post"
 			enctype="multipart/form-data" id="uploadForm" name="uploadForm">
+			<input type="hidden" name="ca_no" value="${list.ca_no}" >
+			<input type="hidden" name="sca_no" value="${list.sca_no}" >
+			
 			<table class="table table-sm table-bordered">
 				<tr>
 					<th>판매자 아이디</th>
@@ -32,26 +35,24 @@
 				<tr>
 					<td>
 					<label for="mCate">메인카테고리</label>
-						<select name="mCate" id="mCate" onchange="subCateChange()">
+						<select name="mCate" id="mCate" onchange="subCateChange()" name="mCate">
 							<c:forEach items="${mCate}" var="m">
 								<option value="${m.ca_no}">${m.cate_name}</option>
 							</c:forEach>
 						</select>
 					</td>
 					
-					<td>
-					<label for="sCate">서브카테고리</label>
-					<select name="sCate" id="sCate">
-							<option value="1">JavaScript</option>
-					</select>
-
-						<div style="display: none">
-
-							<c:forEach items="${sCate}" var="s">
-								<div class="item${s.ca_no} ${s.sca_no}">${s.subcate_name}:${s.sca_no}</div>
-							</c:forEach>
-
-						</div>
+						<td>
+						<label for="sCate">서브카테고리</label>
+						<select name="sCate" id="sCate" >
+								<option value="1">JavaScript</option>
+						</select>
+	
+							<div style="display: none">
+								<c:forEach items="${sCate}" var="s">
+									<div class="item${s.ca_no} ${s.sca_no}">${s.subcate_name}:${s.sca_no}</div>
+								</c:forEach>
+							</div>
 						</td>
 				</tr>
 

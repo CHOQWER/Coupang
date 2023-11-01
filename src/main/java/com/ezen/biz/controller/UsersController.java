@@ -1,5 +1,8 @@
 package com.ezen.biz.controller;
 
+import java.util.Calendar;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -14,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.ezen.biz.dto.BuyVO;
 import com.ezen.biz.dto.UsersVO;
 import com.ezen.biz.service.UsersService;
 
@@ -170,6 +174,24 @@ public class UsersController {
 		 session.setAttribute("vo", updatedUser);	  
 		return "redirect:membership";
 	}
-	
-	
+	@RequestMapping("delivseryStatus")
+	public String delivseryStatus(UsersVO vo, HttpSession session,Model model,HttpServletRequest request) {
+		vo=(UsersVO) session.getAttribute("vo");
+		vo.setU_id(vo.getU_id());
+		
+		List<BuyVO> list=service.delivseryStatus(vo);
+		
+		Calendar now = Calendar.getInstance();
+		int year = now.get(Calendar.YEAR);
+		int month = now.get(Calendar.MONTH)+1;
+		int day = now.get(Calendar.DAY_OF_MONTH)+1;
+		
+		String date=year+"."+month+"."+day;
+		System.out.println("date="+date);
+		model.addAttribute("date", date);
+		
+
+		model.addAttribute("list", list);
+		return "users/delivseryStatus";
+	}
 }
