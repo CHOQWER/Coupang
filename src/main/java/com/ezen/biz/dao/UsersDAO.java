@@ -44,8 +44,12 @@ public class UsersDAO {
 	   mybatis.update("UsersDAO.deleteUser", u_id);
    }
    
-   public void updateMember(UsersVO vo) {
-	   mybatis.update("UsersDAO.updateMember", vo);
+   public void wowupdate(UsersVO vo) {
+	   mybatis.update("UsersDAO.wowupdate", vo);
+   }
+   
+   public void wowsecess(UsersVO vo) {
+	   mybatis.update("UsersDAO.wowsecess", vo);
    }
    
 }

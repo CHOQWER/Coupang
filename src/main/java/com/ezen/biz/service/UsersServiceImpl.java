@@ -48,11 +48,17 @@ public class UsersServiceImpl implements UsersService {
 	public void deleteUser(String u_id) {
 		dao.deleteUser(u_id);
 		
+	}	
+	
+	
+	public void wowupdate(UsersVO vo) {
+		dao.wowupdate(vo);	
+		
 	}
 	
 	
-	public void updateMember(UsersVO vo) {
-		dao.updateMember(vo);
+	public void wowsecess(UsersVO vo) {
+		dao.wowsecess(vo);
 		
 	}
 	

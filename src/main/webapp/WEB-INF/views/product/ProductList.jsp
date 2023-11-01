@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ include file="/WEB-INF/views/include/header.jsp"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <link rel="stylesheet" href="../resources/css/productlist.css">
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
@@ -21,6 +22,9 @@
 
 
 <main>
+	
+ 
+
 	<div class="cate-nav"> 쿠팡홈 > ${cate_name} > ${subcate_name} </div>
 
 	<div class="contents">
@@ -39,8 +43,8 @@
 
 			</div>
 		</div>
-		<div class="article">
-			<h2>${subcate_name}</h2>
+		<div class="article" >
+			<h2 >${subcate_name}</h2>
 			<hr>
 			<div class="prod-grid">
 				<c:forEach items="${list}" var="vo" varStatus="idx">
@@ -103,7 +107,7 @@
 				</ul>
 			</nav>
 			
-			<!--서치워드 페이지 -->
+			<!--페이지 -->
 			<nav aria-label="..." style="justify-content: center;margin-left: 45%; margin-top:3%">
 				<ul class="pagination">
 

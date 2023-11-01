@@ -23,4 +23,7 @@ public interface UsersService {
 	
 	void updateMember(UsersVO vo);
 	
+	void wowupdate(UsersVO vo);
+	
+	void wowsecess(UsersVO vo);
 }

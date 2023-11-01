@@ -24,4 +24,12 @@
   	<select id="deleteCart">
   	delete from cart where cno=#{cno}
   	</select>
+	
+	
+
+
+
+
+
+
 </mapper>

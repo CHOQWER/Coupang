@@ -48,7 +48,15 @@
       <form action="insertcart" method="post" id="frmDetail" name="frmDetail">      
          <input type="hidden" name="pno" value="${pvo.pno}">
          <input type="hidden" name="ino" value="${ivo.ino }">
+         <input type="hidden" name="price" value="${pvo.price }">
+         <input type="hidden" name="dis_price" value="${pvo.dis_price }">
+         <input type="hidden" name="pname" value="${pvo.pname }">
+         
       <!--좌측 메인/서브 이미지-->
+      
+      
+      
+      
       <div class="content-main">           
 			<!-- 이미지가 null이면 표시 안되게 -->
 			<!-- <div id="content-wrapper">	 -->		
@@ -134,7 +142,7 @@
                
                <input type="number" name="c_cnt" id="c_cnt" value="1" placeholder="1" min="1" max="${pvo.qty}"/>         
                <button onclick="cartSubmit()">장바구니</button>               
-               <!-- <button onclick="buySubmit()">구매하기</button> -->
+                <button onclick="buySubmit()">바로구매</button> 
             </div>
             <!-- <input type="hidden" name=""> -->
 
@@ -243,6 +251,11 @@ function cartSubmit(){
    let frm=$("#frmDetail");
    frm.attr("action","insertCart");   
    frm.submit();
+}
+function buySubmit() {
+	   let frm=$("#frmDetail");
+	   frm.attr("action","insertBuy");   
+	   frm.submit();
 }
 
 /*==========================================*/

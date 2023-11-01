@@ -74,6 +74,9 @@ public class ProductServiceImpl implements ProductService{
 	public ProductVO selectProductcartPno(int pno) {
 		return dao.selectProductcartPno(pno);
 	}
+	public ProductVO selectProductbuyPno(int pno) {
+		return dao.selectProductbuyPno(pno);
+	}
 	@Override
 	public ImagesVO selectImgPno(int pno) {
 		return dao.selectImgPno(pno);
@@ -90,6 +93,12 @@ public class ProductServiceImpl implements ProductService{
 	public List<ProductVO> selectCompany(int sca_no) {
 		return dao.selectCompany(sca_no);
 	}
+	
+	@Override
+	public List<ProductVO> selectCompanyCa(int ca_no) {
+			return dao.selectCompanyCa(ca_no);
+	}
+
 
 	@Override
 	public List<ProductVO> selectCompanylist(ProductVO vo,Criteria cri) {
@@ -120,6 +129,12 @@ public class ProductServiceImpl implements ProductService{
 	public int selectRowCountword(int ca_no, Criteria cri) {
 		return dao.selectRowCountword(ca_no, cri);
 	}
+
+	@Override
+	public List<ProductVO> randomProduct() {
+		return dao.randomProduct();
+	}
+
 
 
 	

@@ -8,9 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.ezen.biz.dao.DeliveryDAO;
 import com.ezen.biz.dao.ImagesDAO;
 import com.ezen.biz.dao.ProductDAO;
+import com.ezen.biz.dto.DeliveryVO;
 import com.ezen.biz.dto.ProductVO;
+import com.ezen.biz.dto.SubCateVO;
 import com.ezen.biz.utils.Criteria;
 
 import lombok.extern.log4j.Log4j;
@@ -24,6 +27,9 @@ public class ProductTest {
 
 	@Autowired
 	private ImagesDAO idao;
+	
+	@Autowired
+	private DeliveryDAO ddao;
 
 	@Test
 	public void sellerGetPno() {
@@ -109,6 +115,28 @@ public class ProductTest {
 		log.info(list);
 		
 	}
+	
+	@Test
+	public void randomProduct() {
+		List<ProductVO> list=dao.randomProduct();
+		log.info("list"+list);
+	}
+	
+	@Test
+	public void insertDeli() {
+		DeliveryVO vo=new DeliveryVO();
+		vo.setU_id("thfk1234");
+		vo.setU_name("영인");
+		vo.setU_mobile("010");
+		vo.setPost_no(200);
+		vo.setAddr1("서울특별시");
+		vo.setAddr2("관악구");
+		int result=	ddao.insertDeli(vo);
+		log.info(result);
+	}
+	
+	
+	
 
 }
 

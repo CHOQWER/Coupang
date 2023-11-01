@@ -1,5 +1,6 @@
 package com.ezen.biz.dao;
 
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -100,6 +101,12 @@ public class ProductDAO {
 			return mybatis.selectList("ProductDAO.selectCompany", sca_no);
 	}
 	
+	public List<ProductVO> selectCompanyCa(int ca_no) {
+		return mybatis.selectList("ProductDAO.selectCompany", ca_no);
+	}
+
+	
+	
 	// 회사별 상품 전체 조회서
 	public List<ProductVO> selectCompanylist(ProductVO vo, Criteria cri){
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -138,6 +145,10 @@ public class ProductDAO {
 			map.put("rowsPerPage", cri.getRowsPerPage());
 			return mybatis.selectList("ProductDAO.selectSearchlist", map);
 		}
+
+		public ProductVO selectProductbuyPno(int pno) {
+			return mybatis.selectOne("ProductDAO.selectProductbuyPno", pno);
+		}
 		
 		
 	// 메인 카테고리 선택 후 검색어로 조회 제품 총 수량(폐이징에 필요)
@@ -147,6 +158,11 @@ public class ProductDAO {
 			map.put("searchword", cri.getSearchword());
 			return mybatis.selectOne("ProductDAO.selectRowCountword", map);
 		}
+		
+	// 랜덤상품 10개
+		public List<ProductVO> randomProduct() {
+			return mybatis.selectList("ProductDAO.randomProduct");
+		}	
 		
 		
 
