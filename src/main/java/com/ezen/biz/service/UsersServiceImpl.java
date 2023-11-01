@@ -62,11 +62,9 @@ public class UsersServiceImpl implements UsersService {
 		
 	}
 
-//	@Override
-//	public void updateMember(UsersVO vo) {
-//		// TODO Auto-generated method stub
-//		
-//	}
+
+
+
 	
 	
 	

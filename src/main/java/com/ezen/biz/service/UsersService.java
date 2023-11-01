@@ -17,11 +17,9 @@ public interface UsersService {
 	
 	UsersVO pwdCheck(String id);
 	
-//	void updateUser(UsersVO vo);
+	void updateUser(UsersVO vo);
 	
 	void deleteUser(String u_id);
-	
-	void updateMember(UsersVO vo);
 	
 	void wowupdate(UsersVO vo);
 	
