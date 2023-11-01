@@ -22,7 +22,7 @@ import lombok.extern.log4j.Log4j;
 public class BuyController {
 	
 	 @Autowired
-	   private BuyService service;
+	 private BuyService service;
 	 
 	 @RequestMapping("delivery")
 	 public String delivery(DeliveryVO vo,@RequestParam String u_id, Model model) {
@@ -49,8 +49,6 @@ public class BuyController {
 	 public String insertDeli() {
 		return "users/insertdeli";
 	 }
-	 
-	 
 	 
 	 @PostMapping("insertDeli")
 	 public String insertDeli(DeliveryVO vo, @RequestParam String u_id, Model model) {

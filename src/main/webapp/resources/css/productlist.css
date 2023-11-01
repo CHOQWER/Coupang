@@ -1,10 +1,14 @@
 .cate-nav {
-    height: 38px;
-    font-size: 12px;
+    height: 70px;
+    font-size: 18px;
+    color:gray;
     border-top: 3px solid  #f0f0f0; 
+    border-bottom: 3px solid  #f0f0f0;
     width: 1028px;
     margin: 0 auto;
-    line-height: 2.5rem;
+    margin-top:1.5em;
+    line-height: 4rem;
+    margin-top: 1.5em;
 }
 .contents{
     display: flex;
@@ -25,6 +29,7 @@
 	flex-direction: column;
     width: 1080px;
     float: right;
+    margin-top: 2em;
 }
 
 
@@ -43,7 +48,8 @@
 }
 
 .prodimg{
-    width: 300px;
+    width: 200px;
+    margin-left: 40px;
 }
 
 .prodimg img {
