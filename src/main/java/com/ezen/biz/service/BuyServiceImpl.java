@@ -6,12 +6,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ezen.biz.dao.BuyDAO;
+import com.ezen.biz.dao.DeliveryDAO;
 import com.ezen.biz.dto.BuyVO;
+import com.ezen.biz.dto.DeliveryVO;
 @Service
 public class BuyServiceImpl implements BuyService {
 	@Autowired
 	private BuyDAO dao;
+	
+	@Autowired
+	private DeliveryDAO ddao;
 
+	@Override
+	public void insertBuy(BuyVO vo) {
+		 dao.insertBuy(vo);
+	}
 
 	//환불하기- 판매자
 	//상품구매후 취소
@@ -35,6 +44,40 @@ public class BuyServiceImpl implements BuyService {
 	public int insertBuy(BuyVO vo) {	
 			
 		return dao.insertBuy(vo);
+	}
+	//구매하기 후->판매자 판매 확인 o/x  
+	@Override
+	public List<BuyVO> sellerBeforeDelivery(BuyVO vo) {
+		return dao.sellerBeforeDelivery(vo);
+	}
+
+	@Override
+	public void sellerStaY(BuyVO vo) {
+		dao.sellerStaY(vo);
+		
+	}
+
+	@Override
+	public void sellerStaN(BuyVO vo) {
+		dao.sellerStaN(vo);
+	
+	}
+
+
+
+	@Override
+	public List<DeliveryVO> selectDeli(String u_id) {
+		return ddao.selectDeli(u_id);
+	}
+
+	@Override
+	public int insertDeli(DeliveryVO vo) {
+		return ddao.insertDeli(vo);
+	}
+
+	@Override
+	public int deleteDeli(int dno) {
+		return ddao.deleteDeli(dno);
 	}
 
 	@Override

@@ -16,5 +16,7 @@ public interface UsersService {
 	
 	void deleteUser(String u_id);
 	
-	void updateMember(UsersVO vo);
+	void wowupdate(UsersVO vo);
+	
+	void wowsecess(UsersVO vo);
 }

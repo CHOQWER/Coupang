@@ -3,6 +3,11 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="BuyDAO">
+	<!-- 구매하기 -->
+	<insert id="insertBuy">
+		insert into buy(bno,u_id,pno,pname,price,dis_price,b_cnt,post_no,addr1,addr2)
+		values(seq_buy.nextval,#{u_id},#{pno},#{pname},#{price},#{dis_price},#{b_cnt},#{post_no},#{add1},#{addr2})
+	</insert>
 	
 	<!-- 환불하기 -->
 	<delete id="refundProduct">
@@ -11,12 +16,12 @@
 	
 	<!-- 관리자가 구매내역 확인 -->
 	<select id="adminSelectBuyList" resultType="buy">
-		select * from buy order by bno
+		select * from buy where sta='y' order by bno 
 	</select>
 	
-	<!-- 판매자가 구매내역(상품별 매출) 확인 -->
+	<!-- 판매자가 구매내역 확인 -->
 	<select id="sellerSelectBuyList" resultType="buy">
-		select * from buy where u_id=#{u_id,jdbcType=NVARCHAR}
+		select * from buy where u_id=#{u_id,jdbcType=NVARCHAR} and sta='y'
 	</select>
 	<!-- 상품페이지에서 바로 구매 -->
 <insert id="insertBuy">

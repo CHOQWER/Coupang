@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ page session="false" %>
+
 <style>
 	#pagediv,#searchdiv{
 		display:flex;
@@ -26,10 +26,11 @@
 			<th>판매상품</th>
 			<th>상품 할인 전 가격<th>
 			<th>상품 할인 후 가격</th>
-			<th>post_no</th>
-			<th>addr1</th>
-			<th>addr2</th>
-			<th>b_regdate</th>
+			<th>수량</th>
+			<th>우편번호</th>
+			<th>주소</th>
+			<th>상세주소</th>
+			<th>등록일자</th>
 		</tr> 
 		
 		<c:if test="${list==null}">

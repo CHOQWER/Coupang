@@ -53,6 +53,10 @@
          <input type="hidden" name="pname" value="${pvo.pname }">
          
       <!--좌측 메인/서브 이미지-->
+      
+      
+      
+      
       <div class="content-main">           
 			<!-- 이미지가 null이면 표시 안되게 -->
 			<!-- <div id="content-wrapper">	 -->		
@@ -204,16 +208,16 @@
          <input type="hidden" name="page" id="page" value="0">
          
          
-         
+        
          <!-- 리뷰 inner html 반복할곳 -->
-         <table id="tbl_star">
-            
-         </table>
+		<table id="tbl_star">
+
+		</table>
          
          
          <button type="button" id="btn_next" style="display: none"
             onclick="getStar()">더보기</button>
-         </ul>
+
          
          <hr>
          <div class="prod-qa">
@@ -243,9 +247,6 @@
 
 
 <script type="text/javascript">
-
-
-
 function cartSubmit(){
    let frm=$("#frmDetail");
    frm.attr("action","insertCart");   
@@ -286,6 +287,7 @@ common.js doAjaxHtml(url, param, callback) 호출
 ===================================================*/
 function saveStar(){
    console.log("saveStar")
+   let rno=$("#rno").val();
    let content=$("#content").val().trim();
    let r_title=$("#r_title").val().trim();
    let r_photo=$("#r_photo").val().trim();
@@ -310,7 +312,9 @@ function saveStar(){
    
    
    let url="saveStar";//서블릿 매핑 주소
-   let param={"u_id":"${sessionScope.vo.u_id}",
+   let param={"rno":rno,
+		    "u_id":"${sessionScope.vo.u_id}",
+		    "grade":"${sessionScope.vo.grade}",
             "pno":${pvo.pno}, 
             "score":score,
             "r_title":r_title,
@@ -376,7 +380,7 @@ function getStarAfter(data){
           let starList=data.arr;
           console.log(starList);
           let html="";
-          for(let vo of starList){//js foreach
+          for(let vo of starList){//js foreach      	  
              html+='<tr>';
              html+='<td>';
              html+='<img src='+vo.r_photo+' alt="" width="100" height="100">';
@@ -398,21 +402,77 @@ function getStarAfter(data){
              html+='</dt>';
              html+='<dt>'+ vo.r_regdate;
              html+='</dt>';
-             html+='</dl>';   
+             html+='</dl>';
              html+='</td>';
+             html+='<td>';
+             html+='<button onclick="deleteReview('+vo.rno+')">삭제';
+             html+='</button>';
              html+='</tr>';
           }//for
+          
+ 	 		$("#tbl_star").append(html);
+	 		//let next=data.next;//true, false
+	 		//console.log(next);
+	 		if(data.next){//더보기 버튼을 보여주기
+	 			$("#btn_next").css("display","block");
+	 		}else $("#btn_next").css("display","none");
+	 		// loding 중인 별점을 보여주는 작업
+	 		newStar();
+          }
 
-          $("#tbl_star").append(html);
-          //let next=data.next;//true, false
-          //console.log(next);
-          if(data.next){//더보기 버튼을 보여주기
-             $("#btn_next").css("display","block");
-          }else $("#btn_next").css("display","none");
-          // loding 중인 별점을 보여주는 작업
-          newStar();
+}
+
+
+/* 관리자가 삭제가 안됨 반대로 기능
+ * 삭제버튼 에러나지만 기능은 가능
+ */
+function deleteReview(rno) {
+    // console.log(rno);
+    let grade = {"grade":"${sessionScope.vo.grade}"} // sessionScope.vo.grade 값 가져오기
+    console.log(grade);
+    
+    if (grade === "0") { // 
+    	alert("나가");
+    } else {
+    	if (confirm("정말로 별점을 삭제하시겠습니까?")) {
+            let url = "deleteReview";
+            let param = {"rno": rno};
+            console.log(param);
+            doAjax(url, param, deleteAfter);
+            location.reload();
+        }
     }
 }
 
+/*
+ function deleteAfter(data){
+	console.log(data);
+	location.reload();
+	if (data == "success") {
+        location.reload();
+    } else {
+        alert("별점 삭제 중 오류가 발생했습니다.");
+    }
+}
+*/
+
+/* function deleteReview(rno) {
+	//console.log(rno);
+	
+    if (confirm("정말로 별점을 삭제하시겠습니까?")) {
+        let url = "deleteReview";
+        let param = {"rno": rno};
+        console.log(param);
+        doAjax(url, param, function (data) {
+        	console.log("왓냐");
+        	if (data == "success") {
+                location.reload();
+            } else {
+                alert("별점 삭제 중 오류가 발생했습니다.");
+            }
+        });
+    }
+}
+*/
 
 </script>

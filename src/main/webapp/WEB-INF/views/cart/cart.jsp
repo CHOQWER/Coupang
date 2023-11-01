@@ -174,17 +174,17 @@ function updateItemTotal(item, quantityElement, priceElement) {
 
 
 
-	/*
-	var checkboxes = document.getElementById("deleteCart");
-	var selectedItems = [];
-	for (var i = 0; i < checkboxes.length; i++) {
+   /*
+   var checkboxes = document.getElementById("deleteCart");
+   var selectedItems = [];
+   for (var i = 0; i < checkboxes.length; i++) {
         if (checkboxes[i].checked) {
             selectedItems.push(checkboxes[i].value);
         }
     }
-	console.log(selectedItems);*/
+   console.log(selectedItems);*/
 
-	
+   
 </script>
 
 <%@ include file="/WEB-INF/views/include/footer.jsp"%>
