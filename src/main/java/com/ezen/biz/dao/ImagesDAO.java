@@ -13,11 +13,11 @@ public class ImagesDAO {
 	private SqlSessionTemplate mybatis;
 	
 	 public void insertImages(ImagesVO vo) {
-		   mybatis.insert("ImagesDAO.insertImages", vo);
+		   mybatis.insert("sellerDAO.insertImages", vo);
 }
 
 	public void sellerDeleteImages(int pno) {
-		mybatis.delete("ImagesDAO.sellerDeleteImages", pno);
+		mybatis.delete("sellerDAO.sellerDeleteImages", pno);
 		
 	}
 	 

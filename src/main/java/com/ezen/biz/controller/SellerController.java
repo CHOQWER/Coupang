@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.ezen.biz.dao.BuyDAO;
 import com.ezen.biz.dto.BuyVO;
 import com.ezen.biz.dto.ImagesVO;
 import com.ezen.biz.dto.MainCateVO;
@@ -45,8 +46,6 @@ public class SellerController {
 	@Autowired
 	private CategoryService cateService;
 	
-//	@Autowired
-//	private ProductService productService;
 	
 	private final String imgPath="D:/upload/img/";
 	
@@ -185,7 +184,7 @@ public class SellerController {
 	
 	
 
-
+	//판매자 판매 내역
 	@RequestMapping("sellerSelectBuyList")
 	public String sellerMainPage(Model model,BuyVO vo) {
 		
@@ -194,6 +193,66 @@ public class SellerController {
 		model.addAttribute("list",list);
 		return "seller/sellerSelectBuyList";
 	}
+	
+	
+	//구매하기 후->판매자 판매 확인 o/x  
+	@GetMapping("sellerBeforeDelivery")
+	public String sellerBeforeDelivery(Model model,BuyVO vo, HttpSession session,UsersVO v) {
+		v=(UsersVO) session.getAttribute("vo");
+		vo.setU_id(v.getU_id());
+		
+		
+		List<BuyVO> list=buyService.sellerBeforeDelivery(vo);
+		model.addAttribute("list",list);
+
+		
+		return "seller/sellerBeforeDelivery";
+	}
+	
+	
+	@PostMapping("sellerBeforeDelivery")
+	public String sellerBeforeDelivery(BuyVO vo,BuyDAO dao,
+			@RequestParam int[] bno,@RequestParam int[] sta) {
+		for(int i=0;i<bno.length;i++) {
+			System.out.println("bno[i]="+bno[i]);
+			System.out.println("sta[i]="+sta[i]);
+			
+			if(sta[i]==0) {
+				vo.setBno(bno[i]);
+				System.out.println("====="+vo);
+				buyService.sellerStaY(vo);
+
+			}else if(sta[i]==1) {
+				vo.setBno(bno[i]);
+				System.out.println("-----"+vo);
+				buyService.sellerStaN(vo);
+			}
+			
+		}
+		
+//		for(int b:bno) {
+//		vo.setBno(b);
+//		
+//		for(String s:sta) {
+//			System.out.println("s는??"+s);
+//		if(s.equals("0")) {
+//			dao.sellerStaY(vo);
+//			System.out.println("구매 승인 입니다.");
+//			
+//		}
+//		else if(s.equals("1")) {
+//
+//			dao.sellerStaN(vo);
+//			System.out.println("구매 취소 입니다.");
+//		}
+//		}
+//		
+//	}
+		return "seller/sellerBeforeDelivery";
+	}
+	
+	
+	
 	@RequestMapping("adminSelectBuyList")
 	public String adminSelectBuyList(Model model,BuyVO vo) {
 		List<BuyVO> list=buyService.adminSelectBuyList(vo);
