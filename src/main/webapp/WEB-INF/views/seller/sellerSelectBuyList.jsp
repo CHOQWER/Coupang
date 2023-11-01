@@ -35,7 +35,7 @@
 		
 		<c:if test="${list==null}">
 			<tr>
-				<td colspan="6">검색된 도서가 없습니다.</td>
+				<td colspan="6">검색된 제품이 없습니다.</td>
 			</tr>
 		</c:if>
 		<p>판매자 판매내역 확인하기</p>

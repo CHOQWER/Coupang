@@ -1,8 +1,13 @@
 package com.ezen.biz.service;
 
+import java.util.List;
+
+import com.ezen.biz.dto.BuyVO;
 import com.ezen.biz.dto.UsersVO;
 
 public interface UsersService {
+	
+	List<BuyVO> delivseryStatus(UsersVO vo);
 
 	UsersVO selectMember(String u_id);
 	

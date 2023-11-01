@@ -70,12 +70,13 @@ public class SellerController {
 		
 	}
 	@PostMapping("sellerInsertProduct")
-	public String sellerInsertProduct(Model model,ProductVO pvo,ImagesVO ivo, String company,
+	public String sellerInsertProduct(Model model,ProductVO pvo,ImagesVO ivo, String company,HttpServletRequest request,
 			MultipartFile[] uploadFile)
 			throws IllegalStateException, IOException {
-//			pvo.setCompany("종현이용");
-			log.info("company"+company);
-//			log.info(ivo);
+			
+			System.out.println("pvo.getCa_no()="+pvo.getCa_no());
+			System.out.println("pvo.getSca_no()="+pvo.getSca_no());
+			
 			productService.sellerInsertProduct(pvo);
 //			System.out.println("pvo.getCompany()2="+pvo.getCompany());
 			
