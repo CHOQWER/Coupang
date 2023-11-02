@@ -1,9 +1,12 @@
 package com.ezen.biz.dao;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.ezen.biz.dto.BuyVO;
 import com.ezen.biz.dto.UsersVO;
 
 @Repository
@@ -12,7 +15,10 @@ public class UsersDAO {
    
    @Autowired
    private SqlSessionTemplate mybatis;
-   
+   //주문 목록, 배송조회
+	public List<BuyVO> delivseryStatus(UsersVO vo) {
+		return mybatis.selectList("UsersDAO.delivseryStatus", vo);
+	}
    
    public UsersVO selectMember(String u_id) {    
       return mybatis.selectOne("UsersDAO.selectMember", u_id);      

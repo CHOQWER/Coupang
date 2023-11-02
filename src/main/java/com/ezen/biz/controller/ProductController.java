@@ -206,6 +206,22 @@ public class ProductController {
        return "product/ProductList";
    }
    
+   @GetMapping("ProductView1")
+   public String ProductView(ProductVO pvo,ImagesVO ivo, Model model, @RequestParam int pno) {
+      pvo=service.selectProductPno(pno);
+      ivo=service.selectImgPno(pno);
+      Map<String, Number> map = rservice.selectAvgCountScore(pno);
+      model.addAttribute("pvo",pvo);
+      model.addAttribute("ivo",ivo);
+      model.addAttribute("map",map);
+      pvo.getCa_no();
+      System.out.println( " pvo.getCa_no()="+pvo.getCa_no());
+
+//      model.addAttribute("cate_name",cate_name);
+//      model.addAttribute("subcate_name",subcate_name);
+      return "product/ProductView";
+   }  
+   
    
    @GetMapping("ProductView")
    public String ProductView(ProductVO pvo,ImagesVO ivo, Model model, @RequestParam int pno,@RequestParam(value = "cate_name", required = false) String cate_name, @RequestParam(value = "subcate_name", required = false) String subcate_name) {

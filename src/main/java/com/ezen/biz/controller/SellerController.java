@@ -57,8 +57,8 @@ public class SellerController {
 	@GetMapping("sellerInsertProduct")
 	public String sellerInsertProduct(Model model, UsersVO v, 
 			 HttpSession session,BuyVO vo) {
-		v=(UsersVO) session.getAttribute("vo");
-		vo.setU_id(v.getU_id());
+			v=(UsersVO) session.getAttribute("vo");
+			vo.setU_id(v.getU_id());
 		
 		//카테 / 서브카테 반응
 		List<MainCateVO> mCate=cateService.selectMCateList();
@@ -70,12 +70,15 @@ public class SellerController {
 		
 	}
 	@PostMapping("sellerInsertProduct")
-	public String sellerInsertProduct(Model model,ProductVO pvo,ImagesVO ivo, String company,
-			MultipartFile[] uploadFile)
+	public String sellerInsertProduct(Model model,ProductVO pvo,ImagesVO ivo, String company,HttpServletRequest request,UsersVO v,HttpSession session
+			,MultipartFile[] uploadFile)
 			throws IllegalStateException, IOException {
-//			pvo.setCompany("종현이용");
-			log.info("company"+company);
-//			log.info(ivo);
+			v=(UsersVO) session.getAttribute("vo");
+			pvo.setU_id(v.getU_id());
+			
+			System.out.println("pvo.getCa_no()="+pvo.getCa_no());
+			System.out.println("pvo.getSca_no()="+pvo.getSca_no());
+			
 			productService.sellerInsertProduct(pvo);
 //			System.out.println("pvo.getCompany()2="+pvo.getCompany());
 			
@@ -124,7 +127,7 @@ public class SellerController {
 				i++;
 			} // end for	
 			imageService.insertImages(ivo);
-		return "seller/sellerHome";
+		return "redirect:sellerSelectMineProduct";
 	}
 		
 		

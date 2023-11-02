@@ -39,9 +39,9 @@
 						<input type="hidden" name="u_id" value="${sessionScope.vo.u_id }">											
 					</c:if>
 					<c:if test="${sessionScope.vo.grade==3 }">
-						<p>등 급 : 와우회원</p>					
-						<button onclick="wowsecession()">와우회원탈퇴</button>	
-						<input type="hidden" name="u_id" value="${sessionScope.vo.u_id }">	
+						<p>등 급 : 와우회원</p>						
+						<input type="submit" name="action" value="와우회원탈퇴">
+						<%-- <input type="hidden" name="u_id" value="${sessionScope.vo.u_id }">	 --%>					
 					</c:if>
 				</form>
 					
@@ -61,11 +61,16 @@
 
 <%@ include file="/WEB-INF/views/include/footer.jsp"%>
 
-<script>
-	function wowsecession() {	
-			   let secess=$("#wowsecession");
+<script>	
+		/* let secess=$("#wowsecession");
 			   secess.attr("action","wowsecession");   
 			   secess.submit();
+			} */
+		
+	function btn_click(str){
+				if(str=="update")
+					frm1.action="wowsecession";
 			}
+			
 	
 </script>
