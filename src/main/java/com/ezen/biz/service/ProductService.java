@@ -46,10 +46,15 @@ public interface ProductService {
 	//이미지까지 제품 장바구니로 넘기는거
 	ProductVO selectProductcartPno(int pno);
 	
+	//결제 페이지로 넘기는거
+	ProductVO selectProductbuyPno(int pno);
+	
 	ImagesVO selectImgPno(int pno);
 	
 	//회사별 검색
 	List<ProductVO> selectCompany(int sca_no);
+	
+	List<ProductVO> selectCompanyCa(int ca_no);
 	
 	List<ProductVO> selectCompanylist(ProductVO vo,Criteria cri);
 	
@@ -63,5 +68,8 @@ public interface ProductService {
 	
 	
 	int selectRowCountword(int ca_no, Criteria cri);
+	
+	List<ProductVO> randomProduct();
+	
 
 }

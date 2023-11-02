@@ -24,20 +24,5 @@
   	<select id="selectNoticeList" resultType="notice">
   		select * from notice where type=#{type} and disp='y' order by nno desc
   	</select>
-  	
-  	<!-- 검색 -->
-	<select id="getNoticeList" resultType="notice">
-		select * from notice where type='1' and disp='y' and 1=1 
-		<if test="searchCondition=='n_title'">
-			and lower(n_title) like '%'|| lower(#{searchKeyword}) ||'%' 
-		</if>
-		<if test="searchCondition=='n_content'">
-			and upper(n_content) like '%'|| upper(#{searchKeyword}) ||'%' 
-		</if>
-		<if test="searchCondition=='ALL'">
-			and (lower(n_title) like '%'|| lower(#{searchKeyword}) ||'%' or upper(n_content) like '%'|| upper(#{searchKeyword}) ||'%') 
-		</if>
-			order by nno desc
-	</select>
 
 </mapper>

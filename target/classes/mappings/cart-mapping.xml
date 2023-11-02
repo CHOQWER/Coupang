@@ -21,7 +21,16 @@
   	<select id="selectMaxCno" resultType="integer">
   		select max(cno) from cart
   	</select>
+  	
   	<select id="deleteCart">
   	delete from cart where cno=#{cno}
   	</select>
+	
+	
+
+
+
+
+
+
 </mapper>

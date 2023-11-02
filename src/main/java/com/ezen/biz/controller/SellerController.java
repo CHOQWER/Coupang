@@ -1,14 +1,10 @@
 package com.ezen.biz.controller;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
-
 import java.io.File;
 import java.io.IOException;
-import java.net.http.HttpRequest;
 import java.util.List;
 import java.util.UUID;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,8 +42,6 @@ public class SellerController {
 	@Autowired
 	private CategoryService cateService;
 	
-//	@Autowired
-//	private ProductService productService;
 	
 	private final String imgPath="D:/upload/img/";
 	
@@ -59,8 +53,8 @@ public class SellerController {
 	@GetMapping("sellerInsertProduct")
 	public String sellerInsertProduct(Model model, UsersVO v, 
 			 HttpSession session,BuyVO vo) {
-		v=(UsersVO) session.getAttribute("vo");
-		vo.setU_id(v.getU_id());
+			v=(UsersVO) session.getAttribute("vo");
+			vo.setU_id(v.getU_id());
 		
 		//카테 / 서브카테 반응
 		List<MainCateVO> mCate=cateService.selectMCateList();
@@ -72,12 +66,15 @@ public class SellerController {
 		
 	}
 	@PostMapping("sellerInsertProduct")
-	public String sellerInsertProduct(Model model,ProductVO pvo,ImagesVO ivo, String company,
-			MultipartFile[] uploadFile)
+	public String sellerInsertProduct(Model model,ProductVO pvo,ImagesVO ivo, String company,HttpServletRequest request,UsersVO v,HttpSession session
+			,MultipartFile[] uploadFile)
 			throws IllegalStateException, IOException {
-//			pvo.setCompany("종현이용");
-			log.info("company"+company);
-//			log.info(ivo);
+			v=(UsersVO) session.getAttribute("vo");
+			pvo.setU_id(v.getU_id());
+			
+			System.out.println("pvo.getCa_no()="+pvo.getCa_no());
+			System.out.println("pvo.getSca_no()="+pvo.getSca_no());
+			
 			productService.sellerInsertProduct(pvo);
 //			System.out.println("pvo.getCompany()2="+pvo.getCompany());
 			
@@ -126,7 +123,7 @@ public class SellerController {
 				i++;
 			} // end for	
 			imageService.insertImages(ivo);
-		return "seller/sellerHome";
+		return "redirect:sellerSelectMineProduct";
 	}
 		
 		
@@ -165,7 +162,7 @@ public class SellerController {
 				vo=productService.selectProductPno(vo.getPno());
 				model.addAttribute("vo",vo);
 				
-
+				
 				return "seller/sellerUpdateProduct";
 			}
 			//판매자 업데이트 팝업창 이동
@@ -203,7 +200,6 @@ public class SellerController {
 		v=(UsersVO) session.getAttribute("vo");
 		vo.setU_id(v.getU_id());
 		
-		
 		List<BuyVO> list=buyService.sellerBeforeDelivery(vo);
 		model.addAttribute("list",list);
 
@@ -213,16 +209,31 @@ public class SellerController {
 	
 	
 	@PostMapping("sellerBeforeDelivery")
-	public String sellerBeforeDelivery(BuyVO vo,BuyDAO dao, HttpServletRequest request,@RequestParam int[] bno) {
+	public String sellerBeforeDelivery(BuyVO vo,BuyDAO dao,
+			@RequestParam int[] bno,@RequestParam int[] sta) {
+		for(int i=0;i<bno.length;i++) {
+			System.out.println("bno[i]="+bno[i]);
+			System.out.println("sta[i]="+sta[i]);
+			
+			if(sta[i]==0) {
+				vo.setBno(bno[i]);
+				System.out.println("====="+vo);
+				buyService.sellerStaY(vo);
 
-		for(int b:bno) {
-		vo.setBno(b);
-		System.out.println(b);
+			}else if(sta[i]==1) {
+				vo.setBno(bno[i]);
+				System.out.println("-----"+vo);
+				buyService.sellerStaN(vo);
+			}
+			
 		}
+		
+//		for(int b:bno) {
+//		vo.setBno(b);
+//		
 //		for(String s:sta) {
 //			System.out.println("s는??"+s);
 //		if(s.equals("0")) {
-//
 //			dao.sellerStaY(vo);
 //			System.out.println("구매 승인 입니다.");
 //			
@@ -232,6 +243,8 @@ public class SellerController {
 //			dao.sellerStaN(vo);
 //			System.out.println("구매 취소 입니다.");
 //		}
+//		}
+//		
 //	}
 		return "seller/sellerBeforeDelivery";
 	}

@@ -42,8 +42,9 @@ header {
 .right-nav {
     display: flex;
     float: right;
-    margin: -3px 110px;
+    margin: 0px;
     font-size: 1rem;
+  	margin-right: 20px;
 }
 
 .right-nav li{
@@ -143,12 +144,12 @@ li {
 
 .logo {
 
-    margin-top: 2em;
+    margin-top: 2.8em;
     margin-left: 2em;
 }
 
 .search-box {
-    margin-top: 2em;
+    margin-top: 2.8em;
     margin-left: 2em;
     display: flex;
     align-items: center;
@@ -161,6 +162,7 @@ li {
     color: gray;
     border: none;
     text-align: center;
+    background-color: white;
 }
 
 .search-box option {
@@ -192,7 +194,8 @@ li {
     display: flex;
     list-style: none;
     padding: 0;
-    margin-left: 20px;
+    margin-left: 2em;
+    margin-top: 2.2em;
 }
 .icon-menu li {
     display: inline-block;

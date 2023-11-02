@@ -13,20 +13,11 @@
     <div class="container">
         <div class="two_third first" style="height:auto">
             <div class="col-lg-12">
-                <h2 class="font-weight-bold text-primary heading">글쓰기</h2>
+                <h2 class="font-weight-bold text-primary heading">공지사항</h2>
                 <hr/><br><br>
                 <div class="two_third first">
                     <form action="noticeNew" id="noticeForm" method="post">
                         <table class="table">
-                            <tr>
-                                <select id="noticeType">
-                                    <option value="0" name="type" selected>공지사항</option>
-                                    <option value="1" name="type">자주 묻는 질문</option>
-                                <select name="type" id="noticeType">
-                                    <option value="0">공지사항</option>
-                                    <option value="1">자주 묻는 질문</option>
-                                </select>
-                            </tr>
                             <tr>
                                 <th width=20% class="text-right">제목</th>
                                 <td width=80%>
@@ -55,17 +46,5 @@
         </div>
     </div>
 </div>
-
-<script>
-    document.getElementById("noticeType").addEventListener("change", function() {
-        var selectedOption = this.value;
-        var form = document.getElementById("noticeForm");
-        if (selectedOption === "0") {
-            form.action = "noticeNew?type=0";
-        } else if (selectedOption === "1") {
-            form.action = "noticeNew?type=1";
-        }
-    });
-</script>
 
 <%@ include file="/WEB-INF/views/include/footer.jsp"%>

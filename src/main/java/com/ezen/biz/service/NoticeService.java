@@ -13,12 +13,9 @@ public interface NoticeService {
 	void updateNotice(NoticeVO vo);
 
 	// 공지사항 삭제
-	void deleteNotice(NoticeVO vo);
+	void deleteNotice(int nno);
 
 	// 리스트 뽑기
 	List<NoticeVO> selectNoticeList(NoticeVO vo);
-
-	// 공지사항 검색
-	List<NoticeVO> getNoticeList(NoticeVO vo);
 
 }

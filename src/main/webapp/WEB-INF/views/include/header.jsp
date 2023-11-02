@@ -29,9 +29,12 @@
 		
 	
 	}
+
 </script>
 </head>
 <body>
+
+
 	<div class="container">
 		<header>
 			<nav class="top-nav">
@@ -85,9 +88,6 @@
 					</aside>
 				</div>
 
-
-
-
 				<div class="logo">
 					<a href="/"><img src="/resources/img/logo_coupang_w350.png"
 						alt="브랜드로고" width="174px"></a>
@@ -118,6 +118,10 @@
 
 					<li><a href="cart"> <img src="resources/img/cart.png"
 							alt="장바구니"> <span>장바구니</span>
+					</a></li>
+					
+					<li><a href="membership"> <img src="resources/img/membership.jpg"
+							alt="와우멤버십"> <span>와우멤버십</span>
 					</a></li>
 				</ul>
 			</div>
