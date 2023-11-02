@@ -41,9 +41,9 @@
 							<div>
 								<span><a href="ProductView?pno=${pvo.pno}">${pvo.pname}</a></span><br>
 								<span>와우할인가</span> <span><fmt:formatNumber
-										value="${pvo.price}" pattern="#,###" /></span><br> <span>
+										value="${pvo.dis_price}" pattern="#,###" /></span><br> <span>
 										<fmt:formatNumber
-										value="${pvo.dis_price}" pattern="#,###" /></span><br> 
+										value="${pvo.price}" pattern="#,###" /></span><br> 
 										<input
 									id="avgscore" name="avgscore"
 									value="${starlist[idx.index-1].get('AVG')}"

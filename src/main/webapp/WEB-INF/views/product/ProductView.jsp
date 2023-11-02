@@ -13,80 +13,47 @@
    type="text/css" />
 <script src="/resources/star-rating/js/star-rating.min.js"
    type="text/javascript"></script>
-<script src="/resources/star-rating/themes/krajee-svg/theme.min.js"  type="text/javascript"></script>   
+<script src="/resources/star-rating/themes/krajee-svg/theme.min.js"  type="text/javascript"></script>  
 
-<script type="text/javascript">
-	
-	function selectImg(id){		
-		/* let a=document.ElementById("img1").src; */				
-		/* console.log(tmp); */
-		if(document.getElementById("img1")=="img1" || document.getElementById("")==null){
-			var tmp = document.getElementById("img1").getAttribute("src");	
-		}else if(document.getElementById("img2")=="img2") {
-			var tmp = document.getElementById("img2").getAttribute("src");	
-		} else if(document.getElementById("img3")=="img3") {
-			var tmp = document.getElementById("img3").getAttribute("src");	
-		} else if(document.getElementById("img4")=="img4") {
-			var tmp = document.getElementById("img4").getAttribute("src");	
-		} else if(document.getElementById("img5")=="img5") {
-			var tmp = document.getElementById("img5").getAttribute("src");	
-		}		
-		/* var tmp2 = document.getElementById("img2").getAttribute("src");
-		var tmp3 = document.getElementById("img3").getAttribute("src");
-		var tmp4 = document.getElementById("img4").getAttribute("src");
-		var tmp5 = document.getElementById("img5").getAttribute("src"); */
-		console.log(tmp);		
-	}
-	
-	/* "imgDown?imgName=${ivo.main_img1}" */
-</script>
 <%@ include file="/WEB-INF/views/include/header.jsp" %>
 
-   <section class="content">
-      <div class="cate">쿠팡홈 > 태블릿PC > 태블릿PC</div>
-      
-      <form action="insertcart" method="post" id="frmDetail" name="frmDetail">      
-         <input type="hidden" name="pno" value="${pvo.pno}">
-         <input type="hidden" name="ino" value="${ivo.ino }">
-         <input type="hidden" name="price" value="${pvo.price }">
-         <input type="hidden" name="dis_price" value="${pvo.dis_price }">
-         <input type="hidden" name="pname" value="${pvo.pname }">
-         
+<section class="content">
+   <div class="cate" > 쿠팡홈 > ${cate_name} > ${subcate_name} </div>
+
+   <form action="insertcart" method="post" id="frmDetail" name="frmDetail">
+      <input type="hidden" name="pno" value="${pvo.pno}"> <input
+         type="hidden" name="ino" value="${ivo.ino }"> <input
+         type="hidden" name="price" value="${pvo.price }"> <input
+         type="hidden" name="dis_price" value="${pvo.dis_price }"> <input
+         type="hidden" name="pname" value="${pvo.pname }">
+
       <!--좌측 메인/서브 이미지-->
-      
-      
-      
-      
-      <div class="content-main">           
-			<!-- 이미지가 null이면 표시 안되게 -->
-			<!-- <div id="content-wrapper">	 -->		
-			
-			<div class="column">
-			<div id="img-container">
-				<div class="magnifier" style="background:url('tmp')" no-repeat;></div>
-				<img id="mainimg" src="imgDown?imgName=${ivo.main_img1}" alt="메인이미지">
-			</div>			
-				
-				<div id="slider">
-					<c:if test="${not empty ivo.main_img1}">
-						<img class="thumbnail active" id="img1" src="imgDown?imgName=${ivo.main_img1}" onclick="selectImg(id)">
-					</c:if>
-					<c:if test="${not empty ivo.main_img2}">
-						<img class="thumbnail" src="imgDown?imgName=${ivo.main_img2}" id="img2" onclick="selectImg()">
-					</c:if>
-					<c:if test="${not empty ivo.main_img3}">
-						<img class="thumbnail" src="imgDown?imgName=${ivo.main_img3}" id="img3" onclick="selectImg()">
-					</c:if>
-					<c:if test="${not empty ivo.main_img4}">
-						<img class="thumbnail" src="imgDown?imgName=${ivo.main_img4}" id="img4" onclick="selectImg()">
-					</c:if>
-					<c:if test="${not empty ivo.main_img5}">
-						<img class="thumbnail" src="imgDown?imgName=${ivo.main_img5}" id="img5" onclick="selectImg()">
-					</c:if>					
-				</div>
-		</div>
-		
-	<!-- </div> -->
+      <div class="content-main">
+
+         <div id="content-wrapper">
+            <div class="column">
+               <div id="img-container">
+                  <div id="lens"></div>
+                  <img id=featured src="imgDown?imgName=${ivo.main_img1}">
+               </div>
+               <div id="slide-wrapper">
+                  <div id="slider">
+                     <c:if test="${not empty ivo.main_img2}">
+                        <img class="thumbnail" src="imgDown?imgName=${ivo.main_img2}">
+                     </c:if>
+                     <c:if test="${not empty ivo.main_img3}">
+                        <img class="thumbnail" src="imgDown?imgName=${ivo.main_img3}">
+                     </c:if>
+                     <c:if test="${not empty ivo.main_img4}">
+                        <img class="thumbnail" src="imgDown?imgName=${ivo.main_img4}">
+                     </c:if>
+                     <c:if test="${not empty ivo.main_img5}">
+                        <img class="thumbnail" src="imgDown?imgName=${ivo.main_img5}">
+                     </c:if>
+                  </div>
+               </div>
+            </div>
+         </div>     
 
 
          <!--우측 구매하는 부분-->
@@ -163,7 +130,7 @@
             <li>배송/교환/반품 안내</li>
          </ul>
       </div>
-
+  
 
       <div class="content">
          <p>필수 표기 정보</p>
@@ -210,9 +177,9 @@
          
         
          <!-- 리뷰 inner html 반복할곳 -->
-		<table id="tbl_star">
+      <table id="tbl_star">
 
-		</table>
+      </table>
          
          
          <button type="button" id="btn_next" style="display: none"
@@ -253,9 +220,9 @@ function cartSubmit(){
    frm.submit();
 }
 function buySubmit() {
-	   let frm=$("#frmDetail");
-	   frm.attr("action","insertBuy");   
-	   frm.submit();
+      let frm=$("#frmDetail");
+      frm.attr("action","insertBuy");   
+      frm.submit();
 }
 
 /*==========================================*/
@@ -313,8 +280,8 @@ function saveStar(){
    
    let url="saveStar";//서블릿 매핑 주소
    let param={"rno":rno,
-		    "u_id":"${sessionScope.vo.u_id}",
-		    "grade":"${sessionScope.vo.grade}",
+          "u_id":"${sessionScope.vo.u_id}",
+          "grade":"${sessionScope.vo.grade}",
             "pno":${pvo.pno}, 
             "score":score,
             "r_title":r_title,
@@ -380,7 +347,7 @@ function getStarAfter(data){
           let starList=data.arr;
           console.log(starList);
           let html="";
-          for(let vo of starList){//js foreach      	  
+          for(let vo of starList){//js foreach           
              html+='<tr>';
              html+='<td>';
              html+='<img src='+vo.r_photo+' alt="" width="100" height="100">';
@@ -410,14 +377,14 @@ function getStarAfter(data){
              html+='</tr>';
           }//for
           
- 	 		$("#tbl_star").append(html);
-	 		//let next=data.next;//true, false
-	 		//console.log(next);
-	 		if(data.next){//더보기 버튼을 보여주기
-	 			$("#btn_next").css("display","block");
-	 		}else $("#btn_next").css("display","none");
-	 		// loding 중인 별점을 보여주는 작업
-	 		newStar();
+           $("#tbl_star").append(html);
+          //let next=data.next;//true, false
+          //console.log(next);
+          if(data.next){//더보기 버튼을 보여주기
+             $("#btn_next").css("display","block");
+          }else $("#btn_next").css("display","none");
+          // loding 중인 별점을 보여주는 작업
+          newStar();
           }
 
 }
@@ -432,9 +399,9 @@ function deleteReview(rno) {
     console.log(grade);
     
     if (grade === "0") { // 
-    	alert("나가");
+       alert("나가");
     } else {
-    	if (confirm("정말로 별점을 삭제하시겠습니까?")) {
+       if (confirm("정말로 별점을 삭제하시겠습니까?")) {
             let url = "deleteReview";
             let param = {"rno": rno};
             console.log(param);
@@ -446,9 +413,9 @@ function deleteReview(rno) {
 
 /*
  function deleteAfter(data){
-	console.log(data);
-	location.reload();
-	if (data == "success") {
+   console.log(data);
+   location.reload();
+   if (data == "success") {
         location.reload();
     } else {
         alert("별점 삭제 중 오류가 발생했습니다.");
@@ -457,15 +424,15 @@ function deleteReview(rno) {
 */
 
 /* function deleteReview(rno) {
-	//console.log(rno);
-	
+   //console.log(rno);
+   
     if (confirm("정말로 별점을 삭제하시겠습니까?")) {
         let url = "deleteReview";
         let param = {"rno": rno};
         console.log(param);
         doAjax(url, param, function (data) {
-        	console.log("왓냐");
-        	if (data == "success") {
+           console.log("왓냐");
+           if (data == "success") {
                 location.reload();
             } else {
                 alert("별점 삭제 중 오류가 발생했습니다.");

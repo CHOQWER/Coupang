@@ -13,6 +13,8 @@ for (var i=0; i < thumbnails.length; i++){
 		
 
 		this.classList.add('active')
-		document.getElementById('mainimg').src = this.src
+		document.getElementById('featured').src = this.src
 	})
 }
+
+

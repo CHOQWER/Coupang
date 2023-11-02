@@ -4,11 +4,7 @@
 <%@ include file="/WEB-INF/views/include/header.jsp"%>
 <link rel="stylesheet" href="../resources/css/mypage.css">
 
-<script type="text/javascript">
-	function openPop(u_id) {
-	    var popup = window.open('/selectDeli?u_id=' + u_id , '', 'width=700px,height=800px,scrollbars=yes');
-	}
-</script>
+
 
 
 
@@ -49,7 +45,7 @@
     <a href="insertDeli" id="new-deli">새 배송지 추가</a></div>
    
     </form>
-    <button type="button" target="_blank" onclick='openPop("${sessionScope.vo.u_id}")'>배송지목록</button>
+   
   </div>	
 </div>
 <%@ include file="/WEB-INF/views/include/footer.jsp"%>

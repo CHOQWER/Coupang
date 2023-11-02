@@ -68,10 +68,14 @@
 				</div>
 				<hr>      
                     <p>배송지</p>
-                    <div id="text" >${sessionScope.vo.u_addr1}</div>
-                    <input type="hidden" name="u_addr1" value=${sessionScope.vo.u_addr1 }>
-                    <div id="text" >${sessionScope.vo.u_addr2}</div>
-                    <input type="hidden" name="u_addr2" value=${sessionScope.vo.u_addr2 }>
+                    <div id="post_no" >${sessionScope.vo.u_post_no}</div>
+                    <input type="hidden" name="post_no" id="h_post_no" value=${sessionScope.vo.u_post_no }>
+                    <div id="addr1">${sessionScope.vo.u_addr1}</div>
+                    <input type="hidden" name="addr1" id="h_addr1" value=${sessionScope.vo.u_addr1 }>
+                     <div id="addr2">${sessionScope.vo.u_addr2}</div>
+                    <input type="hidden" name="addr2" id="h_addr2" value=${sessionScope.vo.u_addr2 }>
+                    
+                    
                     <button type="button" target="_blank" onclick='openPop("${sessionScope.vo.u_id}")'>배송지목록</button>
                 
 
@@ -160,25 +164,27 @@ function updateItemTotal(item, quantityElement, priceElement) {
         console.log('total',total);
     }
 }
-function openPopup() {
-    const url = "popup.html"; // 팝업 창으로 표시할 HTML 파일 경로
-    const popupWindow = window.open(url, "배송지목록", "width=400, height=300");
-    // 팝업 창이 열린 후에도 수정 가능하도록 이벤트 처리
-    popupWindow.addEventListener("load", function () {
-        // 팝업 창 내의 HTML 요소에 접근하여 수정 가능하도록 처리
-        const popupDocument = popupWindow.document;
-        const deliveryAddress = popupDocument.getElementById("deliveryAddress");
-        const saveButton = popupDocument.getElementById("saveButton");
 
-        saveButton.addEventListener("click", function () {
-            // 수정된 배송지 목록을 저장 (실제로는 서버로 전송할 수 있음)
-            const updatedDeliveryAddress = deliveryAddress.value;
-            // 이전 내용을 수정된 내용으로 업데이트
-            console.log("수정된 배송지 목록: " + updatedDeliveryAddress);
-        });
-    });
+function openPop(u_id) {
+    var popup = window.open('/selectDeli?u_id=' + u_id , '', 'width=700px,height=800px,scrollbars=yes');
 }
 
+
+function updateAddress(post_no,newAddr1,newAddr2) {
+    // 메인 창의 주소 정보 업데이트
+    let post_noDiv = document.getElementById('post_no');
+    post_noDiv.innerHTML = post_no;  
+    document.getElementById("h_post_no").value=post_no;
+    
+    let addr1Div = document.getElementById('addr1');
+    addr1Div.innerHTML = newAddr1; 
+    document.getElementById("h_addr1").value=newAddr1;
+    
+    let addr2Div = document.getElementById('addr2');
+    addr2Div.innerHTML = newAddr2; 
+    document.getElementById("h_addr2").value=newAddr2;
+    
+  }
 
 
 	/*
