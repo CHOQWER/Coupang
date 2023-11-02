@@ -39,10 +39,6 @@
 					</div>
 					<div id="slide-wrapper">
 						<div id="slider">
-							<c:if test="${not empty ivo.main_img1}">
-								<img class="thumbnail active" id="img1"
-									src="imgDown?imgName=${ivo.main_img1}" onclick="selectImg(id)">
-							</c:if>
 							<c:if test="${not empty ivo.main_img2}">
 								<img class="thumbnail" src="imgDown?imgName=${ivo.main_img2}">
 							</c:if>
@@ -50,12 +46,10 @@
 								<img class="thumbnail" src="imgDown?imgName=${ivo.main_img3}">
 							</c:if>
 							<c:if test="${not empty ivo.main_img4}">
-								<img class="thumbnail" src="imgDown?imgName=${ivo.main_img4}"
-									id="img4" onclick="selectImg()">
+								<img class="thumbnail" src="imgDown?imgName=${ivo.main_img4}">
 							</c:if>
 							<c:if test="${not empty ivo.main_img5}">
-								<img class="thumbnail" src="imgDown?imgName=${ivo.main_img5}"
-									id="img5" onclick="selectImg()">
+								<img class="thumbnail" src="imgDown?imgName=${ivo.main_img5}">
 							</c:if>
 						</div>
 					</div>
