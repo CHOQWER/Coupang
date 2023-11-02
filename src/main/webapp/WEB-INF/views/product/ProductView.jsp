@@ -19,7 +19,7 @@
 <%@ include file="/WEB-INF/views/include/header.jsp"%>
 
 <section class="content">
-	<div class="cate">쿠팡홈 > 태블릿PC > 태블릿PC</div>
+	<div class="cate" > 쿠팡홈 > ${cate_name} > ${subcate_name} </div>
 
 	<form action="insertcart" method="post" id="frmDetail" name="frmDetail">
 		<input type="hidden" name="pno" value="${pvo.pno}"> <input
