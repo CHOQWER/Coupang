@@ -250,7 +250,7 @@
 }
 
 .detail-img {
-	display: flex;
+
 	justify-content: center;
 	margin: 20px 0;
 }
@@ -258,6 +258,8 @@
 .detail-img img {
 	max-width: 80%;
 	height: auto;
+	margin: 0 auto;
+  	display: inherit;
 }
 
 .review {

@@ -55,51 +55,7 @@
 				</div>
 			</div>
 
-			<!--우측 구매하는 부분-->
-			<div class="prod-buy">
-				<div class="prod-header">
-					<div class="prod-company">${pvo.company}</div>
-					<div class="prod-name">${pvo.pname}</div>
-					<hr>
-					<div class="prod-review">
-						<table>
-							<tr>
-								<td><input id="avgscore" name="avgscore"
-									value="${map.get('AVG')}" class="rating rating-loading"
-									data-size="sm" readonly="readonly" /></td>
-								<td><a href="#target"><span id="span-cnt">${map.get('CNT')}건의
-											리뷰보기</span></a></td>
-							</tr>
-						</table>
-					</div>
-
-				</div>
-
-				<div class="prod-price">
-					<c:if test="${sessionScope.vo.grade==2 }">
-						<div class="origin-price">
-							<fmt:formatNumber value="${pvo.dis_price}" pattern="#,###" />
-						</div>
-						<div class="sale-price">
-							<fmt:formatNumber value="${pvo.price}" pattern="#,###" />
-						</div>
-					</c:if>
-					<c:if test="${not empty ivo.main_img2}">
-						<img class="thumbnail" src="imgDown?imgName=${ivo.main_img2}">
-					</c:if>
-					<c:if test="${not empty ivo.main_img3}">
-						<img class="thumbnail" src="imgDown?imgName=${ivo.main_img3}">
-					</c:if>
-					<c:if test="${not empty ivo.main_img4}">
-						<img class="thumbnail" src="imgDown?imgName=${ivo.main_img4}">
-					</c:if>
-					<c:if test="${not empty ivo.main_img5}">
-						<img class="thumbnail" src="imgDown?imgName=${ivo.main_img5}">
-					</c:if>					
-				</div>
-		</div>
-		
-	<!-- </div> -->
+			
 
 
          <!--우측 구매하는 부분-->
