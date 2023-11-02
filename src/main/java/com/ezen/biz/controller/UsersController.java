@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ezen.biz.dto.BuyVO;
+import com.ezen.biz.dto.CartVO;
 import com.ezen.biz.dto.UsersVO;
 import com.ezen.biz.service.UsersService;
 
@@ -162,8 +163,16 @@ public class UsersController {
 	}
 
 	@GetMapping("membership")
-	public String memberShip() {
-		return "users/membership";
+	public String memberShip(UsersVO vo, HttpSession session, Model model) {
+		UsersVO updatedUser = service.selectMember(vo.getU_id());
+		if (updatedUser == null) {
+			model.addAttribute("error1", "로그인이 필요한 서비스입니다");
+			return "users/login";
+		} else {
+			vo = (UsersVO) session.getAttribute("vo");
+			service.selectMember(vo.getU_id());
+			return "users/membership";
+		}
 	}
 
 	// 와우 멤버십 가입
@@ -208,10 +217,7 @@ public class UsersController {
 	// 결제하기
 	@GetMapping("apibtn")
 	public String apibtn(UsersVO vo, HttpSession session) {
-		/*
-		 * UsersVO updatedUser = service.selectMember(vo.getU_id());
-		 * session.setAttribute("vo", updatedUser);
-		 */
+
 		return "payment/test";
 	}
 

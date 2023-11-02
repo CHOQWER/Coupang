@@ -33,7 +33,7 @@
 		pg : "kakaopay",
 		pay_method : 'card',
 		merchant_uid : 'merchant_' + new Date().getTime(),
-		name : '와우 멤버십',
+		name : 'sessionScope.vo.u_name',
 		amount : 4900,
 		buyer_email : 'u_email',
 		buyer_name : 'u_name',
@@ -46,6 +46,9 @@
 			var msg = '결제가 완료되었습니다.';
 			alert(msg);
 			console.log(rsp);
+			
+			// +@
+			
 			location.href = '/mypage';			
 		} else {
 			var msg = '결제에 실패하였습니다.';			            
