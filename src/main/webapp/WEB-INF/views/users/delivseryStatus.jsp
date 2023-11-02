@@ -76,9 +76,8 @@
 		<td>${BL.b_cnt}</td>
 		<td>${BL.addr1}</td>
 		<td>${BL.addr2}</td>
-				<td><a href="insertCart?pno=${BL.pno}&"><input type="button" value="장바구니 담기"></a></td>
-				<td><a href=""><input type="button" value="배송조회" /></a></td>
-				<td><a href=""><input type="button" value="교환 반품 신청" /></a></td>
+				<td><a href="insertCart?pno=${BL.pno}"><input type="button" value="장바구니 담기"></a></td>
+				<td><a href="refundBuyProduct?bno=${BL.bno}"><input type="button" value="교환 반품 신청" /></a></td>
 				<td><a href="ProductView1?pno=${BL.pno}"><input type="button" value="리뷰 작성하기" /></a></td>
 	</tr>
 </c:forEach>

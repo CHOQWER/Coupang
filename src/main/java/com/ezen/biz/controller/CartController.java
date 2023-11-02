@@ -81,7 +81,9 @@ public class CartController {
 	    vo.setPname(pvo.getPname());
 	    vo.setPrice(pvo.getPrice());
 	    vo.setDis_price(pvo.getDis_price());
-	    
+	    if(vo.getC_cnt()==0) {
+	    	vo.setC_cnt(1);
+	    }
 	    
 	    //images 테이블에서 pno를 주고 ino를 가져와서 세팅
 	    List<ImagesVO> ino=iservice.pullIno(pno);
