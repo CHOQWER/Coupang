@@ -25,18 +25,13 @@ public class NoticeDAO {
 	}
 	
 	// 공지사항 삭제
-	public void deleteNotice(NoticeVO vo) {
-		mybatis.update("NoticeDAO.deleteNotice", vo);
+	public void deleteNotice(int nno) {
+		mybatis.update("NoticeDAO.deleteNotice", nno);
 	}
 	
 	// 리스트 뽑기
 	public List<NoticeVO> selectNoticeList(NoticeVO vo) {
 		return mybatis.selectList("NoticeDAO.selectNoticeList", vo);
-	}
-	
-	// 공지사항 검색
-	public List<NoticeVO> getNoticeList(NoticeVO vo) {
-		return mybatis.selectList("NoticeDAO.getNoticeList", vo);
 	}
 	
 }

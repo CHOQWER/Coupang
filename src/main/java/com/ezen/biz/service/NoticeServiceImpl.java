@@ -7,12 +7,11 @@ import org.springframework.stereotype.Service;
 
 import com.ezen.biz.dao.NoticeDAO;
 import com.ezen.biz.dto.NoticeVO;
-
 @Service
 public class NoticeServiceImpl implements NoticeService {
 	@Autowired
 	private NoticeDAO dao;
-	
+
 	@Override
 	public void insertNotice(NoticeVO vo) {
 		dao.insertNotice(vo);
@@ -24,18 +23,13 @@ public class NoticeServiceImpl implements NoticeService {
 	}
 
 	@Override
-	public void deleteNotice(NoticeVO vo) {
-		dao.deleteNotice(vo);
+	public void deleteNotice(int nno) {
+		dao.deleteNotice(nno);
 	}
 
 	@Override
 	public List<NoticeVO> selectNoticeList(NoticeVO vo) {
 		return dao.selectNoticeList(vo);
-	}
-
-	@Override
-	public List<NoticeVO> getNoticeList(NoticeVO vo) {
-		return dao.getNoticeList(vo);
 	}
 
 }

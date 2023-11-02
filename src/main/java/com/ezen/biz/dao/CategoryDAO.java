@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 
 import com.ezen.biz.dto.MainCateVO;
 import com.ezen.biz.dto.SubCateVO;
-import com.ezen.biz.service.CategoryService;
 
 
 @Repository
