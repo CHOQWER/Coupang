@@ -32,8 +32,8 @@ public class ProductServiceImpl implements ProductService{
 	}
 	
 	@Override
-	public void sellerDeleteProduct(ProductVO vo) {
-		dao.sellerDeleteProduct(vo);
+	public void sellerDeleteProduct(int pno) {
+		dao.sellerDeleteProduct(pno);
 	}
 
 	@Override
@@ -74,6 +74,9 @@ public class ProductServiceImpl implements ProductService{
 	public ProductVO selectProductcartPno(int pno) {
 		return dao.selectProductcartPno(pno);
 	}
+	public ProductVO selectProductbuyPno(int pno) {
+		return dao.selectProductbuyPno(pno);
+	}
 	@Override
 	public ImagesVO selectImgPno(int pno) {
 		return dao.selectImgPno(pno);
@@ -90,6 +93,12 @@ public class ProductServiceImpl implements ProductService{
 	public List<ProductVO> selectCompany(int sca_no) {
 		return dao.selectCompany(sca_no);
 	}
+	
+	@Override
+	public List<ProductVO> selectCompanyCa(int ca_no) {
+			return dao.selectCompanyCa(ca_no);
+	}
+
 
 	@Override
 	public List<ProductVO> selectCompanylist(ProductVO vo,Criteria cri) {
@@ -105,6 +114,27 @@ public class ProductServiceImpl implements ProductService{
 	public List<ProductVO> selectSearchlist(ProductVO vo, Criteria cri) {
 		return dao.selectSearchlist(vo, cri);
 	}
+
+	@Override
+	public List<ProductVO> selectMainCateList(int ca_no, Criteria cri) {
+		return dao.selectMainCateList(ca_no, cri);
+	}
+
+	@Override
+	public int selectRowCountCa(int ca_no) {
+		return dao.selectRowCountCa(ca_no);
+	}
+
+	@Override
+	public int selectRowCountword(int ca_no, Criteria cri) {
+		return dao.selectRowCountword(ca_no, cri);
+	}
+
+	@Override
+	public List<ProductVO> randomProduct() {
+		return dao.randomProduct();
+	}
+
 
 
 	

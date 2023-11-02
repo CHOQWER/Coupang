@@ -44,7 +44,7 @@ public class UsersTest {
 	public void selectMemberTest() {
 		//로그인 기능
 		UsersVO vo=new UsersVO();
-		vo=dao.selectMember("user4");
+		vo=dao.selectMember("종현1234");
 		log.info("vo:"+vo);	
 		if(vo!=null)
 			if(encoder.matches("user4", vo.getU_pwd())) {
@@ -59,8 +59,8 @@ public class UsersTest {
 	public void register() {
 		log.info("회원가입 테스트");
 		UsersVO vo=new UsersVO();
-		vo.setU_id("user3");
-		vo.setU_pwd(encoder.encode("user3"));
+		vo.setU_id("종현1234");
+		vo.setU_pwd(encoder.encode("1234"));
 		vo.setU_name("엄준식");
 		vo.setU_identity("123456-1234567");
 		vo.setU_mobile("010-1234-5678");
@@ -68,5 +68,19 @@ public class UsersTest {
 		vo.setU_post_no(12345);
 		vo.setU_addr1("하길로70");			
 		dao.insertMember(vo);
+	}
+	@Test
+	public void updateMember() {
+		UsersVO vo=new UsersVO();
+		vo.setU_id("whdgus1234");
+		vo.setU_pwd(encoder.encode("1234"));
+		vo.setU_name("이종현");
+		vo.setU_identity("123456-1234567");
+		vo.setU_mobile("010-1234-5678");
+		vo.setU_email("um@gmail.com");
+		vo.setU_post_no(12345);
+		vo.setU_addr1("하길로70");			
+		/* dao.updateMember(vo); */
+		System.out.println(vo);
 	}
 }

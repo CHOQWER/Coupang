@@ -1,10 +1,14 @@
 .cate-nav {
-    height: 38px;
-    font-size: 12px;
+    height: 70px;
+    font-size: 18px;
+    color:gray;
     border-top: 3px solid  #f0f0f0; 
+    border-bottom: 3px solid  #f0f0f0;
     width: 1028px;
     margin: 0 auto;
-    line-height: 2.5rem;
+    margin-top:1.5em;
+    line-height: 4rem;
+    margin-top: 1.5em;
 }
 .contents{
     display: flex;
@@ -25,6 +29,7 @@
 	flex-direction: column;
     width: 1080px;
     float: right;
+    margin-top: 2em;
 }
 
 
@@ -43,7 +48,8 @@
 }
 
 .prodimg{
-    width: 300px;
+    width: 200px;
+    margin-left: 40px;
 }
 
 .prodimg img {
@@ -52,15 +58,46 @@
         height: auto;
    }
 
-.prodlink:hover {
-    
-    cursor: pointer;
-    border: 1px solid #007bff;
-    box-sizing: border-box;
-}
 
+.prodlink:hover {    
+    cursor: pointer;
+    border-radius:12px;
+    border: 1px solid rgb(66, 133, 244);   
+    box-sizing: border-box;   
+	box-shadow: 1px 1px 13px gray;
+	transition:  0.2s  ease-out;    
+    opacity: 0.6;
+}
 
 .prodlist li {
     margin: 0; 
 }
 
+
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+/* .prodlink{
+  width: 940px; 
+  border: 3px solid black;
+  margin: 0 auto; 블록요소 가운데처리  
+  overflow: hidden; float받은 자손이나 후손의 높이도 인식
+}
+
+.prodlink li{
+  float: left;
+  width: 300px; height: 200px;
+  margin-right: 20px;
+}
+
+
+.prodlink a{
+  display: block;
+  width: 100%; height: 100%;
+  overflow: hidden; 자손이 현재 요소보다 클때 안보이게 처리
+}
+
+CSS변화가 있을때 시간차를 줌
+.prodlink img{ transition: 0.3s; }
+.prodlink a:hover img, .prodlink a:focus img{ a태그에 마우스를 올렸을 때
+  transform: scale(1.2);
+}
+ */

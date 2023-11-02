@@ -2,31 +2,39 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 <link rel="stylesheet" href="../resources/css/index.css">
 <link rel="shortcut icon"
 	href="//image9.coupangcdn.com/image/coupang/favicon/v2/favicon.ico"
 	type="image/x-icon" />
-</head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
-<script
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
 
 <script type="text/javascript">
 	function search() {
 		console.log($("#searchWord").val());
+		const cate_name = $("#search > option:selected").data("cate-name");  
+		console.log(cate_name)
+		
+		
 		location.href = "searchWord?ca_no="
 				+ $("#search > option:selected").val() + "&searchWord="
-				+ $("#searchWord").val();
+				+ $("#searchWord").val()+"&cate_name="+$("#search > option:selected").data("cate-name");
+		
+	
 	}
-</script>
 
+</script>
+</head>
 <body>
+
+
 	<div class="container">
 		<header>
 			<nav class="top-nav">
@@ -66,7 +74,7 @@
 					<aside class="side-bar">
 						<ul style="padding-left: 30px;">
 							<li><c:forEach items="${catelist}" var="cate">
-									<li><a href="#"><i class="fa-solid fa-cat"></i>${cate.get('name')}</a>
+									<li><a href="ProductListMainCate?ca_no=${cate.get('no')}&pageNum=1&cate_name=${cate.get('name')}"><i class="fa-solid fa-cat"></i>${cate.get('name')}</a>
 										<ul style="padding-left: 10px;">
 											<c:forEach items="${cate.get('subcates')}" var="sub">
 												<li><a
@@ -80,9 +88,6 @@
 					</aside>
 				</div>
 
-
-
-
 				<div class="logo">
 					<a href="/"><img src="/resources/img/logo_coupang_w350.png"
 						alt="브랜드로고" width="174px"></a>
@@ -94,15 +99,14 @@
 					<div class="search-box">
 						<select id="search">
 							<c:forEach items="${catelist}" var="cate">
-								<option value="${cate.get('no')}">${cate.get('name')}</option>
-
+								<option value="${cate.get('no')}" data-cate-name="${cate.get('name')}">${cate.get('name')}</option>
 							</c:forEach>
 						</select> 
 						<input id="searchWord" type="text" placeholder="찾고 싶은 상품을 검색해보세요!">
 							<c:set var="encodedsearchWord" value="$('#searchWord').val()" /> 
 						<img src="resources/img/search.png" alt="검색" onclick="search()">
 
-					</div>
+				</div>
 
 				</div>
 				<!--main 검색 끝-->
@@ -115,17 +119,12 @@
 					<li><a href="cart"> <img src="resources/img/cart.png"
 							alt="장바구니"> <span>장바구니</span>
 					</a></li>
+					
+					<li><a href="membership"> <img src="resources/img/membership.jpg"
+							alt="와우멤버십"> <span>와우멤버십</span>
+					</a></li>
 				</ul>
 			</div>
 
-			<nav>
-				<ul class="menu">
-					<ul class="gnb-menu-scroll">
-						<li class="gnb-menu-item"><a href="" class=""> <img
-								class="" src=""> <span>로켓배송</span>
-						</a></li>
-						<li><a href="">이벤트/쿠폰</a></li>
-					</ul>
-				</ul>
-			</nav>
+		
 		</header>

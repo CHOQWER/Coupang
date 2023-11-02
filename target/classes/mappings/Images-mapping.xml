@@ -2,16 +2,36 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  <mapper namespace="ImagesDAO" >
-
-  	<!-- 제품 등록 -->
+<mapper namespace="ImagesDAO">
 	<insert id="sellerInsertImage">
-  		insert into images(ino,pno,main_img1,main_img2,main_img3,main_img4,main_img5,
-  		con_img_1,con_img_2)
-  		values(seq_images.nextval,#{pno},#{main_img1},#{main_img2},#{main_img3},#{main_img4},#{main_img5},
-  		#{con_img_1},#{con_img_2})
-  	</insert>
-  
-  	
-  	
-  </mapper>
+		<!-- 이미지 등록 -->
+		insert into
+		images(ino,pno,main_img1,main_img2,main_img3,main_img4,main_img5,
+		con_img_1,con_img_2)
+		values(seq_images.nextval,#{pno},#{main_img1},#{main_img2},#{main_img3},#{main_img4},#{main_img5},
+		#{con_img_1},#{con_img_2})
+	</insert>
+	
+	<!-- 사진 등록 -->
+	<insert id="insertImages">
+		insert into
+		images(ino,pno,main_img1,main_img2,main_img3,main_img4,main_img5,con_img_1,con_img_2)
+		values(seq_images.nextval,#{pno},#{main_img1},#{main_img2},#{main_img3},#{main_img4},#{main_img5},#{con_img_1},#{con_img_2})
+	</insert>
+	<!-- 이미지 삭제 -->
+	<delete id="sellerDeleteImages">
+		delete from images where pno=#{pno}
+	</delete>
+	<!-- pno로 이미지 가져오기-->
+	<select id="getThumbnailImage" resultType="images">
+		select * from images where pno=#{pno}
+	</select>
+	
+		<select id="pullIno" resultType="images">
+		select * from images where pno=#{pno}
+	</select>
+
+
+
+
+</mapper>

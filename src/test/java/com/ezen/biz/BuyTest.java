@@ -22,30 +22,45 @@ public class BuyTest {
 	private BuyDAO dao;
 	@Autowired
 	private ProductDAO pdao;
-	@Autowired
-	private ImagesDAO idao;
+
+	
 	
 	@Test
 	private void insert22() {
-//		ProductVO pvo=new ProductVO();
-//		pvo.setU_id("whdgus1234");
-//		pvo.setCa_no(1);
-//		pvo.setSca_no(1);
-//		pvo.setCompany("삼성");
-//		pvo.setPname("종현");
-//		pvo.setPrice(3);
-//		pvo.setQty(10);
-//		pdao.sellerInsertProduct(pvo);
+		ProductVO pvo=new ProductVO();
+		pvo.setU_id("whdgus1234");
+		pvo.setCa_no(1);
+		pvo.setSca_no(1);
+		pvo.setCompany("삼성");
+		pvo.setPname("종현");
+		pvo.setPrice(3);
+		pvo.setQty(10);
+		pdao.sellerInsertProduct(pvo);
 		
 
 //		ImagesVO ivo=new ImagesVO();
 //		ivo.setPno(1);
 //		ivo.setCon_img_1("aaa");
 //		ivo.setMain_img1("bbb");
-//		idao.insertImages(ivo);
-		
+//		idao.insertImages(ivo);	
+	}
+	
+	@Test
+	public void insertBuy() {
+		BuyVO vo=new BuyVO();
+		vo.setU_id("whdgus1234");
+		vo.setPno(170);
+		vo.setPname("넷플릭스 유튜브 32인치 HD 스마트TV 안드로이드11 스마트티비");
+		vo.setPrice(10000);
+		vo.setDis_price(1000);
+		vo.setB_cnt(1);
+		vo.setPost_no(0);
+		vo.setAddr1("서울시 관악구");
+		vo.setAddr2("신림동");
+		dao.insertBuy(vo);
 		
 	}
+	
 	
 	
 	@Test
@@ -63,10 +78,9 @@ public class BuyTest {
 		vo.setDis_price(648001);
 		vo.setAddr1("서울시 관악구");
 		vo.setAddr2("대림동");
-		dao.refundProduct(vo);
-		log.info(vo);
 		
 	}
+	
 	@Test
 	public void refundProduct() {
 		BuyVO vo=new BuyVO();
