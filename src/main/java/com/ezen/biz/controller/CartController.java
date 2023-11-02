@@ -17,12 +17,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
+import com.ezen.biz.dao.ImagesDAO;
 import com.ezen.biz.dto.CartVO;
-
+import com.ezen.biz.dto.ImagesVO;
 import com.ezen.biz.dto.ProductVO;
 import com.ezen.biz.dto.UsersVO;
 import com.ezen.biz.service.CartService;
+import com.ezen.biz.service.ImagesService;
 import com.ezen.biz.service.ProductService;
 
 import lombok.extern.log4j.Log4j;
@@ -35,6 +36,9 @@ public class CartController {
 	private CartService service;
 	@Autowired
 	private ProductService pservice;
+	@Autowired
+	private ImagesService iservice;
+	
 	
 //	private final String imgPath = "D:/upload/coupang/";
 	
@@ -57,7 +61,8 @@ public class CartController {
 	}
 
 	@RequestMapping("insertCart")
-	public String insertCart(CartVO vo, HttpSession session, Model model,@RequestParam int pno) {
+	public String insertCart(CartVO vo, HttpSession session, Model model,
+			@RequestParam int pno,ImagesVO ivo) {
 		System.out.println("pno="+pno);
 		
 	    UsersVO v = (UsersVO) session.getAttribute("vo");
@@ -69,15 +74,26 @@ public class CartController {
 	    
 	    // CartVO에 있는 pno를 이용해서 product 테이블에서 필요한 데이터 조회
 	    ProductVO pvo = pservice.selectProductcartPno(vo.getPno());
+	    System.out.println("pvo="+pvo);
 	    // CartVO에 세팅
 	    vo.setU_id(v.getU_id());
 	    vo.setMain_img1(pvo.getMain_img1());
 	    vo.setPname(pvo.getPname());
 	    vo.setPrice(pvo.getPrice());
 	    vo.setDis_price(pvo.getDis_price());
+	    if(vo.getC_cnt()==0) {
+	    	vo.setC_cnt(1);
+	    }
 	    
+	    //images 테이블에서 pno를 주고 ino를 가져와서 세팅
+	    List<ImagesVO> ino=iservice.pullIno(pno);
+	    for(ImagesVO i:ino) {
+	    vo.setIno(i.getIno());
+	    System.out.println("ino="+ino);
+	    }
 	    // 삽입 장바구니 테이블에 넣기
 	    int cno = service.insertCart(vo);
+	    
 	    
 	    // cno로 cart 테이블에서 조회
 	    List<CartVO> list = service.selectCartList(vo);

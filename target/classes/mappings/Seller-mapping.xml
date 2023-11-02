@@ -3,10 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="sellerDAO">
-		<insert id="insertImages">
-			insert into images(ino,pno,main_img1,main_img2,main_img3,main_img4,main_img5,con_img_1,con_img_2)
-			values(seq_images.nextval,#{pno},#{main_img1},#{main_img2},#{main_img3},#{main_img4},#{main_img5},#{con_img_1},#{con_img_2})
-		</insert>
+
 		
 		<!-- 판매자가 구매내역 확인 전 O/X -->
 		<select id="sellerBeforeDelivery" resultType="buy">

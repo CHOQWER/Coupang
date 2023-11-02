@@ -17,9 +17,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.ezen.biz.dao.ImagesDAO;
 import com.ezen.biz.dto.BuyVO;
 import com.ezen.biz.dto.CartVO;
 import com.ezen.biz.dto.UsersVO;
+import com.ezen.biz.service.ImagesService;
 import com.ezen.biz.service.UsersService;
 
 import lombok.extern.log4j.Log4j;
@@ -34,7 +36,11 @@ public class UsersController {
 
 	@Autowired
 	private PasswordEncoder encoder;
-
+	
+	@Autowired
+	private ImagesService iservice;
+	
+	
 	@GetMapping("/login")
 	public String login() {
 		return "users/login";
@@ -185,12 +191,28 @@ public class UsersController {
 	}
 
 	@RequestMapping("delivseryStatus")
-	public String delivseryStatus(UsersVO vo, HttpSession session, Model model, HttpServletRequest request) {
-		vo = (UsersVO) session.getAttribute("vo");
+	public String delivseryStatus(UsersVO vo, HttpSession session,Model model,
+			HttpServletRequest request,BuyVO bvo,ImagesVO ivo) {
+		vo=(UsersVO) session.getAttribute("vo");
 		vo.setU_id(vo.getU_id());
+		
+		List<BuyVO> list=service.delivseryStatus(vo);
+		
+		//메인이미지 가져오기
+		System.out.println("list"+list);
+		ImagesDAO dao=new ImagesDAO();
+		for(BuyVO v:list) {
+			ivo.setPno(v.getPno());
+			List<ImagesVO> thumbnail=iservice.getThumbnailImage(ivo.getPno());
+			model.addAttribute("thumbnail", thumbnail);
+		}
 
-		List<BuyVO> list = service.delivseryStatus(vo);
-
+		//1.pno가져오기
+		
+		//2.이미지 테이블에서 pno로 메인이미지 가져오기
+		
+		
+		//1일 뒤 도착예정
 		Calendar now = Calendar.getInstance();
 		int year = now.get(Calendar.YEAR);
 		int month = now.get(Calendar.MONTH) + 1;

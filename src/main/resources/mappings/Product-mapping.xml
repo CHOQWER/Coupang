@@ -50,7 +50,7 @@
 
 
 	<!-- 상품페이지에서 pno로 장바구니로 넘기기 -->
-	<select id="selectProductcartPno" resultType="product">
+	<select id="selectProductcartPno" resultType="product" >
 		SELECT product.pno, images.ino, product.u_id, images.main_img1,
 		product.pname, product.price, product.dis_price
 		FROM product
