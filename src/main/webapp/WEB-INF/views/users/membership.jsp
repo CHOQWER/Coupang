@@ -35,7 +35,7 @@
 					<c:if test="${sessionScope.vo.grade==2 }">
 						<p>등 급 : 일반회원</p>
 						<button type="submit">와우회원등록</button>
-						
+						<a href="apibtn"><button type="button">결제하기</button></a>		
 						<input type="hidden" name="u_id" value="${sessionScope.vo.u_id }">											
 					</c:if>
 					<c:if test="${sessionScope.vo.grade==3 }">
@@ -44,13 +44,7 @@
 						<%-- <input type="hidden" name="u_id" value="${sessionScope.vo.u_id }">	 --%>					
 					</c:if>
 				</form>
-					
-
-				<%-- sadfasdfsadfasdfasdfasdfaasdf<form action="withdrawal" method="post"> 	
-				<%-- <form action="withdrawal" method="post">
-					<input type="hidden" name="u_id" value="${sessionScope.vo.u_id }">
-					<a href="withdrawal"><button>회원탈퇴</button></a>
-				</form> --%>
+				
 			</div>
 		</div>
 	</div>	

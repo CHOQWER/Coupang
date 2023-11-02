@@ -45,7 +45,8 @@
 		if (rsp.success) {
 			var msg = '결제가 완료되었습니다.';
 			alert(msg);
-			location.href = '/mypage';
+			console.log(rsp);
+			location.href = '/mypage';			
 		} else {
 			var msg = '결제에 실패하였습니다.';			            
 			rsp.error_msg;

@@ -15,13 +15,13 @@
 		<!-- 등급 -->		
 		
 		<form action="/login" method="post">
-			<div class="field grade">
+			<!-- <div class="field grade">
 				<b>로그인 유형</b>
 				<div>
 					<label><input type="radio" name="grade" id="grade" value="2" checked>일반</label>
 					<label><input type="radio" 	name="grade" id="grade" value="1">판매자</label>
 				</div>
-			</div>			
+			</div>		 -->	
 			<!-- 아이디 -->
 			<div class="field">
 				<b>아이디</b>
