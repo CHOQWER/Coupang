@@ -12,8 +12,7 @@
 
 	<!-- 제품 등록 -->
 	<insert id="sellerInsertProduct">
-		insert into
-		product(pno,u_id,ca_no,sca_no,company,pname,price,dis_price,content,color,qty)
+		insert into product(pno,u_id,ca_no,sca_no,company,pname,price,dis_price,content,color,qty)
 		values(seq_product.nextval,#{u_id},#{ca_no},#{sca_no,jdbcType=INTEGER},#{company},#{pname},#{price}
 		,#{dis_price,jdbcType=INTEGER},#{content,jdbcType=NVARCHAR},#{color,jdbcType=NVARCHAR},#{qty,jdbcType=INTEGER})
 	</insert>
