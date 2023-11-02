@@ -166,7 +166,7 @@ public class SellerController {
 				vo=productService.selectProductPno(vo.getPno());
 				model.addAttribute("vo",vo);
 				
-
+				
 				return "seller/sellerUpdateProduct";
 			}
 			//판매자 업데이트 팝업창 이동
@@ -203,7 +203,6 @@ public class SellerController {
 	public String sellerBeforeDelivery(Model model,BuyVO vo, HttpSession session,UsersVO v) {
 		v=(UsersVO) session.getAttribute("vo");
 		vo.setU_id(v.getU_id());
-		
 		
 		List<BuyVO> list=buyService.sellerBeforeDelivery(vo);
 		model.addAttribute("list",list);
