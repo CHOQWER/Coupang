@@ -17,7 +17,7 @@
 
 <script type="text/javascript">
 	
-	function selectImg(id){		
+	/* function selectImg(id){		
 		/* let a=document.ElementById("img1").src; */				
 		/* console.log(tmp); */
 		if(document.getElementById("img1")=="img1" || document.getElementById("")==null){
@@ -37,7 +37,7 @@
 		var tmp5 = document.getElementById("img5").getAttribute("src"); */
 		console.log(tmp);		
 	}
-	
+	 */
 	/* "imgDown?imgName=${ivo.main_img1}" */
 </script>
 <%@ include file="/WEB-INF/views/include/header.jsp" %>
@@ -63,7 +63,7 @@
 			
 			<div class="column">
 			<div id="img-container">
-				<div class="magnifier" style="background:url('tmp')" no-repeat;></div>
+				<div class="magnifier" style="background:url(imgDown?imgName=${ivo.main_img1}) no-repeat;"></div>
 				<img id="mainimg" src="imgDown?imgName=${ivo.main_img1}" alt="메인이미지">
 			</div>			
 				
