@@ -31,7 +31,7 @@ body {
 #mypage-section {
 	color: black;
 	width: 838px;
-	height: 600px;
+	height: auto;
 	float: left;
 }
 
@@ -47,6 +47,10 @@ ul {
 	padding-bottom: 30px;
 }
 
+#side-menu-list a:hover {
+	color: rgb(61, 130, 247);
+}
+
 #side-menu-list {
 	margin-top: 25px;
 }
@@ -56,9 +60,6 @@ a {
 	color: black;
 }
 
-#side-menu a:active, a:hover {
-	color: rgb(61, 130, 247);
-}
 
 .top-mypage {
 	margin: 60px;

@@ -7,6 +7,8 @@
 <link rel="stylesheet" href="/resources/css/purchasehistory.css">
 
 
+
+
 <div class="main">
 	<div id="top-nav"></div>
 	<div id="side-menu">
@@ -52,8 +54,7 @@
 												<c:if test="${BL.sta=='n'}">
 									판매자 구매 승인취소!
 								</c:if>
-											</div>&nbsp;·
-											<div class="td-left-1-1">${date }&nbsp;도착예정</div>
+											</div> 
 											<c:forEach items="${thumbnail}" var="th">
 												<div class="td-left-2"></div>
 												<div class="td-left-image">
@@ -63,17 +64,18 @@
 											<div class="td-div-content">
 												<div class="td-left-content">${BL.pname}</div>
 												<div class="td-left-price-cnt">
-													${BL.dis_price}&nbsp;원&nbsp;·&nbsp;${BL.b_cnt}&nbsp;개
+													${BL.dis_price}원&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${BL.b_cnt}개
 												</div>
 											</div>
 										</td>
-										<td class="td-right"><a href="ProductView1?pno=${BL.pno}"><button
-													type="button">리뷰작성</button></a>
-													 <a href="insertCart?pno=${BL.pno}"><button
-													type="button">장바구니 담기</button></a> 
-													<a href="refundBuyProduct?bno=${BL.bno}">
-													<button type="button">반품신청</button></a></td>										
-									</tr>									
+										<td class="td-right"><a href="insertCart?pno=${BL.pno}"><button
+													type="button">리뷰작성</button></a> <a
+											href="refundBuyProduct?bno=${BL.bno}"><button
+													type="button">장바구니 담기</button></a> <a
+											href="ProductView1?pno=${BL.pno}"><button type="button">반품
+													신청</button></a></td>										
+									</tr>
+									
 								</tbody>
 							</table>
 						</div>
@@ -83,6 +85,6 @@
 		</div>
 	</div>
 </div>
-
+<!-- </div>  -->
 
 <%@ include file="/WEB-INF/views/include/footer.jsp"%>

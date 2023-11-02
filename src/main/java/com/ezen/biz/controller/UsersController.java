@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.ezen.biz.dao.ImagesDAO;
 import com.ezen.biz.dto.BuyVO;
 import com.ezen.biz.dto.CartVO;
+import com.ezen.biz.dto.ImagesVO;
 import com.ezen.biz.dto.UsersVO;
 import com.ezen.biz.service.ImagesService;
 import com.ezen.biz.service.UsersService;
@@ -90,9 +91,6 @@ public class UsersController {
 	// 회원가입+암호화
 	@PostMapping("/register")
 	public String register(UsersVO vo) {
-		// db에 삽입작업-비밀번호 암호화 후
-		log.info(vo);
-		// 비밀번호 암호화
 		vo.setU_pwd(encoder.encode(vo.getU_pwd()));
 		service.insertMember(vo);
 		return "users/login";
@@ -170,12 +168,11 @@ public class UsersController {
 
 	@GetMapping("membership")
 	public String memberShip(UsersVO vo, HttpSession session, Model model) {
-		UsersVO updatedUser = service.selectMember(vo.getU_id());
-		if (updatedUser == null) {
+		vo=(UsersVO) session.getAttribute("vo");
+		if (vo == null) {
 			model.addAttribute("error1", "로그인이 필요한 서비스입니다");
 			return "users/login";
-		} else {
-			vo = (UsersVO) session.getAttribute("vo");
+		} else {			
 			service.selectMember(vo.getU_id());
 			return "users/membership";
 		}
@@ -189,7 +186,9 @@ public class UsersController {
 		session.setAttribute("vo", updatedUser);
 		return "redirect:membership";
 	}
-
+	
+	
+	//배송지
 	@RequestMapping("delivseryStatus")
 	public String delivseryStatus(UsersVO vo, HttpSession session,Model model,
 			HttpServletRequest request,BuyVO bvo,ImagesVO ivo) {
@@ -216,7 +215,7 @@ public class UsersController {
 		Calendar now = Calendar.getInstance();
 		int year = now.get(Calendar.YEAR);
 		int month = now.get(Calendar.MONTH) + 1;
-		int day = now.get(Calendar.DAY_OF_MONTH) + 1;
+		int day = now.get(Calendar.DAY_OF_MONTH) + 2;
 
 		String date = year + "." + month + "." + day;
 		System.out.println("date=" + date);
