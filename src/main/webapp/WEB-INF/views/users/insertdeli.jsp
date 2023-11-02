@@ -33,17 +33,17 @@
 		</div>
 
 		<div class="field">
-			<input type="hidden" name="u_post_no" id="postno" placeholder="우편번호" readonly required />
+			<input type="text" name="post_no" id="postno" placeholder="우편번호" required />
 			<input type="button" class="btn_post" onclick="jusoPopup()" value="우편번호 찾기"><br>
 		</div>
 
 
 		<div class="field">
-				<b>주소</b> <input type="text" type="text" name="u_addr1" id="addr1"
+				<b>주소</b> <input type="text" type="text" name="addr1" id="addr1"
 					placeholder="주소" required onclick="jusoPopup()">
 		</div>
 		<div class="field">
-				<b>상세주소</b> <input type="text" name="u_addr2" id="addr2"
+				<b>상세주소</b> <input type="text" name="addr2" id="addr2"
 					placeholder="상세주소">
 		</div>
 
