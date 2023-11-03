@@ -1,9 +1,12 @@
 package com.ezen.biz.service;
 
+
+import java.util.Date;
 import java.util.List;
 
 import com.ezen.biz.dto.BuyVO;
 import com.ezen.biz.dto.DeliveryVO;
+import com.ezen.biz.dto.ProductVO;
 import com.ezen.biz.dto.SalesVO;
 
 public interface BuyService {
@@ -32,6 +35,7 @@ public interface BuyService {
 
 	void refundBuyProduct(int bno);
 	
+	ProductVO selectBuyOne(int pno);
 	// 카테고리별 매출 확인
 	List<SalesVO> salesCate(String u_id);
 	

@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ include file="/WEB-INF/views/include/aside.jsp"%>
 <html>
 <script src="/resources/js/jquery-3.6.3.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -28,7 +29,6 @@
 <link rel="stylesheet" href="/resources/css/owl.carousel.min.css">
 <link rel="stylesheet" href="/resources/css/sellerstyle.css">
 <link rel="stylesheet" href="/resources/css/sellerpage.css">
-<%@ include file="/WEB-INF/views/include/aside.jsp"%>
 <head>
 
 

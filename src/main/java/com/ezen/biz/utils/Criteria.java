@@ -22,7 +22,7 @@ public class Criteria {
 	// 생성자
 	// 기본값: 페이지번호=1, 게시글의수=10
 	public Criteria() {		
-		this(1, 6,"","");
+		this(1, 6,"title","");
 		sca_no=0;
 		ca_no=0;
 		company=null;

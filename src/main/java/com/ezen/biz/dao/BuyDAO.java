@@ -1,5 +1,7 @@
 package com.ezen.biz.dao;
 
+
+import java.util.Date;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -7,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.ezen.biz.dto.BuyVO;
+import com.ezen.biz.dto.ProductVO;
 
 @Repository
 public class BuyDAO {
@@ -57,4 +60,8 @@ public class BuyDAO {
 	public void refundBuyProduct(int bno) {
 		mybatis.delete("BuyDAO.refundBuyProduct",bno);
 	}
+	public ProductVO selectBuyOne(int pno) {
+		return mybatis.selectOne("BuyDAO.selectBuyOne",pno);
+	}
+	
 }

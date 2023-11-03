@@ -1,6 +1,8 @@
 package com.ezen.biz.dto;
 
-import java.sql.Date;
+
+
+import java.util.Date;
 
 import lombok.Data;
 
@@ -14,5 +16,6 @@ public class BuyVO {
 	private String addr1,addr2;
 	private Date b_regdate;
 	private String sta;
-
+	
+	private boolean refundsta;//반품 가능 여부 
 }

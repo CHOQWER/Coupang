@@ -3,8 +3,8 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="ProductDAO">
-	
-	
+
+
 
 	<!-- 제품등록후 제품번호 받아오기 -->
 	<select id="sellerGetPno" resultType="java.lang.Integer">
@@ -57,9 +57,12 @@
 
 
 	<!-- 상품페이지에서 pno로 장바구니로 넘기기 -->
-	<select id="selectProductcartPno" resultType="product" >
-		SELECT product.pno, images.ino, product.u_id, images.main_img1,
-		product.pname, product.price, product.dis_price
+	<select id="selectProductcartPno" resultType="product">
+		SELECT
+		product.pno,
+		images.ino, product.u_id, images.main_img1,
+		product.pname,
+		product.price, product.dis_price
 		FROM product
 		JOIN images
 		ON product.pno
@@ -108,21 +111,22 @@
     ]]>
 	</select>
 
-	
+
 	<!-- sca_no로 company list 조회 -->
 	<select id="companyListSca" resultType="product">
-		select DISTINCT company,sca_no,ca_no from product where sca_no=#{sca_no}
+		select DISTINCT
+		company,sca_no,ca_no from product where sca_no=#{sca_no}
 	</select>
 
-	
+
 	<!-- ca_no로 company list 조회 -->
 	<select id="companyListCa" resultType="product">
-		select DISTINCT company,ca_no from product where ca_no=#{ca_no}
+		select DISTINCT
+		company,ca_no from product where ca_no=#{ca_no}
 	</select>
 
 	<!-- paging을 위한 제품리스트 -->
-	<select id="productListPaging" parameterType="criteria"
-		resultType="product">
+	<select id="productListPaging" parameterType="criteria" resultType="product">
 		select * from (
 		select rownum rn, A.* from
 		(select
@@ -131,8 +135,12 @@
 		where p.pno=i.pno
 		<choose>
 			<when test="searchword!=''">
-				and ca_no=#{ca_no} and pname like
-				'%'||#{searchword}||'%'
+				<if test="ca_no=-1">
+					and pname like '%'||#{searchword}||'%'
+				</if>
+				<if test="ca_no!=-1">
+					and ca_no=#{ca_no} and pname like '%'||#{searchword}||'%'
+				</if>
 			</when>
 			<otherwise>
 				<if test="sca_no>0">
@@ -160,32 +168,38 @@
 	</select>
 
 	<!-- paging을 위한 제품리스트 개수 반환 -->
-	<select id="selectRowCountPaging" resultType="java.lang.Integer">
+	<select id="selectRowCountPaging" resultType="java.lang.Integer" parameterType="criteria">
 		select count(*) from
 		product
 		where 1=1
-		<if test="sca_no>0">
-			and sca_no=#{sca_no}
-		</if>
-		<if test="searchword!=''">
-			and ca_no=#{ca_no} and pname like '%'||#{searchword}||'%'
-		</if>
-		<if test="ca_no>0">
-			and ca_no=#{ca_no}
-		</if>
+		<choose>
+			<when test="searchword!=''">
+				<if test="ca_no=-1">
+					and pname like '%'||#{searchword}||'%'
+				</if>
+				<if test="ca_no!=-1">
+					and ca_no=#{ca_no} and pname like '%'||#{searchword}||'%'
+				</if>
+			</when>
+			<otherwise>
+				<if test="sca_no>0">
+					and sca_no=#{sca_no}
+				</if>
+				<if test="ca_no>0">
+					and ca_no=#{ca_no}
+				</if>
 
-		<if test="company!=null and sca_no > 0">
-			and sca_no=#{sca_no} and company=#{company}
-		</if>
+				<if test="company!=null and sca_no > 0">
+					and sca_no=#{sca_no} and company=#{company}
+				</if>
 
-		<if test="company!=null and ca_no > 0">
-			and ca_no=#{ca_no} and company=#{company}
-		</if>
+				<if test="company!=null and ca_no > 0">
+					and ca_no=#{ca_no} and company=#{company}
+				</if>
+			</otherwise>
+		</choose>
 		and disp='y'
 	</select>
-
-
-
 
 
 

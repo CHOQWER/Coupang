@@ -113,10 +113,9 @@ public class ProductTest {
 	@Test
 	public void paging() {
 		Criteria cri=new Criteria();
-		cri.setSca_no(1);
-		cri.setCompany("캐리어");
-		List<ProductVO> list=dao.productListPaging(cri);
-		log.info("list"+list);
+		cri.setSearchword("애플");
+		int result=dao.selectRowCountPaging(cri);
+		log.info("result"+result);
 	}
 	
 	@Test

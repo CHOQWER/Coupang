@@ -98,12 +98,6 @@ public class ProductServiceImpl implements ProductService{
 	///////////////////////////////////////////////////////////
 
 	@Override
-	public int selectRowCountCa(int ca_no) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
 	public List<ProductVO> companyListCa(int ca_no) {
 		return dao.companyListCa(ca_no);
 	}
