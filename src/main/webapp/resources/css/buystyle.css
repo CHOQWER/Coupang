@@ -269,3 +269,14 @@ main {
 
 .burger:focus {
   outline: none; }
+  
+  
+  
+  
+.nav-menu h3{
+	margin-left : 20px;
+}
+.accordion li{
+	margin-bottom: 30px;
+}
+
