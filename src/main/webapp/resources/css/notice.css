@@ -1,22 +1,33 @@
-.answer {
+@import url("https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap");
+
+.content {
 	display: none;
 	padding-bottom: 30px;
+	margin-left:40px;
 }
+
 #faq-title,#notice-title {
 	font-size: 25px;
 	float: left;
 	margin: 20px;
 }
-#nolist{
+
+#noticelist{
 	margin: 0 auto;	
 }
 
-.faq-content,.notice-content {
-	width:1028px;
-	border-bottom: 1px solid #e0e0e0;
-	
+#main{
+	width:1020px;
+	margin: 0 auto;
 }
-.question {
+
+.notice-content {
+	width:1020px;
+	border-bottom: 1px solid #e0e0e0;
+	margin-left : -28px;
+}
+
+.notice {
 	font-size: 19px;
 	padding: 30px 0;
 	cursor: pointer;
@@ -26,18 +37,22 @@
 	width: 100%;
 	text-align: left;
 }
-.question:hover {
+
+.notice:hover {
 	color: #2962ff;
 }
+
 [id$="-toggle"] {
 	margin-right: 15px;
-}
+} 
+
 #menu{
-	width: 1028px;
+	width: 1020px;
 	height: 80px;	
 	background: #4285f4;
 	margin: 0 auto;
 }
+
 #menu ul li{
 	float: left;
 	width: 25%;
@@ -46,8 +61,68 @@
 	text-align: center;
 	font-size: 20px;
 }
+
 #top-button{
 	display:flex;
 	justify-content: right;
 	padding:10px;
+}
+
+#noticeul {
+	margin-left:-10px;
+}
+
+.toggle{
+	margin-left:20px;
+}
+
+button {
+    margin: 10px;
+}
+
+.w-btn {
+    position: relative;
+    border: none;
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 15px;
+    font-family: "paybooc-Light", sans-serif;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.25s;
+}
+
+.w-btn-outline {
+    position: relative;
+    padding: 15px 30px;
+    border-radius: 15px;
+    font-family: "paybooc-Light", sans-serif;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.25s;
+}
+
+.w-btn-blue {
+    background-color: #6aafe6;
+    color: #d4dfe6;
+}
+
+.w-btn-blue-outline {
+    border: 3px solid #6aafe6;
+    color: #6e6e6e;
+}
+
+.w-btn-blue-outline:hover {
+    background-color: #6aafe6;
+    color: #d4dfe6;
+}
+
+.w-btn:active {
+    transform: scale(1.5);
+}
+
+.w-btn-outline:active {
+    transform: scale(1.5);
 }

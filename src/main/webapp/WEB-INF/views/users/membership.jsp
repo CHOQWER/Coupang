@@ -37,14 +37,15 @@
 						<button type="submit">와우회원등록</button>
 						<a href="apibtn"><button type="button">결제하기</button></a>		
 						<input type="hidden" name="u_id" value="${sessionScope.vo.u_id }">											
-					</c:if>
+					</c:if>					
+				</form>
+					<form action="wowsecession" method="post">
 					<c:if test="${sessionScope.vo.grade==3 }">
 						<p>등 급 : 와우회원</p>						
-						<input type="submit" name="action" value="와우회원탈퇴">
-						<%-- <input type="hidden" name="u_id" value="${sessionScope.vo.u_id }">	 --%>					
+						<input type="submit" value="와우회원탈퇴">
+						<input type="hidden" name="u_id" value="${sessionScope.vo.u_id }">										
 					</c:if>
-				</form>
-				
+					</form>
 			</div>
 		</div>
 	</div>	

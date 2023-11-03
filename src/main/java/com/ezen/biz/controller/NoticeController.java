@@ -1,18 +1,14 @@
 package com.ezen.biz.controller;
 
-import java.util.List;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.websocket.Session;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ezen.biz.dto.NoticeVO;
@@ -28,49 +24,60 @@ public class NoticeController {
 	
 	@GetMapping("notice")
 	public String notice(Model model) {
-		NoticeVO vo = new NoticeVO();
-		if(vo.getType()==null) {
+		NoticeVO vo=new NoticeVO();
+		if(vo.getType()==null || vo.getType()=="0") {
 			vo.setType("0");
 		}
 		List<NoticeVO> list=service.selectNoticeList(vo);
+		System.out.println(vo);
 		model.addAttribute("list", list);
 		model.addAttribute("vo", vo);
 		return "admin/noticeList";
 	}
 	
-	@GetMapping(value = "noticeNew")
+	@GetMapping("noticeNew")
 	public String insertNotice() {
 		// 게시글 작성
 		return "admin/noticeNew";
 	}
-	@RequestMapping(value = "noticeNew", method = RequestMethod.POST)
+	
+	@PostMapping("noticeNew")
 	public String insertNotice(NoticeVO vo) {
 	    // 게시글 작성
-	    String type = vo.getType();
-	    // type을 이용하여 데이터 처리 또는 조건부 처리
-	    if ("0".equals(type)) {
-	    	 
-	    } else if ("1".equals(type)) {
-
-	    }
+		vo.setN_content(vo.getN_content().replace("\r\n", "<br>"));
 	    service.insertNotice(vo);
 	    return "redirect:notice";
 	}
 	
-	@RequestMapping(value = "/updateNotice.do", method = {RequestMethod.GET, RequestMethod.POST})
-	public String updateNotice(@ModelAttribute("notice") NoticeVO vo) {
-		// 공지사항 수정 작업
-		service.updateNotice(vo);
-		return "redirect:noticeList.do?nno="+vo.getNno();
+	@GetMapping("noticeUpdate")
+	public String updateNotice(@RequestParam int nno, NoticeVO vo, Model model) {
+		System.out.println(nno);
+//		vo.setNno(nno);
+		model.addAttribute("nno", nno);
+		// 게시글 수정
+		return "admin/noticeUpdate";
 	}
-		
-	@GetMapping("/deleteNotice.do")
-	public String deleteNotice(@RequestParam("nno") int nno) {
-		//게시글 삭제 작업
-		NoticeVO vo = new NoticeVO();
-	    vo.setNno(nno);
-	    service.deleteNotice(vo);
-	    return "redirect:notice?type=" + vo.getType();
+	@PostMapping("noticeUpdate")
+	public String updateNotice(NoticeVO vo) {
+		System.out.println(vo);
+	    // 공지사항 수정 작업
+		vo.setN_content(vo.getN_content().replace("\r\n", "<br>"));
+	    service.updateNotice(vo);
+	    return "redirect:notice";
+	}
+	
+	@GetMapping("deleteNotice")
+	public String deleteNotice(@RequestParam("nno") int nno, NoticeVO vo) {
+		log.info(nno);
+		vo.setNno(nno);
+	    service.deleteNotice(nno);
+	    return "redirect:notice";
+	}
+	
+	@GetMapping("faq")
+	public String faq() {
+		// 게시글 작성
+		return "admin/faq";
 	}
 
 }
