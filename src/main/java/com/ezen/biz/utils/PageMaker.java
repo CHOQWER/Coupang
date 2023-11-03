@@ -13,7 +13,7 @@ public class PageMaker {
 	private int endPage;		// 화면에 표시할 끝 페이지 번호
 	private boolean prev;		// 이전 버튼 유무
 	private boolean next;		// 다음 버튼 유무
-	private int cntPageNum = 10;	// 한 화면에 표시할 페이지 버튼의 수
+	private int cntPageNum = 5;	// 한 화면에 표시할 페이지 버튼의 수
 	private int realEndPage;	// 실제 끝 페이지 번호
 	
 	/*

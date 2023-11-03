@@ -51,16 +51,10 @@ public interface ProductService {
 	List<ProductVO> companyListSca(int sca_no);
 	// ca_no로 company list 조회
 	List<ProductVO> companyListCa(int ca_no);
-	
-	
-	int selectRowCountCa(int ca_no);
-	
+
+
 	List<ProductVO> randomProduct();
 
-	
-	
-	
-	
 	
 	//폐이징을 위한 메소드, 행의갯수
 	
