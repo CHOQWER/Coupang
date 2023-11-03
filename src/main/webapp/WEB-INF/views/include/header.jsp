@@ -22,10 +22,16 @@
 		const cate_name = $("#search > option:selected").data("cate-name");  
 		console.log(cate_name)
 		
-		
+		if($("#search > option:selected").val()!=0){
 		location.href = "ProductList?ca_no="
 				+ $("#search > option:selected").val() + "&searchword="
 				+ $("#searchWord").val()+"&cate_name="+$("#search > option:selected").data("cate-name");
+		
+		}else {
+			location.href = "ProductList?ca_no="
+				+ $("#search > option:selected").val() +"&searchword=" + $("#searchWord").val() ;
+		}
+		
 	}
 
 </script>
@@ -96,6 +102,7 @@
 
 					<div class="search-box">
 						<select id="search">
+							<option value="-1" >전체</option>
 							<c:forEach items="${catelist}" var="cate">
 								<option value="${cate.get('no')}" data-cate-name="${cate.get('name')}">${cate.get('name')}</option>
 							</c:forEach>

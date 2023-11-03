@@ -1,5 +1,6 @@
 package com.ezen.biz.controller;
 
+import java.io.Console;
 import java.util.Calendar;
 import java.util.List;
 
@@ -156,10 +157,11 @@ public class UsersController {
 	}
 
 	// 유저 정보 수정
-	@PostMapping("/updateUser")
+	@PostMapping("updateUser")
 	public String updateUser(UsersVO vo, HttpSession session) {
 		service.updateUser(vo);
 		// 데이터베이스에서 업데이트된 정보 다시 로드
+		System.out.println("voooooooooooooooooooooo"+vo);		
 		UsersVO updatedUser = service.selectMember(vo.getU_id());
 		// 세션에 업데이트된 정보 저장
 		session.setAttribute("vo", updatedUser);

@@ -6,10 +6,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- <link rel="stylesheet" href="/resources/css/bootstrap.min.css"> -->
+<link rel="stylesheet" href="/resources/css/bootstrap.min.css"> 
 <link rel="stylesheet" href="/resources/css/common.css">
 <script src="/resources/js/jquery-3.6.3.min.js"></script>
-<script type="text/javascript" src="/resources/js/common.js"></script>
+<script type="text/javascript" src="/resources/js/common.js"></script> 
 
 <script
 	src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.js"></script>
