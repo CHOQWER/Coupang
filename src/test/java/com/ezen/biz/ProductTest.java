@@ -113,7 +113,6 @@ public class ProductTest {
 	@Test
 	public void paging() {
 		Criteria cri=new Criteria();
-		
 		cri.setSearchword("애플");
 		int result=dao.selectRowCountPaging(cri);
 		log.info("result"+result);
