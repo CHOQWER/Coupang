@@ -13,7 +13,7 @@
     <div class="container">
         <div class="two_third first" style="height:auto">
             <div class="col-lg-12">
-                <h2 class="font-weight-bold text-primary heading">공지사항</h2>
+                <h2 class="font-weight-bold text-primary heading">공지사항 등록</h2>
                 <hr/><br><br>
                 <div class="two_third first">
                     <form action="noticeNew" id="noticeForm" method="post">
