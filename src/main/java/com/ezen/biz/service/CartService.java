@@ -14,7 +14,7 @@ public interface CartService {
 	
 	int deleteCart(CartVO vo);
 
-	List<CartVO> checkselectCart(CartVO vo);
+	CartVO checkselectCart(CartVO vo);
 	
 	int updateCnt(CartVO vo);
 }

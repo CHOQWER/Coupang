@@ -1,34 +1,35 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!-- <script type="text/javascript" src="/resources/js/zoomscript.js" ></script> -->
 <link rel="stylesheet" href="/resources/css/productview.css">
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script type="text/javascript" src="/resources/js/common.js"></script>
 <link rel="stylesheet" href="/resources/star-rating/css/star-rating.css"
-   media="all" type="text/css" />
+	media="all" type="text/css" />
 <link rel="stylesheet"
-   href="/resources/star-rating/themes/krajee-svg/theme.css" media="all"
-   type="text/css" />
+	href="/resources/star-rating/themes/krajee-svg/theme.css" media="all"
+	type="text/css" />
 <script src="/resources/star-rating/js/star-rating.min.js"
-   type="text/javascript"></script>
-<script src="/resources/star-rating/themes/krajee-svg/theme.min.js"  type="text/javascript"></script>  
+	type="text/javascript"></script>
+<script src="/resources/star-rating/themes/krajee-svg/theme.min.js"
+	type="text/javascript"></script>
 
-<%@ include file="/WEB-INF/views/include/header.jsp" %>
+<%@ include file="/WEB-INF/views/include/header.jsp"%>
 
 <section class="content">
-   <div class="cate" > 쿠팡홈 > ${cate_name} > ${subcate_name} </div>
+	<div class="cate">쿠팡홈 > ${cate_name} > ${subcate_name}</div>
 
-   <form action="insertcart" method="post" id="frmDetail" name="frmDetail">
-      <input type="hidden" name="pno" value="${pvo.pno}"> <input
-         type="hidden" name="ino" value="${ivo.ino }"> <input
-         type="hidden" name="price" value="${pvo.price }"> <input
-         type="hidden" name="dis_price" value="${pvo.dis_price }"> <input
-         type="hidden" name="pname" value="${pvo.pname }">
+	<form action="insertcart" method="post" id="frmDetail" name="frmDetail">
+		<input type="hidden" name="pno" value="${pvo.pno}"> <input
+			type="hidden" name="ino" value="${ivo.ino }"> <input
+			type="hidden" name="price" value="${pvo.price }"> <input
+			type="hidden" name="dis_price" value="${pvo.dis_price }"> <input
+			type="hidden" name="pname" value="${pvo.pname }">
 
-      <!--좌측 메인/서브 이미지-->
-      <div class="content-main">
+		<!--좌측 메인/서브 이미지-->
+		<div class="content-main">
 
 			<div id="content-wrapper">
 				<div class="column">
@@ -55,164 +56,229 @@
 				</div>
 			</div>
 
-		<!--우측 구매하는 부분-->
-         <div class="prod-buy">
-            <div class="prod-header">
-               <div class="prod-company">${pvo.company}</div>
-               <div class="prod-name">${pvo.pname}</div> <hr>
-               <div class="prod-review">
-                  <table>
-                     <tr>
-                        <td>
-                        <input id="avgscore" name="avgscore" value="${map.get('AVG')}" 
-                        class="rating rating-loading" data-size="sm" readonly="readonly" />
-                        </td>
-                        <td>
-                        <a href="#target"><span id="span-cnt">${map.get('CNT')}건의 리뷰보기</span></a>
-                        </td>
-                     </tr>
-                  </table>
-               </div>
+			<!--우측 구매하는 부분-->
+			<div class="prod-buy">
+				<div class="prod-header">
+					<div class="prod-company">${pvo.company}</div>
+					<div class="prod-name">${pvo.pname}</div>
+					<hr>
+					<div class="prod-review">
+						<table>
+							<tr>
+								<td><input id="avgscore" name="avgscore"
+									value="${map.get('AVG')}" class="rating rating-loading"
+									data-size="sm" readonly="readonly" /></td>
+								<td><a href="#target"><span id="span-cnt">${map.get('CNT')}건의
+											리뷰보기</span></a></td>
+							</tr>
+						</table>
+					</div>
 
-            </div>
+				</div>
 
-            <div class="prod-price">
-            <c:if test="${sessionScope.vo.grade==2 }">
-               <div class="origin-price"><fmt:formatNumber value="${pvo.dis_price}" pattern="#,###"/></div>
-               <div class="sale-price"><fmt:formatNumber value="${pvo.price}" pattern="#,###"/></div>
-            </c:if>
-            <c:if test="${sessionScope.vo.grade==3 }">
-               <div class="origin-price"><fmt:formatNumber value="${pvo.price}" pattern="#,###"/></div>
-               <div class="sale-price"><fmt:formatNumber value="${pvo.dis_price}" pattern="#,###"/></div>
-            </c:if>
-            </div>
+				<div class="prod-price">
+					<c:if test="${sessionScope.vo.grade==2 }">
+						<div class="origin-price">
+							<fmt:formatNumber value="${pvo.dis_price}" pattern="#,###" />
+						</div>
+						<div class="sale-price">
+							<fmt:formatNumber value="${pvo.price}" pattern="#,###" />
+						</div>
+					</c:if>
+					<c:if test="${sessionScope.vo.grade==3 }">
+						<div class="origin-price">
+							<fmt:formatNumber value="${pvo.price}" pattern="#,###" />
+						</div>
+						<div class="sale-price">
+							<fmt:formatNumber value="${pvo.dis_price}" pattern="#,###" />
+						</div>
+					</c:if>
+				</div>
 
-            <div class="prod-color">
-               <div class="color-option">
-                  <div class="color-select">
-                     ${pvo.color}
-                  </div>
-               </div>
+				<div class="prod-color">
+					<div class="color-option">
+						<div class="color-select">${pvo.color}</div>
+					</div>
 
-            </div>
+				</div>
 
-            <!-- EX)와우 회원이면 무료배송+1일 뒤 도착예정, 일반 회원이면 배송비3000원+5일뒤도착예정 구현하기 -->
-            <div class="prod-delivery">
-               <p>무료배송</p>
-               <p>모래(토) 10/21 도착 예정</p>
-            </div>
+				<!-- EX)와우 회원이면 무료배송+1일 뒤 도착예정, 일반 회원이면 배송비3000원+5일뒤도착예정 구현하기 -->
+				<div class="prod-delivery">
+					<p>무료배송</p>
+					<p>모래(토) 10/21 도착 예정</p>
+				</div>
 
-            <div class="prod-buy-footer">
+				<div class="prod-buy-footer">
 
-               <!-- qty 만큼 선택하기..?? -->
-               
-               <input type="number" name="c_cnt" id="c_cnt" value="1" placeholder="1" min="1" max="${pvo.qty}"/>         
-               <button onclick="cartSubmit()">장바구니</button>               
-                <button onclick="buySubmit()">바로구매</button> 
-            </div>
-            <!-- <input type="hidden" name=""> -->
+					<!-- qty 만큼 선택하기..?? -->
 
-         </div>
-         
-      </div>
-      
-      </form>
+					<input type="number" name="c_cnt" id="c_cnt" value="1"
+						placeholder="1" min="1" max="${pvo.qty}" />
+					<button onclick="cartSubmit()">장바구니</button>
+					<button onclick="buySubmit()">바로구매</button>
+				</div>
+				<!-- <input type="hidden" name=""> -->
 
+			</div>
 
+		</div>
 
-      <div class="content-section"></div>
-      <div class="tab-title">
-         <ul>
-
-            <li>상품평</li>
-            <li>상품 문의</li>
-            <li>배송/교환/반품 안내</li>
-         </ul>
-      </div>
-  
-
-      <div class="content">
-         <p>필수 표기 정보</p>
-         <div class="content-info">${pvo.content}</div>
-
-         <div class="detail-img">
-            <c:if test="${not empty ivo.con_img_1}">
-               <img src="imgDown?imgName=${ivo.con_img_1}" alt="상세이미지">
-            </c:if>
-            <c:if test="${not empty ivo.con_img_2}">
-               <img src="imgDown?imgName=${ivo.con_img_2}" alt="상세이미지">
-            </c:if>
-         </div>
-
-         
-         <!-- 상품평 -->
-         <a name="target"> </a>
-         <hr>
-         <h2>상품평</h2>
-         
-         <!-- 로그인 상태에서만 리뷰 작성 칸 보이기 -->
-         <c:if test="${sessionScope.vo.u_id!=null}">
-         <div class="review">
-            <label for="input-7-sm" class="control-label"></label> 
-            <input id="score" name="score" class="rating rating-loading" data-min="0"
-               data-max="5" data-step="0.5" data-size="sm">
-            <hr/>
-
-            글제목:<input type="text" maxlength="100" id="r_title" name="r_title"
-               required="required"> <br>
-            리뷰:<input type="text" maxlength="100"
-               id="content" name="content" size="50" required="required"> <br>
-            파일찾기:<input type="file" id="r_photo"> <br>
-            <button type="button" onclick="saveStar()">리뷰 남기기</button>
-         </div>
-         </c:if>
-         
-         <nav>
-            <input type="hidden" name="page" id="page" value="0">
-            <button type="button" id="btn_next" style="display: none" onclick="getStar()">더보기</button>
-         </nav> <br> 
-         <input type="hidden" name="page" id="page" value="0">
-         
-         
-         
-         <!-- 리뷰 inner html 반복할곳 -->
-      <table id="tbl_star">
-
-      </table>
-         
-         
-         <button type="button" id="btn_next" style="display: none"
-            onclick="getStar()">더보기</button>
-         </ul>
-         
-         <hr>
-         <div class="prod-qa">
-            <h2>상품문의</h2>
-            <ul>
-               <li>구매한 상품의 취소/반품은 마이쿠팡 구매내역에서 신청 가능합니다</li>
-               <li>상품문의 및 후기게시판을 통해 취소나 환불, 반품 등은 처리되지 않습니다.</li>
-               <li>가격, 판매자, 교환/환불 및 배송 등 해당 상품 자체와 관련 없는 문의는 고객센터 내 1:1 문의하기를
-                  이용해주세요.</li>
-               <li>"해당 상품 자체"와 관계없는 글, 양도, 광고성, 욕설, 비방, 도배 등의 글은 예고 없이 이동,
-                  노출제한, 삭제 등의 조치가 취해질 수 있습니다.</li>
-               <li>공개 게시판이므로 전화번호, 메일 주소 등 고객님의 소중한 개인정보는 절대 남기지 말아주세요.</li>
-            </ul>
-            <hr>
-            <div class="prod-userqa">질문</div>
-            <div class="prod-answer">답변</div>
-            <a href="">더보기</a>
-         </div>
-      </div>
-   </section>
+	</form>
 
 
 
-<%@ include file="/WEB-INF/views/include/footer.jsp" %>
-<script type="text/javascript" src="/resources/js/zoomslider.js" ></script>
-<script type="text/javascript" src="/resources/js/zoomscript.js" ></script>
+	<div class="content-section"></div>
+	<div class="tab-title">
+		<ul>
+
+			<li>상품평</li>
+			<li>상품 문의</li>
+			<li>배송/교환/반품 안내</li>
+		</ul>
+	</div>
+
+
+	<div class="content">
+		<p>필수 표기 정보</p>
+		<div class="content-info">${pvo.content}</div>
+		<div class="detail-img">
+			<div class="detailinfo showstep1">
+				<div class="detail-content">
+					<c:if test="${not empty ivo.con_img_1}">
+						<img src="imgDown?imgName=${ivo.con_img_1}" alt="상세이미지">
+					</c:if>
+					<c:if test="${not empty ivo.con_img_2}">
+						<img src="imgDown?imgName=${ivo.con_img_2}" alt="상세이미지">
+					</c:if>
+				</div>
+			</div>
+		</div>
+		<div class="button1">
+			<button class="btn_open">상품정보 더보기⤵</button>
+			<button class="btn_close hide">상품정보 접기⤴</button>
+		</div>
+
+		<!-- 상품평 -->
+		<a name="target"> </a>
+		<hr>
+		<h2>상품평</h2>
+
+		<!-- 로그인 상태에서만 리뷰 작성 칸 보이기 -->
+		<c:if test="${sessionScope.vo.u_id!=null}">
+			<div class="review">
+				<label for="input-7-sm" class="control-label"></label> <input
+					id="score" name="score" class="rating rating-loading" data-min="0"
+					data-max="5" data-step="0.5" data-size="sm">
+				<hr />
+
+				글제목:<input type="text" maxlength="100" id="r_title" name="r_title"
+					required="required"> <br> 리뷰:<input type="text"
+					maxlength="100" id="content" name="content" size="50"
+					required="required"> <br> 파일찾기:<input type="file"
+					id="r_photo"> <br>
+				<button type="button" onclick="saveStar()">리뷰 남기기</button>
+			</div>
+		</c:if>
+
+		<nav>
+			<input type="hidden" name="page" id="page" value="0">
+			<button type="button" id="btn_next" style="display: none"
+				onclick="getStar()">더보기</button>
+		</nav>
+		<br> <input type="hidden" name="page" id="page" value="0">
+
+
+
+		<!-- 리뷰 inner html 반복할곳 -->
+		<table id="tbl_star">
+
+		</table>
+
+
+		<button type="button" id="btn_next" style="display: none"
+			onclick="getStar()">더보기</button>
+		</ul>
+
+		<hr>
+		<div class="prod-qa">
+			<h2>상품문의</h2>
+			<ul>
+				<li>구매한 상품의 취소/반품은 마이쿠팡 구매내역에서 신청 가능합니다</li>
+				<li>상품문의 및 후기게시판을 통해 취소나 환불, 반품 등은 처리되지 않습니다.</li>
+				<li>가격, 판매자, 교환/환불 및 배송 등 해당 상품 자체와 관련 없는 문의는 고객센터 내 1:1 문의하기를
+					이용해주세요.</li>
+				<li>"해당 상품 자체"와 관계없는 글, 양도, 광고성, 욕설, 비방, 도배 등의 글은 예고 없이 이동,
+					노출제한, 삭제 등의 조치가 취해질 수 있습니다.</li>
+				<li>공개 게시판이므로 전화번호, 메일 주소 등 고객님의 소중한 개인정보는 절대 남기지 말아주세요.</li>
+			</ul>
+			<hr>
+			<div class="prod-userqa">질문</div>
+			<div class="prod-answer">답변</div>
+			<a href="">더보기</a>
+		</div>
+	</div>
+</section>
+
+
+
+<%@ include file="/WEB-INF/views/include/footer.jsp"%>
+<script type="text/javascript" src="/resources/js/zoomslider.js"></script>
+<script type="text/javascript" src="/resources/js/zoomscript.js"></script>
 
 
 <script type="text/javascript">
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@ 더보기 버튼 시작 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+document.addEventListener('DOMContentLoaded', function(){ //DOM 생성 후 이벤트 리스너 등록
+    //더보기 버튼 이벤트 리스너
+    document.querySelector('.btn_open').addEventListener('click', function(e){
+        
+        let classList = document.querySelector('.detailinfo').classList; // 더보기 프레임의 클래스 정보 얻기
+        let contentHeight = document.querySelector('.detailinfo > .detail-content').offsetHeight; //컨텐츠 높이 얻기
+
+        // 2단계이면 전체보기로
+        if(classList.contains('showstep2')){
+            classList.remove('showstep2');
+        }
+        // 1단계이면 2단계로
+        if(classList.contains('showstep1')){
+            classList.remove('showstep1');
+            // if(contentHeight > 800){
+            //     classList.add('showstep2');
+            // }else{
+            //     document.querySelector('.btn_open').classList.add('hide');
+            // }
+        }
+        
+        //전체보기시 더보기 버튼 감추기 & 감추기 버튼 표시
+        if(!classList.contains('showstep1') && !classList.contains('showstep2')){
+            e.target.classList.add('hide'); 
+            document.querySelector('.btn_close').classList.remove('hide');
+            
+        }
+        
+    });
+}); 
+
+
+// 감추기 버튼 이벤트 리스너
+document.querySelector('.btn_close').addEventListener('click', function(e){
+    e.target.classList.add('hide');
+    document.querySelector('.btn_open').classList.remove('hide'); // 더보기 버튼 감춤
+    document.querySelector('.detailinfo').classList.add('showstep1'); // 초기 감춤 상태로 복귀
+});
+
+
+
+//컨텐츠 로딩 완료 후 높이 기준으로 클래스 재처리
+/* window.addEventListener('load', function(){
+    let contentHeight = document.querySelector('.detailinfo > .detail-content').offsetHeight; //컨텐츠 높이 얻기
+    if(contentHeight <= 300){
+        document.querySelector('.detail-content').classList.remove('showstep1'); // 초기값보다 작으면 전체 컨텐츠 표시
+        document.querySelector('.btn_open').classList.add('hide'); // 버튼 감춤
+    }
+}); */
+
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@ 더보기 버튼 끝 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
 
 
 

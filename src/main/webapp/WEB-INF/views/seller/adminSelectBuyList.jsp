@@ -56,45 +56,5 @@
 			</tr>	
 		</c:forEach>
 	 </table>
-	 
-	<%--  <div id="pagediv">
-		 <!-- 페이지 -->	 
-	     <nav aria-label="Standard pagination example">
-	          <ul class="pagination">
-		         <c:if test="${pmaker.prev}">
-		            <li class="page-item">
-		              <a class="page-link" href="bookList?pageNum=${pmaker.beginPage-1}&searchword=${pVo.searchword}&searchtype=${pVo.searchtype}" aria-label="Previous">
-		                <span aria-hidden="true">&laquo;</span>
-		              </a>
-		            </li>   
-	            </c:if>        
-	           <c:forEach begin="${pmaker.beginPage}" end="${pmaker.endPage}" var="i">
-			 		<c:choose>
-			 			<c:when test="${i!=pmaker.criteria.pageNum}"><li class="page-item"><a class="page-link" href="bookList?pageNum=${i}&searchword=${pmaker.criteria.searchword}&searchtype=${pmaker.criteria.searchtype}">${i}</a></li></c:when>
-			 			<c:otherwise> <li class="page-item"><a class="page-link" style="font-weigth:bold;color:black">${i}</a></li></c:otherwise>	 		
-			 		</c:choose>		 			 	
-		 		</c:forEach> 
-		 		<c:if test="${pmaker.next}">
-		           <li class="page-item">
-		              <a class="page-link" href="bookList?pageNum=${pmaker.endPage+1}&searchword=${pmaker.criteria.searchword}&searchtype=${pmaker.criteria.searchtype}" aria-label="Next">
-		                <span aria-hidden="true">&raquo;</span>
-		              </a>
-		            </li>
-	            </c:if>
-	          </ul>
-	    </nav><!-- paging end -->
-    </div> --%>
-        <!--  검색 -->
-<!--     <div id="searchdiv">	 	
-		<form action="bookList" method="post">
-	        <select name="searchtype" id="searchtype">
-	            <option value="title" checked>도서명</option>
-	            <option value="writer">저자명</option>
-	            <option value="publisher">출판사</option>
-	        </select>
-	        <input type="text" size="20" name="searchword" id="searchword" >
-	        <button onclick="return searchFun()">검 색</button> &nbsp;	        
-	    </form>		
 
- 	</div>	 -->	
  </main>

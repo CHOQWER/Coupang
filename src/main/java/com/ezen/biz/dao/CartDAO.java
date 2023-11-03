@@ -28,8 +28,8 @@ public class CartDAO {
 	public int deleteCart(CartVO vo) {
 		return mybatis.delete("CartDAO.deleteCart",vo);
 	}
-	 public List<CartVO> checkselectCart(CartVO vo) {
-			return mybatis.selectList("CartDAO.checkselectCart",vo); 
+	 public CartVO checkselectCart(CartVO vo) {
+			return mybatis.selectOne("CartDAO.checkselectCart",vo); 
 	 }
 	public int updateCnt(CartVO vo) {
 			return mybatis.update("CartDAO.updateCnt",vo);
