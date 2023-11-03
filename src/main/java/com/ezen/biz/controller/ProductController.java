@@ -45,8 +45,6 @@ public class ProductController {
    @Autowired
    private BuyService bservice;
 
-	@Autowired
-	private ReviewService rservice;
 
 	private final String imgPath = "D:/upload/coupang/";
 	
@@ -56,7 +54,13 @@ public class ProductController {
 		
 		log.info("완전 메인 cri"+cri);
 		log.info("완전 메인 type"+listtype);
-		
+		if(cri.getSearchword()=="") {
+			cri.setSearchword(null);
+		}
+		if(cri.getCompany()=="") {
+			cri.setCompany(null);
+		}
+		log.info("완전 메인 cri"+cri);
 		int tot = service.selectRowCountPaging(cri);
 		PageMaker pMaker = new PageMaker(cri, tot);
 		boolean next = pMaker.nextPageScore();
