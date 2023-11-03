@@ -78,8 +78,13 @@ public class BuyServiceImpl implements BuyService {
 
 	@Override
 	public List<BuyVO> selectBuyList(BuyVO vo) {
-		
 		return dao.selectBuyList(vo);
+	}
+
+	@Override
+	public void refundBuyProduct(int bno) {
+		dao.refundBuyProduct(bno);
+		
 	}
 
 	

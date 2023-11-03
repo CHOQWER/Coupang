@@ -56,6 +56,7 @@ public interface ProductService {
 	int selectRowCountCa(int ca_no);
 	
 	List<ProductVO> randomProduct();
+
 	
 	
 	

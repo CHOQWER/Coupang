@@ -18,17 +18,17 @@
 <%@ include file="/WEB-INF/views/include/header.jsp" %>
 
 <section class="content">
-	<div class="cate" > 쿠팡홈 > ${cate_name} > ${subcate_name} </div>
+   <div class="cate" > 쿠팡홈 > ${cate_name} > ${subcate_name} </div>
 
-	<form action="insertcart" method="post" id="frmDetail" name="frmDetail">
-		<input type="hidden" name="pno" value="${pvo.pno}"> <input
-			type="hidden" name="ino" value="${ivo.ino }"> <input
-			type="hidden" name="price" value="${pvo.price }"> <input
-			type="hidden" name="dis_price" value="${pvo.dis_price }"> <input
-			type="hidden" name="pname" value="${pvo.pname }">
+   <form action="insertcart" method="post" id="frmDetail" name="frmDetail">
+      <input type="hidden" name="pno" value="${pvo.pno}"> <input
+         type="hidden" name="ino" value="${ivo.ino }"> <input
+         type="hidden" name="price" value="${pvo.price }"> <input
+         type="hidden" name="dis_price" value="${pvo.dis_price }"> <input
+         type="hidden" name="pname" value="${pvo.pname }">
 
-		<!--좌측 메인/서브 이미지-->
-		<div class="content-main">
+      <!--좌측 메인/서브 이미지-->
+      <div class="content-main">
 
 			<div id="content-wrapper">
 				<div class="column">
@@ -174,16 +174,16 @@
          <input type="hidden" name="page" id="page" value="0">
          
          
-        
+         
          <!-- 리뷰 inner html 반복할곳 -->
-		<table id="tbl_star">
+      <table id="tbl_star">
 
-		</table>
+      </table>
          
          
          <button type="button" id="btn_next" style="display: none"
             onclick="getStar()">더보기</button>
-
+         </ul>
          
          <hr>
          <div class="prod-qa">
@@ -213,19 +213,22 @@
 
 
 <script type="text/javascript">
+
+
+
 function cartSubmit(){
    let frm=$("#frmDetail");
    frm.attr("action","insertCart");   
    frm.submit();
 }
 function buySubmit() {
-	   let frm=$("#frmDetail");
-	   frm.attr("action","insertBuy");   
-	   frm.submit();
+      let frm=$("#frmDetail");
+      frm.attr("action","insertBuy");   
+      frm.submit();
 }
 
 /*==========================================*/
-$(document).ready(function(){
+$(document).ready(function() {
       $("#page").val(0);
       getStar();
    });   
@@ -253,7 +256,6 @@ common.js doAjaxHtml(url, param, callback) 호출
 ===================================================*/
 function saveStar(){
    console.log("saveStar")
-   let rno=$("#rno").val();
    let content=$("#content").val().trim();
    let r_title=$("#r_title").val().trim();
    let r_photo=$("#r_photo").val().trim();
@@ -278,9 +280,7 @@ function saveStar(){
    
    
    let url="saveStar";//서블릿 매핑 주소
-   let param={"rno":rno,
-		    "u_id":"${sessionScope.vo.u_id}",
-		    "grade":"${sessionScope.vo.grade}",
+   let param={"u_id":"${sessionScope.vo.u_id}",
             "pno":${pvo.pno}, 
             "score":score,
             "r_title":r_title,
@@ -337,108 +337,91 @@ function getStar(){
    
 
 function getStarAfter(data){
-   console.log("getStarAfter");   
-   if(data=="err"){
-       // 표시할 자료 없음
-    }else{
-          console.log(data);    
-          //data 배열에 있는 값을 tbl_star 에 html 태그로 조립해서 출력 
-          let starList=data.arr;
-          console.log(starList);
-          let html="";
-          for(let vo of starList){//js foreach      	  
-             html+='<tr>';
-             html+='<td>';
-             html+='<img src='+vo.r_photo+' alt="" width="100" height="100">';
-             html+='</td>';
-             html+='<td>';
-             html+='<dl>';
-             html+='<dt>';
-             html+='<input id="score" name="score" value='+vo.score+' class="rating rating-loading" data-size="sm" readonly="readonly">';
-             html+='</dt>';
-             html+='<dt>'+vo.r_title;
-             html+='</dt>';
-             html+='<dt>'+vo.r_content;
-             html+='</dt>';
-             html+='<dl>';
-             html+='</td>';
-             html+='<td>';
-             html+='<dl>';
-             html+='<dt>' +vo.u_id ;
-             html+='</dt>';
-             html+='<dt>'+ vo.r_regdate;
-             html+='</dt>';
-             html+='</dl>';
-             html+='</td>';
-             html+='<td>';
-             html+='<button onclick="deleteReview('+vo.rno+')">삭제';
-             html+='</button>';
-             html+='</tr>';
-          }//for
-          
- 	 		$("#tbl_star").append(html);
-	 		//let next=data.next;//true, false
-	 		//console.log(next);
-	 		if(data.next){//더보기 버튼을 보여주기
-	 			$("#btn_next").css("display","block");
-	 		}else $("#btn_next").css("display","none");
-	 		// loding 중인 별점을 보여주는 작업
-	 		newStar();
-          }
+	   console.log("getStarAfter");   
+	   if(data=="err"){
+	       // 표시할 자료 없음
+	    }else{
+	          console.log(data);   
+	          console.log("이쪽으로 오니?")
+	          //data 배열에 있는 값을 tbl_star 에 html 태그로 조립해서 출력 
+	          let starList=data.arr;
+	          console.log(starList);
+	          let html="";
+	          for(let vo of starList){//js foreach      	  
+	             html+='<tr>';
+	             html+='<td>';
+	             html+='<img src='+vo.r_photo+' alt="" width="100" height="100">';
+	             html+='</td>';
+	             html+='<td>';
+	             html+='<dl>';
+	             html+='<dt>';
+	             html+='<input id="score" name="score" value='+vo.score+' class="rating rating-loading" data-size="sm" readonly="readonly">';
+	             html+='</dt>';
+	             html+='<dt>'+vo.r_title;
+	             html+='</dt>';
+	             html+='<dt>'+vo.r_content;
+	             html+='</dt>';
+	             html+='<dl>';
+	             html+='</td>';
+	             html+='<td>';
+	             html+='<dl>';
+	             html+='<dt>' +vo.u_id ;
+	             html+='</dt>';
+	             html+='<dt>'+ vo.r_regdate;
+	             html+='</dt>';
+	             html+='</dl>';
+	             html+='</td>';
+	             html+='<td>';
+	             html+='<button onclick="deleteReview('+vo.rno+')">삭제';
+	             html+='</button>';
+	             html+='</td>';
+	             html+='</tr>';
+	          }//for
+	          
+	          $("#tbl_star").append(html);
+	          //let next=data.next;//true, false
+	          //console.log(next);
+	          if(data.next){//더보기 버튼을 보여주기
+	             $("#btn_next").css("display","block");
+	          }else $("#btn_next").css("display","none");
+	          // loding 중인 별점을 보여주는 작업
+	          newStar();
+		}
 
-}
+	}
 
 
-/* 관리자가 삭제가 안됨 반대로 기능
- * 삭제버튼 에러나지만 기능은 가능
- */
-function deleteReview(rno) {
-    // console.log(rno);
-    let grade = {"grade":"${sessionScope.vo.grade}"} // sessionScope.vo.grade 값 가져오기
-    console.log(grade);
-    
-    if (grade === "0") { // 
-    	alert("나가");
-    } else {
-    	if (confirm("정말로 별점을 삭제하시겠습니까?")) {
-            let url = "deleteReview";
-            let param = {"rno": rno};
-            console.log(param);
-            doAjax(url, param, deleteAfter);
-            location.reload();
-        }
-    }
-}
+	/* 삭제버튼 에러나지만 기능은 가능 */
+	 	function deleteReview(rno) {
+			if(${sessionScope.vo.grade==0}) {
+				if (confirm("정말로 별점을 삭제하시겠습니까?")) {
+			        let url = "deleteReview";
+			        let param = {"rno": rno};
+			        console.log(param);
+			        location.reload();
+			        doAjax(url, param, function (data) {
+			        });
+			    } 
+			} else {
+		    	alert("권한이 없습니다.");
+		    }
+		}
 
-/*
- function deleteAfter(data){
-	console.log(data);
-	location.reload();
-	if (data == "success") {
-        location.reload();
-    } else {
-        alert("별점 삭제 중 오류가 발생했습니다.");
-    }
-}
-*/
-
-/* function deleteReview(rno) {
-	//console.log(rno);
-	
-    if (confirm("정말로 별점을 삭제하시겠습니까?")) {
-        let url = "deleteReview";
-        let param = {"rno": rno};
-        console.log(param);
-        doAjax(url, param, function (data) {
-        	console.log("왓냐");
-        	if (data == "success") {
-                location.reload();
-            } else {
-                alert("별점 삭제 중 오류가 발생했습니다.");
-            }
-        });
-    }
-}
-*/
-
+	/* function deleteReview(rno) {
+		//console.log(rno);
+		
+	    if (confirm("정말로 별점을 삭제하시겠습니까?")) {
+	        let url = "deleteReview";
+	        let param = {"rno": rno};
+	        console.log(param);
+	        doAjax(url, param, function (data) {
+	        	console.log("왓냐");
+	        	if (data == "success") {
+	                location.reload();
+	            } else {
+	                alert("별점 삭제 중 오류가 발생했습니다.");
+	            }
+	        });
+	    }
+	} */
 </script>

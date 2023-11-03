@@ -118,7 +118,7 @@
 							alt="장바구니"> <span>장바구니</span>
 					</a></li>
 					
-					<li><a href="#"> <img src="resources/img/membership.jpg"
+					<li><a href="membership"> <img src="resources/img/membership.jpg"
 							alt="와우멤버십"> <span>와우멤버십</span>
 					</a></li>
 				</ul>

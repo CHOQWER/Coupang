@@ -21,13 +21,19 @@
   	<select id="selectMaxCno" resultType="integer">
   		select max(cno) from cart
   	</select>
+  	
   	<select id="deleteCart">
-  	delete from cart where cno=#{cno}
+  		delete from cart where cno=#{cno}
   	</select>
 	
-	
+	<select id="checkselectCart" resultType="cart">
+		select * from cart where cno=#{cno}
+	</select>
 
-
+	<!-- 수량 업데이트 -->
+	<update id="updateCnt">
+		update cart set c_cnt=#{c_cnt} where cno=#{cno}
+	</update>
 
 
 

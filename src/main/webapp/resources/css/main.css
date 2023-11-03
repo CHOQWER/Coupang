@@ -16,11 +16,10 @@ main {
   margin-top: 100px;
 }
 
-
 .prodlink:hover {    
     cursor: pointer;
     border-radius:12px;
-    /* border: 1px solid ##; */    
+    border: 1px solid rgb(66, 133, 244);  
     box-sizing: border-box;   
 	box-shadow: 1px 1px 13px gray;
 	transition:  0.2s  ease-out;    

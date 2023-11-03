@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.ezen.biz.dao.CartDAO;
 import com.ezen.biz.dto.CartVO;
@@ -34,6 +33,18 @@ public class CartServiceImpl implements CartService {
 
 	public int deleteCart(CartVO vo) {
 		return dao.deleteCart(vo);
+	}
+
+	@Override
+	public List<CartVO> checkselectCart(CartVO vo) {
+		
+		return dao.checkselectCart(vo);
+	}
+
+	@Override
+	public int updateCnt(CartVO vo) {
+		
+		return dao.updateCnt(vo);
 	}
 
 }

@@ -96,7 +96,7 @@ public class ProductDAO {
 		public List<ProductVO> randomProduct() {
 			return mybatis.selectList("ProductDAO.randomProduct");
 		}	
-		
+
 		
 	//페이징을 위한 메소드
 		public List<ProductVO> productListPaging(Criteria cri){
