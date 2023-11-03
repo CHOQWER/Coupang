@@ -91,9 +91,6 @@ public class UsersController {
 	// 회원가입+암호화
 	@PostMapping("/register")
 	public String register(UsersVO vo) {
-		// db에 삽입작업-비밀번호 암호화 후
-		log.info(vo);
-		// 비밀번호 암호화
 		vo.setU_pwd(encoder.encode(vo.getU_pwd()));
 		service.insertMember(vo);
 		return "users/login";
@@ -171,12 +168,11 @@ public class UsersController {
 
 	@GetMapping("membership")
 	public String memberShip(UsersVO vo, HttpSession session, Model model) {
-		UsersVO updatedUser = service.selectMember(vo.getU_id());
-		if (updatedUser == null) {
+		vo=(UsersVO) session.getAttribute("vo");
+		if (vo == null) {
 			model.addAttribute("error1", "로그인이 필요한 서비스입니다");
 			return "users/login";
-		} else {
-			vo = (UsersVO) session.getAttribute("vo");
+		} else {			
 			service.selectMember(vo.getU_id());
 			return "users/membership";
 		}
@@ -191,22 +187,24 @@ public class UsersController {
 		return "redirect:membership";
 	}
 
-	@RequestMapping("delivseryStatus")
-	public String delivseryStatus(UsersVO vo, HttpSession session,Model model,
+	@RequestMapping("deliveryStatus")
+	public String deliveryStatus(UsersVO vo, HttpSession session,Model model,
 			HttpServletRequest request,BuyVO bvo,ImagesVO ivo) {
 		vo=(UsersVO) session.getAttribute("vo");
 		vo.setU_id(vo.getU_id());
-		
-		List<BuyVO> list=service.delivseryStatus(vo);
-		
+		List<BuyVO> list=service.deliveryStatus(vo);
+		log.info("list"+list);
 		//메인이미지 가져오기
-		System.out.println("list"+list);
+	System.out.println("list"+list);
 		ImagesDAO dao=new ImagesDAO();
 		for(BuyVO v:list) {
 			ivo.setPno(v.getPno());
 			List<ImagesVO> thumbnail=iservice.getThumbnailImage(ivo.getPno());
+			log.info("thumbnail :"+thumbnail);
 			model.addAttribute("thumbnail", thumbnail);
 		}
+		
+		
 
 		//1.pno가져오기
 		
@@ -217,14 +215,14 @@ public class UsersController {
 		Calendar now = Calendar.getInstance();
 		int year = now.get(Calendar.YEAR);
 		int month = now.get(Calendar.MONTH) + 1;
-		int day = now.get(Calendar.DAY_OF_MONTH) + 1;
+		int day = now.get(Calendar.DAY_OF_MONTH) + 2;
 
 		String date = year + "." + month + "." + day;
 		System.out.println("date=" + date);
 		model.addAttribute("date", date);
 
 		model.addAttribute("list", list);
-		return "users/delivseryStatus";
+		return "users/deliveryStatus";
 	}
 
 	// 와우 멤버십 탈퇴

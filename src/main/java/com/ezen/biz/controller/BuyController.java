@@ -29,6 +29,7 @@ public class BuyController {
 	   private BuyService service;
 	  @Autowired
 		private ProductService pservice;
+	  
 	 @RequestMapping("delivery")
 	 public String delivery(DeliveryVO vo,@RequestParam String u_id, Model model) {
 		 List<DeliveryVO> dlist= service.selectDeli(u_id);
@@ -91,6 +92,13 @@ public class BuyController {
 	           }
 	           return "buy/buy";
 	       }
+	   }
+	   @RequestMapping("refundBuyProduct")
+	   public String refundBuyProduct(@RequestParam int bno) {
+		   service.refundBuyProduct(bno);
+		   System.out.println(bno);
+		return "redirect:deliveryStatus";
+		   
 	   }
 
 }

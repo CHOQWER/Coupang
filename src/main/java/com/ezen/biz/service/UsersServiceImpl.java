@@ -16,8 +16,8 @@ public class UsersServiceImpl implements UsersService {
 	@Autowired
 	private UsersDAO dao;
 	
-	public List<BuyVO>  delivseryStatus(UsersVO vo) {
-		return dao.delivseryStatus(vo);
+	public List<BuyVO>  deliveryStatus(UsersVO vo) {
+		return dao.deliveryStatus(vo);
 	}
 	
 	public void insertMember(UsersVO vo) {

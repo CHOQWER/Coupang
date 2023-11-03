@@ -163,7 +163,7 @@ public class ProductDAO {
 		public List<ProductVO> randomProduct() {
 			return mybatis.selectList("ProductDAO.randomProduct");
 		}	
-		
+
 		
 
 
