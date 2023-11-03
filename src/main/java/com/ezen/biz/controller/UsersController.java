@@ -182,22 +182,24 @@ public class UsersController {
 		return "redirect:membership";
 	}
 
-	@RequestMapping("delivseryStatus")
-	public String delivseryStatus(UsersVO vo, HttpSession session,Model model,
+	@RequestMapping("deliveryStatus")
+	public String deliveryStatus(UsersVO vo, HttpSession session,Model model,
 			HttpServletRequest request,BuyVO bvo,ImagesVO ivo) {
 		vo=(UsersVO) session.getAttribute("vo");
 		vo.setU_id(vo.getU_id());
-		
-		List<BuyVO> list=service.delivseryStatus(vo);
-		
+		List<BuyVO> list=service.deliveryStatus(vo);
+		log.info("list"+list);
 		//메인이미지 가져오기
-		System.out.println("list"+list);
+	System.out.println("list"+list);
 		ImagesDAO dao=new ImagesDAO();
 		for(BuyVO v:list) {
 			ivo.setPno(v.getPno());
 			List<ImagesVO> thumbnail=iservice.getThumbnailImage(ivo.getPno());
+			log.info("thumbnail :"+thumbnail);
 			model.addAttribute("thumbnail", thumbnail);
 		}
+		
+		
 
 		//1.pno가져오기
 		
@@ -215,7 +217,7 @@ public class UsersController {
 		model.addAttribute("date", date);
 
 		model.addAttribute("list", list);
-		return "users/delivseryStatus";
+		return "users/deliveryStatus";
 	}
 
 	// 와우 멤버십 탈퇴

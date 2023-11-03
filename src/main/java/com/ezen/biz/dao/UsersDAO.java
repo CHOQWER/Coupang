@@ -16,8 +16,8 @@ public class UsersDAO {
    @Autowired
    private SqlSessionTemplate mybatis;
    //주문 목록, 배송조회
-	public List<BuyVO> delivseryStatus(UsersVO vo) {
-		return mybatis.selectList("UsersDAO.delivseryStatus", vo);
+	public List<BuyVO> deliveryStatus(UsersVO vo) {
+		return mybatis.selectList("UsersDAO.deliveryStatus", vo);
 	}
    
    public UsersVO selectMember(String u_id) {    

@@ -24,6 +24,7 @@ import com.ezen.biz.dto.ImagesVO;
 import com.ezen.biz.dto.MainCateVO;
 import com.ezen.biz.dto.ProductVO;
 import com.ezen.biz.dto.SubCateVO;
+import com.ezen.biz.service.BuyService;
 import com.ezen.biz.service.ProductService;
 import com.ezen.biz.service.ReviewService;
 import com.ezen.biz.utils.Criteria;
@@ -40,6 +41,9 @@ public class ProductController {
    
    @Autowired
    private ReviewService rservice;
+   
+   @Autowired
+   private BuyService bservice;
 
    private final String imgPath = "D:/upload/coupang/";
    
@@ -312,8 +316,11 @@ public class ProductController {
        in.close();
        out.close();
    }
-
-
+   
+   @GetMapping("refundBuyProduct")
+   public void refundBuyProduct(@RequestParam int bno) {
+	   bservice.refundBuyProduct(bno);
+   }
 
 
 

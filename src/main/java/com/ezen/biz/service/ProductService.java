@@ -70,6 +70,7 @@ public interface ProductService {
 	int selectRowCountword(int ca_no, Criteria cri);
 	
 	List<ProductVO> randomProduct();
+
 	
 
 }

@@ -60,13 +60,11 @@
 		<td>${date}</td>
 		
 		
-	<c:forEach items="${thumbnail}" var="th"  >
-	
+	<c:forEach items="${thumbnail}" var="th"  >	
 			<td>
-				<img class="prodimg" src="imgDown?imgName=${th.main_img1}"
-					alt="메인이미지">
+				<img class="prodimg" src="imgDown?imgName=${th.main_img1}" alt="Contents">
 			</td>
-</c:forEach>
+	</c:forEach>  
 		
 		
 		<td>${vo.u_id}</td>
