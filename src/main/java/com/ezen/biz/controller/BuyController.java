@@ -123,26 +123,15 @@ public class BuyController {
 	 			
 				cservice.deleteCart(cvo);
 				
-	 			
 	 			service.insertBuy(vo);
 	 			
 	 			
 	 		}
 	 		
 	 		
- 			
-	 		//장바구니 삭제하기
-	 		
-	 		
-//	 		if (uvo == null) {
-//		           return "users/login";
-//		       } else {
-//		          pvo = pservice.selectProductbuyPno(vo.getPno());
-//		       }
-	 		
 	 		System.out.println("pno "+pno);
 	 		System.out.println("cno "+cno);
-		    System.out.println("---------찐구매-----------------");
+		    System.out.println("---------구매-----------------");
 	 		System.out.println("BuyVO "+vo);
 	 		System.out.println("UsersVO "+vo);
 	 		System.out.println("ProductVO "+pvo);

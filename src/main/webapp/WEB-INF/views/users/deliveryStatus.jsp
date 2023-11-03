@@ -44,16 +44,16 @@
 										<td class="td-left">
 											<div class="td-left-1">
 												<c:if test="${BL.sta=='r'}">
-									배송 중
-									&nbsp;·<div class="td-left-1-1">${date }&nbsp;도착예정</div>
-								</c:if>
+													배송 중
+													&nbsp;·<div class="td-left-1-1">${date }&nbsp;도착예정</div>
+												</c:if>
 												<c:if test="${BL.sta=='y'}">
-									배송 완료
-									&nbsp;·<div class="td-left-1-1"><fmt:formatDate pattern="yyyy.MM.dd" value="${BL.b_regdate }" />&nbsp;배송 완료</div>
-								</c:if>
+													배송 완료
+													&nbsp;·<div class="td-left-1-1"><fmt:formatDate pattern="yyyy.MM.dd" value="${BL.b_regdate }" />&nbsp;배송 완료</div>
+												</c:if>
 												<c:if test="${BL.sta=='n'}">
-									판매자 구매 승인취소!
-								</c:if>
+													판매자 구매 승인취소!
+												</c:if>
 											</div>											
 											<c:forEach items="${thumbnail}" var="th">
 												<div class="td-left-2"></div>
@@ -81,12 +81,10 @@
 												</c:if>
 											</div>
 										</td>
-										<td class="td-right"><a href="ProductView1?pno=${BL.pno}"><button
-													type="button">리뷰작성</button></a>
-													 <a href="insertCart?pno=${BL.pno}"><button
-													type="button">장바구니 담기</button></a> 
-													<a href="refundBuyProduct?bno=${BL.bno}">
-													<button type="button">반품신청</button></a></td>										
+										<td class="td-right">
+										<a href="ProductView1?pno=${BL.pno}"><button type="button">리뷰작성</button></a>
+										<a href="insertCart?pno=${BL.pno}"><button type="button">장바구니 담기</button></a> 
+										<a href="refundBuyProduct?bno=${BL.bno}"><button type="button">반품신청</button></a></td>										
 									</tr>									
 								</tbody>
 							</table>
