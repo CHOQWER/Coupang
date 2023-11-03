@@ -35,4 +35,16 @@ public class CartServiceImpl implements CartService {
 		return dao.deleteCart(vo);
 	}
 
+	@Override
+	public List<CartVO> checkselectCart(CartVO vo) {
+		
+		return dao.checkselectCart(vo);
+	}
+
+	@Override
+	public int updateCnt(CartVO vo) {
+		
+		return dao.updateCnt(vo);
+	}
+
 }
