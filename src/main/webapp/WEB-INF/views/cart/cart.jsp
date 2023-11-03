@@ -26,6 +26,8 @@
                   
                      <input type="checkbox" name="deleteCart" id="deleteCart"
                         value="${vo.cno}">
+                        <input type="hidden" name="count" id="count"
+                        value="${vo.cno}">
                         
                      <ul class="col123" data-col="${vo.price * 1}">
                         <li><img src="imgDown?imgName=${vo.main_img1}"
