@@ -18,10 +18,10 @@
 	<select id="sellerSelectBuyList" resultType="buy">
 		select * from buy where u_id=#{u_id,jdbcType=NVARCHAR} and sta='y'
 	</select>
-	<!-- 상품페이지에서 바로 구매 -->
+	<!-- 구매하기 -->
 <insert id="insertBuy">
-    insert into buy(bno, u_id, pno, pname, price, dis_price, b_cnt, post_no, addr1, addr2, sta)
-    values(seq_buy.nextval, #{u_id}, #{pno}, #{pname}, #{price}, #{dis_price, jdbcType=INTEGER}, #{b_cnt}, #{post_no}, #{addr1}, #{addr2, jdbcType=INTEGER}, #{sta})
+    insert into buy(bno, u_id, pno, pname, price, dis_price, b_cnt, post_no, addr1, addr2)
+    values(seq_buy.nextval, #{u_id}, #{pno}, #{pname}, #{price}, #{dis_price, jdbcType=INTEGER}, #{b_cnt}, #{post_no}, #{addr1}, #{addr2, jdbcType=INTEGER})
 </insert>
 	
 	<select id="selectBuyList" resultType="com.ezen.biz.dto.BuyVO">
@@ -30,4 +30,13 @@
    where u_id = #{u_id}
 </select>
 
+		<!-- 환불하기 -->
+	<delete id="refundBuyProduct">
+		delete from buy where bno=#{bno}
+	</delete>
+	
+	
+
+	
+	
 </mapper>

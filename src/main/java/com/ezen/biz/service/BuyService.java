@@ -28,5 +28,7 @@ public interface BuyService {
 	int insertBuy(BuyVO vo);
 
 	List<BuyVO> selectBuyList(BuyVO vo);
+
+	void refundBuyProduct(int bno);
 	
 }

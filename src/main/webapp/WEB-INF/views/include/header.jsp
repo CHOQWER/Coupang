@@ -23,11 +23,9 @@
 		console.log(cate_name)
 		
 		
-		location.href = "searchWord?ca_no="
-				+ $("#search > option:selected").val() + "&searchWord="
+		location.href = "ProductList?ca_no="
+				+ $("#search > option:selected").val() + "&searchword="
 				+ $("#searchWord").val()+"&cate_name="+$("#search > option:selected").data("cate-name");
-		
-	
 	}
 
 </script>
@@ -74,11 +72,11 @@
 					<aside class="side-bar">
 						<ul style="padding-left: 30px;">
 							<li><c:forEach items="${catelist}" var="cate">
-									<li><a href="ProductListMainCate?ca_no=${cate.get('no')}&pageNum=1&cate_name=${cate.get('name')}"><i class="fa-solid fa-cat"></i>${cate.get('name')}</a>
+									<li><a href="ProductList?&listtype=1&ca_no=${cate.get('no')}&pageNum=1&cate_name=${cate.get('name')}"><i class="fa-solid fa-cat"></i>${cate.get('name')}</a>
 										<ul style="padding-left: 10px;">
 											<c:forEach items="${cate.get('subcates')}" var="sub">
 												<li><a
-													href="ProductList?sca_no=${sub.get('sno')}&pageNum=1&cate_name=${cate.get('name')}&subcate_name=${sub.get('sname')}">${sub.get('sname')}</a></li>
+													href="ProductList?&listtype=2&ca_no=${cate.get('no')}&sca_no=${sub.get('sno')}&pageNum=1&cate_name=${cate.get('name')}&subcate_name=${sub.get('sname')}">${sub.get('sname')}</a></li>
 											</c:forEach>
 										</ul>
 								</c:forEach></li>

@@ -52,6 +52,9 @@ public class BuyDAO {
 	   return mybatis.insert("BuyDAO.insertBuy", vo);
 	}
 	public List<BuyVO> selectBuyList(BuyVO vo) {
-		return mybatis.selectList("BuyVO.selectBuyList",vo);
+		return mybatis.selectList("BuyDAO.selectBuyList",vo);
+	}
+	public void refundBuyProduct(int bno) {
+		mybatis.delete("BuyDAO.refundBuyProduct",bno);
 	}
 }

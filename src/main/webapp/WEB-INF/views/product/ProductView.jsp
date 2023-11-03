@@ -30,33 +30,32 @@
       <!--좌측 메인/서브 이미지-->
       <div class="content-main">
 
-         <div id="content-wrapper">
-            <div class="column">
-               <div id="img-container">
-                  <div id="lens"></div>
-                  <img id=featured src="imgDown?imgName=${ivo.main_img1}">
-               </div>
-               <div id="slide-wrapper">
-                  <div id="slider">
-                     <c:if test="${not empty ivo.main_img2}">
-                        <img class="thumbnail" src="imgDown?imgName=${ivo.main_img2}">
-                     </c:if>
-                     <c:if test="${not empty ivo.main_img3}">
-                        <img class="thumbnail" src="imgDown?imgName=${ivo.main_img3}">
-                     </c:if>
-                     <c:if test="${not empty ivo.main_img4}">
-                        <img class="thumbnail" src="imgDown?imgName=${ivo.main_img4}">
-                     </c:if>
-                     <c:if test="${not empty ivo.main_img5}">
-                        <img class="thumbnail" src="imgDown?imgName=${ivo.main_img5}">
-                     </c:if>
-                  </div>
-               </div>
-            </div>
-         </div>     
+			<div id="content-wrapper">
+				<div class="column">
+					<div id="img-container">
+						<div id="lens"></div>
+						<img id=featured src="imgDown?imgName=${ivo.main_img1}">
+					</div>
+					<div id="slide-wrapper">
+						<div id="slider">
+							<c:if test="${not empty ivo.main_img2}">
+								<img class="thumbnail" src="imgDown?imgName=${ivo.main_img2}">
+							</c:if>
+							<c:if test="${not empty ivo.main_img3}">
+								<img class="thumbnail" src="imgDown?imgName=${ivo.main_img3}">
+							</c:if>
+							<c:if test="${not empty ivo.main_img4}">
+								<img class="thumbnail" src="imgDown?imgName=${ivo.main_img4}">
+							</c:if>
+							<c:if test="${not empty ivo.main_img5}">
+								<img class="thumbnail" src="imgDown?imgName=${ivo.main_img5}">
+							</c:if>
+						</div>
+					</div>
+				</div>
+			</div>
 
-
-         <!--우측 구매하는 부분-->
+		<!--우측 구매하는 부분-->
          <div class="prod-buy">
             <div class="prod-header">
                <div class="prod-company">${pvo.company}</div>

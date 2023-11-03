@@ -7,7 +7,7 @@ import com.ezen.biz.dto.UsersVO;
 
 public interface UsersService {
 	
-	List<BuyVO> delivseryStatus(UsersVO vo);
+	List<BuyVO> deliveryStatus(UsersVO vo);
 
 	UsersVO selectMember(String u_id);
 	

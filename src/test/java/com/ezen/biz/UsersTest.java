@@ -59,7 +59,7 @@ public class UsersTest {
 	public void register() {
 		log.info("회원가입 테스트");
 		UsersVO vo=new UsersVO();
-		vo.setU_id("종현1234");
+		vo.setU_id("user3");
 		vo.setU_pwd(encoder.encode("1234"));
 		vo.setU_name("엄준식");
 		vo.setU_identity("123456-1234567");

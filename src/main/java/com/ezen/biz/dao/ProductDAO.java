@@ -63,16 +63,7 @@ public class ProductDAO {
 	public ProductVO SelectProduct(ProductVO vo) {
 		return mybatis.selectOne("ProductDAO.selectProduct", vo);
 	}
-
-	// 서브 카테고리별로 제품 리스트
-	public List<ProductVO> selectProductList(int sca_no, Criteria cri) {
-		Map<String, Integer> map = new HashMap<String, Integer>();
-		map.put("sca_no", sca_no);
-		map.put("pageNum", cri.getPageNum());
-		map.put("rowsPerPage", cri.getRowsPerPage());
-		return mybatis.selectList("ProductDAO.ProductListCate", map);
-	}
-
+	
 	// 메인 카테고리 리스트
 	public List<MainCateVO> getCategory() {
 		return mybatis.selectList("ProductDAO.getCategory");
@@ -83,88 +74,38 @@ public class ProductDAO {
 		return mybatis.selectList("ProductDAO.getSubCategory", ca_no);
 	}
 
-	// 서브 카테고리 클릭시 나오는 제품 총 수량(폐이징에 필요)
-	public int selectRowCount(int sca_no) {
-		return mybatis.selectOne("ProductDAO.selectRowCount", sca_no);
-	}
-	
-	
-
 	// 이미지 전체 조회(pno 받아서)
 	public ImagesVO selectImgPno(int pno) {
 		return mybatis.selectOne("ProductDAO.selectImgPno", pno);
 	}
 	
-	
-	// 회사 전체 조회(sca_no 받아서)
-	public List<ProductVO> selectCompany(int sca_no) {
-			return mybatis.selectList("ProductDAO.selectCompany", sca_no);
+	// sca_no로 company list 조회
+	public List<ProductVO> companyListSca(int sca_no) {
+			return mybatis.selectList("ProductDAO.companyListSca", sca_no);
 	}
-	
-	public List<ProductVO> selectCompanyCa(int ca_no) {
-		return mybatis.selectList("ProductDAO.selectCompany", ca_no);
+	// ca_no로 company list 조회
+	public List<ProductVO> companyListCa(int ca_no) {
+		return mybatis.selectList("ProductDAO.companyListCa", ca_no);
 	}
 
-	
-	
-	// 회사별 상품 전체 조회서
-	public List<ProductVO> selectCompanylist(ProductVO vo, Criteria cri){
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("sca_no", vo.getSca_no());
-		map.put("company", vo.getCompany());
-		map.put("pageNum", cri.getPageNum());
-		map.put("rowsPerPage", cri.getRowsPerPage());
-		return mybatis.selectList("ProductDAO.selectCompanylist", map);
-	}
-	
-	// 회사 클릭시 나오는 제품 총 수량(폐이징에 필요)
-		public int selectRowCount(ProductVO vo) {
-			return mybatis.selectOne("ProductDAO.selectRowCountCompany", vo);
-	}
-	
-	//메인 카테고리별 검색 리스트
-		public List<ProductVO> selectMainCateList(int ca_no, Criteria cri) {
-			Map<String, Integer> map = new HashMap<String, Integer>();
-			map.put("ca_no", ca_no);
-			map.put("pageNum", cri.getPageNum());
-			map.put("rowsPerPage", cri.getRowsPerPage());
-			return mybatis.selectList("ProductDAO.selectMainCateList", map);
-		}
-		
-	// 메인 카테고리 클릭시 나오는 제품 총 수량(폐이징에 필요)
-		public int selectRowCountCa(int ca_no) {
-			return mybatis.selectOne("ProductDAO.selectRowCountCa", ca_no);
-	}
-		
-	//메인 카테고리 선택 후 검색어로 조회
-		public List<ProductVO> selectSearchlist(ProductVO vo, Criteria cri){
-			Map<String, Object> map = new HashMap<String, Object>();
-			map.put("ca_no", vo.getCa_no());
-			map.put("searchword", cri.getSearchword());
-			map.put("pageNum", cri.getPageNum());
-			map.put("rowsPerPage", cri.getRowsPerPage());
-			return mybatis.selectList("ProductDAO.selectSearchlist", map);
-		}
-
-		public ProductVO selectProductbuyPno(int pno) {
+	public ProductVO selectProductbuyPno(int pno) {
 			return mybatis.selectOne("ProductDAO.selectProductbuyPno", pno);
-		}
-		
-		
-	// 메인 카테고리 선택 후 검색어로 조회 제품 총 수량(폐이징에 필요)
-		public int selectRowCountword(int ca_no, Criteria cri) {
-			Map<String, Object> map = new HashMap<String, Object>();
-			map.put("ca_no", ca_no);
-			map.put("searchword", cri.getSearchword());
-			return mybatis.selectOne("ProductDAO.selectRowCountword", map);
 		}
 		
 	// 랜덤상품 10개
 		public List<ProductVO> randomProduct() {
 			return mybatis.selectList("ProductDAO.randomProduct");
 		}	
+
 		
-		
+	//페이징을 위한 메소드
+		public List<ProductVO> productListPaging(Criteria cri){
+			return mybatis.selectList("ProductDAO.productListPaging", cri);
+		}
+	//페이징을 위한 행 개수 구하기
+		public int selectRowCountPaging(Criteria cri) {
+			return mybatis.selectOne("ProductDAO.selectRowCountPaging", cri);
+		}
 
 
 

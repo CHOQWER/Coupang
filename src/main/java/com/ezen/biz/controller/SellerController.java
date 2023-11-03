@@ -247,8 +247,6 @@ public class SellerController {
 		return "seller/sellerBeforeDelivery";
 	}
 	
-	
-	
 	@RequestMapping("adminSelectBuyList")
 	public String adminSelectBuyList(Model model,BuyVO vo) {
 		List<BuyVO> list=buyService.adminSelectBuyList(vo);
