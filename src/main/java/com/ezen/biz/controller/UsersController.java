@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.ezen.biz.dao.ImagesDAO;
 import com.ezen.biz.dto.BuyVO;
 import com.ezen.biz.dto.CartVO;
+import com.ezen.biz.dto.ImagesVO;
 import com.ezen.biz.dto.UsersVO;
 import com.ezen.biz.service.ImagesService;
 import com.ezen.biz.service.UsersService;
