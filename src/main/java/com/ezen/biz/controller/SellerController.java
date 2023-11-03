@@ -44,7 +44,7 @@ public class SellerController {
 	private CategoryService cateService;
 	
 	
-	private final String imgPath="D:/upload/img/";
+	private final String imgPath="D:/upload/coupang/";
 	
 	@RequestMapping("seller")
 	public String home() {
