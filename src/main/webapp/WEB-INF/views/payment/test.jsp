@@ -25,6 +25,7 @@
 
 
 <script type="text/javascript">
+	
 	var IMP = window.IMP;
 	IMP.init('imp23810830');
 	var msg;
