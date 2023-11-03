@@ -30,17 +30,13 @@ public interface ProductService {
 	// 
 	ProductVO SelectProduct(ProductVO vo);
 	
-	//카테고리별 제품 리스트 
-	List<ProductVO> selectProductList(int sca_no, Criteria cri);
+
 	
 	List<MainCateVO> getCategory();
 	
 	List<SubCateVO> getSubCategory(int ca_no);
 	
-	int selectRowCount(int sca_no);
-	
-	int selectRowCount(ProductVO vo);
-	
+
 	//pno로 제품검색
 	ProductVO selectProductPno(int pno);
 	//이미지까지 제품 장바구니로 넘기는거
@@ -51,25 +47,27 @@ public interface ProductService {
 	
 	ImagesVO selectImgPno(int pno);
 	
-	//회사별 검색
-	List<ProductVO> selectCompany(int sca_no);
+	// sca_no로 company list 조회
+	List<ProductVO> companyListSca(int sca_no);
+	// ca_no로 company list 조회
+	List<ProductVO> companyListCa(int ca_no);
 	
-	List<ProductVO> selectCompanyCa(int ca_no);
-	
-	List<ProductVO> selectCompanylist(ProductVO vo,Criteria cri);
-	
-	//메인 카테고리로 검색
-	List<ProductVO> selectMainCateList(int ca_no, Criteria cri);
 	
 	int selectRowCountCa(int ca_no);
 	
-	//검색어로 검색
-	List<ProductVO> selectSearchlist(ProductVO vo, Criteria cri);
-	
-	
-	int selectRowCountword(int ca_no, Criteria cri);
-	
 	List<ProductVO> randomProduct();
+	
+	
+	
+	
+	
+	//폐이징을 위한 메소드, 행의갯수
+	
+	List<ProductVO> productListPaging(Criteria cri);
+	
+	int selectRowCountPaging(Criteria cri);
+	
+	//////////////////////////////////////////////
 	
 
 }

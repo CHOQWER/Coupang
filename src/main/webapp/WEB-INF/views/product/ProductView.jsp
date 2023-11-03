@@ -55,10 +55,7 @@
 				</div>
 			</div>
 
-			
-
-
-         <!--우측 구매하는 부분-->
+		<!--우측 구매하는 부분-->
          <div class="prod-buy">
             <div class="prod-header">
                <div class="prod-company">${pvo.company}</div>

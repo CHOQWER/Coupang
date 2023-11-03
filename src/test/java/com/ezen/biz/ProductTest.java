@@ -84,37 +84,8 @@ public class ProductTest {
 //	 	vo.setPno(253); dao.sellerdeleteProduct(vo); }
 //	
 	
-	@Test
-	public void selectCompany() {
-		ProductVO vo=new ProductVO();
-		Criteria cri=new Criteria();
-		vo.setCompany("삼성전자");
-		vo.setSca_no(1);
-		List<ProductVO> list=dao.selectCompanylist(vo, cri);
-		log.info(list);
-		
-	}
-	
-	@Test
-	public void selectRowCount() {
-		Criteria cri=new Criteria();
-		cri.setSearchword("875");
-		int result=dao.selectRowCountword(1,cri);
-		log.info(result);
-	}
-	
-	@Test
-	public void selectSearchlist() {
-		ProductVO vo=new ProductVO();
-		Criteria cri=new Criteria();
-		cri.setSearchword("아이패드");
-		log.info("cri"+cri);
-		vo.setCa_no(3);
-		vo.setPname("아이패드");
-		List<ProductVO> list=dao.selectSearchlist(vo, cri);
-		log.info(list);
-		
-	}
+
+
 	
 	@Test
 	public void randomProduct() {
@@ -134,7 +105,14 @@ public class ProductTest {
 		int result=	ddao.insertDeli(vo);
 		log.info(result);
 	}
-	
+	@Test
+	public void paging() {
+		Criteria cri=new Criteria();
+		cri.setSca_no(1);
+		cri.setCompany("캐리어");
+		List<ProductVO> list=dao.productListPaging(cri);
+		log.info("list"+list);
+	}
 	
 	
 
