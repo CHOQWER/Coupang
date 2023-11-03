@@ -33,7 +33,7 @@
 		pg : "kakaopay",
 		pay_method : 'card',
 		merchant_uid : 'merchant_' + new Date().getTime(),
-		name : 'sessionScope.vo.u_name',
+		name : '${sessionScope.vo.u_name}',
 		amount : 4900,
 		buyer_email : 'u_email',
 		buyer_name : 'u_name',

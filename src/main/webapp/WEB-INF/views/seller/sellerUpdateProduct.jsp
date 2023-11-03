@@ -3,9 +3,15 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
-<script type="text/javascript">
-
-</script>
+<script type="text/javascript"></script>
+<style>
+	th{
+		text-align: left;
+	}
+	.btn{
+		margin : 0 auto;
+	}
+</style>
 <main>
 	<form action="sellerUpdateProduct?pno=${vo.pno}&u_id=${vo.u_id}" method="post" id="send_form">
 		<table class="table table-sm table-bordered">
@@ -48,7 +54,7 @@
 			</tr>
 	        <tr>
 				<th>상세 설명</th>
-				<td><textarea name="content" id="content" cols="119" rows="10" maxlength="1000" ></textarea></td>
+				<td><textarea name="content" id="content" cols="100" rows="10" maxlength="1000" ></textarea></td>
 			</tr>
 			<tr>
 				<th>색상</th> 

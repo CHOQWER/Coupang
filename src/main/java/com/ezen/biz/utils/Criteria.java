@@ -14,21 +14,61 @@ public class Criteria {
     private String searchword;
     private String searchtype;
 	
+    // 검색 관련 추가
+    private int ca_no;
+    private int sca_no;
+    private String company;//기본값 null
+    
 	// 생성자
 	// 기본값: 페이지번호=1, 게시글의수=10
 	public Criteria() {		
-		this(1, 5,"title","");
+		this(1, 6,"","");
+		sca_no=0;
+		ca_no=0;
+		company=null;
+
 	}		
 	
 	public Criteria(int pageNum, int rowsPerPage,String searchtype,String searchword) {
 		this.pageNum = pageNum;
 		this.rowsPerPage = rowsPerPage;
 		this.searchtype=searchtype;
-		this.searchword=searchword;
+		this.searchword=searchword;		
+	}
+	
+	
+	public int getCa_no() {
+		return ca_no;
 	}
 
-	
-	
+	public void setCa_no(int ca_no) {
+		this.ca_no = ca_no;
+	}
+
+	public int getSca_no() {
+		return sca_no;
+	}
+
+	public void setSca_no(int sca_no) {
+		this.sca_no = sca_no;
+	}
+
+	public String getCompany() {
+		return company;
+	}
+
+	public void setCompany(String company) {
+		this.company = company;
+	}
+
+	public void setPageNum(Integer pageNum) {
+		this.pageNum = pageNum;
+	}
+
+	public void setRowsPerPage(Integer rowsPerPage) {
+		this.rowsPerPage = rowsPerPage;
+	}
+
 	public String getSearchword() {
 		return searchword;
 	}
@@ -76,7 +116,10 @@ public class Criteria {
 	@Override
 	public String toString() {
 		return "Criteria [pageNum=" + pageNum + ", rowsPerPage=" + rowsPerPage + ", searchword=" + searchword
-				+ ", searchtype=" + searchtype + "]";
+				+ ", searchtype=" + searchtype + ", ca_no=" + ca_no + ", sca_no=" + sca_no + ", company=" + company
+				+ "]";
 	}
+
+
 
 }

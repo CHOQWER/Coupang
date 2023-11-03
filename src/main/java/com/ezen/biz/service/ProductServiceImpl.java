@@ -46,10 +46,6 @@ public class ProductServiceImpl implements ProductService{
 		return dao.SelectProduct(vo);
 	}
 
-	@Override
-	public List<ProductVO> selectProductList(int sca_no, Criteria cri) {
-		return dao.selectProductList(sca_no, cri);
-	}
 
 	@Override
 	public List<MainCateVO> getCategory() {
@@ -59,11 +55,6 @@ public class ProductServiceImpl implements ProductService{
 	@Override
 	public List<SubCateVO> getSubCategory(int ca_no) {
 		return dao.getSubCategory(ca_no);
-	}
-
-	@Override
-	public int selectRowCount(int sca_no) {
-		return dao.selectRowCount(sca_no);
 	}
 
 	@Override
@@ -87,56 +78,44 @@ public class ProductServiceImpl implements ProductService{
 	public List<ProductVO> sellerSelectMineProduct(ProductVO vo) {
 		return dao.sellerSelectMineProduct(vo);
 	}
-	
-
-	@Override
-	public List<ProductVO> selectCompany(int sca_no) {
-		return dao.selectCompany(sca_no);
-	}
-	
-	@Override
-	public List<ProductVO> selectCompanyCa(int ca_no) {
-			return dao.selectCompanyCa(ca_no);
-	}
-
-
-	@Override
-	public List<ProductVO> selectCompanylist(ProductVO vo,Criteria cri) {
-		return dao.selectCompanylist(vo, cri);
-	}
-
-	@Override
-	public int selectRowCount(ProductVO vo) {
-		return dao.selectRowCount(vo);
-	}
-
-	@Override
-	public List<ProductVO> selectSearchlist(ProductVO vo, Criteria cri) {
-		return dao.selectSearchlist(vo, cri);
-	}
-
-	@Override
-	public List<ProductVO> selectMainCateList(int ca_no, Criteria cri) {
-		return dao.selectMainCateList(ca_no, cri);
-	}
-
-	@Override
-	public int selectRowCountCa(int ca_no) {
-		return dao.selectRowCountCa(ca_no);
-	}
-
-	@Override
-	public int selectRowCountword(int ca_no, Criteria cri) {
-		return dao.selectRowCountword(ca_no, cri);
-	}
-
 	@Override
 	public List<ProductVO> randomProduct() {
 		return dao.randomProduct();
 	}
 
-
-
 	
+	
+	//폐이징을 위한 메소드,행의갯수
+	@Override
+	public List<ProductVO> productListPaging(Criteria cri) {
+		return dao.productListPaging(cri);
+	}
+
+	@Override
+	public int selectRowCountPaging(Criteria cri) {
+		return dao.selectRowCountPaging(cri);
+	}
+	///////////////////////////////////////////////////////////
+
+	@Override
+	public int selectRowCountCa(int ca_no) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public List<ProductVO> companyListCa(int ca_no) {
+		return dao.companyListCa(ca_no);
+	}
+
+	@Override
+	public List<ProductVO> companyListSca(int sca_no) {
+		return dao.companyListSca(sca_no);
+	}
+
+
+
+
+
 
 }
