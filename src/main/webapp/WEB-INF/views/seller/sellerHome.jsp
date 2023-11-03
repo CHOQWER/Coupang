@@ -7,22 +7,9 @@
 	<title>Home</title>
 </head>
 <body>
-
-	 
-<a href="sellerInsertProduct">
-	<h2> 판매자 -> 상품등록</h2></a>
-<a href="sellerSelectMineProduct">
-	<h2> 판매자 -> 등록한 상품등록 내역</h2></a>	
-<a href="sellerSelectBuyList">
-	<h2> 판매자 -> 판매내역</h2></a>
 	
-<a href="adminSelectBuyList">
-	<h2> 관리자 -> 판매관리</h2></a>
-	
- <a href="sellerBeforeDelivery">
-	<h2> 판매 전 판매 여부</h2></a> 
 
-
-<P>  판매자 페이지로 넘어가기전입니다. </P>
+<h1 style="text-align: center;">@판매자 메인 사이트 @</h1>          
+<h1 style="text-align: center;"><a href="/">메인 홈페이지로 이동</a></h1>
 </body>
 </html>

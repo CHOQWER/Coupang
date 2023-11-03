@@ -2,10 +2,11 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ include file="/WEB-INF/views/include/aside.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="/resources/css/bootstrap.min.css">
+<!-- <link rel="stylesheet" href="/resources/css/bootstrap.min.css"> -->
 <link rel="stylesheet" href="/resources/css/common.css">
 <script src="/resources/js/jquery-3.6.3.min.js"></script>
 <script type="text/javascript" src="/resources/js/common.js"></script>
@@ -15,7 +16,6 @@
 <script
 	src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/additional-methods.js"></script>
 <script src="/resources/js/fileupload_validate.js"></script>
-<title>Insert title here</title>
 </head>
 <body>
 	<main>
@@ -24,13 +24,13 @@
 			
 			<table class="table table-sm table-bordered">
 				<tr>
-					<th>판매자 아이디</th>
+					<th class="sellerid">판매자 아이디</th>
 					<!-- 아이디 가져오기 -->
 					<td><p type="text" size="120" maxlength="50" name="u_id"
 							id="u_id">${vo.u_id}</p></td>
 				</tr>
 				<tr>
-					<th><label for="mCate">메인카테고리</label></th>
+					<th class="main-cate"><label for="mCate">메인카테고리</label></th>
 				
 					<td>
 					
@@ -42,7 +42,7 @@
 					</td>
 				</tr>
 				<tr>	
-					<th>	
+					<th class="sub-cate">	
 						<label for="sCate">서브카테고리</label>
 					</th>
 						<td>
