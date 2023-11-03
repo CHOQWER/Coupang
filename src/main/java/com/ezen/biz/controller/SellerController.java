@@ -225,25 +225,7 @@ public class SellerController {
 			}
 			
 		}
-		
-//		for(int b:bno) {
-//		vo.setBno(b);
-//		
-//		for(String s:sta) {
-//			System.out.println("s는??"+s);
-//		if(s.equals("0")) {
-//			dao.sellerStaY(vo);
-//			System.out.println("구매 승인 입니다.");
-//			
-//		}
-//		else if(s.equals("1")) {
-//
-//			dao.sellerStaN(vo);
-//			System.out.println("구매 취소 입니다.");
-//		}
-//		}
-//		
-//	}
+
 		return "seller/sellerBeforeDelivery";
 	}
 	

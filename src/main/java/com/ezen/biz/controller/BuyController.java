@@ -1,5 +1,6 @@
 package com.ezen.biz.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -99,33 +100,38 @@ public class BuyController {
 //	   }
 	 	@RequestMapping(value ="insertBuy")
 	   public String insertBuy(BuyVO vo, HttpSession session, Model model,UsersVO v,CartVO cvo,
-			   ProductVO pvo,@RequestParam int pno,@RequestParam int cno,@RequestParam String pname,
-			   @RequestParam String main_img1,@RequestParam int c_cnt,
-			   @RequestParam int price,@RequestParam int dis_price) {
+			   ProductVO pvo,@RequestParam int[] pno,@RequestParam int[] cno,@RequestParam String[] pname,
+			   @RequestParam String[] main_img1,@RequestParam int[] c_cnt,
+			   @RequestParam int[] price,@RequestParam int[] dis_price) {
+	 		
+			v=(UsersVO) session.getAttribute("vo");
+			vo.setU_id(v.getU_id());
+	 		
+	 		for(int i=0;i<pno.length;i++) {
+	 			//insert 
+	 			vo.setPno(pno[i]);
+	 			vo.setPname(pname[i]);
 	 			
-				v=(UsersVO) session.getAttribute("vo");
-				vo.setU_id(v.getU_id());
+	 			vo.setB_cnt(c_cnt[i]);
+	 			vo.setPrice(price[i]);
+	 			vo.setDis_price(dis_price[i]);
+	 			
+	 			
+	 			//delete
+	 			cvo.setCno(cno[i]);
+	 			
 	 			
 				cservice.deleteCart(cvo);
 				
-				
-	 			vo.setB_cnt(c_cnt);
-	 			
 	 			service.insertBuy(vo);
 	 			
 	 			
-	 		//장바구니 삭제하기
+	 		}
 	 		
-	 		
-//	 		if (uvo == null) {
-//		           return "users/login";
-//		       } else {
-//		          pvo = pservice.selectProductbuyPno(vo.getPno());
-//		       }
 	 		
 	 		System.out.println("pno "+pno);
 	 		System.out.println("cno "+cno);
-		    System.out.println("---------찐구매-----------------");
+		    System.out.println("---------구매-----------------");
 	 		System.out.println("BuyVO "+vo);
 	 		System.out.println("UsersVO "+vo);
 	 		System.out.println("ProductVO "+pvo);
@@ -144,37 +150,27 @@ public class BuyController {
 		   
 	   }
 	   @PostMapping("cartbuy")
-		  public String cartbuy(CartVO cvo,@RequestParam int deleteCart,@RequestParam int c_cnt,Model model) {
-		     int cno=deleteCart;  
+		  public String cartbuy(CartVO cvo,@RequestParam int[] deleteCart,@RequestParam int[] c_cnt, 
+				  Model model) {
+		   //List<CartVO> vo
+		   List<CartVO> vo=new ArrayList<CartVO>();
 		   
-		     cvo.setCno(deleteCart);
-			  //update문
-			  cservice.updateCnt(cvo);
-			
-			  //form에서 cno가져오기 -> select 다 가져오기
-			  List<CartVO> vo=  cservice.checkselectCart(cvo);
-			  model.addAttribute("vo",vo);
-			  
-			  
-//			  System.out.println("clist="+clist);
-			  //form에서 c_cnt가져오기
-//			  System.out.println("////////////c_cnt = "+c_cnt);
-			  //form에서 가져온 c_cnt로 업데이트
-			  cvo.setC_cnt(c_cnt);
-			  
-//			  System.out.println("-------------------------------");
-//			  System.out.println("cvo="+cvo);
+		   for(int i=0;i<deleteCart.length;i++) {
+			   System.out.println("deleteCart="+deleteCart[i]);
+			   System.out.println("c_cnt="+c_cnt[i]);
 
+			   cvo.setCno(deleteCart[i]);
+			   cvo.setC_cnt(c_cnt[i]);
+			   
+			   cservice.updateCnt(cvo);
+			   
+			   
+			  vo.add(cservice.checkselectCart(cvo));
+			   
+			   model.addAttribute("vo",vo);
+			   
+		   }  
 
-//		   	  System.out.println("BuyVO="+vo);
-//			  System.out.println("cartbuy cvo="+cvo);
-//			  System.out.println("hello");
-//			  System.out.println("deleteCart"+deleteCart);
-			
-
-//			  System.out.println("===========================");
-//			  service.insertBuy(vo);
-			  
 			return "buy/buy";
 			  
 		  }

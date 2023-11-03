@@ -36,7 +36,7 @@ public class CartServiceImpl implements CartService {
 	}
 
 	@Override
-	public List<CartVO> checkselectCart(CartVO vo) {
+	public CartVO checkselectCart(CartVO vo) {
 		
 		return dao.checkselectCart(vo);
 	}

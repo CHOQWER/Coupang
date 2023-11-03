@@ -26,9 +26,9 @@
 				<input type="hidden" name="cno" value="${vo.cno}">
 				<input type="hidden" name="main_img1" value="${vo.main_img1}">
 				<input type="hidden" name="c_cnt" value="${vo.c_cnt}">
-				
 				<input type="hidden" name="price" value="${vo.price}">
 				<input type="hidden" name="dis_price" value="${vo.dis_price}">
+				
 
 				<div class="row border-top border-bottom">
 					<div class="col-2">			
