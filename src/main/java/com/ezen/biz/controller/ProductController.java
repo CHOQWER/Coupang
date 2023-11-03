@@ -45,8 +45,7 @@ public class ProductController {
    @Autowired
    private BuyService bservice;
 
-	@Autowired
-	private ReviewService rservice;
+	
 
 	private final String imgPath = "D:/upload/coupang/";
 	
