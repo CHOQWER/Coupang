@@ -7,8 +7,10 @@ import org.springframework.stereotype.Service;
 
 import com.ezen.biz.dao.BuyDAO;
 import com.ezen.biz.dao.DeliveryDAO;
+import com.ezen.biz.dao.SellerDAO;
 import com.ezen.biz.dto.BuyVO;
 import com.ezen.biz.dto.DeliveryVO;
+import com.ezen.biz.dto.SalesVO;
 @Service
 public class BuyServiceImpl implements BuyService {
 	@Autowired
@@ -16,7 +18,9 @@ public class BuyServiceImpl implements BuyService {
 	
 	@Autowired
 	private DeliveryDAO ddao;
-
+	
+	@Autowired
+	private SellerDAO sdao;
 
 	//환불하기- 판매자
 	//상품구매후 취소
@@ -85,6 +89,11 @@ public class BuyServiceImpl implements BuyService {
 	public void refundBuyProduct(int bno) {
 		dao.refundBuyProduct(bno);
 		
+	}
+
+	@Override
+	public List<SalesVO> salesCate(String u_id) {
+		return sdao.salesCate(u_id);
 	}
 
 	
