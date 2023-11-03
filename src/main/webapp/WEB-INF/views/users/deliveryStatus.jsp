@@ -84,7 +84,9 @@
 										<td class="td-right">
 										<a href="ProductView1?pno=${BL.pno}"><button type="button">리뷰작성</button></a>
 										<a href="insertCart?pno=${BL.pno}"><button type="button">장바구니 담기</button></a> 
-										<a href="refundBuyProduct?bno=${BL.bno}"><button type="button">반품신청</button></a></td>										
+										<c:if test="${pdate}<${date}">
+										<a href="refundBuyProduct?bno=${BL.bno}"><button type="button" >반품신청</button></a></td>
+										</c:if>
 									</tr>									
 								</tbody>
 							</table>

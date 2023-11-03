@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ezen.biz.dao.ImagesDAO;
 import com.ezen.biz.dto.BuyVO;
-import com.ezen.biz.dto.CartVO;
 import com.ezen.biz.dto.ImagesVO;
 import com.ezen.biz.dto.UsersVO;
 import com.ezen.biz.service.ImagesService;
@@ -197,20 +196,28 @@ public class UsersController {
 		//메인이미지 가져오기
 	System.out.println("list"+list);
 		ImagesDAO dao=new ImagesDAO();
+		//현재 날짜 가져오기
+//		Calendar nowp = Calendar.getInstance();
+//		int yearp = nowp.get(Calendar.YEAR);
+//		int monthp = nowp.get(Calendar.MONTH) + 1;
+//		int dayp = nowp.get(Calendar.DAY_OF_MONTH) + 4;
+//		String pdate = yearp + "." + monthp + "." + dayp;
+//		model.addAttribute("pdate", pdate);
+		
 		for(BuyVO v:list) {
 			ivo.setPno(v.getPno());
 			List<ImagesVO> thumbnail=iservice.getThumbnailImage(ivo.getPno());
 			log.info("thumbnail :"+thumbnail);
 			model.addAttribute("thumbnail", thumbnail);
+			
+			
+			
 		}
-		
-		
 
 		//1.pno가져오기
 		
 		//2.이미지 테이블에서 pno로 메인이미지 가져오기
-		
-		
+				
 		//1일 뒤 도착예정
 		Calendar now = Calendar.getInstance();
 		int year = now.get(Calendar.YEAR);

@@ -1,5 +1,7 @@
 package com.ezen.biz.service;
 
+
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,7 @@ import com.ezen.biz.dao.BuyDAO;
 import com.ezen.biz.dao.DeliveryDAO;
 import com.ezen.biz.dto.BuyVO;
 import com.ezen.biz.dto.DeliveryVO;
+import com.ezen.biz.dto.ProductVO;
 @Service
 public class BuyServiceImpl implements BuyService {
 	@Autowired
@@ -86,6 +89,13 @@ public class BuyServiceImpl implements BuyService {
 		dao.refundBuyProduct(bno);
 		
 	}
+
+	@Override
+	public ProductVO selectBuyOne(int pno) {
+		
+		return dao.selectBuyOne(pno);
+	}
+
 
 	
 }

@@ -1,9 +1,12 @@
 package com.ezen.biz.service;
 
+
+import java.util.Date;
 import java.util.List;
 
 import com.ezen.biz.dto.BuyVO;
 import com.ezen.biz.dto.DeliveryVO;
+import com.ezen.biz.dto.ProductVO;
 
 public interface BuyService {
 	void sellerStaY(BuyVO vo);
@@ -31,4 +34,5 @@ public interface BuyService {
 
 	void refundBuyProduct(int bno);
 	
+	ProductVO selectBuyOne(int pno);
 }

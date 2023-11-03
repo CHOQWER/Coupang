@@ -26,7 +26,8 @@
          type="hidden" name="price" value="${pvo.price }"> <input
          type="hidden" name="dis_price" value="${pvo.dis_price }"> <input
          type="hidden" name="pname" value="${pvo.pname }">
-
+         <input type="hidden" name="main_img1" value="${ivo.main_img1}">
+         <!-- <input type="hidden" name="c_cnt" value="c_cnt"> -->
       <!--좌측 메인/서브 이미지-->
       <div class="content-main">
 
@@ -106,9 +107,10 @@
 
                <!-- qty 만큼 선택하기..?? -->
                
-               <input type="number" name="c_cnt" id="c_cnt" value="1" placeholder="1" min="1" max="${pvo.qty}"/>         
-               <button onclick="cartSubmit()">장바구니</button>               
-                <button onclick="buySubmit()">바로구매</button> 
+               <input type="number" name="c_cnt" id="c_cnt" value="1" placeholder="1" min="1" max="${pvo.qty}" />         
+               <button onclick="cartSubmit()">장바구니</button>    
+               <a href="buyOne?pno=${pvo.pno}" onclick="getCnt()"> <button type="button">바로구매</button> </a>           
+               
             </div>
             <!-- <input type="hidden" name=""> -->
 
@@ -117,7 +119,6 @@
       </div>
       
       </form>
-
 
 
       <div class="content-section"></div>
@@ -213,7 +214,12 @@
 
 
 <script type="text/javascript">
-
+function getCnt(){
+	   let frm=$("#frmDetail");
+	   frm.attr("action","buyOne?b_cnt=document.getElementById('b_cnt')&pno=${pvo.pno}");   
+	   frm.submit();
+	}
+	
 
 
 function cartSubmit(){
@@ -223,7 +229,7 @@ function cartSubmit(){
 }
 function buySubmit() {
       let frm=$("#frmDetail");
-      frm.attr("action","insertBuy");   
+      frm.attr("action","buyOne");   
       frm.submit();
 }
 
