@@ -45,15 +45,16 @@
 											<div class="td-left-1">
 												<c:if test="${BL.sta=='r'}">
 									배송 중
+									&nbsp;·<div class="td-left-1-1">${date }&nbsp;도착예정</div>
 								</c:if>
 												<c:if test="${BL.sta=='y'}">
 									배송 완료
+									&nbsp;·<div class="td-left-1-1"><fmt:formatDate pattern="yyyy.MM.dd" value="${BL.b_regdate }" />&nbsp;배송 완료</div>
 								</c:if>
 												<c:if test="${BL.sta=='n'}">
 									판매자 구매 승인취소!
 								</c:if>
-											</div>&nbsp;·
-											<div class="td-left-1-1">${date }&nbsp;도착예정</div>
+											</div>											
 											<c:forEach items="${thumbnail}" var="th">
 												<div class="td-left-2"></div>
 												<div class="td-left-image">
@@ -61,10 +62,23 @@
 												</div>
 											</c:forEach>
 											<div class="td-div-content">
-												<div class="td-left-content">${BL.pname}</div>
+												<div class="td-left-content"><a href="ProductView?pno=${BL.pno}&cate_name=${cate_name}&subcate_name=${subcate_name}">${BL.pname}</a></div>																								
+												<c:if test="${sessionScope.vo.grade==1 }">
 												<div class="td-left-price-cnt">
-													${BL.dis_price}&nbsp;원&nbsp;·&nbsp;${BL.b_cnt}&nbsp;개
+													구매금액 ${BL.dis_price*BL.b_cnt}&nbsp;원&nbsp;·&nbsp;${BL.b_cnt}&nbsp;개
+																										
 												</div>
+												</c:if>
+												<c:if test="${sessionScope.vo.grade==3 }">
+												<div class="td-left-price-cnt">
+													구매금액 ${BL.dis_price*BL.b_cnt}&nbsp;원&nbsp;·&nbsp;${BL.b_cnt}&nbsp;개													
+												</div>												
+												</c:if>
+												<c:if test="${sessionScope.vo.grade==2 }">
+												<div class="td-left-price-cnt">
+													구매금액 ${BL.price*BL.b_cnt}&nbsp;원&nbsp;·&nbsp;${BL.b_cnt}&nbsp;개													
+												</div>												
+												</c:if>
 											</div>
 										</td>
 										<td class="td-right"><a href="ProductView1?pno=${BL.pno}"><button
