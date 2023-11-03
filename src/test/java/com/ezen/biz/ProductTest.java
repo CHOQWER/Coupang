@@ -11,8 +11,10 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.ezen.biz.dao.DeliveryDAO;
 import com.ezen.biz.dao.ImagesDAO;
 import com.ezen.biz.dao.ProductDAO;
+import com.ezen.biz.dao.SellerDAO;
 import com.ezen.biz.dto.DeliveryVO;
 import com.ezen.biz.dto.ProductVO;
+import com.ezen.biz.dto.SalesVO;
 import com.ezen.biz.dto.SubCateVO;
 import com.ezen.biz.utils.Criteria;
 
@@ -31,6 +33,9 @@ public class ProductTest {
 	@Autowired
 	private DeliveryDAO ddao;
 
+	@Autowired
+	private SellerDAO sdao;
+	
 	@Test
 	public void sellerGetPno() {
 		ProductVO vo=new ProductVO();
@@ -84,37 +89,8 @@ public class ProductTest {
 //	 	vo.setPno(253); dao.sellerdeleteProduct(vo); }
 //	
 	
-	@Test
-	public void selectCompany() {
-		ProductVO vo=new ProductVO();
-		Criteria cri=new Criteria();
-		vo.setCompany("삼성전자");
-		vo.setSca_no(1);
-		List<ProductVO> list=dao.selectCompanylist(vo, cri);
-		log.info(list);
-		
-	}
-	
-	@Test
-	public void selectRowCount() {
-		Criteria cri=new Criteria();
-		cri.setSearchword("875");
-		int result=dao.selectRowCountword(1,cri);
-		log.info(result);
-	}
-	
-	@Test
-	public void selectSearchlist() {
-		ProductVO vo=new ProductVO();
-		Criteria cri=new Criteria();
-		cri.setSearchword("아이패드");
-		log.info("cri"+cri);
-		vo.setCa_no(3);
-		vo.setPname("아이패드");
-		List<ProductVO> list=dao.selectSearchlist(vo, cri);
-		log.info(list);
-		
-	}
+
+
 	
 	@Test
 	public void randomProduct() {
@@ -134,7 +110,20 @@ public class ProductTest {
 		int result=	ddao.insertDeli(vo);
 		log.info(result);
 	}
+	@Test
+	public void paging() {
+		Criteria cri=new Criteria();
+		cri.setSca_no(1);
+		cri.setCompany("캐리어");
+		List<ProductVO> list=dao.productListPaging(cri);
+		log.info("list"+list);
+	}
 	
+	@Test
+	public void salesCate() {
+		List<SalesVO> list=sdao.salesCate("thfk1234");
+		log.info(list);
+	}
 	
 	
 

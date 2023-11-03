@@ -9,7 +9,7 @@
 	<div class="card">
 		<div class="col">${sessionScope.vo.u_id}</div>
 		<div class="row">
-			<div class="col-md-8 cart">
+			 <div class="col-md-8 cart">
 				<div class="title">
 					<div class="row">
 						<div class="col">
@@ -19,11 +19,21 @@
 						</div>
 					</div>
 				</div>
+				
+				<c:forEach items="${vo}" var="vo">
+				<input type="hidden" name="pno" value="${vo.pno}">
+				<input type="hidden" name="pname" value="${vo.pname}">
+				<input type="hidden" name="cno" value="${vo.cno}">
+				<input type="hidden" name="main_img1" value="${vo.main_img1}">
+				<input type="hidden" name="c_cnt" value="${vo.c_cnt}">
+				<input type="hidden" name="price" value="${vo.price}">
+				<input type="hidden" name="dis_price" value="${vo.dis_price}">
+				
 
 				<div class="row border-top border-bottom">
 					<div class="col-2">			
 							<ul class="col123">
-								<li class="col"><a href="ProductView?pno=${vo.pno}&cate_name=${cate_name}&subcate_name=${subcate_name}">${vo.pname}</a></li>
+								<li class="col"><a href="ProductView?pno=${vo.pno}&cate_name=${cate_name}&subcate_name=${subcate_name}">${vo.pname}</a></li> 
 								
 								<li class="col"><input type="number" value="${vo.c_cnt}"></li>
 								<c:if test="${sessionScope.vo.grade==2 }">
@@ -42,14 +52,14 @@
 
 					</div>
 				</div>
-
+				</c:forEach>
 				<div class="back-to-shop">
 					<a href="javascript:history.back()">&leftarrow;&nbsp;&nbsp;뒤로가기</a><span
 						class="text-muted"></span>
 				</div>
 				
 
-			</div>
+			</div> 
 			<div class="col-md-4 summary">
 				<div>
 					<h5>
@@ -84,7 +94,8 @@
 					<div class="col">총구매금액</div>
 					  <div id="totalPrice" class="col"></div>
 				</div>
-				<button class="btn">구매하기</button>
+				
+				<button class="btn" type="submit">구매하기</button>
 			</div>
 		</div>
 	</div>

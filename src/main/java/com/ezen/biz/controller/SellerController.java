@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +23,7 @@ import com.ezen.biz.dto.BuyVO;
 import com.ezen.biz.dto.ImagesVO;
 import com.ezen.biz.dto.MainCateVO;
 import com.ezen.biz.dto.ProductVO;
+import com.ezen.biz.dto.SalesVO;
 import com.ezen.biz.dto.SubCateVO;
 import com.ezen.biz.dto.UsersVO;
 import com.ezen.biz.service.BuyService;
@@ -44,7 +46,7 @@ public class SellerController {
 	private CategoryService cateService;
 	
 	
-	private final String imgPath="D:/upload/img/";
+	private final String imgPath="D:/upload/coupang/";
 	
 	@RequestMapping("seller")
 	public String home() {
@@ -130,19 +132,16 @@ public class SellerController {
 		
 	// 판매자 상품등록 내역조회
 	@GetMapping("sellerSelectMineProduct")
-	public String sellerSelectProduct(Model model,ProductVO vo, HttpSession session,UsersVO v) {
-		
+	public String sellerSelectProduct(Model model,ProductVO vo, HttpSession session,UsersVO v) {		
 		v=(UsersVO) session.getAttribute("vo");
-		vo.setU_id(v.getU_id());
-		
-		System.out.println("vo.getPno()="+vo.getPno());
-		
-		
+		vo.setU_id(v.getU_id());		
+		System.out.println("vo.getPno()="+vo.getPno());		
 		List<ProductVO> list=productService.sellerSelectMineProduct(vo);
 		/* System.out.println("sellerSelectMineProduct vo="+list); */
 		model.addAttribute("list",list);
 		return "seller/sellerSelectMineProduct"; 
 	}
+	
 	@PostMapping("sellerSelectMineProduct")
 	public String sellerSelectProduct(Model model,ProductVO vo,@RequestParam int[] pno){
 		
@@ -228,25 +227,7 @@ public class SellerController {
 			}
 			
 		}
-		
-//		for(int b:bno) {
-//		vo.setBno(b);
-//		
-//		for(String s:sta) {
-//			System.out.println("s는??"+s);
-//		if(s.equals("0")) {
-//			dao.sellerStaY(vo);
-//			System.out.println("구매 승인 입니다.");
-//			
-//		}
-//		else if(s.equals("1")) {
-//
-//			dao.sellerStaN(vo);
-//			System.out.println("구매 취소 입니다.");
-//		}
-//		}
-//		
-//	}
+
 		return "seller/sellerBeforeDelivery";
 	}
 	
@@ -290,4 +271,36 @@ public class SellerController {
 		} // end for
 
 	}
+	@RequestMapping("/sellersales")
+	public String salesCate(@RequestParam String u_id, Model model) {
+		List<SalesVO> list= buyService.salesCate(u_id);
+		model.addAttribute("list",list);
+		log.info("매출확인 list"+list);
+		
+		String str ="[";
+		str +="['카테고리' , '가격'] ,";
+		int num =0;
+		for(SalesVO vo : list){
+			
+			str +="['";
+			str  += vo.getCate_name();
+			str +="' , ";
+			str += vo.getSumsales();
+			str +=" ]";
+			
+			num ++;
+			if(num<list.size()){
+				str +=",";
+			}		
+		}
+		str += "]";
+		model.addAttribute("str", str);
+		System.out.println("str"+str);
+	
+		return "seller/sellersales";
+	}
+	
+	
+	
+	
 }

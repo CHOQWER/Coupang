@@ -1,15 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<script src="/resources/js/jquery-3.6.3.min.js"></script>
+<script type="text/javascript" src="/resources/js/common.js"></script>
+<%@ include file="/WEB-INF/views/include/aside.jsp"%>
 <html>
 <head>
 <style>
-
+	main{
+		display: flex;
+	}
+	.seller-menu{
+		margin: 0 auto;
+		margin-top: 100px;		
+	}
 </style>
+
 </head>
 <body>
 	<main>
-		<title>sellerBeforeDelivery</title>
+		<div class="seller-menu">
 		<form action="sellerBeforeDelivery" method="post" >
 			<button type="submmit" class="btn btn-secondary">판매 업데이트</button>
 			<button type="reset" class="btn btn-secondary">선택 초기화</button>
@@ -20,7 +30,7 @@
 				<tr>
 					<th>판매 여부</th>
 					<th>상품 번호</th>
-					<th>판매자 아이디</th>
+					<th>구매자 아이디</th>
 					<th>상품명</th>
 					<th>판매 가격</th>
 					<th>수량</th>
@@ -44,8 +54,8 @@
 					</tr>
 				</c:forEach>
 			</table>
-
 		</form>
+		</div>
 	</main>
 
 </body>

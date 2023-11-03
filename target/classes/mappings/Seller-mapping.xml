@@ -18,4 +18,19 @@
 			update buy set sta='n' where bno=#{bno}
 		</update>
 		
+		<!-- 카테고리별 매출 확인 ( 판매자 ID 받아서 ) -->
+		
+		<select id="salesCate" resultType="com.ezen.biz.dto.SalesVO">
+			SELECT P.CA_NO AS , M.CATE_NAME AS , SUM(B.PRICE*B_CNT) AS sumsales
+        		FROM BUY B
+            		JOIN
+                 		PRODUCT P ON B.PNO = P.PNO
+                    		JOIN
+                        		MAINCATE M ON P.CA_NO = M.CA_NO
+                            		WHERE B.B_REGDATE IS NOT NULL AND  B.U_ID = #{u_id}
+                                GROUP BY
+                                    P.CA_NO, M.CATE_NAME
+                                        ORDER BY P.CA_NO
+		</select>
+		
 </mapper>

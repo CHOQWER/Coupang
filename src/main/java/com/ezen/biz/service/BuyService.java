@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.ezen.biz.dto.BuyVO;
 import com.ezen.biz.dto.DeliveryVO;
+import com.ezen.biz.dto.SalesVO;
 
 public interface BuyService {
 	void sellerStaY(BuyVO vo);
@@ -30,5 +31,8 @@ public interface BuyService {
 	List<BuyVO> selectBuyList(BuyVO vo);
 
 	void refundBuyProduct(int bno);
+	
+	// 카테고리별 매출 확인
+	List<SalesVO> salesCate(String u_id);
 	
 }

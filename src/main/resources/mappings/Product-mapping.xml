@@ -8,13 +8,15 @@
 
 	<!-- 제품등록후 제품번호 받아오기 -->
 	<select id="sellerGetPno" resultType="java.lang.Integer">
-		select MAX(pno) from product
+		select MAX(pno) from
+		product
 	</select>
 
 
 	<!-- 제품 등록 -->
 	<insert id="sellerInsertProduct">
-		insert into product(pno,u_id,ca_no,sca_no,company,pname,price,dis_price,content,color,qty)
+		insert into
+		product(pno,u_id,ca_no,sca_no,company,pname,price,dis_price,content,color,qty)
 		values(seq_product.nextval,#{u_id},#{ca_no},#{sca_no,jdbcType=INTEGER},#{company},#{pname},#{price}
 		,#{dis_price,jdbcType=INTEGER},#{content,jdbcType=NVARCHAR},#{color,jdbcType=NVARCHAR},#{qty,jdbcType=INTEGER})
 	</insert>
@@ -40,13 +42,16 @@
 
 	<!-- // 판매자 상품등록 내역조회 -->
 	<select id="sellerSelectMineProduct" resultType="product">
-		select * from product where u_id=#{u_id}
+		select * from
+		product where u_id=#{u_id}
 	</select>
 
 	<!-- pno로 상품정보 조회 -->
 	<select id="selectProductPno" resultType="product">
-		SELECT pno, u_id, ca_no, sca_no, company, pname, price, dis_price, content,
-		color, qty, p_regdate,disp
+		SELECT pno, u_id,
+		ca_no, sca_no, company, pname, price, dis_price, content,
+		color, qty,
+		p_regdate,disp
 		FROM product where pno=#{pno}
 	</select>
 
@@ -56,29 +61,16 @@
 		SELECT product.pno, images.ino, product.u_id, images.main_img1,
 		product.pname, product.price, product.dis_price
 		FROM product
-			JOIN images
-				ON product.pno = images.pno
-					WHERE product.pno = #{pno}
-  	</select>
-  	
-  	<!-- 상품페이지에서 pno로 buy로 넘기기 -->
-  	<select id="selectProductbuyPno" resultType="product">
-  		 select * from product where pno=#{pno}
-  	</select>
-  	
-  	<!-- 카테고리별 제품 리스트 -->
-  	<select id="ProductListCate" parameterType="criteria"
-		resultType="product">
-		select * from (
-		select rownum rn, A.* from
-		(select
-		p.pno,main_img1,sca_no,pname,price,dis_price from product p, images i
-		where 1=1
-		and p.pno=i.pno and sca_no=#{sca_no}) A
-		<![CDATA[
-  		 	where rownum<=#{pageNum}*#{rowsPerPage}
-  		 	) where rn>=#{pageNum}*#{rowsPerPage}-#{rowsPerPage}+1
-  		]]>
+		JOIN images
+		ON product.pno
+		= images.pno
+		WHERE product.pno = #{pno}
+	</select>
+
+	<!-- 상품페이지에서 pno로 buy로 넘기기 -->
+	<select id="selectProductbuyPno" resultType="product">
+		select * from
+		product where pno=#{pno}
 	</select>
 
 	<!-- 메인 카테고리 목록 -->
@@ -94,123 +86,11 @@
 		order by dispseq
 	</select>
 
-	<!-- 서브 카테고리 전체 행의 갯수 (폐이징에 필요) -->
-	<select id="selectRowCount" resultType="java.lang.Integer">
-		select count(*) from
-		product where sca_no=#{sca_no} and disp='y'
-	</select>
 
 	<!-- pno로 이미지 전체 조회 -->
 	<select id="selectImgPno" resultType="images">
-		select * from images where pno=#{pno}
-	</select>
-
-	<!-- sca_no로 company list 조회 -->
-	<select id="selectCompany" resultType="product">
-		select DISTINCT company,sca_no from product where sca_no=#{sca_no}
-	</select>
-	
-	<!-- ca_no로 company list 조회 -->
-	<select id="selectCompanyCa" resultType="product">
-		select DISTINCT company,ca_no from product where ca_no=#{ca_no}
-	</select>
-
-	<!-- 회사별 제품 리스트 -->
-	<select id="selectCompanylist" parameterType="criteria"
-		resultType="product">
-		select * from (
-		select rownum rn, A.* from
-		(select
-		p.pno,main_img1,sca_no,pname,price,dis_price from product p, images i
-		where 1=1
-		and p.pno=i.pno and sca_no=#{sca_no} and company=#{company}) A
-		<![CDATA[
-  		 	where rownum<=#{pageNum}*#{rowsPerPage}
-  		 	) where rn>=#{pageNum}*#{rowsPerPage}-#{rowsPerPage}+1
-  		]]>
-	</select>
-	
-	<!-- 회사별 제품 리스트 ca_no를 받아서 -->
-	<select id="selectCompanylistCa" parameterType="criteria"
-		resultType="product">
-		select * from (
-		select rownum rn, A.* from
-		(select
-		p.pno,main_img1,ca_no,pname,price,dis_price from product p, images i
-		where 1=1
-		and p.pno=i.pno and ca_no=#{ca_no} and company=#{company}) A
-		<![CDATA[
-  		 	where rownum<=#{pageNum}*#{rowsPerPage}
-  		 	) where rn>=#{pageNum}*#{rowsPerPage}-#{rowsPerPage}+1
-  		]]>
-	</select>
-
-	<!-- 회사별 조회 전체 행의 갯수 (폐이징에 필요) -->
-	<select id="selectRowCountCompany" parameterType="product"
-		resultType="java.lang.Integer">
-		select count(*) from
-		product where sca_no=#{sca_no} and
-		disp='y' and company=#{company}
-	</select>
-
-	<!-- 회사별 조회 전체 행의 갯수 Ca (폐이징에 필요) 
-	<select id="selectRowCountCa" parameterType="product"
-		resultType="java.lang.Integer">
-		select count(*) from
-		product where ca_no=#{ca_no} and
-		disp='y' and company=#{company}
-	</select>-->
- 
-
-	<!-- 메인 카테고리 전체 행의 갯수 (폐이징에 필요) -->
-	<select id="selectRowCountCa" resultType="java.lang.Integer">
-		select count(*) from
-		product where ca_no=#{ca_no} and disp='y'
-	</select>
-
-
-
-	<!--메인 카테고리로 상품 조회 -->
-	<select id="selectMainCateList" parameterType="criteria"
-		resultType="product">
-		select * from (
-		select rownum rn, A.* from
-		(select
-		p.pno,main_img1,sca_no,ca_no,pname,price,dis_price from product p,
-		images i
-		where 1=1
-		and p.pno=i.pno and ca_no=#{ca_no} and disp='y') A
-		<![CDATA[
-  		 	where rownum<=#{pageNum}*#{rowsPerPage}
-  		 	) where rn>=#{pageNum}*#{rowsPerPage}-#{rowsPerPage}+1
-  		]]>
-	</select>
-
-
-
-
-	<!-- 메인 카테고리 선택 후 검색어로 조회 -->
-	<select id="selectSearchlist" parameterType="criteria"
-		resultType="product">
-		select * from (
-		select rownum rn, A.* from
-		(select
-		p.pno,main_img1,sca_no,ca_no,pname,price,dis_price from product p,
-		images i
-		where 1=1
-		and p.pno=i.pno and pname like <![CDATA[ '%'||#{searchword}||'%']]>
-		and disp='y' and ca_no=#{ca_no}) A
-		<![CDATA[
-  		 	where rownum<=#{pageNum}*#{rowsPerPage}
-  		 	) where rn>=#{pageNum}*#{rowsPerPage}-#{rowsPerPage}+1
-  		]]>
-	</select>
-
-	<!-- 메인 카테고리 선택 후 검색어로 조회 행의 갯수 (폐이징에 필요) -->
-	<select id="selectRowCountword" resultType="java.lang.Integer">
-		select count(*) from
-		product where ca_no=#{ca_no} and disp='y' and
-		pname like <![CDATA[ '%'||#{searchword}||'%']]>
+		select * from images where
+		pno=#{pno}
 	</select>
 
 
@@ -227,6 +107,92 @@
     									WHERE rownum <= 8
     ]]>
 	</select>
+
+	
+	<!-- sca_no로 company list 조회 -->
+	<select id="companyListSca" resultType="product">
+		select DISTINCT company,sca_no,ca_no from product where sca_no=#{sca_no}
+	</select>
+
+	
+	<!-- ca_no로 company list 조회 -->
+	<select id="companyListCa" resultType="product">
+		select DISTINCT company,ca_no from product where ca_no=#{ca_no}
+	</select>
+
+	<!-- paging을 위한 제품리스트 -->
+	<select id="productListPaging" parameterType="criteria"
+		resultType="product">
+		select * from (
+		select rownum rn, A.* from
+		(select
+		p.pno,main_img1,sca_no,ca_no,pname,price,dis_price from product p,
+		images i
+		where p.pno=i.pno
+		<choose>
+			<when test="searchword!=''">
+				and ca_no=#{ca_no} and pname like
+				'%'||#{searchword}||'%'
+			</when>
+			<otherwise>
+				<if test="sca_no>0">
+					and sca_no=#{sca_no}
+				</if>
+				<if test="ca_no>0">
+					and ca_no=#{ca_no}
+				</if>
+
+				<if test="company!=null and sca_no > 0">
+					and sca_no=#{sca_no} and company=#{company}
+				</if>
+
+				<if test="company!=null and ca_no > 0">
+					and ca_no=#{ca_no} and company=#{company}
+				</if>
+			</otherwise>
+		</choose>
+		and disp='y'
+		) A
+		<![CDATA[ 
+  		 	where rownum<=#{pageNum}*#{rowsPerPage}
+  		 	) where rn>=#{pageNum}*#{rowsPerPage}-#{rowsPerPage}+1
+  		]]>
+	</select>
+
+	<!-- paging을 위한 제품리스트 개수 반환 -->
+	<select id="selectRowCountPaging" resultType="java.lang.Integer">
+		select count(*) from
+		product
+		where 1=1
+		<if test="sca_no>0">
+			and sca_no=#{sca_no}
+		</if>
+		<if test="searchword!=''">
+			and ca_no=#{ca_no} and pname like '%'||#{searchword}||'%'
+		</if>
+		<if test="ca_no>0">
+			and ca_no=#{ca_no}
+		</if>
+
+		<if test="company!=null and sca_no > 0">
+			and sca_no=#{sca_no} and company=#{company}
+		</if>
+
+		<if test="company!=null and ca_no > 0">
+			and ca_no=#{ca_no} and company=#{company}
+		</if>
+		and disp='y'
+	</select>
+
+
+
+
+
+
+
+
+
+
 
 
 
