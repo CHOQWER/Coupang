@@ -18,24 +18,23 @@
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
-     
-    google.charts.load('current', {'packages':['corechart'] }  );
-    //google.charts.load('current', {'packages':['bar']}); 
-    
-    google.charts.setOnLoadCallback(drawChart);
-      function drawChart() {
+    google.charts.load('current', { 'packages': ['corechart'] });
 
-        var data = google.visualization.arrayToDataTable(
-        	${str}	
-        );
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable(${str});
 
         var options = {
-          title: '카테고리별 매출'
+            title: '카테고리별 매출',
+            is3D: true, 
+            
         };
 
-        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+        var chart = new google.visualization.ColumnChart(document.getElementById('piechart'));
 
         chart.draw(data, options);
-      }
-   </script>
+    }
+</script>
+
+
 </html>

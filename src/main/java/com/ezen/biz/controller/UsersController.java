@@ -168,21 +168,24 @@ public class UsersController {
 		return "redirect:mypage";
 	}
 
-	@GetMapping("membership")
+	@GetMapping("/membership")
 	public String memberShip(UsersVO vo, HttpSession session, Model model) {
 		vo=(UsersVO) session.getAttribute("vo");
 		if (vo == null) {
 			model.addAttribute("error1", "로그인이 필요한 서비스입니다");
 			return "users/login";
-		} else {			
+		} else {
 			service.selectMember(vo.getU_id());
+			model.addAttribute("vo",vo);
 			return "users/membership";
 		}
+		
 	}
 
 	// 와우 멤버십 가입
-	@PostMapping("membership")
+	@PostMapping("/membership")
 	public String memberShip(UsersVO vo, HttpSession session) {
+		vo=(UsersVO) session.getAttribute("vo");
 		service.wowupdate(vo);
 		UsersVO updatedUser = service.selectMember(vo.getU_id());
 		session.setAttribute("vo", updatedUser);
@@ -236,12 +239,5 @@ public class UsersController {
 		return "redirect:membership";
 
 	}
-
-	// 결제하기
-	@GetMapping("apibtn")
-	public String apibtn(UsersVO vo, HttpSession session) {
-
-		return "payment/test";
-	}
-
+	
 }
