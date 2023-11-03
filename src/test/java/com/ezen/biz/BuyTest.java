@@ -1,5 +1,7 @@
 package com.ezen.biz;
 
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +11,10 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.ezen.biz.dao.BuyDAO;
 import com.ezen.biz.dao.ImagesDAO;
 import com.ezen.biz.dao.ProductDAO;
+import com.ezen.biz.dao.SellerDAO;
 import com.ezen.biz.dto.BuyVO;
 import com.ezen.biz.dto.ProductVO;
+import com.ezen.biz.dto.SalesVO;
 
 import lombok.extern.log4j.Log4j;
 
@@ -22,7 +26,9 @@ public class BuyTest {
 	private BuyDAO dao;
 	@Autowired
 	private ProductDAO pdao;
-
+	
+	@Autowired
+	private SellerDAO sdao;
 	
 	
 	@Test
@@ -100,5 +106,11 @@ public class BuyTest {
 		vo.setU_id("whdgus1234");
 		dao.sellerSelectBuyList(vo);
 		log.info(vo);
+	}
+	
+	@Test
+	public void salesCate() {
+		List<SalesVO> list=sdao.salesCate("thfk1234");
+		log.info(list);
 	}
 }

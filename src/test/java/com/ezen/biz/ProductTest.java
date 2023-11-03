@@ -11,8 +11,10 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.ezen.biz.dao.DeliveryDAO;
 import com.ezen.biz.dao.ImagesDAO;
 import com.ezen.biz.dao.ProductDAO;
+import com.ezen.biz.dao.SellerDAO;
 import com.ezen.biz.dto.DeliveryVO;
 import com.ezen.biz.dto.ProductVO;
+import com.ezen.biz.dto.SalesVO;
 import com.ezen.biz.dto.SubCateVO;
 import com.ezen.biz.utils.Criteria;
 
@@ -31,6 +33,9 @@ public class ProductTest {
 	@Autowired
 	private DeliveryDAO ddao;
 
+	@Autowired
+	private SellerDAO sdao;
+	
 	@Test
 	public void sellerGetPno() {
 		ProductVO vo=new ProductVO();
@@ -112,6 +117,12 @@ public class ProductTest {
 		cri.setCompany("캐리어");
 		List<ProductVO> list=dao.productListPaging(cri);
 		log.info("list"+list);
+	}
+	
+	@Test
+	public void salesCate() {
+		List<SalesVO> list=sdao.salesCate("thfk1234");
+		log.info(list);
 	}
 	
 	

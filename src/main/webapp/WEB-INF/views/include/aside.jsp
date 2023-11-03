@@ -64,7 +64,12 @@
               <a href="adminSelectBuyList" class="collapsible">
                 판매관리
               </a>
-            </li>           
+            </li>
+            <li class="accordion">
+              <a href="sellersales?u_id=${sessionScope.vo.u_id }" class="collapsible">
+                매출관리
+              </a>
+            </li>            
           </ul>
         </div>
       </div>

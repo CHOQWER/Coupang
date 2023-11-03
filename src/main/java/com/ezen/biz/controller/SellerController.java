@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +23,7 @@ import com.ezen.biz.dto.BuyVO;
 import com.ezen.biz.dto.ImagesVO;
 import com.ezen.biz.dto.MainCateVO;
 import com.ezen.biz.dto.ProductVO;
+import com.ezen.biz.dto.SalesVO;
 import com.ezen.biz.dto.SubCateVO;
 import com.ezen.biz.dto.UsersVO;
 import com.ezen.biz.service.BuyService;
@@ -287,4 +289,36 @@ public class SellerController {
 		} // end for
 
 	}
+	@RequestMapping("/sellersales")
+	public String salesCate(@RequestParam String u_id, Model model) {
+		List<SalesVO> list= buyService.salesCate(u_id);
+		model.addAttribute("list",list);
+		log.info("매출확인 list"+list);
+		
+		String str ="[";
+		str +="['카테고리' , '가격'] ,";
+		int num =0;
+		for(SalesVO vo : list){
+			
+			str +="['";
+			str  += vo.getCate_name();
+			str +="' , ";
+			str += vo.getSumsales();
+			str +=" ]";
+			
+			num ++;
+			if(num<list.size()){
+				str +=",";
+			}		
+		}
+		str += "]";
+		model.addAttribute("str", str);
+		System.out.println("str"+str);
+	
+		return "seller/sellersales";
+	}
+	
+	
+	
+	
 }
