@@ -1,5 +1,6 @@
 package com.ezen.biz.controller;
 
+import java.io.Console;
 import java.util.Calendar;
 import java.util.List;
 
@@ -155,31 +156,35 @@ public class UsersController {
 	}
 
 	// 유저 정보 수정
-	@PostMapping("/updateUser")
+	@PostMapping("updateUser")
 	public String updateUser(UsersVO vo, HttpSession session) {
 		service.updateUser(vo);
 		// 데이터베이스에서 업데이트된 정보 다시 로드
+		System.out.println("voooooooooooooooooooooo"+vo);		
 		UsersVO updatedUser = service.selectMember(vo.getU_id());
 		// 세션에 업데이트된 정보 저장
 		session.setAttribute("vo", updatedUser);
 		return "redirect:mypage";
 	}
 
-	@GetMapping("membership")
+	@GetMapping("/membership")
 	public String memberShip(UsersVO vo, HttpSession session, Model model) {
 		vo=(UsersVO) session.getAttribute("vo");
 		if (vo == null) {
 			model.addAttribute("error1", "로그인이 필요한 서비스입니다");
 			return "users/login";
-		} else {			
+		} else {
 			service.selectMember(vo.getU_id());
+			model.addAttribute("vo",vo);
 			return "users/membership";
 		}
+		
 	}
 
 	// 와우 멤버십 가입
-	@PostMapping("membership")
+	@PostMapping("/membership")
 	public String memberShip(UsersVO vo, HttpSession session) {
+		vo=(UsersVO) session.getAttribute("vo");
 		service.wowupdate(vo);
 		UsersVO updatedUser = service.selectMember(vo.getU_id());
 		session.setAttribute("vo", updatedUser);
@@ -241,12 +246,5 @@ public class UsersController {
 		return "redirect:membership";
 
 	}
-
-	// 결제하기
-	@GetMapping("apibtn")
-	public String apibtn(UsersVO vo, HttpSession session) {
-
-		return "payment/test";
-	}
-
+	
 }

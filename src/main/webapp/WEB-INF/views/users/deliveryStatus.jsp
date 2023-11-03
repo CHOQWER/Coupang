@@ -6,7 +6,6 @@
 <link rel="stylesheet" href="/resources/css/mypage.css">
 <link rel="stylesheet" href="/resources/css/purchasehistory.css">
 
-
 <div class="main">
 	<div id="top-nav"></div>
 	<div id="side-menu">
@@ -97,6 +96,7 @@
 		</div>
 	</div>
 </div>
+
 
 
 <%@ include file="/WEB-INF/views/include/footer.jsp"%>

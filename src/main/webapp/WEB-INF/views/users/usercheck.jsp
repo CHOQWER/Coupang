@@ -26,7 +26,7 @@
 		<form action="pwdcheck" method="post">			
 			<div class="field">
 				<b>아이디</b>
-				<div class="field tel-number">
+				<div class="field">
 					<div>
 						<input type="text" name="u_id" id="u_id" class="id_input" required readonly="readonly" value="${sessionScope.vo.u_id}">
 					</div>

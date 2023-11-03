@@ -21,7 +21,7 @@
     <script src="/resources/js/main.js"></script>
   
     <!-- 사이드 메뉴 -->    
-    <aside class="sidebar" style="z-index: 1;">
+    <aside class="sidebar" style="z-index: 1">
       <div class="toggle">
         <a href="#" class="burger js-menu-toggle" data-toggle="collapse" data-target="#main-navbar">
               <span></span>
@@ -32,7 +32,8 @@
           <img src="/resources/img/logo.png" alt="Image" class="img-fluid">
           <h3 class="name">${sessionScope.vo.u_name }님</h3>
           <c:if test="${sessionScope.vo.grade==1 }">
-          <span class="country">판매자</span>
+          <div class="country">판매자</div>
+          <div class="country1"><a href="/">쿠팡메인으로 이동</a></div><div class="country2"><a href="seller">판매자메인으로 이동</a></div>
           </c:if>
         </div>
 
@@ -64,7 +65,12 @@
               <a href="adminSelectBuyList" class="collapsible">
                 판매관리
               </a>
-            </li>           
+            </li>
+            <li class="accordion">
+              <a href="sellersales?u_id=${sessionScope.vo.u_id }" class="collapsible">
+                매출관리
+              </a>
+            </li>            
           </ul>
         </div>
       </div>
