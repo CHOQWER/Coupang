@@ -79,7 +79,7 @@
 
 					<c:if test="${pmaker.prev}">
 						<li class="page-item disabled"><a class="page-link"
-							href="ProductList?searchword=${pmaker.criteria.getSearchword() }&company=${pmaker.criteria.getCompany()}&listtype=${listtype}&sca_no=${pmaker.criteria.getSca_no()}&ca_no=${pmaker.criteria.getCa_no()}&pageNum=${pmaker.beginPage-1}&cate_name=${cate.get('name')}&subcate_name=${sub.get('sname')}"
+							href="ProductList?searchword=${pmaker.criteria.getSearchword()}&company=${pmaker.criteria.getCompany()}&listtype=${listtype}&sca_no=${pmaker.criteria.getSca_no()}&ca_no=${pmaker.criteria.getCa_no()}&pageNum=${pmaker.beginPage-1}&cate_name=${cate.get('name')}&subcate_name=${sub.get('sname')}"
 							aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
 						</a></li>
 					</c:if>
@@ -102,7 +102,7 @@
 
 					<c:if test="${pmaker.next}">
 						<li class="page-item"><a class="page-link"
-							href="ProductList?searchword=${pmaker.criteria.getSearchword() }&company=${pmaker.criteria.getCompany()}&listtype=${listtype}&sca_no=${pmaker.criteria.getSca_no()}&ca_no=${pmaker.criteria.getCa_no()}&pageNum=${pmaker.endPage + 1}&cate_name=${cate_name}&subcate_name=${subcate_name}}"
+							href="ProductList?searchword=${pmaker.criteria.getSearchword()}&company=${pmaker.criteria.getCompany()}&listtype=${listtype}&sca_no=${pmaker.criteria.getSca_no()}&ca_no=${pmaker.criteria.getCa_no()}&pageNum=${pmaker.endPage + 1}&cate_name=${cate_name}&subcate_name=${subcate_name}}"
 							aria-label="Next"> <span aria-hidden="true">&raquo;</span>
 						</a></li>
 					</c:if>
