@@ -110,12 +110,13 @@
 				</div>
 
 				<div class="prod-buy-footer">
-
-               <!-- qty 만큼 선택하기..?? -->
                
             <input type="number" name="c_cnt" id="c_cnt"  class="c_cnt" value="1" placeholder="1" min="1" max="${pvo.qty}" />         
+            
+             
                <button onclick="cartSubmit()">장바구니</button>    
                <button type="button" ><a href="#" onclick="setQuantityAndSubmit()">바로구매</a> </button> 
+                 
                  	<input type="hidden" name="quantity" id="quantityInput" value="1" /> 
                     <input type="hidden" name="pno" id="pno" value="${pvo.pno}" />
 <%--           <a href="buyOne?pno=${pvo.pno}" onclick="getCnt()"> <button type="button">바로구매</button> </a>    --%>  
@@ -128,10 +129,6 @@
 			</div>
 
 		</div>
-
-
-	
-	
 
 
       <div class="content-section"></div>
@@ -247,8 +244,7 @@ function setQuantityAndSubmit() {
 
     document.getElementById("quantityInput").value = quantity;
     var URL = "buyOne?pno= "+${pvo.pno} +"&quantity=" + quantity
-   
-    
+		
 	   let frm=$("#frmDetail");
 	   frm.attr("action",URL);   
 	   frm.submit(); 
