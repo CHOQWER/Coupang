@@ -1,5 +1,7 @@
 package com.ezen.biz.service;
 
+
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,7 @@ import com.ezen.biz.dao.DeliveryDAO;
 import com.ezen.biz.dao.SellerDAO;
 import com.ezen.biz.dto.BuyVO;
 import com.ezen.biz.dto.DeliveryVO;
+import com.ezen.biz.dto.ProductVO;
 import com.ezen.biz.dto.SalesVO;
 @Service
 public class BuyServiceImpl implements BuyService {
@@ -92,6 +95,12 @@ public class BuyServiceImpl implements BuyService {
 	}
 
 	@Override
+	public ProductVO selectBuyOne(int pno) {
+		
+		return dao.selectBuyOne(pno);
+	}
+
+
 	public List<SalesVO> salesCate(String u_id) {
 		return sdao.salesCate(u_id);
 	}

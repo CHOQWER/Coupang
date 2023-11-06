@@ -21,15 +21,16 @@
 <section class="content">
 	<div class="cate">쿠팡홈 > ${cate_name} > ${subcate_name}</div>
 
-	<form action="insertcart" method="post" id="frmDetail" name="frmDetail">
-		<input type="hidden" name="pno" value="${pvo.pno}"> <input
-			type="hidden" name="ino" value="${ivo.ino }"> <input
-			type="hidden" name="price" value="${pvo.price }"> <input
-			type="hidden" name="dis_price" value="${pvo.dis_price }"> <input
-			type="hidden" name="pname" value="${pvo.pname }">
-
-		<!--좌측 메인/서브 이미지-->
-		<div class="content-main">
+   <form action="insertcart" method="post" id="frmDetail" name="frmDetail">
+      <input type="hidden" name="pno" value="${pvo.pno}"> <input
+         type="hidden" name="ino" value="${ivo.ino }"> <input
+         type="hidden" name="price" value="${pvo.price }"> <input
+         type="hidden" name="dis_price" value="${pvo.dis_price }"> <input
+         type="hidden" name="pname" value="${pvo.pname }">
+         <input type="hidden" name="main_img1" value="${ivo.main_img1}">
+         <!-- <input type="hidden" name="c_cnt" value="c_cnt"> -->
+      <!--좌측 메인/서브 이미지-->
+      <div class="content-main">
 
 			<div id="content-wrapper">
 				<div class="column">
@@ -110,6 +111,14 @@
 
 				<div class="prod-buy-footer">
 
+               <!-- qty 만큼 선택하기..?? -->
+               
+               <input type="number" name="c_cnt" id="c_cnt" value="1" placeholder="1" min="1" max="${pvo.qty}" />         
+               <button onclick="cartSubmit()">장바구니</button>    
+               <a href="buyOne?pno=${pvo.pno}" onclick="getCnt()"> <button type="button">바로구매</button> </a>           
+               
+            </div>
+            <!-- <input type="hidden" name=""> -->
 					<!-- qty 만큼 선택하기..?? -->
 
 					<input type="number" name="c_cnt" id="c_cnt" value="1"
@@ -126,10 +135,9 @@
 	</form>
 
 
-
-	<div class="content-section"></div>
-	<div class="tab-title">
-		<ul>
+      <div class="content-section"></div>
+      <div class="tab-title">
+         <ul>
 
 			<li>상품평</li>
 			<li>상품 문의</li>
@@ -227,6 +235,12 @@
 
 
 <script type="text/javascript">
+function getCnt(){
+	   let frm=$("#frmDetail");
+	   frm.attr("action","buyOne?b_cnt=document.getElementById('b_cnt')&pno=${pvo.pno}");   
+	   frm.submit();
+	}
+	
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@ 더보기 버튼 시작 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
 document.addEventListener('DOMContentLoaded', function(){ //DOM 생성 후 이벤트 리스너 등록
     //더보기 버튼 이벤트 리스너
@@ -289,7 +303,7 @@ function cartSubmit(){
 }
 function buySubmit() {
       let frm=$("#frmDetail");
-      frm.attr("action","insertBuy");   
+      frm.attr("action","buyOne");   
       frm.submit();
 }
 

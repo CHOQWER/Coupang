@@ -60,6 +60,13 @@
 <%@ include file="/WEB-INF/views/include/footer.jsp"%>
 
 <script>
+
+	function modal(){ //결제창 on-off
+		popup.style.display = 'block';
+	}
+	closebtn.addEventListener('click', function(){
+		popup.style.display = 'none';
+	});
 			 
 	function wowbtn() {
 		var confirmation = confirm("결제하시겠습니까?");
@@ -104,7 +111,7 @@
 		        }else{
 		        	var msg = "결제에 실패하였습니다."
 	        		rsp.error_msg;
-					location.href="/";
+					location.href="membership";
 		        }
 				alert(msg);
 				document.location.href="redirect:membership";

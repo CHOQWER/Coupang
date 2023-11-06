@@ -5,7 +5,7 @@
 <%@ include file="/WEB-INF/views/include/header.jsp"%>
 
 
-<form action="insertBuy" method="post">
+<form action="insertBuyOne" method="post">
 	<div class="card">
 		<div class="col">${sessionScope.vo.u_id}</div>
 		<div class="row">
@@ -19,13 +19,11 @@
 						</div>
 					</div>
 				</div>
-
-				<c:forEach items="${vo}" var="vo">
+				
+				
 				<input type="hidden" name="pno" value="${vo.pno}">
 				<input type="hidden" name="pname" value="${vo.pname}">
-				<input type="hidden" name="cno" value="${vo.cno}">
 				<input type="hidden" name="main_img1" value="${vo.main_img1}">
-				<input type="hidden" name="c_cnt" value="${vo.c_cnt}">
 				<input type="hidden" name="price" value="${vo.price}">
 				<input type="hidden" name="dis_price" value="${vo.dis_price}">
 				
@@ -35,24 +33,23 @@
 							<ul class="col123">
 								<li class="col"><a href="ProductView?pno=${vo.pno}&cate_name=${cate_name}&subcate_name=${subcate_name}">${vo.pname}</a></li> 
 								
-								<li class="col"><input type="number" value="${vo.c_cnt}"></li>
+								<li class="col"><input type="number" name="b_cnt"></li>
 								<c:if test="${sessionScope.vo.grade==2 }">
 									<li class="col">${vo.price}</li>
 								</c:if>
 								<c:if test="${sessionScope.vo.grade==3 }">
 									<li class="col">${vo.dis_price}</li>
 								</c:if>
-								<c:if test="${sessionScope.vo.grade==2 }">
-									<li class="price">${vo.price * vo.c_cnt }</li>
+<%-- 								<c:if test="${sessionScope.vo.grade==2 }">
+									<li class="price">${vo.price * vo.b_cnt }</li>
 								</c:if>
 								<c:if test="${sessionScope.vo.grade==3 }">
-									<li class="price">${vo.dis_price * vo.c_cnt }</li>
-								</c:if>
+									<li class="price">${vo.dis_price * vo.b_cnt }</li>
+								</c:if> --%>
 							</ul>
 
 					</div>
 				</div>
-				</c:forEach>
 				<div class="back-to-shop">
 					<a href="javascript:history.back()">&leftarrow;&nbsp;&nbsp;뒤로가기</a><span
 						class="text-muted"></span>
@@ -96,8 +93,6 @@
 				</div>
 				
 				<button class="btn" type="submit">구매하기</button>
-				<a href="noticeUpdate?nno=${item.nno}"><button type="button" id="btnBuyCard">카드 결제</button></a>&nbsp;&nbsp; 
-				<button type="button" id="btnBuyKakao" onclick="kakaoBuy()">카카오 간편결제</button></a>&nbsp;&nbsp;
 			</div>
 		</div>
 	</div>
@@ -199,85 +194,6 @@ function updateAddress(post_no,newAddr1,newAddr2) {
     
   }
 
-
-	/*
-	var checkboxes = document.getElementById("deleteCart");
-	var selectedItems = [];
-	for (var i = 0; i < checkboxes.length; i++) {
-        if (checkboxes[i].checked) {
-            selectedItems.push(checkboxes[i].value);
-        }
-    }
-	console.log(selectedItems);*/
-	
-	function modal(){ //결제창 on-off
-		popup.style.display = 'block';
-	}
-	closebtn.addEventListener('click', function(){
-		popup.style.display = 'none';
-	});
-	
-	function kakaoBuy() {
-		var confirmation = confirm("결제하시겠습니까?");
-		var u_id = '${sessionScope.vo.u_id}';
-		const amount = document.querySelector('.col');
-		if (confirmation) {
-			console.log($('#u_id'));
-			var IMP = window.IMP;
-			IMP.init('imp23810830');
-			IMP.request_pay({		
-				pg : 'kakaopay',
-				pay_method : 'card',
-				merchant_uid : 'merchant_' + new Date().getTime(),   //주문번호
-				name : '${sessionScope.vo.u_name}',                                //상품명
-				amount : $('.col').val(),                   //가격
-				
-				buyer_email : 'u_email',
-				buyer_name : 'u_name',
-				buyer_tel : 'u_mobile',
-				buyer_addr : 'u_addr1',
-				buyer_postcode : 'u_post_no',
-			},function(rsp){
-				console.log("rsp="+rsp);
-				if(rsp.success){
-					var msg = "결제가 완료되었습니다";
-					alert(msg);
-					console.log(rsp);
-		            
-		            $.ajax({
-		            	type : 'post',
-		            	url : '/membership',
-		            	data : {"ID" : u_id},
-		            	dataType : 'text',
-		            	success : function(result) { // 결과 성공 콜백함수
-		                console.log(result);
-		                window.location.href = '/membership';
-			            },
-			            error : function(request, status, error) { // 결과 에러 콜백함수
-			                console.log(error)
-			            }
-		            });
-		            
-		        }else{
-		        	var msg = "결제에 실패하였습니다."
-	        		rsp.error_msg;
-					location.href="/";
-		        }
-				alert(msg);
-				document.location.href="redirect:membership";
-			});
-		} else {
-			
-		}
-	}
-	
-	function wowDel() {
-		var confirmation = confirm("탈퇴 하시겠습니까?");
-	    
-	    if (confirmation) {
-	        window.location.href = "redirect:membership";
-	    }
-	}
 
 	
 </script>

@@ -1,5 +1,7 @@
 package com.ezen.biz.controller;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -66,43 +68,38 @@ public class BuyController {
 		 int result=service.insertDeli(vo);
 		 return "forward:delivery";
 	 }
-//	  @RequestMapping(value ="insertBuy")
-//	   public String insertBuy(BuyVO vo, HttpSession session, Model model, @RequestParam int c_cnt) {		 
-//		   log.info(c_cnt);
-//		   log.info("vo:"+vo);
-//	       UsersVO v = (UsersVO) session.getAttribute("vo");
-//	       log.info(v);
-//	       if (v == null) {
-//	           return "users/login";
-//	       } else {
-//	           ProductVO pvo = pservice.selectProductbuyPno(vo.getPno());
-//	           log.info("pvo="+pvo);
-//	           if (pvo != null) { // 상품이 존재하는 경우에만 처리
-//	               vo.setU_id(v.getU_id());
-//	               vo.setPname(pvo.getPname());
-//	               vo.setPrice(pvo.getPrice());
-//	               vo.setDis_price(pvo.getDis_price());
-//	               vo.setB_cnt(c_cnt);
-//	               vo.setPost_no(v.getU_post_no());
-//	               vo.setAddr1(v.getU_addr1());
-//	               vo.setAddr2(v.getU_addr2());
-//	               vo.setSta("r");
-//
-//				  model.addAttribute("vo", vo); 
-//				  log.info("구매 완료 : "+vo);
-//
-//	              service.insertBuy(vo); 	            
-//	      
-//
-//	           }
-//	           return "buy/buy";
-//	       }
-//	   }
+	 
+	 
+	 @RequestMapping(value ="buyOne")
+	 public String insertBuyOne(BuyVO vo,UsersVO v,HttpSession session,
+			   ProductVO pvo,@RequestParam int pno,Model model, @RequestParam int c_cnt) {
+//		 	System.out.println("b_cnt="+b_cnt);
+			v=(UsersVO) session.getAttribute("vo");
+			vo.setU_id(v.getU_id());
+			vo.setB_cnt(c_cnt);
+			vo.setAddr1(v.getU_addr1());
+			vo.setAddr2(v.getU_addr2());
+			vo.setPost_no(v.getU_post_no());
+			//pno로 정보 갖고오기
+			pvo=service.selectBuyOne(pno);
+			model.addAttribute("vo",pvo);
+	
+		  return "buy/buyOne";
+	 }
+	 @RequestMapping("insertBuyOne")
+	 public String insertBuyOne(ProductVO pvo,@RequestParam int b_cnt) {
+		 System.out.println(pvo);
+		 System.out.println("b_cnt="+b_cnt);
+		 System.out.println("------------------aaa");
+		 return "redirect:deliveryStatus";
+	 }
+	 
 	 	@RequestMapping(value ="insertBuy")
 	   public String insertBuy(BuyVO vo, HttpSession session, Model model,UsersVO v,CartVO cvo,
 			   ProductVO pvo,@RequestParam int[] pno,@RequestParam int[] cno,@RequestParam String[] pname,
 			   @RequestParam String[] main_img1,@RequestParam int[] c_cnt,
 			   @RequestParam int[] price,@RequestParam int[] dis_price) {
+	 		
 	 		
 			v=(UsersVO) session.getAttribute("vo");
 			vo.setU_id(v.getU_id());
@@ -119,24 +116,11 @@ public class BuyController {
 	 			
 	 			//delete
 	 			cvo.setCno(cno[i]);
-	 			
-	 			
 				cservice.deleteCart(cvo);
-				
 	 			service.insertBuy(vo);
-	 			
-	 			
+	
 	 		}
-	 		
-	 		
-	 		System.out.println("pno "+pno);
-	 		System.out.println("cno "+cno);
-		    System.out.println("---------구매-----------------");
-	 		System.out.println("BuyVO "+vo);
-	 		System.out.println("UsersVO "+vo);
-	 		System.out.println("ProductVO "+pvo);
-	 		
-	 		
+
 		return "users/deliveryStatus";	
 	 	}
 	 
@@ -144,11 +128,14 @@ public class BuyController {
 	 
 	   @RequestMapping("refundBuyProduct")
 	   public String refundBuyProduct(@RequestParam int bno) {
+		   
 		   service.refundBuyProduct(bno);
+		   
 		   System.out.println(bno);
 		return "redirect:deliveryStatus";
 		   
 	   }
+
 	   @PostMapping("cartbuy")
 		  public String cartbuy(CartVO cvo,@RequestParam int[] deleteCart,@RequestParam int[] c_cnt, 
 				  Model model) {
