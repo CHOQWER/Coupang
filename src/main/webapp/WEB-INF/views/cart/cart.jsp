@@ -25,7 +25,7 @@
                   <c:forEach items="${list}" var="vo">
                   
                      <input type="checkbox" name="deleteCart" id="deleteCart"
-                        value="${vo.cno}" onclick="getCheckedCnt()">
+                        value="${vo.cno}">
                         <input type="hidden" id='result'/>
                         <input type="hidden" name="count" id="count"
                         value="${vo.cno}">
@@ -110,7 +110,7 @@
 </form>
 
 <script type="text/javascript">
-
+/* 
 function getCheckedCnt()  {
 	  // 선택된 목록 가져오기
 	  const query = 'input[name="deleteCart"]:checked';
@@ -128,7 +128,7 @@ function getCheckedCnt()  {
 	  if(selectedElementsCnt==0){
 		  console.log('적어도 한개 이상 구매해주시기 바랍니다.')
 		  
-	  } 
+	  }  */
 
 /* 	  $('#deleteCart').click(function(){
 			var checked = $('#allCk').is(':checked');
