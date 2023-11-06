@@ -85,10 +85,10 @@
 								<div class="updatebutton-1">
 									<button type="submit" name="updateUser" id="updateUser">회원정보수정</button>
 				</form>
-				<!-- <form action="withdrawal" method="post"> -->
+				<<form action="withdrawal" method="post"> 
 				<button class="withdrawal" onclick="deleteUser()">회원탈퇴</button>
-				<%-- <input type="hidden" name="u_id" value="${sessionScope.vo.u_id }"> --%>
-				<!-- </form> -->
+				<input type="hidden" name="u_id" value="${sessionScope.vo.u_id }"> 
+				</form>
 			</div>
 		</div>
 	</div>
@@ -107,7 +107,7 @@
 	function deleteUser() {
 		var confirmation = confirm("정말 탈퇴 하시겠습니까?");
 		if (confirmation) {			
-			location.href = "withdrawal";
+			location.href = "withdrawal?u_id=${sessionScope.vo.u_id }";
 		} else {
 			alert("메인으로 돌아갑니다.");
 			history.back();
