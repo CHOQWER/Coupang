@@ -25,13 +25,24 @@
 
 <main>
 
-	<div class="cate-nav">쿠팡홈 > ${cate_name} > ${subcate_name}</div>
+	<c:if test="${pmaker.criteria.getCa_no()==-1}">	
+		<div class="cate-nav" style="color:black; padding-top: 30px;"> <h2>"${pmaker.criteria.getSearchword()}"로 검색결과</h2> </div>
 
+		<div class="contents">
+			<div class="aside">
+				<div class="search-company">
+					
+	</c:if>
+	
+	<c:if test="${pmaker.criteria.getCa_no()!=-1}">	
+	<div class="cate-nav"> 쿠팡홈 > ${cate_name} > ${subcate_name}</div>
 	<div class="contents">
 		<div class="aside">
 			<div class="search-company">
-				<h2>브랜드</h2>
-
+			
+				<h3 style="margin-bottom: 30px;">브랜드</h3>
+				</c:if>
+				
 				<ul>
 					<c:forEach items="${clist}" var="vo">
 						<li><a
@@ -56,8 +67,9 @@
 								<img class="prodimg" src="imgDown?imgName=${vo.main_img1}"
 									alt="메인이미지">
 							</div>
-							<div>
-								<span><a href="ProductView?pno=${vo.pno}&cate_name=${cate.get('name')}&subcate_name=${sub.get('sname')}">${vo.pname}</a></span><br>
+							<div style="margin: 15px;">
+								<span><a
+									href="ProductView?pno=${vo.pno}&cate_name=${cate.get('name')}&subcate_name=${sub.get('sname')}">${vo.pname}</a></span><br>
 								<span>와우할인가</span> <span><fmt:formatNumber
 										value="${vo.price}" pattern="#,###" /></span><br> <span><fmt:formatNumber
 										value="${vo.dis_price}" pattern="#,###" /></span><br> <input
@@ -71,7 +83,7 @@
 				</c:forEach>
 			</div>
 			<hr>
-			
+
 			<!-- 페이지 -->
 			<nav aria-label="..."
 				style="justify-content: center; margin-left: 45%; margin-top: 3%">
@@ -84,7 +96,8 @@
 						</a></li>
 					</c:if>
 
-					<c:forEach begin="${pmaker.beginPage}" end="${pmaker.endPage}" var="i">
+					<c:forEach begin="${pmaker.beginPage}" end="${pmaker.endPage}"
+						var="i">
 						<c:choose>
 							<c:when test="${i != pmaker.criteria.pageNum}">
 								<li class="page-item"><a class="page-link"
@@ -93,16 +106,16 @@
 
 							</c:when>
 							<c:otherwise>
-								<li class="page-item">
-								<a class="page-link" href="ProductList?searchword=${pmaker.criteria.getSearchword()}&company=${pmaker.criteria.getCompany()}&listtype=${listtype}&sca_no=${pmaker.criteria.getSca_no()}&ca_no=${pmaker.criteria.getCa_no()}&pageNum=${i}&cate_name=${cate_name}&subcate_name=${subcate_name}}" 
-								style="font-weight: bold; color: black">${i}</a></li>
+								<li class="page-item"><a class="page-link"
+									href="ProductList?searchword=${pmaker.criteria.getSearchword()}&company=${pmaker.criteria.getCompany()}&listtype=${listtype}&sca_no=${pmaker.criteria.getSca_no()}&ca_no=${pmaker.criteria.getCa_no()}&pageNum=${i}&cate_name=${cate_name}&subcate_name=${subcate_name}"
+									style="font-weight: bold; color: black">${i}</a></li>
 							</c:otherwise>
 						</c:choose>
 					</c:forEach>
 
 					<c:if test="${pmaker.next}">
 						<li class="page-item"><a class="page-link"
-							href="ProductList?searchword=${pmaker.criteria.getSearchword()}&company=${pmaker.criteria.getCompany()}&listtype=${listtype}&sca_no=${pmaker.criteria.getSca_no()}&ca_no=${pmaker.criteria.getCa_no()}&pageNum=${pmaker.endPage + 1}&cate_name=${cate_name}&subcate_name=${subcate_name}}"
+							href="ProductList?searchword=${pmaker.criteria.getSearchword()}&company=${pmaker.criteria.getCompany()}&listtype=${listtype}&sca_no=${pmaker.criteria.getSca_no()}&ca_no=${pmaker.criteria.getCa_no()}&pageNum=${pmaker.endPage+ 1}&cate_name=${cate_name}&subcate_name=${subcate_name}"
 							aria-label="Next"> <span aria-hidden="true">&raquo;</span>
 						</a></li>
 					</c:if>

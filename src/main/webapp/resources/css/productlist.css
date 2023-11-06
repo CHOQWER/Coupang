@@ -23,6 +23,9 @@
 
     
 }
+.prodlink{
+	margin-bottom: 50px;
+}
 
 .article{
 	display:flex;
@@ -30,6 +33,13 @@
     width: 1080px;
     float: right;
     margin-top: 2em;
+    margin-left: 50px;
+}
+.search-company{
+	margin: 20px;
+}
+.search-company ul li{
+	margin-bottom: 5px;
 }
 
 
