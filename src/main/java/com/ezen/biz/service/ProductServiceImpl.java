@@ -107,7 +107,11 @@ public class ProductServiceImpl implements ProductService{
 		return dao.companyListSca(sca_no);
 	}
 
-
+	@Override
+	public ProductVO selectBuyOne(int pno) {
+		
+		return dao.selectBuyOne(pno);
+	}
 
 
 

@@ -36,11 +36,7 @@
 			select b_regdate from buy where bno=#{bno}
 		</select>
 		
-	<select id="selectBuyOne" resultType="product">
-	   select *
-	   from product
-	   where pno=#{pno}
-	</select>
+
 	
 	
 </mapper>

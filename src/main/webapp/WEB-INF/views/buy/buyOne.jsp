@@ -33,7 +33,7 @@
 							<ul class="col123">
 								<li class="col"><a href="ProductView?pno=${vo.pno}&cate_name=${cate_name}&subcate_name=${subcate_name}">${vo.pname}</a></li> 
 								
-								<li class="col"><input type="number" name="b_cnt"></li>
+								<li class="col"><input type="number" name="b_cnt" value="${c_cnt}"></li>
 								<c:if test="${sessionScope.vo.grade==2 }">
 									<li class="col">${vo.price}</li>
 								</c:if>

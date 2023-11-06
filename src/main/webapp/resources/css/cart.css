@@ -130,6 +130,32 @@ input:focus::-webkit-input-placeholder
 .btn:hover{
     color: white;
 }
+.btn3{
+	text-align: center;
+}
+
+.btn2{
+    background-color: #000;
+    border-color: #000;
+    color: white;
+    width: 40%;
+    font-size: 0.7rem;
+    margin-top: 4vh;
+    padding: 1vh;
+    border-radius: 0;
+}
+.btn2:focus{
+    box-shadow: none;
+    outline: none;
+    box-shadow: none;
+    color: white;
+    -webkit-box-shadow: none;
+    -webkit-user-select: none;
+    transition: none; 
+}
+.btn2:hover{
+    color: white;
+}
 a{
     color: black; 
 }

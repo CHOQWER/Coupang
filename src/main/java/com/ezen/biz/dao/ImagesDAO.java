@@ -23,8 +23,8 @@ public class ImagesDAO {
 		mybatis.delete("ImagesDAO.sellerDeleteImages", pno);
 		
 	}
-	public List<ImagesVO> getThumbnailImage(int pno) {
-		return mybatis.selectList("ImagesDAO.getThumbnailImage", pno);
+	public  String getThumbnailImage(int pno) {
+		return mybatis.selectOne("ImagesDAO.getThumbnailImage", pno);
 		
 	}
 
