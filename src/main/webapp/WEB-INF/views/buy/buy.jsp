@@ -9,7 +9,7 @@
 	src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 
 
-<form action="insertBuy" method="post">
+<form action="insertBuy" method="post" id="insertBuy">
 	<div class="card">
 		<%-- <div class="col">${sessionScope.vo.u_id}</div> --%>
 		<div class="row">
@@ -36,7 +36,7 @@
 
 				<div class="row border-top border-bottom">
 					<div class="col-2">			
-							<ul class="col123">
+							<ul class="col123" data-col="${vo.price * 1}">
 								<li class="col"><a href="ProductView?pno=${vo.pno}&cate_name=${cate_name}&subcate_name=${subcate_name}">${vo.pname}</a></li> 
 								
 								<li class="col"><input type="number" value="${vo.c_cnt}"></li>
@@ -99,7 +99,7 @@
 					  <div id="totalPrice" class="col"></div>
 				</div>
 				<div class=btn3>
-				<button class="btn2" type="button" id="btnBuyCard" onclick="cardBuy()">카드 결제</button></a>&nbsp;&nbsp; 
+				<button class="btn2" type="button" id="btnBuyCard" onclick="cardBuy()">카드 결제</button>&nbsp;&nbsp; 
 				<button class="btn2" type="button" id="btnBuyKakao" onclick="kakaoBuy()">카카오 간편결제</button>&nbsp;&nbsp;
 				</div>
 			</div>
@@ -108,6 +108,7 @@
 </form>
 
 <script>
+let total=0;
 $(document).ready(function() {
     // 모든 장바구니 아이템의 가격을 가져와서 총 구매금액을 계산
     calculateTotalPrice();
@@ -136,6 +137,7 @@ function calculateTotalPrice() {
             	 totalPrice += price;
             }
         }
+        total=totalPrice;
     });
 
     // 총 구매금액을 "totalPrice" 엘리먼트에 표시
@@ -168,17 +170,20 @@ document.querySelectorAll('.col123').forEach(function(item) {
     }
 });
 
-// 개별 품목의 총 금액 업데이트 함수
+//개별 품목의 총 금액 업데이트 함수
 function updateItemTotal(item, quantityElement, priceElement) {
     const quantity = parseInt(quantityElement.value, 10);
     const price = parseInt(priceElement.textContent.trim().replace(/[^\d]/g, ''), 10); // 가격에서 숫자만 추출
-	console.log('quantity',quantity);
-	console.log('price',price);
-    if (!isNaN(quantity) && !isNaN(price)) {
-        const total = quantity * price;
+    const col = parseInt(item.getAttribute('data-col'), 10); // data-col 속성을 읽어옴
+    console.log('quantity', quantity);
+    console.log('price', price);
+    console.log('col', col);
+    
+    if (!isNaN(quantity) && !isNaN(price) && !isNaN(col)) {
+        const total = quantity * col;
         item.querySelector('.price').textContent = numberWithCommas(total) + '원';
         calculateTotalPrice(); // 전체 총 구매금액 업데이트
-        console.log('total',total);
+        console.log('total', total);
     }
 }
 
@@ -216,7 +221,9 @@ function updateAddress(post_no,newAddr1,newAddr2) {
 	function kakaoBuy() {
 		var confirmation = confirm("결제하시겠습니까?");
 		var u_id = '${sessionScope.vo.u_id}';
-		var totalPrice = document.getElementById('totalPrice').textContent
+		//var totalPrice = document.getElementById('totalPrice').textContent
+		console.log("u_id="+u_id);
+		console.log("total="+total);
 		if (confirmation) {
 			console.log($('#u_id'));
 			var IMP = window.IMP;
@@ -226,7 +233,7 @@ function updateAddress(post_no,newAddr1,newAddr2) {
 				pay_method : 'card',
 				merchant_uid : 'merchant_' + new Date().getTime(),
 				name : '${sessionScope.vo.u_name}',
-				amount : totalPrice,/*$('.amountValue').val(),*/
+				amount : total,/*$('.amountValue').val(),*/
 				buyer_email : 'u_email',
 				buyer_name : 'u_name',
 				buyer_tel : 'u_mobile',
@@ -237,36 +244,18 @@ function updateAddress(post_no,newAddr1,newAddr2) {
 				if(rsp.success){
 					var msg = "결제가 완료되었습니다";
 					alert(msg);
-					console.log(rsp);
-		            
-		            $.ajax({
-		            	type : 'post',
-		            	url : '/insertBuy',
-		            	data : {"ID" : u_id,"amount" : totalPrice},
-		            	dataType : 'text',
-		            	success : function(result) { // 결과 성공 콜백함수
-		                console.log(result);
-		                window.location.href = '/insertBuy';
-			            },
-			            error : function(request, status, error) { // 결과 에러 콜백함수
-			                console.log(error)
-			            }
-		            });
+					$("#insertBuy").submit();
 		            
 		        }else{
 		        	var msg = "결제에 실패하였습니다."
 	        		rsp.error_msg;
-					location.href="cartbuy";
+					location.href="redirect:cartbuy";
 		        }
-				document.location.href="redirect:deliveryStatus";
+				//document.location.href="deliveryStatus";
 			});
 		} else {
 			
 		}
-	}
-	
-	function kakaoBuy() {
-		
 	}
 	
 </script>
