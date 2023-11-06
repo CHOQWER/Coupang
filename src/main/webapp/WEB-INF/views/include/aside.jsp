@@ -33,7 +33,7 @@
           <h3 class="name">${sessionScope.vo.u_name }님</h3>
           <c:if test="${sessionScope.vo.grade==1 }">
           <div class="country">판매자</div>
-          <div class="country1"><a href="/">쿠팡메인으로 이동</a></div><div class="country2"><a href="seller">판매자메인으로 이동</a></div>
+          <div class="country1"><a href="/">디지팡메인으로 이동</a></div><div class="country2"><a href="seller">판매자메인으로 이동</a></div>
           </c:if>
         </div>
 

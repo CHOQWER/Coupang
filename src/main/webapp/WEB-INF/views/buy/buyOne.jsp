@@ -36,7 +36,7 @@
 							<ul class="col123" data-col="${vo.price * 1}">
 								<li class="col"><a href="ProductView?pno=${vo.pno}&cate_name=${cate_name}&subcate_name=${subcate_name}">${vo.pname}</a></li> 
 								
-								<li class="col"><input type="number" name="b_cnt" value="${c_cnt}">min="0" oninput="if (this.value < 1) this.value = 1;"></1></li>
+								<li class="col"><input type="number" name="b_cnt" value="${c_cnt}" min="0" oninput="if (this.value < 1) this.value = 1;"></1></li>
 								<c:if test="${sessionScope.vo.grade==1 }">
 									<li class="col">${vo.dis_price}</li>
 								</c:if>
@@ -46,12 +46,15 @@
 								<c:if test="${sessionScope.vo.grade==3 }">
 									<li class="col">${vo.dis_price}</li>
 								</c:if>
- 								<c:if test="${sessionScope.vo.grade==2 }">
-									<li class="price">${vo.price * c_cnt }</li>
+								<c:if test="${sessionScope.vo.grade==1 }">
+									<li class="price">${vo.dis_price * c_cnt }</li>
+								</c:if> 
+								<c:if test="${sessionScope.vo.grade==2 }">
+									<li class="price">${vo.price * c_cnt}</li>
 								</c:if>
 								<c:if test="${sessionScope.vo.grade==3 }">
 									<li class="price">${vo.dis_price * c_cnt }</li>
-								</c:if>
+								</c:if> 
 							</ul>
 
 					</div>
@@ -72,7 +75,7 @@
 				<hr>
 				<div class="row">
 					<div class="col">회원 등급</div>
-					<c:if test="${sessionScope.vo.grade==2 }">
+					<c:if test="${sessionScope.vo.grade==1 }">
 					<div class="col text-right">와우회원</div>
 					</c:if>
 					<c:if test="${sessionScope.vo.grade==2 }">
@@ -109,8 +112,8 @@
 		</div>
 	</div>
 </form>
-
-<script type="text/javascript">
+<script>
+let total=0;
 $(document).ready(function() {
     // 모든 장바구니 아이템의 가격을 가져와서 총 구매금액을 계산
     calculateTotalPrice();
@@ -172,25 +175,38 @@ document.querySelectorAll('.col123').forEach(function(item) {
     }
 });
 
-// 개별 품목의 총 금액 업데이트 함수
+//개별 품목의 총 금액 업데이트 함수
 function updateItemTotal(item, quantityElement, priceElement) {
     const quantity = parseInt(quantityElement.value, 10);
     const price = parseInt(priceElement.textContent.trim().replace(/[^\d]/g, ''), 10); // 가격에서 숫자만 추출
     const col = parseInt(item.getAttribute('data-col'), 10); // data-col 속성을 읽어옴
-	console.log('quantity',quantity);
-	console.log('price',price);
-	  if (!isNaN(quantity) && !isNaN(price) && !isNaN(col)) {
-	        const total = quantity * col;
-	        item.querySelector('.price').textContent = numberWithCommas(total) + '원';
-	        calculateTotalPrice(); // 전체 총 구매금액 업데이트
-	        console.log('total', total);
-	    }
+    console.log('quantity', quantity);
+    console.log('price', price);
+    console.log('col', col);
+    
+    if (!isNaN(quantity) && !isNaN(price) && !isNaN(col)) {
+        const total = quantity * col;
+        item.querySelector('.price').textContent = numberWithCommas(total) + '원';
+        calculateTotalPrice(); // 전체 총 구매금액 업데이트
+        console.log('total', total);
+    }
 }
 
 function openPop(u_id) {
-    var popup = window.open('/selectDeli?u_id=' + u_id , '', 'width=700px,height=800px,scrollbars=yes');
+    var popup = window.open('/selectDeli?u_id=' + u_id , '', 'width=600px,height=800px,scrollbars=yes');
 }
 
+function cardBuy() {
+	var u_id = '${sessionScope.vo.u_id}';
+	var popup2 = window.open('/cardselect?u_id=' + u_id , '', 'width=600px,height=500px,scrollbars=yes');
+	 var checkPopupInterval = setInterval(function() {
+	        if (popup2.closed) {
+	            // 팝업이 닫히면 insertBuy 실행
+	            $("#insertBuyOne").submit();
+	            clearInterval(checkPopupInterval); // 인터벌 중지
+	        }
+	    }, 1000); // 1초마다 팝업 상태 확인
+	}
 
 function updateAddress(post_no,newAddr1,newAddr2) {
     // 메인 창의 주소 정보 업데이트
@@ -207,49 +223,70 @@ function updateAddress(post_no,newAddr1,newAddr2) {
     document.getElementById("h_addr2").value=newAddr2;
     
   }
-  
-function kakaoBuy() {
-	var confirmation = confirm("결제하시겠습니까?");
-	var u_id = '${sessionScope.vo.u_id}';
-	//var totalPrice = document.getElementById('totalPrice').textContent
-	console.log("u_id="+u_id);
-	console.log("total="+total);
-	if (confirmation) {
-		console.log($('#u_id'));
-		var IMP = window.IMP;
-		IMP.init('imp23810830');
-		IMP.request_pay({		
-			pg : 'kakaopay',
-			pay_method : 'card',
-			merchant_uid : 'merchant_' + new Date().getTime(),
-			name : '${sessionScope.vo.u_name}',
-			amount : total,
-			buyer_email : 'u_email',
-			buyer_name : 'u_name',
-			buyer_tel : 'u_mobile',
-			buyer_addr : 'u_addr1',
-			buyer_postcode : 'u_post_no',
-		},function(rsp){
-			console.log("rsp="+rsp);
-			if(rsp.success){
-				var msg = "결제가 완료되었습니다";
-				alert(msg);
-				$("#insertBuyOne").submit();
-	            
-	        }else{
-	        	var URL = "redirect:buyOne?pno= "+${pvo.pno} +"&quantity=" + quantity
-	        	var msg = "결제에 실패하였습니다."
-        		rsp.error_msg;
-				location.href=URL;
-	        }
-			//document.location.href="deliveryStatus";
-		});
-	} else {
-		
+
+
+	/*
+	var checkboxes = document.getElementById("deleteCart");
+	var selectedItems = [];
+	for (var i = 0; i < checkboxes.length; i++) {
+        if (checkboxes[i].checked) {
+            selectedItems.push(checkboxes[i].value);
+        }
+    }
+	console.log(selectedItems);*/
+/* 	function openCardListPopup() {
+	    const u_id = '${sessionScope.vo.u_id}'; 
+	    const url = '/cardselect?u_id=' + u_id;
+	    const popup = window.open(url, '카드 선택', 'width=600, height=400');
+	    }
+	 */
+	
+	function modal(){ //결제창 on-off
+		popup.style.display = 'block';
 	}
-}
-
-
+	closebtn.addEventListener('click', function(){
+		popup.style.display = 'none';
+	});
+	
+	function kakaoBuy() {
+		var confirmation = confirm("결제하시겠습니까?");
+		var u_id = '${sessionScope.vo.u_id}';
+		//var totalPrice = document.getElementById('totalPrice').textContent
+		console.log("u_id="+u_id);
+		console.log("total="+total);
+		if (confirmation) {
+			console.log($('#u_id'));
+			var IMP = window.IMP;
+			IMP.init('imp23810830');
+			IMP.request_pay({		
+				pg : 'kakaopay',
+				pay_method : 'card',
+				merchant_uid : 'merchant_' + new Date().getTime(),
+				name : '${sessionScope.vo.u_name}',
+				amount : total,/*$('.amountValue').val(),*/
+				buyer_email : 'u_email',
+				buyer_name : 'u_name',
+				buyer_tel : 'u_mobile',
+				buyer_addr : 'u_addr1',
+				buyer_postcode : 'u_post_no',
+			},function(rsp){
+				console.log("rsp="+rsp);
+				if(rsp.success){
+					var msg = "결제가 완료되었습니다";
+					alert(msg);
+					$("#insertBuyOne").submit();
+		            
+		        }else{
+		        	var msg = "결제에 실패하였습니다."
+	        		rsp.error_msg;
+					location.href="redirect:cartbuy";
+		        }
+				//document.location.href="deliveryStatus";
+			});
+		} else {
+			
+		}
+	}
 	
 </script>
 

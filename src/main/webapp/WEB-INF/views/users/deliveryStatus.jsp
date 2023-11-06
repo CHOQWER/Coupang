@@ -12,7 +12,7 @@
 		<ul>
 			<li id="top-side">My 페이지</li>
 			<li id="side-menu-list"><a href="mypage">개인정보확인/수정</a></li>
-			<li id="side-menu-list"><a href="#">결제수단 관리</a></li>
+			<li id="side-menu-list"><a href="payment">결제수단 관리</a></li>
 			<li id="side-menu-list"><a href="delivseryStatus">주문목록/배송조회</a></li>
 			<li id="side-menu-list"><a href="membership">와우 멤버십</a></li>			
 			<li id="side-menu-list"><a
@@ -42,7 +42,7 @@
 										<td class="td-left">
 											<div class="td-left-1">
 												<c:if test="${BL.sta=='r'}">
-													배송 중
+													주문 승인 중
 													&nbsp;·<div class="td-left-1-1">${date }&nbsp;도착예정</div>
 												</c:if>
 												<c:if test="${BL.sta=='y'}">
@@ -88,10 +88,10 @@
 										<a href="ProductView1?pno=${BL.pno}"><button type="button">리뷰작성</button></a>
 										<a href="insertCart?pno=${BL.pno}"><button type="button">장바구니 담기</button></a> 
 										<c:if test="${BL.refundsta > BL.b_regdate}">
-										<button type="button" >반품 신청기한이 지났습니다.</button></td>
+										<a href="refundBuyProduct?bno=${BL.bno}"><button type="button" >반품신청 가능</button></a></td>
 										</c:if>
 										<c:if test="${BL.refundsta <= BL.b_regdate}">
-										<a href="refundBuyProduct?bno=${BL.bno}"><button type="button" >반품신청</button></a></td>
+										<button type="button" >반품 신청기한이 지났습니다.</button></td>
 										</c:if>
 									</tr>									
 								</tbody>

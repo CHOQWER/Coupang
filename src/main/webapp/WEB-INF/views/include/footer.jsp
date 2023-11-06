@@ -21,19 +21,19 @@
          <footer id="footer" class="footer_new">
             <div class="footer-layer2">
                <h1>
-                  <a href="/" title="COUPANG">COUPANG</a>
+                  <a href="/" title="COUPANG">DIGIPANG</a>
                </h1>
                <div class="footer-content">
                   <address>
-                     상호명 및 호스팅 서비스 제공 : 쿠팡(주)<br> 대표이사 : 강한승,박대준<br> 서울시 송파구
-                     송파대로 570 <br> 사업자 등록번호 : 120-88-00767 <br> 통신판매업신고 :
-                     2017-서울송파-0680<br> <a href="#" class="licensee"
+                     상호명 및 호스팅 서비스 제공 : 디지팡(주)<br> 대표이사 : 조태근,이소라<br> 서울시 관악구
+                     신림로 570 <br> 사업자 등록번호 : 123-45-67890 <br> 통신판매업신고 :
+                     2023-서울관악-0504<br> <a href="#" class="licensee"
                         title="사업자정  보 확인">사업자정보 확인 &gt;</a>
                   </address>
                   <div class="contact-info">
                      <a href="#" class="call-center" title="365 고객센터"> <strong>365고객센터</strong>
-                        | 전자금융거래분쟁처리담당<br> <em>1577-7011 (유료)</em> 서울시 송파구 송파대로 570<br>
-                        <span class="contact-fax">email : help@coupang.com</span>
+                        | 전자금융거래분쟁처리담당<br> <em>1577-7011 (유료)</em> 서울시 관악구 신림로 340<br>
+                        <span class="contact-fax">email : help@digipang.com</span>
                      </a>
                   </div>
                   <p class="safe-service">

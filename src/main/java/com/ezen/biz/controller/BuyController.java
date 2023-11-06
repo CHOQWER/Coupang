@@ -156,6 +156,7 @@ public class BuyController {
 		  public String cartbuy(CartVO cvo,@RequestParam int[] deleteCart,@RequestParam int[] c_cnt, 
 				  Model model) {
 		   //List<CartVO> vo
+		  
 		   List<CartVO> vo=new ArrayList<CartVO>();
 		   
 		   for(int i=0;i<deleteCart.length;i++) {

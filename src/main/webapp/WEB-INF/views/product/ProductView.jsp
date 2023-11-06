@@ -235,7 +235,7 @@ function setQuantityAndSubmit() {
     let quantity = document.getElementById("c_cnt").value;
 
     document.getElementById("quantityInput").value = quantity;
-    var URL = "buyOne?pno="+${pvo.pno} +"&quantity=" + quantity
+    var URL = "buyOne?pno="+${pvo.pno} +"&c_cnt=" + quantity
    
     
 	   let frm=$("#frmDetail");

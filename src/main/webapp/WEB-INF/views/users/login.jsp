@@ -45,7 +45,7 @@
 					<a href="#none">이용약관</a> <a href="#none">개인정보처리방침</a> <a
 						href="#none">책임의 한계와 법적고지</a> <a href="#none">회원정보 고객센터</a>
 				</div>
-				<span><a href="#none">COUPANG Corp.</a></span>
+				<span><a href="#none">DIGIPANG Corp.</a></span>
 			</div>
 	</div>
 	

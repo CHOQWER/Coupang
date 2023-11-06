@@ -35,7 +35,7 @@
 	</c:if>
 	
 	<c:if test="${pmaker.criteria.getCa_no()!=-1}">	
-	<div class="cate-nav"> 쿠팡홈 > ${cate_name} > ${subcate_name}</div>
+	<div class="cate-nav"> 디지팡홈 > ${cate_name} > ${subcate_name}</div>
 	<div class="contents">
 		<div class="aside">
 			<div class="search-company">
