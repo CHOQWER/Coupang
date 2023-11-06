@@ -8,48 +8,42 @@
 	integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
 	crossorigin="anonymous" referrerpolicy="no-referrer" />
 <body>
-		<div class="container123">
-		<div>
-		<div id="menu">
-			<ul id="asd123">
-				<li id="notice-title" class="menu-item" data-type="notice"><h1>
-						<a href="notice">공지사항</a>
-					</h1></li>
-				<li id="faq-title" class="menu-item" data-type="faq2"><h1>
-						<a href="faq">자주 묻는 질문</a>
-					</h1></li>
-			</ul>
-		</div>
-		</div>
-		<div>
+	<div id="menu">
+		<ul id="asd123">
+			<li id="notice-title" class="menu-item" data-type="notice">
+			<h3><a href="notice">공지사항</a></h3>
+			</li>
+			<li id="faq-title" class="menu-item" data-type="faq2">
+			<h3><a href="faq">자주 묻는 질문</a></h3>
+			</li>
+		</ul>
+	</div>
+	
+	<div class="container123">
+		<div id=noticeul>
 		<c:forEach items="${list}" var="item" varStatus="status">
 			<ul>
 				<li class="faq">
-					<div class="question">
-						${item.n_title} <span class="icon-main"> <i
-							class="fa-solid fa-plus"></i>
-						</span>
+					<div class="question">${item.n_title} 
+						<span class="icon-main"> <i class="fa-solid fa-plus"></i></span>
 					</div>
 					<div class="answer non-active">${item.n_content}</div>
 				</li>
 			</ul>
+			
 			<div class="btn_rud">
-				<c:if test="${sessionScope.vo.grade == '0'}">
-					<a href="noticeUpdate?nno=${item.nno}"><button type="button"
-							id="btnEdit" class="w-btn w-btn-blue">공지수정</button></a>&nbsp;&nbsp; 
-                          <button type="button" id="btnDelete"
-						onclick="deleteNotice(${item.nno})" class="w-btn w-btn-blue">공지삭제</button>
-					</a>&nbsp;&nbsp;
-                      </c:if>
+			<c:if test="${sessionScope.vo.grade == '0'}">
+				<a href="noticeUpdate?nno=${item.nno}"><button type="button" id="btnEdit" class="w-btn w-btn-blue">공지수정</button></a>&nbsp;&nbsp; 
+				<button type="button" id="btnDelete" onclick="deleteNotice(${item.nno})" class="w-btn w-btn-blue">공지삭제</button>&nbsp;&nbsp;
+			</c:if>
 			</div>
 		</c:forEach>
-</div>
-		
+		</div>
+			
 		<div id="top-button">
-			<c:if test="${sessionScope.vo.grade == '0'}">
-				<a href="noticeNew"><button type="button"
-						class="w-btn w-btn-blue">공지등록</button></a>
-			</c:if>
+		<c:if test="${sessionScope.vo.grade == '0'}">
+			<a href="noticeNew"><button type="button" class="w-btn w-btn-blue">공지등록</button></a>
+		</c:if>
 		</div>
 	</div>
 	</div>
