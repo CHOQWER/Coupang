@@ -6,8 +6,7 @@
 
 
 <form action="cartbuy" method="post">
-   <div class="card">
-      <div class="col">${sessionScope.vo.u_id}</div>
+   <div class="card">      
       <div class="row">
          <div class="col-md-8 cart">
             <div class="title">

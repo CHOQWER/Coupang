@@ -238,4 +238,12 @@ public class UsersController {
 
 	}
 	
+	//결제카드등록페이지
+	@RequestMapping("selectCreditCard")
+	public String selectCreditCard() {
+		
+		return "users/selectCreditCard";
+	}
+	
+	
 }

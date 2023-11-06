@@ -29,6 +29,7 @@ public class PaymentController {
 	@Autowired
 	private PaymentService service;
 
+	//카드 리스트 뽑기(?)
 	@RequestMapping(value = "/payment", method = RequestMethod.GET)
 	public String payment(Model model, HttpSession session, PaymentVO vo,UsersVO v) {
 		// 세션에서 로그인 정보를 받아옵니다.

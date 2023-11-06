@@ -123,7 +123,7 @@
 
 				<ul class="icon-menu">
 					<li><a href="mypage"> <img src="resources/img/2815428.png"
-							alt="마이페이지" style="width: 30px;"> <span>마이쿠팡</span>
+							alt="마이페이지" style="width: 30px;"> <span>마이페이지</span>
 					</a></li>
 
 					<li><a href="cart"> <img src="resources/img/cart.png"

@@ -14,7 +14,7 @@
 		<ul>
 			<li id="top-side">My 페이지</li>
 			<li id="side-menu-list"><a href="mypage">개인정보확인/수정</a></li>
-			<li id="side-menu-list"><a href="#">결제수단 관리</a></li>
+			<li id="side-menu-list"><a href="payment">결제수단 관리</a></li>
 			<li id="side-menu-list"><a href="deliveryStatus">주문목록/배송조회</a></li>
 			<li id="side-menu-list"><a href="membership">와우 멤버십</a></li>
 			<li id="side-menu-list"><a
@@ -85,10 +85,10 @@
 								<div class="updatebutton-1">
 									<button type="submit" name="updateUser" id="updateUser">회원정보수정</button>
 				</form>
-				<!-- <form action="withdrawal" method="post"> -->
-				<button class="withdrawal" onclick="deleteUser()">회원탈퇴</button>
-				<%-- <input type="hidden" name="u_id" value="${sessionScope.vo.u_id }"> --%>
-				<!-- </form> -->
+				<form action="withdrawal" method="post">
+					<button class="withdrawal" onclick="deleteUser()">회원탈퇴</button>
+					<input type="hidden" name="u_id" value="${sessionScope.vo.u_id }">
+				</form>
 			</div>
 		</div>
 	</div>
@@ -106,10 +106,10 @@
 <script type="text/javascript">
 	function deleteUser() {
 		var confirmation = confirm("정말 탈퇴 하시겠습니까?");
-		if (confirmation) {			
+		if (confirmation) {
 			location.href = "withdrawal";
 		} else {
-			alert("메인으로 돌아갑니다.");
+			alert("이전화면으로 돌아갑니다.");
 			history.back();
 		}
 	}
