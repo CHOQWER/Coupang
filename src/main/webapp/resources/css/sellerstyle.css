@@ -9,9 +9,11 @@ body {
 
 
 div .mypage {
-	margin-top: -80px;
-	margin-left: 10px;
+/* 	margin: 0 auto; */
+	/* margin-top: -80px;
+	margin-left: 10px; */
 }
+
 
 p {
 	color: #b3b3b3;
@@ -19,7 +21,7 @@ p {
 }
 
 .btn {
-	float: left;
+	/* float: left;	 */
 }
 
 

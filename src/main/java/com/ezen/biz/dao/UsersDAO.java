@@ -20,8 +20,8 @@ public class UsersDAO {
 		return mybatis.selectList("UsersDAO.deliveryStatus", vo);
 	}
    
-   public UsersVO selectMember(String u_id) {    
-      return mybatis.selectOne("UsersDAO.selectMember", u_id);      
+   public UsersVO selectMember(String id) {    
+      return mybatis.selectOne("UsersDAO.selectMember", id);      
    }
   
    public void insertMember(UsersVO vo) {
@@ -40,8 +40,8 @@ public class UsersDAO {
 	   mybatis.update("UsersDAO.updateUser", vo);
    }
    
-   public void deleteUser(String u_id) {
-	   mybatis.update("UsersDAO.deleteUser", u_id);
+   public void deleteUser(String id) {
+	   mybatis.update("UsersDAO.deleteUser", id);
    }
    
    public void wowupdate(UsersVO vo) {

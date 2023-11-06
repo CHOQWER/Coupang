@@ -23,8 +23,8 @@ public class UsersServiceImpl implements UsersService {
 	public void insertMember(UsersVO vo) {
 		dao.insertMember(vo);
 	}
-	public UsersVO selectMember(String u_id) {
-		return dao.selectMember(u_id);
+	public UsersVO selectMember(String id) {
+		return dao.selectMember(id);
 	}
 	
 	
@@ -45,8 +45,8 @@ public class UsersServiceImpl implements UsersService {
 		
 	}
 	
-	public void deleteUser(String u_id) {
-		dao.deleteUser(u_id);
+	public void deleteUser(String id) {
+		dao.deleteUser(id);
 		
 	}	
 	

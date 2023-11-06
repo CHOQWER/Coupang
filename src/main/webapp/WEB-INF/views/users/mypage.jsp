@@ -49,12 +49,20 @@
 
 				<form action="withdrawal" method="post">
 					<input type="hidden" name="u_id" value="${sessionScope.vo.u_id }">
-					<a href="withdrawal"><button>회원탈퇴</button></a>					
+					<!-- <a href="withdrawal"><button>회원탈퇴</button></a>	 -->	
+					<button onclick="deleteUser(${sessionScope.vo.u_id})">회원탈퇴</button>			
 				</form>
 			</div>
 		</div>
 	</div>	
 </div>
 <!-- </div>  -->
-
+<script>
+function deleteUser(id) {
+	 var confirmation = confirm("정말 탈퇴 하시겠습니까?");
+	    if (confirmation) {
+	        window.location.href = "withdrawal?id=" + id;
+	    }
+	}
+</script>
 <%@ include file="/WEB-INF/views/include/footer.jsp"%>

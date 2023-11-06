@@ -75,8 +75,8 @@ public class UsersController {
 	}
 
 	// 회원탈퇴
-	@PostMapping("withdrawal")
-	public String deleteUser(UsersVO vo, String u_id, HttpSession session) {
+	@PostMapping("withdrawal")	
+	public String deleteUser(@RequestParam("id") String id, UsersVO vo, HttpSession session) {
 		service.deleteUser(vo.getU_id());
 		System.out.println("탈퇴");
 		session.invalidate();
