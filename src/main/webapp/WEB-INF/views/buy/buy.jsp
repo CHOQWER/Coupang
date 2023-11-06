@@ -203,7 +203,7 @@ function cardBuy() {
 	 var checkPopupInterval = setInterval(function() {
 	        if (popup2.closed) {
 	            // 팝업이 닫히면 insertBuy 실행
-	            $("#insertBuy").submit();
+                $("#insertBuy").submit();
 	            clearInterval(checkPopupInterval); // 인터벌 중지
 	        }
 	    }, 1000); // 1초마다 팝업 상태 확인
