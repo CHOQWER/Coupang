@@ -98,8 +98,7 @@
 				</div>
 
 				<div class="logo">
-					<a href="/"><img src="/resources/img/logo_coupang_w350.png"
-						alt="브랜드로고" width="174px"></a>
+					<a href="/"><img src="/resources/img/digipang_logo.png"	width="180px"></a>
 				</div>
 
 				<!--main 검색-->

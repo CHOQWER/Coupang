@@ -137,9 +137,10 @@ function getCheckedCnt()  {
 			}
 		}); */
 	  
-	  var msg='적어도 한개 이상 구매해주시기 바랍니다.'
+	 /*  var msg='적어도 한개 이상 구매해주시기 바랍니다.'
 	 	alert(msg);
-	}
+}
+	 */
 
 
 
