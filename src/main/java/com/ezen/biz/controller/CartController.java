@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.ezen.biz.dao.ImagesDAO;
 import com.ezen.biz.dto.CartVO;
 import com.ezen.biz.dto.ImagesVO;
 import com.ezen.biz.dto.ProductVO;

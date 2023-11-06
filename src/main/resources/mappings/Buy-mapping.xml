@@ -4,10 +4,6 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="BuyDAO">
 	
-	<!-- 환불하기 -->
-	<delete id="refundProduct">
-		delete from buy where bno=#{bno}
-	</delete>
 	
 	<!-- 관리자가 구매내역 확인 -->
 	<select id="adminSelectBuyList" resultType="buy">
@@ -25,18 +21,26 @@
 </insert>
 	
 	<select id="selectBuyList" resultType="com.ezen.biz.dto.BuyVO">
-   select bno, u_id, pno, pname, price, dis_price, b_cnt, post_no, addr1, addr2, sta
-   from buy
-   where u_id = #{u_id}
-</select>
+	   select bno, u_id, pno, pname, price, dis_price, b_cnt, post_no, addr1, addr2, sta
+	   from buy
+	   where u_id = #{u_id}
+	</select>
 
 		<!-- 환불하기 -->
-	<delete id="refundBuyProduct">
-		delete from buy where bno=#{bno}
-	</delete>
+		<delete id="refundBuyProduct">
+			delete from buy where bno=#{bno}
+		</delete>
 	
-	
-
+	<!-- 환불할 날짜 받아오기 -->
+		<select id="selectGetRegdate" resultType="Date">
+			select b_regdate from buy where bno=#{bno}
+		</select>
+		
+	<select id="selectBuyOne" resultType="product">
+	   select *
+	   from product
+	   where pno=#{pno}
+	</select>
 	
 	
 </mapper>
