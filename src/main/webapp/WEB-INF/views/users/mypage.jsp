@@ -89,7 +89,7 @@
 				</form>
 				
 				<div class="btn">					
-						<!-- <a href="payment"><button class="submit-btn">결제등록</button></a> -->
+						<a href="payment"><button class="submit-btn">결제등록</button></a> 
 						<form action="withdrawal" method="post">
 							<input type="hidden" name="u_id" value="${sessionScope.vo.u_id }">							
 							<button class="submit-btn"
