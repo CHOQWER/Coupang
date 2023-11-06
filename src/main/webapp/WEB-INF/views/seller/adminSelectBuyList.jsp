@@ -25,7 +25,7 @@ main {
 			<table class="table custom-table">
 				<thead>
 					<tr>
-						<th>번호 인덱스</th>
+						<th>번호</th>
 						<th>구매번호</th>
 						<th>판매자 아이디</th>
 						<th>상품번호</th>
@@ -47,9 +47,9 @@ main {
 						</tr>
 					</c:if>
 
-
+					<c:forEach items="${list}" var="BL" varStatus="status">
 					<tr>
-						<c:forEach items="${list}" var="BL" varStatus="status">
+						
 							<td>${status.index}</td>
 							<td>${BL.bno}</td>
 							<td>${BL.u_id}</td>
@@ -68,8 +68,9 @@ main {
 							<td>${BL.addr2}</td>
 							<td>${BL.b_regdate}</td>
 
-						</c:forEach>
+						
 					</tr>
+					</c:forEach>
 				</tbody>
 			</table>
 		</div>

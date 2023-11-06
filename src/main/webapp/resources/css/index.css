@@ -4,6 +4,8 @@ body {
     font-family: sans-serif;
 }
 
+
+
 *, ::after, ::before{
 	box-sizing: content-box !important;
 }
@@ -14,7 +16,7 @@ a {
 }
 
 .container{
-    height: auto;
+	height: auto;
     min-height: 130vh;
     position: relative;
 }

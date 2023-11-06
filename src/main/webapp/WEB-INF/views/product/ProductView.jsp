@@ -2,10 +2,10 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<!-- <script type="text/javascript" src="/resources/js/zoomscript.js" ></script> -->
 <link rel="stylesheet" href="/resources/css/productview.css">
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script type="text/javascript" src="/resources/js/common.js"></script>
+<script type="text/javascript" src="/resources/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="/resources/star-rating/css/star-rating.css"
 	media="all" type="text/css" />
 <link rel="stylesheet"
@@ -15,136 +15,143 @@
 	type="text/javascript"></script>
 <script src="/resources/star-rating/themes/krajee-svg/theme.min.js"
 	type="text/javascript"></script>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+	crossorigin="anonymous">
 
 <%@ include file="/WEB-INF/views/include/header.jsp"%>
 
 <section class="content">
 	<div class="cate">쿠팡홈 > ${cate_name} > ${subcate_name}</div>
 
-   <form action="insertcart" method="post" id="frmDetail" name="frmDetail">
-      <input type="hidden" name="pno" value="${pvo.pno}"> <input
-         type="hidden" name="ino" value="${ivo.ino }"> <input
-         type="hidden" name="price" value="${pvo.price }"> <input
-         type="hidden" name="dis_price" value="${pvo.dis_price }"> <input
-         type="hidden" name="pname" value="${pvo.pname }">
-         <input type="hidden" name="main_img1" value="${ivo.main_img1}">
-         <!-- <input type="hidden" name="c_cnt" value="c_cnt"> -->
-      <!--좌측 메인/서브 이미지-->
-      <div class="content-main">
+	<form action="insertcart" method="post" id="frmDetail" name="frmDetail">
+		<input type="hidden" name="pno" value="${pvo.pno}"> <input
+			type="hidden" name="ino" value="${ivo.ino }"> <input
+			type="hidden" name="price" value="${pvo.price }"> <input
+			type="hidden" name="dis_price" value="${pvo.dis_price }"> <input
+			type="hidden" name="pname" value="${pvo.pname }"> <input
+			type="hidden" name="main_img1" value="${ivo.main_img1}">
+		<!-- <input type="hidden" name="c_cnt" value="c_cnt"> -->
+	</form>
+	<!--좌측 메인/서브 이미지-->
+	<div class="content-main">
 
-			<div id="content-wrapper">
-				<div class="column">
-					<div id="img-container">
-						<div id="lens"></div>
-						<img id=featured src="imgDown?imgName=${ivo.main_img1}">
-					</div>
-					<div id="slide-wrapper">
-						<div id="slider">
-							<c:if test="${not empty ivo.main_img2}">
-								<img class="thumbnail" src="imgDown?imgName=${ivo.main_img2}">
-							</c:if>
-							<c:if test="${not empty ivo.main_img3}">
-								<img class="thumbnail" src="imgDown?imgName=${ivo.main_img3}">
-							</c:if>
-							<c:if test="${not empty ivo.main_img4}">
-								<img class="thumbnail" src="imgDown?imgName=${ivo.main_img4}">
-							</c:if>
-							<c:if test="${not empty ivo.main_img5}">
-								<img class="thumbnail" src="imgDown?imgName=${ivo.main_img5}">
-							</c:if>
-						</div>
+		<div id="content-wrapper">
+			<div class="column">
+				<div id="img-container">
+					<div id="lens"></div>
+					<img id=featured src="imgDown?imgName=${ivo.main_img1}">
+				</div>
+				<div id="slide-wrapper">
+					<div id="slider">
+						<c:if test="${not empty ivo.main_img2}">
+							<img class="thumbnail" src="imgDown?imgName=${ivo.main_img2}">
+						</c:if>
+						<c:if test="${not empty ivo.main_img3}">
+							<img class="thumbnail" src="imgDown?imgName=${ivo.main_img3}">
+						</c:if>
+						<c:if test="${not empty ivo.main_img4}">
+							<img class="thumbnail" src="imgDown?imgName=${ivo.main_img4}">
+						</c:if>
+						<c:if test="${not empty ivo.main_img5}">
+							<img class="thumbnail" src="imgDown?imgName=${ivo.main_img5}">
+						</c:if>
 					</div>
 				</div>
 			</div>
+		</div>
 
-			<!--우측 구매하는 부분-->
-			<div class="prod-buy">
-				<div class="prod-header">
-					<div class="prod-company">${pvo.company}</div>
-					<div class="prod-name">${pvo.pname}</div>
-					<hr>
-					<div class="prod-review">
-						<table>
-							<tr>
-								<td><input id="avgscore" name="avgscore"
-									value="${map.get('AVG')}" class="rating rating-loading"
-									data-size="sm" readonly="readonly" /></td>
-								<td><a href="#target"><span id="span-cnt">${map.get('CNT')}건의
-											리뷰보기</span></a></td>
-							</tr>
-						</table>
-					</div>
+		<!--우측 구매하는 부분-->
+		<div class="prod-buy">
+			<div class="prod-header">
+				<div class="prod-company">(주)${pvo.company}</div>
+				<div class="prod-name">${pvo.pname}</div>
 
+				<div class="prod-review">
+					<table>
+						<tr>
+							<td><input id="avgscore" name="avgscore"
+								value="${map.get('AVG')}" class="rating rating-loading"
+								data-size="sm" readonly="readonly" /></td>
+							<td><a href="#target"><span id="span-cnt"
+									style="font-size: 1.4rem;">${map.get('CNT')}건의 리뷰보기</span></a></td>
+						</tr>
+					</table>
 				</div>
-
-				<div class="prod-price">
-					<c:if test="${sessionScope.vo.grade==2 }">
-						<div class="origin-price">
-							<fmt:formatNumber value="${pvo.dis_price}" pattern="#,###" />
-						</div>
-						<div class="sale-price">
-							<fmt:formatNumber value="${pvo.price}" pattern="#,###" />
-						</div>
-					</c:if>
-					<c:if test="${sessionScope.vo.grade==3 }">
-						<div class="origin-price">
-							<fmt:formatNumber value="${pvo.price}" pattern="#,###" />
-						</div>
-						<div class="sale-price">
-							<fmt:formatNumber value="${pvo.dis_price}" pattern="#,###" />
-						</div>
-					</c:if>
-				</div>
-
-				<div class="prod-color">
-					<div class="color-option">
-						<div class="color-select">${pvo.color}</div>
-					</div>
-
-				</div>
-
-				<!-- EX)와우 회원이면 무료배송+1일 뒤 도착예정, 일반 회원이면 배송비3000원+5일뒤도착예정 구현하기 -->
-				<div class="prod-delivery">
-					<p>무료배송</p>
-					<p>모래(토) 10/21 도착 예정</p>
-				</div>
-
-				<div class="prod-buy-footer">
-
-               <!-- qty 만큼 선택하기..?? -->
-               
-            <input type="number" name="c_cnt" id="c_cnt"  class="c_cnt" value="1" placeholder="1" min="1" max="${pvo.qty}" />         
-               <button onclick="cartSubmit()">장바구니</button>    
-               <button type="button" ><a href="#" onclick="setQuantityAndSubmit()">바로구매</a> </button> 
-                 	<input type="hidden" name="quantity" id="quantityInput" value="1" /> 
-                    <input type="hidden" name="pno" id="pno" value="${pvo.pno}" />
-<%--           <a href="buyOne?pno=${pvo.pno}" onclick="getCnt()"> <button type="button">바로구매</button> </a>    --%>  
-               
-            </div>
-            <!-- <input type="hidden" name=""> -->
-					<!-- qty 만큼 선택하기..?? -->
-
 
 			</div>
+			<hr>
+			<div class="prod-price">
+				<c:if test="${sessionScope.vo.grade==2 }">
+					<div class="origin-price">
+						<fmt:formatNumber value="${pvo.dis_price}" pattern="#,###" />
+					</div>
+					<div class="sale-price">
+						<fmt:formatNumber value="${pvo.price}" pattern="#,###" />
+					</div>
+				</c:if>
+				<c:if test="${sessionScope.vo.grade!=2 }">
+					<div class="origin-price">
+						<fmt:formatNumber value="${pvo.price}" pattern="#,###" />
+					</div>
+					<div class="sale-price">
+						<fmt:formatNumber value="${pvo.dis_price}" pattern="#,###" />
+					</div>
+				</c:if>
+			</div>
+
+			<div class="prod-color">
+				<div class="color-option">
+					<div class="color-select">
+						<a>${pvo.color}</a>
+					</div>
+				</div>
+
+			</div>
+
+			<!-- EX)와우 회원이면 무료배송+1일 뒤 도착예정, 일반 회원이면 배송비3000원+5일뒤도착예정 구현하기 -->
+			<div class="prod-delivery">
+				<p>무료배송</p>
+				<p>모래(토) 10/21 도착 예정</p>
+			</div>
+
+			<div class="prod-buy-footer">
+				<input type="number" name="c_cnt" id="c_cnt" class="c_cnt" value="1"
+					placeholder="1" min="1" max="${pvo.qty}"
+					oninput="if (this.value < 1) this.value = 1; if (this.value > ${pvo.qty}) this.value = ${pvo.qty};" />
+
+
+				<button onclick="cartSubmit()" class="btn btn-outline-primary"
+					style="width: 170px; height: 80px; margin-left: 20px; font-size: 2rem; font-weight: bold;">
+					장바구니</button>
+				<button type="button" style="background: none; border: none;">
+					<a href="#" onclick="setQuantityAndSubmit()"
+						class="btn btn-primary"
+						style="width: 170px; height: 80px; margin-left: 20px; font-size: 2rem; font-weight: bold; line-height: 2.4;">바로구매</a>
+				</button>
+
+
+				<input type="hidden" name="quantity" id="quantityInput" value="1" />
+				<input type="hidden" name="pno" id="pno" value="${pvo.pno}" />
+				<%--           <a href="buyOne?pno=${pvo.pno}" onclick="getCnt()"> <button type="button">바로구매</button> </a>    --%>
+
+			</div>
+			<!-- <input type="hidden" name=""> -->
+
+
 
 		</div>
 
-
-	
-	
-
-
-      <div class="content-section"></div>
-      <div class="tab-title">
-         <ul>
-
-			<li>상품평</li>
-			<li>상품 문의</li>
-			<li>배송/교환/반품 안내</li>
-		</ul>
 	</div>
 
 
+
+
+
+
+	<div class="content-section"></div>
 	<div class="content">
 		<p>필수 표기 정보</p>
 		<div class="content-info">${pvo.content}</div>
@@ -176,14 +183,12 @@
 				<label for="input-7-sm" class="control-label"></label> <input
 					id="score" name="score" class="rating rating-loading" data-min="0"
 					data-max="5" data-step="0.5" data-size="sm">
-				<hr />
+				<hr/>
 
-				글제목:<input type="text" maxlength="100" id="r_title" name="r_title"
-					required="required"> <br> 리뷰:<input type="text"
-					maxlength="100" id="content" name="content" size="50"
-					required="required"> <br> 파일찾기:<input type="file"
-					id="r_photo"> <br>
-				<button type="button" onclick="saveStar()">리뷰 남기기</button>
+					
+				<input type="text" maxlength="100" placeholder="글제목을 입력해주세요." id="r_title" name="r_title" required="required"> <br> 
+				<input type="text" maxlength="100" placeholder="다른 고객님에게 도움이 되도록 상품에 대한 솔직한 평가를 남겨주세요." id="content" name="content" size="50" required="required"> <br> 
+				<button type="button" class="btn btn-outline-success" onclick="saveStar()">리뷰 남기기</button>
 			</div>
 		</c:if>
 
@@ -204,26 +209,10 @@
 
 		<button type="button" id="btn_next" style="display: none"
 			onclick="getStar()">더보기</button>
-		</ul>
+	
 
 		<hr>
-		<div class="prod-qa">
-			<h2>상품문의</h2>
-			<ul>
-				<li>구매한 상품의 취소/반품은 마이쿠팡 구매내역에서 신청 가능합니다</li>
-				<li>상품문의 및 후기게시판을 통해 취소나 환불, 반품 등은 처리되지 않습니다.</li>
-				<li>가격, 판매자, 교환/환불 및 배송 등 해당 상품 자체와 관련 없는 문의는 고객센터 내 1:1 문의하기를
-					이용해주세요.</li>
-				<li>"해당 상품 자체"와 관계없는 글, 양도, 광고성, 욕설, 비방, 도배 등의 글은 예고 없이 이동,
-					노출제한, 삭제 등의 조치가 취해질 수 있습니다.</li>
-				<li>공개 게시판이므로 전화번호, 메일 주소 등 고객님의 소중한 개인정보는 절대 남기지 말아주세요.</li>
-			</ul>
-			<hr>
-			<div class="prod-userqa">질문</div>
-			<div class="prod-answer">답변</div>
-			<a href="">더보기</a>
-		</div>
-	</div>
+</div>
 </section>
 
 
@@ -246,7 +235,7 @@ function setQuantityAndSubmit() {
     let quantity = document.getElementById("c_cnt").value;
 
     document.getElementById("quantityInput").value = quantity;
-    var URL = "buyOne?pno= "+${pvo.pno} +"&quantity=" + quantity
+    var URL = "buyOne?pno="+${pvo.pno} +"&quantity=" + quantity
    
     
 	   let frm=$("#frmDetail");
@@ -352,7 +341,7 @@ function saveStar(){
    console.log("saveStar")
    let content=$("#content").val().trim();
    let r_title=$("#r_title").val().trim();
-   let r_photo=$("#r_photo").val().trim();
+   
    let score=$("#score").val();
    
    if(score==0){
@@ -379,7 +368,7 @@ function saveStar(){
             "score":score,
             "r_title":r_title,
             "r_content":content,
-            "r_photo":r_photo,
+       
             };
    console.log(param);
    doAjaxHtml(url, param, saveStarAfter);
@@ -443,9 +432,7 @@ function getStarAfter(data){
 	          let html="";
 	          for(let vo of starList){//js foreach      	  
 	             html+='<tr>';
-	             html+='<td>';
-	             html+='<img src='+vo.r_photo+' alt="" width="100" height="100">';
-	             html+='</td>';
+	             
 	             html+='<td>';
 	             html+='<dl>';
 	             html+='<dt>';
@@ -473,13 +460,12 @@ function getStarAfter(data){
 	          }//for
 	          
 	          $("#tbl_star").append(html);
-	          //let next=data.next;//true, false
-	          //console.log(next);
+	          newStar();
 	          if(data.next){//더보기 버튼을 보여주기
 	             $("#btn_next").css("display","block");
 	          }else $("#btn_next").css("display","none");
-	          // loding 중인 별점을 보여주는 작업
 	          newStar();
+	         
 		}
 
 	}
@@ -518,4 +504,5 @@ function getStarAfter(data){
 	        });
 	    }
 	} */
+
 </script>
