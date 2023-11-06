@@ -9,10 +9,61 @@
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 </head>
+<style>
+    .address{
+        margin: 20px;
+
+    }
+    .address-list {
+        padding: 15px;
+        border: 2px solid #0073e9;
+        margin-bottom: 10px;
+    }
+    .address-list ul{
+        padding: 0px;
+    }
+    .address-list ul #username{
+        font-weight: bold;
+    }
+
+    .address-list ul li{
+        list-style: none;
+        padding-bottom: 5px;
+        
+    }
+    h1{
+        margin: 0;
+        padding: 0;
+        border: 0;
+        padding: 9px 0;
+        color: #111;
+        font-size: 2rem;
+        line-height: 22px;
+        text-align: center;
+    }
+    #selectButton{
+        float: right;
+        margin-top: -35px;
+        width: 75px;
+        background-color: #0073e9;
+        border: 0;
+        cursor: pointer;
+        color: #fff;
+        height: 35px;
+        font-weight: bold;
+        font-size: 1rem;
+        transition: background-color 0.3s;
+    }
+    #selectButton:hover {
+    background-color: #005bb7; 
+    }
+
+
+</style>
 <body>
 
 
-  <h2>배송지 선택</h2>
+  <h1>배송지 선택</h1>
   
   <div class="address">
   <form action="selectDeli" method="post" id="selectDeliForm">
@@ -20,7 +71,7 @@
 			<c:forEach items="${dlist}" var="dvo">
 				<div class="address-list">
 					<ul>
-						<li>${dvo.u_name}</li>
+						<li id="username">${dvo.u_name}</li>
 						<li id="post_no">${dvo.post_no}</li>
 						<li id="newAddr1">${dvo.addr1}</li>
 						<li id="newAddr2">${dvo.addr2}</li>

@@ -179,7 +179,7 @@ function updateItemTotal(item, quantityElement, priceElement) {
 }
 
 function openPop(u_id) {
-    var popup = window.open('/selectDeli?u_id=' + u_id , '', 'width=700px,height=800px,scrollbars=yes');
+    var popup = window.open('/selectDeli?u_id=' + u_id , '', 'width=600px,height=800px,scrollbars=yes');
 }
 
 
