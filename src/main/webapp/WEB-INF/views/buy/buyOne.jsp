@@ -191,6 +191,12 @@ function openPop(u_id) {
     var popup = window.open('/selectDeli?u_id=' + u_id , '', 'width=700px,height=800px,scrollbars=yes');
 }
 
+function cardBuy() {
+	var u_id = '${sessionScope.vo.u_id}';
+	var popup2 = window.open('/cardselect?u_id=' + u_id , '', 'width=600px,height=500px,scrollbars=yes');
+	document.location.href="redirect:deliveryStatus";
+}
+
 
 function updateAddress(post_no,newAddr1,newAddr2) {
     // 메인 창의 주소 정보 업데이트

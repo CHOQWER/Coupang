@@ -200,8 +200,14 @@ function openPop(u_id) {
 function cardBuy() {
 	var u_id = '${sessionScope.vo.u_id}';
 	var popup2 = window.open('/cardselect?u_id=' + u_id , '', 'width=600px,height=500px,scrollbars=yes');
-	document.location.href="redirect:deliveryStatus";
-}
+	 var checkPopupInterval = setInterval(function() {
+	        if (popup2.closed) {
+	            // 팝업이 닫히면 insertBuy 실행
+	            $("#insertBuy").submit();
+	            clearInterval(checkPopupInterval); // 인터벌 중지
+	        }
+	    }, 1000); // 1초마다 팝업 상태 확인
+	}
 
 function updateAddress(post_no,newAddr1,newAddr2) {
     // 메인 창의 주소 정보 업데이트
