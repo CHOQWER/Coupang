@@ -52,14 +52,11 @@ public class ProductController {
 	public String ProductList(Criteria cri, ProductVO vo, @RequestParam(required = false) String cate_name, @RequestParam(required = false) String subcate_name, 
 		    Model model, @RequestParam(required = false, defaultValue = "1") Integer listtype) {
 		
-		if(cri.getSearchword()=="") {
-			cri.setSearchword(null);
-		}
 		if(cri.getCompany()=="") {
 			cri.setCompany(null);
 		}
 		
-		log.info("메인 리스트"+cri);
+		log.info("메인 크리"+cri);
 	
 		int tot = service.selectRowCountPaging(cri);
 		log.info("전체 행의 갯수"+tot);
@@ -74,6 +71,7 @@ public class ProductController {
 
 		List<ProductVO> list = service.productListPaging(cri);
 		model.addAttribute("list", list);
+		log.info("메인 리스트"+list);
 
 		List<ProductVO> clist =null;
 		model.addAttribute("listtype", listtype);

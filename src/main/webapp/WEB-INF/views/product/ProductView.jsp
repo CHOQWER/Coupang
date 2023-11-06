@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<!-- <script type="text/javascript" src="/resources/js/zoomscript.js" ></script> -->
 <link rel="stylesheet" href="/resources/css/productview.css">
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script type="text/javascript" src="/resources/js/common.js"></script>
@@ -429,9 +428,7 @@ function getStarAfter(data){
 	          let html="";
 	          for(let vo of starList){//js foreach      	  
 	             html+='<tr>';
-	             html+='<td>';
-	             html+='<img src='+vo.r_photo+' alt="" width="100" height="100">';
-	             html+='</td>';
+	             
 	             html+='<td>';
 	             html+='<dl>';
 	             html+='<dt>';
