@@ -7,7 +7,7 @@
 
 <form action="insertBuyOne" method="post">
 	<div class="card">
-		<div class="col">${sessionScope.vo.u_id}</div>
+		<%-- <div class="col">${sessionScope.vo.u_id}</div> --%>
 		<div class="row">
 			 <div class="col-md-8 cart">
 				<div class="title">
@@ -33,19 +33,19 @@
 							<ul class="col123">
 								<li class="col"><a href="ProductView?pno=${vo.pno}&cate_name=${cate_name}&subcate_name=${subcate_name}">${vo.pname}</a></li> 
 								
-								<li class="col"><input type="number" name="b_cnt" value="${c_cnt}"></li>
+								<li class="col"><input type="number" name="b_cnt" value="${c_cnt}"  min="0"></li>
 								<c:if test="${sessionScope.vo.grade==2 }">
 									<li class="col">${vo.price}</li>
 								</c:if>
 								<c:if test="${sessionScope.vo.grade==3 }">
 									<li class="col">${vo.dis_price}</li>
 								</c:if>
-<%-- 								<c:if test="${sessionScope.vo.grade==2 }">
-									<li class="price">${vo.price * vo.b_cnt }</li>
+								<c:if test="${sessionScope.vo.grade==2 }">
+									<li class="price">${vo.price * b_cnt}</li>
 								</c:if>
 								<c:if test="${sessionScope.vo.grade==3 }">
-									<li class="price">${vo.dis_price * vo.b_cnt }</li>
-								</c:if> --%>
+									<li class="price">${vo.dis_price * b_cnt }</li>
+								</c:if> 
 							</ul>
 
 					</div>
@@ -90,15 +90,16 @@
 					style="border-top: 1px solid rgba(0, 0, 0, .1); padding: 2vh 0;">
 					<div class="col">총구매금액</div>
 					  <div id="totalPrice" class="col"></div>
-				</div>
+				</div> 
 				
 				<button class="btn" type="submit">구매하기</button>
+				     
 			</div>
 		</div>
 	</div>
 </form>
 
-<script>
+<script type="text/javascript">
 $(document).ready(function() {
     // 모든 장바구니 아이템의 가격을 가져와서 총 구매금액을 계산
     calculateTotalPrice();
