@@ -27,13 +27,17 @@
     </form>
 </div>
 <script>
+
 function cardselect(button) {
     const cardNum = button.getAttribute('data-cardnum'); // 선택된 카드 번호
-    alert('선택된 카드 번호: ' + cardNum + '결제 완료');    
+    if (cardNum) {
+        alert('선택된 카드 번호: ' + cardNum + ' 결제 완료');
+    } else {
+        alert('카드를 선택하지 않았으므로 구매가 취소됩니다.');
+      
+    }
     // 선택 후 구매완료 
-    
     window.close();
-    
 }
 </script>
 </body>
