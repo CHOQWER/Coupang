@@ -1,6 +1,8 @@
 package com.ezen.biz.controller;
 
 import java.io.Console;
+import java.sql.Date;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -74,8 +76,8 @@ public class UsersController {
 	}
 
 	// 회원탈퇴
-	@PostMapping("withdrawal")
-	public String deleteUser(UsersVO vo, String u_id, HttpSession session) {
+	@PostMapping("withdrawal")	
+	public String deleteUser(@RequestParam("id") String id, UsersVO vo, HttpSession session) {
 		service.deleteUser(vo.getU_id());
 		System.out.println("탈퇴");
 		session.invalidate();
@@ -196,33 +198,25 @@ public class UsersController {
 			HttpServletRequest request,BuyVO bvo,ImagesVO ivo) {
 		vo=(UsersVO) session.getAttribute("vo");
 		vo.setU_id(vo.getU_id());
-		List<BuyVO> list=service.deliveryStatus(vo);
-		log.info("list"+list);
-		//메인이미지 가져오기
-	System.out.println("list"+list);
-		ImagesDAO dao=new ImagesDAO();
-		//현재 날짜 가져오기
-//		Calendar nowp = Calendar.getInstance();
-//		int yearp = nowp.get(Calendar.YEAR);
-//		int monthp = nowp.get(Calendar.MONTH) + 1;
-//		int dayp = nowp.get(Calendar.DAY_OF_MONTH) + 4;
-//		String pdate = yearp + "." + monthp + "." + dayp;
-//		model.addAttribute("pdate", pdate);
 		
+		
+		List<BuyVO> list=service.deliveryStatus(vo);
+		System.out.println(list);
+
+		 
+		System.out.println("ccccccccccccccccccccccc");
 		for(BuyVO v:list) {
-			ivo.setPno(v.getPno());
-			List<ImagesVO> thumbnail=iservice.getThumbnailImage(ivo.getPno());
-			log.info("thumbnail :"+thumbnail);
-			model.addAttribute("thumbnail", thumbnail);
-			
-			
+			//v를 이용해서 pno 가저온다
+			int pno=v.getPno();
+			//pno를 가지고 이미지를 뽑아온다
+			String main_img1=iservice.getThumbnailImage(pno);
+			//이미기를 v 에다 setting한단
+			v.setMain_img1(main_img1);		
 			
 		}
 
-		//1.pno가져오기
+		model.addAttribute("list",list);
 		
-		//2.이미지 테이블에서 pno로 메인이미지 가져오기
-				
 		//1일 뒤 도착예정
 		Calendar now = Calendar.getInstance();
 		int year = now.get(Calendar.YEAR);
@@ -232,10 +226,10 @@ public class UsersController {
 		String date = year + "." + month + "." + day;
 		System.out.println("date=" + date);
 		model.addAttribute("date", date);
-
+		
 		model.addAttribute("list", list);
 		return "users/deliveryStatus";
-	}
+	}			
 
 	// 와우 멤버십 탈퇴
 	@RequestMapping("wowsecession")

@@ -64,5 +64,6 @@ public interface ProductService {
 	
 	//////////////////////////////////////////////
 	
+	ProductVO selectBuyOne(int pno);
 
 }

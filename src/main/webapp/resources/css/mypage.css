@@ -84,3 +84,20 @@ a {
 	border: 1px solid #ccc;
 	float: right;
 }
+.insert-deli{
+    float: right;
+    width: 800px;
+    height: 200px;
+}
+.insert-deli input{
+    width: 400px;
+    height: 40px;
+    border: 1px solid #ccc;
+    padding-left: 10px;
+    margin-bottom: 10px;
+    
+}
+.insert-deli input[type="submit"]:hover {
+    background-color: #eee; 
+}
+

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@100&display=swap');
+
 main {
     position: relative;
     margin: 0 auto;    
@@ -7,21 +9,117 @@ main {
 	margin-top: 40px;
 }
 
-.main-grid{
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
-  gap: 100px;
-  margin: 0 auto;
+.main_section2{
+  position: relative;
   width: 1024px;
-  margin-top: 100px;
+  margin: 0 auto;
+  height: auto;
 }
 
-.prodlink:hover {    
-    cursor: pointer;
-    border-radius:12px;
-    border: 1px solid rgb(66, 133, 244);  
-    box-sizing: border-box;   
-	box-shadow: 1px 1px 13px gray;
-	transition:  0.2s  ease-out;    
-    opacity: 0.6;
+h2{
+	padding-bottom: 25px;
+	border-bottom: 3px solid rgb(66,133,244);
+	font-size: 30px;
 }
+
+
+
+ul#cardOver{
+        list-style: none;
+        position: absolute;
+        width: 1300px;
+        padding-left: 0;
+        top: 370%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0.87);
+    }
+
+ ul#cardOver li{
+        position: relative;
+        margin: 20px;
+        width: 270px;
+        height: 320px;
+        display: inline-block;
+        box-shadow: 2px 2px 2px gray;
+        overflow: hidden;
+        margin-right: 30px;
+    }
+
+    ul#cardOver>li>img{
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: 0.3s ease-out;
+    }
+
+    ul#cardOver li>.bg{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        transition: 0.25s ease-out;
+    }
+
+    ul#cardOver li>.view{
+      width: 100%;
+      top: 110%;
+      left: 50%;
+      transform: translate(-50%,  -50%);
+      padding: 15px;
+      position: absolute;
+      box-sizing: border-box;
+      text-align: center;
+      transition: .33s ease;
+      z-index: 2;
+    }
+
+    .view h3{
+      text-align: center;
+      font-size: 27px;
+      margin: 0;
+      color: black;
+      
+  }
+    
+    .view p{
+      font-size: 18px;
+      color: #fff;
+      opacity: 0;
+      transition: .2s ease-out;
+      font-weight: bold;
+
+    }
+
+    .view a{
+      display: inline-block;
+      text-decoration: none;
+      padding: 7px 35px;
+      margin-top: 10px;
+      color: #fff;
+      border: 1px solid #fff;
+      transition: 0.28s;
+      opacity: 0;
+      font-family: 'Rubik', sans-serif;
+    }
+      .view a:hover{
+        background-color: #fff;
+        color: #000;
+    }
+   
+    ul#cardOver li:hover img{
+        top: -10px;
+    }
+    ul#cardOver li:hover .bg{
+        background: rgba(0,0,0, 0.44);
+    }
+    ul#cardOver li:hover .view{
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+ul#cardOver li:hover .view>p, ul#cardOver li:hover .view>a{
+         opacity: 1;
+    }

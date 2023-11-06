@@ -1,10 +1,17 @@
+.table-responsive{	
+	
+}
+
 
 
 .seller-main {	
+	display: flex;	
 	padding-top:30px;
 	height: auto;
 	min-height: 100vh;
 }
+
+.mypage{margin: 0 auto;}
 
 ul {
 	list-style-type: none;
