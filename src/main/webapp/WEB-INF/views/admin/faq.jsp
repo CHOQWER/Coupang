@@ -10,7 +10,7 @@
 <body>
 	<div class="container123">
 		<div id="menu">
-			<ul>
+			<ul id="asd123">
 				<li id="notice-title" class="menu-item" data-type="notice"><h1>
 						<a href="notice">공지사항</a>
 					</h1></li>
@@ -26,7 +26,7 @@
 						class="fa-solid fa-plus"></i>
 					</span>
 				</div>
-				<div class="answer non-active">교교환 및 반품은 미사용 상품에 한하여 가능하며,
+				<div class="answer non-active">교환 및 반품은 미사용 상품에 한하여 가능하며,
 					마이쿠팡을 통해 직접하실 수 있습니다. 상품을 회수한 후 검수 단계에서 문제가 발견되면 고객님께 연락을 드릴 수
 					있습니다. 교환은 구매 상품과 동일한 상품으로만 가능합니다. 색상 및 사이즈 변경을 원하시면 반품 후 재구매를 해 주시기
 					바랍니다.</div>

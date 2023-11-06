@@ -96,14 +96,14 @@
 				</div>
 				
 				<button class="btn" type="submit">구매하기</button>
-				<a href="noticeUpdate?nno=${item.nno}"><button type="button" id="btnBuyCard">카드 결제</button></a>&nbsp;&nbsp; 
+				<button type="button" onclick='openPop("${sessionScope.vo.u_id}")'>카드 선택</button>
 				<button type="button" id="btnBuyKakao" onclick="kakaoBuy()">카카오 간편결제</button></a>&nbsp;&nbsp;
 			</div>
 		</div>
 	</div>
 </form>
 
-<script>
+<script type="text/javascript">
 $(document).ready(function() {
     // 모든 장바구니 아이템의 가격을 가져와서 총 구매금액을 계산
     calculateTotalPrice();
@@ -180,7 +180,7 @@ function updateItemTotal(item, quantityElement, priceElement) {
 
 function openPop(u_id) {
     var popup = window.open('/selectDeli?u_id=' + u_id , '', 'width=600px,height=800px,scrollbars=yes');
-}
+    var popup2 = window.open('/cardselect?u_id=' + u_id , '', 'width=600px,height=800px,scrollbars=yes');
 
 
 function updateAddress(post_no,newAddr1,newAddr2) {
@@ -209,6 +209,12 @@ function updateAddress(post_no,newAddr1,newAddr2) {
         }
     }
 	console.log(selectedItems);*/
+/* 	function openCardListPopup() {
+	    const u_id = '${sessionScope.vo.u_id}'; 
+	    const url = '/cardselect?u_id=' + u_id;
+	    const popup = window.open(url, '카드 선택', 'width=600, height=400');
+	    }
+	 */
 	
 	function modal(){ //결제창 on-off
 		popup.style.display = 'block';

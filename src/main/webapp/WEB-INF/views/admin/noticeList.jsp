@@ -9,8 +9,9 @@
 	crossorigin="anonymous" referrerpolicy="no-referrer" />
 <body>
 		<div class="container123">
+		<div>
 		<div id="menu">
-			<ul>
+			<ul id="asd123">
 				<li id="notice-title" class="menu-item" data-type="notice"><h1>
 						<a href="notice">공지사항</a>
 					</h1></li>
@@ -19,7 +20,8 @@
 					</h1></li>
 			</ul>
 		</div>
-		
+		</div>
+		<div>
 		<c:forEach items="${list}" var="item" varStatus="status">
 			<ul>
 				<li class="faq">
@@ -41,7 +43,7 @@
                       </c:if>
 			</div>
 		</c:forEach>
-
+</div>
 		
 		<div id="top-button">
 			<c:if test="${sessionScope.vo.grade == '0'}">

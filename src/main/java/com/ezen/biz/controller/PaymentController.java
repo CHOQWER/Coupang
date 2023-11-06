@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.ezen.biz.dto.DeliveryVO;
 import com.ezen.biz.dto.PaymentVO;
 import com.ezen.biz.dto.UsersVO;
 import com.ezen.biz.service.PaymentService;
@@ -41,6 +42,12 @@ public class PaymentController {
 		log.info(list);
 		return "payment/payment";
 	}
+	@RequestMapping("cardselect")
+	 public String selectDeli(DeliveryVO vo,@RequestParam String u_id, Model model) {
+		 List<PaymentVO> list= service.cardselect(u_id);
+		 model.addAttribute("list",list);
+		 return "payment/cardselect";
+	 }
 
 	@GetMapping("/insertCard")
 	public String insertCard() {

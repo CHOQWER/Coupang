@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.ezen.biz.dto.DeliveryVO;
 import com.ezen.biz.dto.PaymentVO;
 
 @Repository
@@ -32,5 +33,9 @@ public List<PaymentVO> selectCardList(PaymentVO vo) {
 public int deleteCard(PaymentVO vo) {
 	return mybatis.delete("PaymentDAO.deleteCard",vo);
 	
+}
+
+public List<PaymentVO> selectcard(String u_id) {
+	return mybatis.selectList("PaymentDao.selectDeli", u_id);
 }
 }

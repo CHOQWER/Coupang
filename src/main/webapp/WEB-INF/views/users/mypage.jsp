@@ -25,7 +25,7 @@
 		<div class="top-mypage">
 			<div class="mypage">
 
-				<form action="updateUser" method="post">
+				<form action="usercheck" method="post">
 					<div class="div-update-main">
 						<div class="sec-update-main">
 							<div class="div-table">
@@ -83,13 +83,13 @@
 								</table>
 							</div>							
 							<input type="submit" name="updatepage" id="updatepage"
-								value="회원정보수정">
+								value="회원정보수정" >
 						</div>
 					</div>
 				</form>
 				
 				<div class="btn">					
-						<!-- <a href="payment"><button class="submit-btn">결제등록</button></a> -->
+						<a href="payment"><button class="submit-btn">결제등록</button></a> 
 						<form action="withdrawal" method="post">
 							<input type="hidden" name="u_id" value="${sessionScope.vo.u_id }">							
 							<button class="submit-btn"
