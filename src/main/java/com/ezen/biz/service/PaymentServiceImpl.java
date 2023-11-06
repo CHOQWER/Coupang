@@ -29,6 +29,6 @@ public int deleteCard(PaymentVO vo) {
 }
 @Override
 public List<PaymentVO> cardselect(String u_id) {
-	return dao.selectcard(u_id);
+	return dao.cardselect(u_id);
 }
 }

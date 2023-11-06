@@ -24,4 +24,10 @@
   	<delete id="deleteCard">
   	delete from payment where card_num=#{card_num}
   	</delete>
+  	
+  	<!--u_id로 카드 조회  -->
+ 	<select id="cardselect" resultType="com.ezen.biz.dto.PaymentVO">
+		select card_num from payment 
+  		where u_id=#{u_id} 
+	</select>
 </mapper>

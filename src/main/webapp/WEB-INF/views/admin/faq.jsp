@@ -11,12 +11,12 @@
 	<div class="container123">
 		<div id="menu">
 			<ul id="asd123">
-				<li id="notice-title" class="menu-item" data-type="notice"><h1>
+				<li id="notice-title" class="menu-item" data-type="notice"><h4>
 						<a href="notice">공지사항</a>
-					</h1></li>
-				<li id="faq-title" class="menu-item" data-type="faq2"><h1>
+					</h4></li>
+				<li id="faq-title" class="menu-item" data-type="faq2"><h4>
 						<a href="faq">자주 묻는 질문</a>
-					</h1></li>
+					</h4></li>
 			</ul>
 		</div>
 		<ul>

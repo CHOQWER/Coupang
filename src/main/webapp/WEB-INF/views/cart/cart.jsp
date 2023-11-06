@@ -81,7 +81,7 @@
             <div class="row">
                <div class="col">회원 등급</div>
                <c:if test="${sessionScope.vo.grade==1 }">
-               <div class="col text-right">일반회원</div>
+               <div class="col text-right">와우회원</div>
                </c:if>
                <c:if test="${sessionScope.vo.grade==2 }">
                <div class="col text-right">일반회원</div>

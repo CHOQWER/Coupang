@@ -40,11 +40,17 @@
 								<li class="col"><a href="ProductView?pno=${vo.pno}&cate_name=${cate_name}&subcate_name=${subcate_name}">${vo.pname}</a></li> 
 								
 								<li class="col"><input type="number" value="${vo.c_cnt}"></li>
+								<c:if test="${sessionScope.vo.grade==1 }">
+									<li class="col">${vo.dis_price}</li>
+								</c:if>
 								<c:if test="${sessionScope.vo.grade==2 }">
 									<li class="col">${vo.price}</li>
 								</c:if>
 								<c:if test="${sessionScope.vo.grade==3 }">
 									<li class="col">${vo.dis_price}</li>
+								</c:if>
+								<c:if test="${sessionScope.vo.grade==1 }">
+									<li class="price">${vo.dis_price * vo.c_cnt }</li>
 								</c:if>
 								<c:if test="${sessionScope.vo.grade==2 }">
 									<li class="price">${vo.price * vo.c_cnt }</li>
@@ -73,6 +79,9 @@
 				<hr>
 				<div class="row">
 					<div class="col">회원 등급</div>
+					<c:if test="${sessionScope.vo.grade==1 }">
+					<div class="col text-right">와우회원</div>
+					</c:if>
 					<c:if test="${sessionScope.vo.grade==2 }">
 					<div class="col text-right">일반회원</div>
 					</c:if>
@@ -184,8 +193,13 @@ function updateItemTotal(item, quantityElement, priceElement) {
 
 function openPop(u_id) {
     var popup = window.open('/selectDeli?u_id=' + u_id , '', 'width=600px,height=800px,scrollbars=yes');
-    var popup2 = window.open('/cardselect?u_id=' + u_id , '', 'width=600px,height=800px,scrollbars=yes');
+}
 
+function cardBuy() {
+	var u_id = '${sessionScope.vo.u_id}';
+	var popup2 = window.open('/cardselect?u_id=' + u_id , '', 'width=600px,height=500px,scrollbars=yes');
+	document.location.href="redirect:deliveryStatus";
+}
 
 function updateAddress(post_no,newAddr1,newAddr2) {
     // 메인 창의 주소 정보 업데이트

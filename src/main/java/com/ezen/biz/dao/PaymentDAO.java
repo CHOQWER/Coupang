@@ -35,7 +35,7 @@ public int deleteCard(PaymentVO vo) {
 	
 }
 
-public List<PaymentVO> selectcard(String u_id) {
-	return mybatis.selectList("PaymentDao.selectDeli", u_id);
+public List<PaymentVO> cardselect(String u_id) {
+	return mybatis.selectList("PaymentDAO.cardselect", u_id);
 }
 }

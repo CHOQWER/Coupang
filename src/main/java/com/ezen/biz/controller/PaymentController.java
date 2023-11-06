@@ -42,10 +42,11 @@ public class PaymentController {
 		log.info(list);
 		return "payment/payment";
 	}
-	@RequestMapping("cardselect")
-	 public String selectDeli(DeliveryVO vo,@RequestParam String u_id, Model model) {
+	@RequestMapping("/cardselect")
+	 public String selectcard(PaymentVO vo,@RequestParam String u_id, Model model) {
 		 List<PaymentVO> list= service.cardselect(u_id);
 		 model.addAttribute("list",list);
+		 log.info(list);
 		 return "payment/cardselect";
 	 }
 
