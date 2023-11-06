@@ -113,10 +113,20 @@ public class ProductTest {
 	@Test
 	public void paging() {
 		Criteria cri=new Criteria();
-		cri.setSearchword("애플");
+		cri.setCa_no(1);
 		int result=dao.selectRowCountPaging(cri);
 		log.info("result"+result);
 	}
+	
+	@Test
+	public void pagingList() {
+		Criteria cri=new Criteria();
+		cri.setCa_no(1);
+		log.info("cri"+cri);
+		List<ProductVO> result=dao.productListPaging(cri);
+		log.info("result"+result);
+	}
+	
 	
 	@Test
 	public void salesCate() {
@@ -124,7 +134,17 @@ public class ProductTest {
 		log.info(list);
 	}
 	
-	
+	@Test
+	public void pageTest() {
+		Criteria cri=new Criteria();
+		cri.setSca_no(0);
+		cri.setCa_no(5);
+		cri.setPageNum(6);
+		List<ProductVO> list=dao.productListPaging(cri);
+		log.info("list"+list);
+		int result=dao.selectRowCountPaging(cri);
+		log.info("result"+result);
+	}
 
 }
 
