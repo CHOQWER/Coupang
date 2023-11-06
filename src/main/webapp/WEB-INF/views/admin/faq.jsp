@@ -8,17 +8,18 @@
 	integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
 	crossorigin="anonymous" referrerpolicy="no-referrer" />
 <body>
+	<div id="menu">
+		<ul id="asd123">
+			<li id="notice-title" class="menu-item" data-type="notice">
+				<h3><a href="notice">공지사항</a></h3>
+			</li>
+			<li id="faq-title" class="menu-item" data-type="faq2">
+				<h3><a href="faq">자주 묻는 질문</a></h3>
+			</li>
+		</ul>
+	</div>
+		
 	<div class="container123">
-		<div id="menu">
-			<ul id="asd123">
-				<li id="notice-title" class="menu-item" data-type="notice"><h4>
-						<a href="notice">공지사항</a>
-					</h4></li>
-				<li id="faq-title" class="menu-item" data-type="faq2"><h4>
-						<a href="faq">자주 묻는 질문</a>
-					</h4></li>
-			</ul>
-		</div>
 		<ul>
 			<li class="faq">
 				<div class="question">
@@ -83,7 +84,7 @@ for (const item of faqs) {
         answer.classList.toggle("non-active"); 
         const i = icon.querySelector("i"); 
         i.classList.toggle("fa-xmark"); 
-        i.classList.toggle("fa-plus"); 
+        i.classList.toggle("fa-plus");
     }); 
 } 
     </script>

@@ -1,112 +1,110 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <link rel="stylesheet" href="/resources/css/cart.css">
 <%@ include file="/WEB-INF/views/include/header.jsp"%>
 
 
 <form action="cartbuy" method="post">
-   <div class="card">
-     <%--  <div class="col">${sessionScope.vo.u_id}</div> --%>
-      <div class="row">
-         <div class="col-md-8 cart">
-            <div class="title">
-               <div class="row">
-                  <div class="col">
-                     <h4>
-                        <b>장바구니</b>
-                     </h4>
-                  </div>
-               </div>
-            </div>
+	<div class="card">		
+		<div class="row">
+		<div class="back-to-shop">
+			<a href="javascript:history.back()">&leftarrow;&nbsp;&nbsp;뒤로가기</a><span
+				class="text-muted"></span>
+		</div>
+			<div class="col-md-8 cart">
+				<div class="title">
+					<div class="row">
+						<div class="col">
+							<h4>
+								<b>장바구니</b>
+							</h4>
+						</div>
+					</div>
+				</div>
 
-            <div class="row border-top border-bottom">
-               <div class="col-2">
-                  <c:forEach items="${list}" var="vo">
-                  
-                     <input type="checkbox" name="deleteCart" id="deleteCart"
-                        value="${vo.cno}">
-                        <input type="hidden" id='result'/>
-                        <input type="hidden" name="count" id="count"
-                        value="${vo.cno}">
-                        
-                     <ul class="col123" data-col="${vo.price * 1}">
-                        <li><img src="imgDown?imgName=${vo.main_img1}"
-                           style="width: 78px; height: 78px;"></li>
-                            <%-- <input type="checkbox" id="pno" class="pno" name="pno" value="${BL.pno}"></input> --%>
-                        <li class="col"><a href="ProductView?pno=${vo.pno}&cate_name=${cate_name}&subcate_name=${subcate_name}">${vo.pname}</a></li>
-                        
-                        <li class="col"><input type="number" value="${vo.c_cnt}" id="c_cnt" class="c_cnt" name="c_cnt"
-                        oninput="if (this.value < 1) this.value = 1;"></li>
-                        <c:if test="${sessionScope.vo.grade==1 }">
-                           <li class="col">상품 할인가: ${vo.dis_price}</li>
-                        </c:if>
-                        <c:if test="${sessionScope.vo.grade==2 }">
-                           <li class="col">상품 할인가: ${vo.price}</li>
-                        </c:if>
-                        <c:if test="${sessionScope.vo.grade==3 }">
-                           <li class="col">상품 할인가: ${vo.dis_price}</li>
-                        </c:if>
-                        <c:if test="${sessionScope.vo.grade==1 }">
-                           <li class="price">상품 구매가: ${vo.dis_price * vo.c_cnt }</li>
-                        </c:if>
-                        <c:if test="${sessionScope.vo.grade==2 }">
-                           <li class="price">상품 구매가: ${vo.price * vo.c_cnt }</li>
-                        </c:if>
-                        <c:if test="${sessionScope.vo.grade==3 }">
-                           <li class="price">상품 구매가: ${vo.dis_price * vo.c_cnt }</li>
-                        </c:if>
+				<div class="row border-top border-bottom">
+					<div class="col-2">
+						<c:forEach items="${list}" var="vo">
 
-                        <%-- <li><button type="b" name="cno" onclick= value="${vo.cno}"></button></li> --%>
+							<input type="checkbox" name="deleteCart" id="deleteCart"
+								value="${vo.cno}">
+							<input type="hidden" id='result' />
+							<input type="hidden" name="count" id="count" value="${vo.cno}">
 
-                     </ul>
+							<ul class="col123" data-col="${vo.price * 1}">
+								<li><img src="imgDown?imgName=${vo.main_img1}"
+									style="width: 78px; height: 78px;"></li>
+								<%-- <input type="checkbox" id="pno" class="pno" name="pno" value="${BL.pno}"></input> --%>
+								<li class="col"><a
+									href="ProductView?pno=${vo.pno}&cate_name=${cate_name}&subcate_name=${subcate_name}">${vo.pname}</a></li>
 
-                  </c:forEach>
+								<li class="col"><input type="number" value="${vo.c_cnt}"
+									id="c_cnt" class="c_cnt" name="c_cnt"
+									oninput="if (this.value < 1) this.value = 1;"></li>
+								<c:if test="${sessionScope.vo.grade==1 }">
+									<li class="col">상품 할인가: ${vo.dis_price}</li>
+								</c:if>
+								<c:if test="${sessionScope.vo.grade==2 }">
+									<li class="col">상품 할인가: ${vo.price}</li>
+								</c:if>
+								<c:if test="${sessionScope.vo.grade==3 }">
+									<li class="col">상품 할인가: ${vo.dis_price}</li>
+								</c:if>
+								<c:if test="${sessionScope.vo.grade==1 }">
+									<li class="price">상품 구매가: ${vo.dis_price * vo.c_cnt }</li>
+								</c:if>
+								<c:if test="${sessionScope.vo.grade==2 }">
+									<li class="price">상품 구매가: ${vo.price * vo.c_cnt }</li>
+								</c:if>
+								<c:if test="${sessionScope.vo.grade==3 }">
+									<li class="price">상품 구매가: ${vo.dis_price * vo.c_cnt }</li>
+								</c:if>
 
-               </div>
-            </div>
+								<%-- <li><button type="b" name="cno" onclick= value="${vo.cno}"></button></li> --%>
 
-            <div class="back-to-shop">
-               <a href="javascript:history.back()">&leftarrow;&nbsp;&nbsp;뒤로가기</a><span
-                  class="text-muted"></span>
-            </div>
-            <button type="button" onclick="deleteCart2()">선택된 상품 삭제</button>
+							</ul>
 
-         </div>
-         <div class="col-md-4 summary">
-            <div>
-               <h5>
-                  <b>Summary</b>
-               </h5>
-            </div>
-            <hr>
-            <div class="row">
-               <div class="col">회원 등급</div>
-               <c:if test="${sessionScope.vo.grade==1 }">
-               <div class="col text-right">판매자</div>
-               </c:if>
-               <c:if test="${sessionScope.vo.grade==2 }">
-               <div class="col text-right">일반회원</div>
-               </c:if>
-               <c:if test="${sessionScope.vo.grade==3 }">
-               <div class="col text-right">와우회원</div>
-               </c:if>
-            </div>
-            <hr>
-            <div class="row"
-               style="border-top: 1px solid rgba(0, 0, 0, .1); padding: 2vh 0;">
-               <div class="col">총구매금액</div>
-                 <div id="totalPrice" class="col"></div>
-            </div>
-<%--             <c:if test="${selectedElementsCnt>0" }>
+						</c:forEach>
+
+					</div>
+				</div>				
+				<button type="button" onclick="deleteCart2()">선택된 상품 삭제</button>				
+			</div>
+			<div class="col-md-4 summary">
+				<div>
+					<h5>
+						<b>Summary</b>
+					</h5>
+				</div>
+				<hr>
+				<div class="row">
+					<div class="col">회원 등급</div>
+					<c:if test="${sessionScope.vo.grade==1 }">
+						<div class="col text-right">와우회원</div>
+					</c:if>
+					<c:if test="${sessionScope.vo.grade==2 }">
+						<div class="col text-right">일반회원</div>
+					</c:if>
+					<c:if test="${sessionScope.vo.grade==3 }">
+						<div class="col text-right">와우회원</div>
+					</c:if>
+				</div>
+				<hr>
+				<div class="row"
+					style="border-top: 1px solid rgba(0, 0, 0, .1); padding: 2vh 0;">
+					<div class="col">총구매금액</div>
+					<div id="totalPrice" class="col"></div>
+				</div>
+				<%--             <c:if test="${selectedElementsCnt>0" }>
             <button class="btn" type="submit" >구매하기</button>
        		 </c:if> --%>
-	
-         <button class="btn" type="submit" >구매하기</button>
 
-         </div>
-      </div>
-   </div>
+				<button class="btn" type="submit">구매하기</button>
+
+			</div>
+		</div>
+	</div>
 </form>
 
 <script type="text/javascript">
