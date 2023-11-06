@@ -4,8 +4,8 @@ html{
     /* background-color: #f2f2f2;  ,body */
 }
 
- #wrap {
-    min-height: 75%; 
+#wrap { 	
+    min-height: 70vh;  
     position: relative;
     width: 100%;    
 } 
@@ -55,8 +55,8 @@ footer ul {
     
    
 }
-	.footer-layer1 {
-	margin-top: 10px;
+.footer-layer1 {
+   margin-top: 10px;
 }
 .footer_new .footer-layer2 {
     width: 1020px;
@@ -129,5 +129,4 @@ footer ul {
     position: relative    
 
 }
-
 

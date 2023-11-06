@@ -27,7 +27,7 @@
 
 <%@ include file="/WEB-INF/views/include/header.jsp"%>
 
-
+<div class="main-content">
 <main class="main_section1">
 	<div class="slide slide_wrap">
 		<div class="slide_item item1">
@@ -71,6 +71,7 @@
 	</c:forEach>
 </ul>
 </section>
+</div>
 
 
 
