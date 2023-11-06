@@ -16,6 +16,13 @@ public class BuyVO {
 	private String addr1,addr2;
 	private Date b_regdate;
 	private String sta;
+	private String main_img1;
+
 	
-	private boolean refundsta;//반품 가능 여부 
+
+	private Date refundsta;//반품 가능 여부 
+
+
+
+
 }

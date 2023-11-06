@@ -5,7 +5,7 @@
 <mapper namespace="UsersDAO">
 
   	<select id="deliveryStatus" resultType="buy">
-  		select * from buy 
+  		select buy.*,b_regdate+2 as refundsta from buy 
   		where u_id=#{u_id,jdbcType=NVARCHAR} order by b_regdate desc 		  	  	
   	</select>
   	

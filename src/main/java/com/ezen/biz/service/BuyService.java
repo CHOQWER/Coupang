@@ -35,7 +35,7 @@ public interface BuyService {
 
 	void refundBuyProduct(int bno);
 	
-	ProductVO selectBuyOne(int pno);
+
 	// 카테고리별 매출 확인
 	List<SalesVO> salesCate(String u_id);
 	

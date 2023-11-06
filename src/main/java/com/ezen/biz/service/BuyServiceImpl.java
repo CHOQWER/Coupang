@@ -94,11 +94,7 @@ public class BuyServiceImpl implements BuyService {
 		
 	}
 
-	@Override
-	public ProductVO selectBuyOne(int pno) {
-		
-		return dao.selectBuyOne(pno);
-	}
+
 
 
 	public List<SalesVO> salesCate(String u_id) {

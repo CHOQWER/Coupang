@@ -53,19 +53,24 @@
 												<c:if test="${BL.sta=='n'}">
 													판매자 구매 승인취소!
 												</c:if>
-											</div>											
-											<c:forEach items="${thumbnail}" var="th">
+											</div>		
+											
+																				
+											
 												<div class="td-left-2"></div>
 												<div class="td-left-image">
-													<img src="imgDown?imgName=${th.main_img1}">
+													<img src="imgDown?imgName=${BL.main_img1}">
 												</div>
-											</c:forEach>
+											
+											
+											
 											<div class="td-div-content">
 												<div class="td-left-content"><a href="ProductView?pno=${BL.pno}&cate_name=${cate_name}&subcate_name=${subcate_name}">${BL.pname}</a></div>																								
 												<c:if test="${sessionScope.vo.grade==1 }">
 												<div class="td-left-price-cnt">
 													구매금액 ${BL.dis_price*BL.b_cnt}&nbsp;원&nbsp;·&nbsp;${BL.b_cnt}&nbsp;개
-																										
+														
+																								
 												</div>
 												</c:if>
 												<c:if test="${sessionScope.vo.grade==3 }">
@@ -83,7 +88,10 @@
 										<td class="td-right">
 										<a href="ProductView1?pno=${BL.pno}"><button type="button">리뷰작성</button></a>
 										<a href="insertCart?pno=${BL.pno}"><button type="button">장바구니 담기</button></a> 
-										<c:if test="${pdate}<${date}">
+										<c:if test="${BL.refundsta > BL.b_regdate}">
+										<button type="button" >반품 신청기한이 지났습니다.</button></td>
+										</c:if>
+										<c:if test="${BL.refundsta <= BL.b_regdate}">
 										<a href="refundBuyProduct?bno=${BL.bno}"><button type="button" >반품신청</button></a></td>
 										</c:if>
 									</tr>									

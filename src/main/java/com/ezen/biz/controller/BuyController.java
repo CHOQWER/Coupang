@@ -72,25 +72,41 @@ public class BuyController {
 	 
 	 @RequestMapping(value ="buyOne")
 	 public String insertBuyOne(BuyVO vo,UsersVO v,HttpSession session,
-			   ProductVO pvo,@RequestParam int pno,Model model, @RequestParam int c_cnt) {
-//		 	System.out.println("b_cnt="+b_cnt);
+			   ProductVO pvo,Model model,@RequestParam int pno, @RequestParam int c_cnt) {
+		 	System.out.println("=================buyOne===========");
+			System.out.println("c_cnt="+c_cnt);
+		 	System.out.println("pno="+pno);
+		 	
 			v=(UsersVO) session.getAttribute("vo");
 			vo.setU_id(v.getU_id());
 			vo.setB_cnt(c_cnt);
 			vo.setAddr1(v.getU_addr1());
 			vo.setAddr2(v.getU_addr2());
 			vo.setPost_no(v.getU_post_no());
-			//pno로 정보 갖고오기
-			pvo=service.selectBuyOne(pno);
+			
+			vo.setB_cnt(c_cnt);
+			//product pvo에 필수 값 세팅하고 정보 갖고오기
+			pvo=pservice.selectBuyOne(pno);
 			model.addAttribute("vo",pvo);
-	
+			
+			//c_cnt 는 다른 모델에 값 세팅하기
+			model.addAttribute("c_cnt",c_cnt);
+
 		  return "buy/buyOne";
 	 }
 	 @RequestMapping("insertBuyOne")
-	 public String insertBuyOne(ProductVO pvo,@RequestParam int b_cnt) {
+	 public String insertBuyOne(BuyVO vo,UsersVO v,ProductVO pvo,@RequestParam int b_cnt,HttpSession session) {
 		 System.out.println(pvo);
+		 System.out.println(vo); 
 		 System.out.println("b_cnt="+b_cnt);
 		 System.out.println("------------------aaa");
+		 
+		v=(UsersVO) session.getAttribute("vo");
+		vo.setU_id(v.getU_id());
+		
+		 vo.setB_cnt(b_cnt);
+		 service.insertBuy(vo);
+		 
 		 return "redirect:deliveryStatus";
 	 }
 	 
@@ -121,7 +137,7 @@ public class BuyController {
 	
 	 		}
 
-		return "users/deliveryStatus";	
+		return "redirect:deliveryStatus";	
 	 	}
 	 
 	 

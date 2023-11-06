@@ -60,8 +60,6 @@ public class BuyDAO {
 	public void refundBuyProduct(int bno) {
 		mybatis.delete("BuyDAO.refundBuyProduct",bno);
 	}
-	public ProductVO selectBuyOne(int pno) {
-		return mybatis.selectOne("BuyDAO.selectBuyOne",pno);
-	}
+
 	
 }
