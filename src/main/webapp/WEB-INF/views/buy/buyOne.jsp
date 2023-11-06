@@ -10,7 +10,7 @@
 
 <form action="insertBuyOne" method="post" id="insertBuyOne">
 	<div class="card">
-		<div class="col">${sessionScope.vo.u_id}</div>
+		<%-- <div class="col">${sessionScope.vo.u_id}</div> --%>
 		<div class="row">
 			 <div class="col-md-8 cart">
 				<div class="title">
@@ -36,7 +36,7 @@
 							<ul class="col123" data-col="${vo.price * 1}">
 								<li class="col"><a href="ProductView?pno=${vo.pno}&cate_name=${cate_name}&subcate_name=${subcate_name}">${vo.pname}</a></li> 
 								
-								<li class="col"><input type="number" name="b_cnt" value="${c_cnt}"></li>
+								<li class="col"><input type="number" name="b_cnt" value="${c_cnt}"  min="0"></li>
 								<c:if test="${sessionScope.vo.grade==2 }">
 									<li class="col">${vo.price}</li>
 								</c:if>
@@ -93,7 +93,7 @@
 					style="border-top: 1px solid rgba(0, 0, 0, .1); padding: 2vh 0;">
 					<div class="col">총구매금액</div>
 					  <div id="totalPrice" class="col"></div>
-				</div>
+				</div> 
 				
 				<div class=btn3>
 				<button class="btn2" type="button" id="btnBuyCard" onclick="cardBuy()">카드 결제</button>&nbsp;&nbsp; 
@@ -104,7 +104,7 @@
 	</div>
 </form>
 
-<script>
+<script type="text/javascript">
 $(document).ready(function() {
     // 모든 장바구니 아이템의 가격을 가져와서 총 구매금액을 계산
     calculateTotalPrice();

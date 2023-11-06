@@ -121,12 +121,12 @@
 }
 
 .prod-buy {
-	border: 1px solid black;
+
 	padding: 10px;
 	background-color: #fff;
 	box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 	width: 500px;
-	height: 600px;
+	height: 650px;
 }
 
 .prod-header {
@@ -134,21 +134,23 @@
 }
 
 .prod-company {
-	font-size: 14px;
+	font-size: 16px;
 	font-weight: bold;
 	color: #888;
+	margin-top: 10px;
 }
 
 .prod-name {
-	font-size: 20px;
+	font-size: 1.5rem;
 	font-weight: bold;
 	color: #333;
-	margin-top: 5px;
+	margin: 20px 0;
 }
 
 .prod-review {
 	font-size: 14px;
-	color: blue
+	color: blue;
+	margin: 20px 0px;
 }
 
 .prod-review span {
@@ -161,40 +163,50 @@
 }
 
 .origin-price {
-	font-size: 18px;
+	font-size: 25px;
 	color: #888;
 	text-decoration: line-through;
+	margin-top: 20px;
 }
 
 .sale-price {
-	font-size: 24px;
+	font-size: 35px;
 	font-weight: bold;
-	color: red;
+	color: #cb1400;
 }
 
 .prod-color {
 	margin-bottom: 10px;
+	margin-top: 25px;
+ 
+  	height: 10%;
+  	font-size: 1.2rem;
+  
+  	line-height: 3;
+  	width: auto;
 }
 
 .color-select a {
 	display: inline-block;
 	padding: 5px 10px;
 	margin-right: 10px;
-	border: 1px solid;
+	border: 1px solid #888;
 	color: black;
 	text-decoration: none;
+	cursor: pointer;
 }
 
 .prod-delivery {
-	font-size: 14px;
+	font-size: 16px;
 	color: #888;
-	margin: 50px;
+	margin: 30px 0;
 }
 
 .prod-buy-footer {
 	display: flex;
 	align-items: center;
 }
+
 
 .tab-title {
 	list-style: none;
@@ -232,8 +244,9 @@
 }
 
 .content-info {
-	font-size: 16px;
+	font-size: 20px;
 	color: #333;
+	margin-bottom: 50px;
 }
 
 .detail-img {
@@ -301,10 +314,18 @@
 
 .detail-content {
 	height: auto;
+	margin-left: 10%;
+
 }
 
 .hide {
 	display: none;
+}
+#c_cnt{
+	width: 70px; 
+	height: 50px; 
+	text-align: center; 
+	font-size: 1.5rem;
 }
 
 .btn_open {
@@ -328,4 +349,24 @@
 	justify-content: center;
 }
 
+#r_title{
+	width: 700px;
+  	height: 40px;
+  	color: #888;
+}
+#content{
+	margin-top:20px;
+	width: 700px;
+  	height: 150px;
+  	color: #888;
+}
+.btn-outline-success{
+  float: right;
+  margin-top: -70px;
+  width: 150px;
+  height: 50px;
+  font-size: 1.7rem;
+  font-weight: bold;
+	
+}
 /* 더보기 버튼 CSS 시작 끝 */

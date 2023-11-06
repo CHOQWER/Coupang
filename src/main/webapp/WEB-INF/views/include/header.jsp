@@ -33,6 +33,11 @@
 		}
 		
 	}
+    function searchOnEnter(event) {
+        if (event.key === "Enter") {
+            search();
+        }
+    }
 
 </script>
 </head>
@@ -107,9 +112,9 @@
 								<option value="${cate.get('no')}" data-cate-name="${cate.get('name')}">${cate.get('name')}</option>
 							</c:forEach>
 						</select> 
-						<input id="searchWord" type="text" placeholder="찾고 싶은 상품을 검색해보세요!">
+						<input id="searchWord" type="text" placeholder="찾고 싶은 상품을 검색해보세요!" onkeydown="searchOnEnter(event)">
 							<c:set var="encodedsearchWord" value="$('#searchWord').val()" /> 
-						<img src="resources/img/search.png" alt="검색" onclick="search()">
+						<img src="resources/img/search.png" alt="검색" onclick="search()" style="width: 25px;">
 
 				</div>
 

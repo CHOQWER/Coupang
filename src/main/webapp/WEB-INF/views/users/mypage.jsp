@@ -24,7 +24,6 @@
 	<div id="mypage-section">
 		<div class="top-mypage">
 			<div class="mypage">
-
 				<form action="usercheck" method="post">
 					<div class="div-update-main">
 						<div class="sec-update-main">
@@ -81,37 +80,38 @@
 										<td>${sessionScope.vo.u_regdate }</td>
 									</tr>
 								</table>
-							
-							<button type="submit" name="updateUser" id="updateUser">회원정보수정</button>
-								</div>
-						</div>
-					</div>
+							</div>
+							<div class="updatebutton">
+								<div class="updatebutton-1">
+									<button type="submit" name="updateUser" id="updateUser">회원정보수정</button>
 				</form>
-				
-				<div class="btn">					
-						<a href="payment"><button class="submit-btn">결제등록</button></a> 
-						<form action="withdrawal" method="post">
-							<input type="hidden" name="u_id" value="${sessionScope.vo.u_id }">							
-							<button class="submit-btn"
-								onclick="deleteUser(${sessionScope.vo.u_id})">회원탈퇴</button>
-					</form>					
-				</div>
+				<!-- <form action="withdrawal" method="post"> -->
+				<button class="withdrawal" onclick="deleteUser()">회원탈퇴</button>
+				<%-- <input type="hidden" name="u_id" value="${sessionScope.vo.u_id }"> --%>
+				<!-- </form> -->
 			</div>
-
 		</div>
 	</div>
 </div>
 
+</div>
+</div>
+</div>
+</div>
 
 
+<!-- <a href="payment"><button class="submit-btn">결제등록</button></ -->
+<!-- </div> -->
 
-<!-- </div>  -->
-<script>
-function deleteUser(id) {
-	 var confirmation = confirm("정말 탈퇴 하시겠습니까?");
-	    if (confirmation) {
-	        window.location.href = "withdrawal?id=" + id;
-	    }
+<script type="text/javascript">
+	function deleteUser() {
+		var confirmation = confirm("정말 탈퇴 하시겠습니까?");
+		if (confirmation) {			
+			location.href = "withdrawal";
+		} else {
+			alert("메인으로 돌아갑니다.");
+			history.back();
+		}
 	}
 </script>
 <%@ include file="/WEB-INF/views/include/footer.jsp"%>
