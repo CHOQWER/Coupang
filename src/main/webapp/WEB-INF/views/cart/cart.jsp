@@ -35,7 +35,8 @@
                             <%-- <input type="checkbox" id="pno" class="pno" name="pno" value="${BL.pno}"></input> --%>
                         <li class="col"><a href="ProductView?pno=${vo.pno}&cate_name=${cate_name}&subcate_name=${subcate_name}">${vo.pname}</a></li>
                         
-                        <li class="col"><input type="number" value="${vo.c_cnt}" id="c_cnt" class="c_cnt" name="c_cnt"></li>
+                        <li class="col"><input type="number" value="${vo.c_cnt}" id="c_cnt" class="c_cnt" name="c_cnt"
+                        oninput="if (this.value < 1) this.value = 1;"></li>
                         <c:if test="${sessionScope.vo.grade==2 }">
                            <li class="col">상품 할인가: ${vo.price}</li>
                         </c:if>

@@ -39,7 +39,7 @@
 							<ul class="col123" data-col="${vo.price * 1}">
 								<li class="col"><a href="ProductView?pno=${vo.pno}&cate_name=${cate_name}&subcate_name=${subcate_name}">${vo.pname}</a></li> 
 								
-								<li class="col"><input type="number" value="${vo.c_cnt}"></li>
+								<li class="col"><input type="number" value="${vo.c_cnt}" oninput="if (this.value < 1) this.value = 1;"></li>
 								<c:if test="${sessionScope.vo.grade==2 }">
 									<li class="col">${vo.price}</li>
 								</c:if>
