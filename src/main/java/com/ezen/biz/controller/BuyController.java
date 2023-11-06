@@ -110,13 +110,13 @@ public class BuyController {
 		 return "redirect:deliveryStatus";
 	 }
 	 
-	 	@RequestMapping(value ="insertBuy")
+	@PostMapping("/insertBuy")
 	   public String insertBuy(BuyVO vo, HttpSession session, Model model,UsersVO v,CartVO cvo,
 			   ProductVO pvo,@RequestParam int[] pno,@RequestParam int[] cno,@RequestParam String[] pname,
 			   @RequestParam String[] main_img1,@RequestParam int[] c_cnt,
 			   @RequestParam int[] price,@RequestParam int[] dis_price) {
 	 		
-	 		
+	 		System.out.println("qweqweqweqweqweqweqwe");
 			v=(UsersVO) session.getAttribute("vo");
 			vo.setU_id(v.getU_id());
 	 		
