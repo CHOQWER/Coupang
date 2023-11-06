@@ -40,7 +40,7 @@
 						<input type="hidden" name="u_id" value="${sessionScope.vo.u_id }">
 					</c:if>
 				</form>
-				<form action="wowsecession" method="post">
+				<form action="wowsecession" method="post" id="wowsecession">
 					<c:if test="${sessionScope.vo.grade==3 }">
 						<p>등 급 : 와우회원</p>
 						<input type="submit" value="와우회원탈퇴" onclick="wowDel()">
