@@ -112,26 +112,25 @@
 
                <!-- qty 만큼 선택하기..?? -->
                
-               <input type="number" name="c_cnt" id="c_cnt" value="1" placeholder="1" min="1" max="${pvo.qty}" />         
+            <input type="number" name="c_cnt" id="c_cnt"  class="c_cnt" value="1" placeholder="1" min="1" max="${pvo.qty}" />         
                <button onclick="cartSubmit()">장바구니</button>    
-               <a href="buyOne?pno=${pvo.pno}" onclick="getCnt()"> <button type="button">바로구매</button> </a>           
+               <button type="button" ><a href="#" onclick="setQuantityAndSubmit()">바로구매</a> </button> 
+                 	<input type="hidden" name="quantity" id="quantityInput" value="1" /> 
+                    <input type="hidden" name="pno" id="pno" value="${pvo.pno}" />
+<%--           <a href="buyOne?pno=${pvo.pno}" onclick="getCnt()"> <button type="button">바로구매</button> </a>    --%>  
                
             </div>
             <!-- <input type="hidden" name=""> -->
 					<!-- qty 만큼 선택하기..?? -->
 
-					<input type="number" name="c_cnt" id="c_cnt" value="1"
-						placeholder="1" min="1" max="${pvo.qty}" />
-					<button onclick="cartSubmit()">장바구니</button>
-					<button onclick="buySubmit()">바로구매</button>
-				</div>
-				<!-- <input type="hidden" name=""> -->
 
 			</div>
 
 		</div>
 
-	</form>
+
+	
+	
 
 
       <div class="content-section"></div>
@@ -234,11 +233,26 @@
 
 
 <script type="text/javascript">
+
+
 function getCnt(){
 	   let frm=$("#frmDetail");
-	   frm.attr("action","buyOne?b_cnt=document.getElementById('b_cnt')&pno=${pvo.pno}");   
+	   frm.attr("action","");   
 	   frm.submit();
 	}
+	
+function setQuantityAndSubmit() {
+    let quantity = document.getElementById("c_cnt").value;
+
+    document.getElementById("quantityInput").value = quantity;
+    var URL = "buyOne?pno= "+${pvo.pno} +"&quantity=" + quantity
+   
+    
+	   let frm=$("#frmDetail");
+	   frm.attr("action",URL);   
+	   frm.submit(); 
+}
+
 	
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@ 더보기 버튼 시작 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
 document.addEventListener('DOMContentLoaded', function(){ //DOM 생성 후 이벤트 리스너 등록
@@ -295,16 +309,16 @@ document.querySelector('.btn_close').addEventListener('click', function(e){
 
 
 
-function cartSubmit(){
+ function cartSubmit(){
    let frm=$("#frmDetail");
    frm.attr("action","insertCart");   
    frm.submit();
-}
-function buySubmit() {
+} 
+/* function buySubmit() {
       let frm=$("#frmDetail");
       frm.attr("action","buyOne");   
       frm.submit();
-}
+} */
 
 /*==========================================*/
 $(document).ready(function() {

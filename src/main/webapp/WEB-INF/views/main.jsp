@@ -4,11 +4,9 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <link rel="stylesheet" href="../resources/css/main.css">
 <link rel="stylesheet" href="../resources/css/banner.css">
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-	crossorigin="anonymous">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@100&display=swap" rel="stylesheet"> 
 <link rel="stylesheet" href="/resources/star-rating/css/star-rating.css"
 	media="all" type="text/css" />
 <link rel="stylesheet"
@@ -26,6 +24,7 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap"
 	rel="stylesheet">
+
 <%@ include file="/WEB-INF/views/include/header.jsp"%>
 
 
@@ -54,6 +53,7 @@
 <section class="main_section2">
 <ul id="cardOver">
 	<h2 style="margin: 60px;">오늘의 발견</h2>
+	
 	<c:forEach items="${plist}" var="pvo" varStatus="idx">
 		<li><img src="imgDown?imgName=${pvo.main_img1}" width="300"
 			height="280" alt="card1">

@@ -23,8 +23,8 @@
 		delete from images where pno=#{pno}
 	</delete>
 	<!-- pno로 이미지 가져오기-->
-	<select id="getThumbnailImage" resultType="images">
-		select * from images where pno=#{pno}
+	<select id="getThumbnailImage" resultType="java.lang.String">
+		select main_img1 from images where pno=#{pno}
 	</select>
 	
 		<select id="pullIno" resultType="images">

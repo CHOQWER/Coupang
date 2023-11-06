@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@100&display=swap');
+
 main {
     position: relative;
     margin: 0 auto;    
@@ -13,6 +15,14 @@ main {
   margin: 0 auto;
   height: auto;
 }
+
+h2{
+	padding-bottom: 25px;
+	border-bottom: 3px solid rgb(66,133,244);
+	font-size: 30px;
+}
+
+
 
 ul#cardOver{
         list-style: none;
