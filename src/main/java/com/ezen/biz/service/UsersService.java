@@ -9,7 +9,7 @@ public interface UsersService {
 	
 	List<BuyVO> deliveryStatus(UsersVO vo);
 
-	UsersVO selectMember(String u_id);
+	UsersVO selectMember(String id);
 	
 	void insertMember(UsersVO vo);
 	
@@ -19,7 +19,7 @@ public interface UsersService {
 	
 	void updateUser(UsersVO vo);
 	
-	void deleteUser(String u_id);
+	void deleteUser(String id);
 	
 	void wowupdate(UsersVO vo);
 	
