@@ -88,10 +88,10 @@
 										<a href="ProductView1?pno=${BL.pno}"><button type="button">리뷰작성</button></a>
 										<a href="insertCart?pno=${BL.pno}"><button type="button">장바구니 담기</button></a> 
 										<c:if test="${BL.refundsta > BL.b_regdate}">
-										<button type="button" >반품 신청기한이 지났습니다.</button></td>
+										<a href="refundBuyProduct?bno=${BL.bno}"><button type="button" >반품신청 가능</button></a></td>
 										</c:if>
 										<c:if test="${BL.refundsta <= BL.b_regdate}">
-										<a href="refundBuyProduct?bno=${BL.bno}"><button type="button" >반품신청</button></a></td>
+										<button type="button" >반품 신청기한이 지났습니다.</button></td>
 										</c:if>
 									</tr>									
 								</tbody>

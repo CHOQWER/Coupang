@@ -100,6 +100,8 @@
 </form>
 
 <script type="text/javascript">
+
+
 $(document).ready(function() {
     // 모든 장바구니 아이템의 가격을 가져와서 총 구매금액을 계산
     calculateTotalPrice();
