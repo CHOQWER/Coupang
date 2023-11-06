@@ -41,10 +41,10 @@
 									<li class="col">${vo.dis_price}</li>
 								</c:if>
 								<c:if test="${sessionScope.vo.grade==2 }">
-									<li class="price">${vo.price * b_cnt}</li>
+									<li class="price">${vo.price * c_cnt}</li>
 								</c:if>
 								<c:if test="${sessionScope.vo.grade==3 }">
-									<li class="price">${vo.dis_price * b_cnt }</li>
+									<li class="price">${vo.dis_price * c_cnt }</li>
 								</c:if> 
 							</ul>
 
