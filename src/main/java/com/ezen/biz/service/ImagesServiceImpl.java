@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ezen.biz.dao.ImagesDAO;
+import com.ezen.biz.dto.BuyVO;
 import com.ezen.biz.dto.ImagesVO;
 @Service
 public class ImagesServiceImpl implements ImagesService {
@@ -23,7 +24,7 @@ public class ImagesServiceImpl implements ImagesService {
 		
 	}
 	@Override
-	public List<ImagesVO> getThumbnailImage(int pno) {
+	public String getThumbnailImage(int pno) {
 		return dao.getThumbnailImage(pno);
 	}
 

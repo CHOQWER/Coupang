@@ -81,9 +81,9 @@
 										<td>${sessionScope.vo.u_regdate }</td>
 									</tr>
 								</table>
-							</div>							
-							<input type="submit" name="updatepage" id="updatepage"
-								value="회원정보수정" >
+							
+							<button type="submit" name="updateUser" id="updateUser">회원정보수정</button>
+								</div>
 						</div>
 					</div>
 				</form>
@@ -94,7 +94,7 @@
 							<input type="hidden" name="u_id" value="${sessionScope.vo.u_id }">							
 							<button class="submit-btn"
 								onclick="deleteUser(${sessionScope.vo.u_id})">회원탈퇴</button>
-						</form>					
+					</form>					
 				</div>
 			</div>
 
@@ -102,10 +102,7 @@
 	</div>
 </div>
 
-
-
-
-<!-- </div>  -->
+<!--  </div> -->  
 <script>
 function deleteUser(id) {
 	 var confirmation = confirm("정말 탈퇴 하시겠습니까?");

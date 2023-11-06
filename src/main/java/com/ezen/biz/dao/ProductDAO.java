@@ -106,8 +106,10 @@ public class ProductDAO {
 		public int selectRowCountPaging(Criteria cri) {
 			return mybatis.selectOne("ProductDAO.selectRowCountPaging", cri);
 		}
-
-
+		
+		public ProductVO selectBuyOne(int pno) {
+			return mybatis.selectOne("ProductDAO.selectBuyOne",pno);
+		}
 
 
 }

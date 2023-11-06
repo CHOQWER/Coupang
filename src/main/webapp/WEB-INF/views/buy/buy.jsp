@@ -3,6 +3,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <link rel="stylesheet" href="/resources/css/cart.css">
 <%@ include file="/WEB-INF/views/include/header.jsp"%>
+<script type="text/javascript"
+	src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 
 
 <form action="insertBuy" method="post">
@@ -78,11 +82,11 @@
 				</div>
 				<hr>      
                     <p>배송지</p>
-                    <div id="post_no" >${sessionScope.vo.u_post_no}</div>
+                    <div id="post_no" >우편번호 : ${sessionScope.vo.u_post_no}</div>
                     <input type="hidden" name="post_no" id="h_post_no" value=${sessionScope.vo.u_post_no }>
-                    <div id="addr1">${sessionScope.vo.u_addr1}</div>
+                    <div id="addr1">주소 : ${sessionScope.vo.u_addr1}</div>
                     <input type="hidden" name="addr1" id="h_addr1" value=${sessionScope.vo.u_addr1 }>
-                     <div id="addr2">${sessionScope.vo.u_addr2}</div>
+                     <div id="addr2">상세주소 : ${sessionScope.vo.u_addr2}</div>
                     <input type="hidden" name="addr2" id="h_addr2" value=${sessionScope.vo.u_addr2 }>
                     
                     
@@ -94,10 +98,10 @@
 					<div class="col">총구매금액</div>
 					  <div id="totalPrice" class="col"></div>
 				</div>
-				
-				<button class="btn" type="submit">구매하기</button>
-				<button type="button" onclick='openPop("${sessionScope.vo.u_id}")'>카드 선택</button>
-				<button type="button" id="btnBuyKakao" onclick="kakaoBuy()">카카오 간편결제</button></a>&nbsp;&nbsp;
+				<div class=btn3>
+				<button class="btn2" type="button" id="btnBuyCard" onclick="cardBuy()">카드 결제</button></a>&nbsp;&nbsp; 
+				<button class="btn2" type="button" id="btnBuyKakao" onclick="kakaoBuy()">카카오 간편결제</button>&nbsp;&nbsp;
+				</div>
 			</div>
 		</div>
 	</div>
@@ -226,7 +230,7 @@ function updateAddress(post_no,newAddr1,newAddr2) {
 	function kakaoBuy() {
 		var confirmation = confirm("결제하시겠습니까?");
 		var u_id = '${sessionScope.vo.u_id}';
-		const amount = document.querySelector('.col');
+		var totalPrice = document.getElementById('totalPrice').textContent
 		if (confirmation) {
 			console.log($('#u_id'));
 			var IMP = window.IMP;
@@ -234,10 +238,9 @@ function updateAddress(post_no,newAddr1,newAddr2) {
 			IMP.request_pay({		
 				pg : 'kakaopay',
 				pay_method : 'card',
-				merchant_uid : 'merchant_' + new Date().getTime(),   //주문번호
-				name : '${sessionScope.vo.u_name}',                                //상품명
-				amount : $('.col').val(),                   //가격
-				
+				merchant_uid : 'merchant_' + new Date().getTime(),
+				name : '${sessionScope.vo.u_name}',
+				amount : totalPrice,/*$('.amountValue').val(),*/
 				buyer_email : 'u_email',
 				buyer_name : 'u_name',
 				buyer_tel : 'u_mobile',
@@ -252,12 +255,12 @@ function updateAddress(post_no,newAddr1,newAddr2) {
 		            
 		            $.ajax({
 		            	type : 'post',
-		            	url : '/membership',
-		            	data : {"ID" : u_id},
+		            	url : '/insertBuy',
+		            	data : {"ID" : u_id,"amount" : totalPrice},
 		            	dataType : 'text',
 		            	success : function(result) { // 결과 성공 콜백함수
 		                console.log(result);
-		                window.location.href = '/membership';
+		                window.location.href = '/insertBuy';
 			            },
 			            error : function(request, status, error) { // 결과 에러 콜백함수
 			                console.log(error)
@@ -267,24 +270,18 @@ function updateAddress(post_no,newAddr1,newAddr2) {
 		        }else{
 		        	var msg = "결제에 실패하였습니다."
 	        		rsp.error_msg;
-					location.href="/";
+					location.href="cartbuy";
 		        }
-				alert(msg);
-				document.location.href="redirect:membership";
+				document.location.href="redirect:deliveryStatus";
 			});
 		} else {
 			
 		}
 	}
 	
-	function wowDel() {
-		var confirmation = confirm("탈퇴 하시겠습니까?");
-	    
-	    if (confirmation) {
-	        window.location.href = "redirect:membership";
-	    }
+	function kakaoBuy() {
+		
 	}
-
 	
 </script>
 
