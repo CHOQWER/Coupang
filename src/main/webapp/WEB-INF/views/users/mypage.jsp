@@ -85,9 +85,9 @@
 								<div class="updatebutton-1">
 									<button type="submit" name="updateUser" id="updateUser">회원정보수정</button>
 				</form>
-				<form action="withdrawal" method="post">
-					<button class="withdrawal" onclick="deleteUser()">회원탈퇴</button>
-					<input type="hidden" name="u_id" value="${sessionScope.vo.u_id }">
+				<<form action="withdrawal" method="post"> 
+				<button class="withdrawal" onclick="deleteUser()">회원탈퇴</button>
+				<input type="hidden" name="u_id" value="${sessionScope.vo.u_id }"> 
 				</form>
 			</div>
 		</div>
