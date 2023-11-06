@@ -1,8 +1,6 @@
 package com.ezen.biz.controller;
 
-import java.io.Console;
-import java.sql.Date;
-import java.util.ArrayList;
+
 import java.util.Calendar;
 import java.util.List;
 
@@ -31,7 +29,6 @@ import lombok.extern.log4j.Log4j;
 
 @Controller
 @Log4j
-//@RequestMapping()
 public class UsersController {
 
 	@Autowired
@@ -76,8 +73,8 @@ public class UsersController {
 	}
 
 	// 회원탈퇴
-	@PostMapping("withdrawal")	
-	public String deleteUser(@RequestParam("id") String id, UsersVO vo, HttpSession session) {
+	@RequestMapping("withdrawal")	
+	public String deleteUser(@RequestParam("u_id") String u_id, UsersVO vo, HttpSession session) {
 		service.deleteUser(vo.getU_id());
 		System.out.println("탈퇴");
 		session.invalidate();
@@ -240,5 +237,13 @@ public class UsersController {
 		return "redirect:membership";
 
 	}
+	
+	//결제카드등록페이지
+	@RequestMapping("selectCreditCard")
+	public String selectCreditCard() {
+		
+		return "users/selectCreditCard";
+	}
+	
 	
 }

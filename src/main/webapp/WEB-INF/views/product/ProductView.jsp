@@ -341,7 +341,7 @@ function saveStar(){
    console.log("saveStar")
    let content=$("#content").val().trim();
    let r_title=$("#r_title").val().trim();
-   let r_photo=$("#r_photo").val().trim();
+   
    let score=$("#score").val();
    
    if(score==0){
@@ -368,7 +368,7 @@ function saveStar(){
             "score":score,
             "r_title":r_title,
             "r_content":content,
-            "r_photo":r_photo,
+       
             };
    console.log(param);
    doAjaxHtml(url, param, saveStarAfter);

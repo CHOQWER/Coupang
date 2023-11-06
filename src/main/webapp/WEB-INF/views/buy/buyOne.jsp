@@ -3,9 +3,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <link rel="stylesheet" href="/resources/css/cart.css">
 <%@ include file="/WEB-INF/views/include/header.jsp"%>
+<script type="text/javascript"
+	src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 
-
-<form action="insertBuyOne" method="post">
+<form action="insertBuyOne" method="post" id="insertBuyOne">
 	<div class="card">
 		<%-- <div class="col">${sessionScope.vo.u_id}</div> --%>
 		<div class="row">
@@ -30,10 +33,13 @@
 
 				<div class="row border-top border-bottom">
 					<div class="col-2">			
-							<ul class="col123">
+							<ul class="col123" data-col="${vo.price * 1}">
 								<li class="col"><a href="ProductView?pno=${vo.pno}&cate_name=${cate_name}&subcate_name=${subcate_name}">${vo.pname}</a></li> 
 								
-								<li class="col"><input type="number" name="b_cnt" value="${c_cnt}"  min="0"></li>
+								<li class="col"><input type="number" name="b_cnt" value="${c_cnt}">min="0" oninput="if (this.value < 1) this.value = 1;"></1></li>
+								<c:if test="${sessionScope.vo.grade==1 }">
+									<li class="col">${vo.dis_price}</li>
+								</c:if>
 								<c:if test="${sessionScope.vo.grade==2 }">
 									<li class="col">${vo.price}</li>
 								</c:if>
@@ -67,6 +73,9 @@
 				<div class="row">
 					<div class="col">회원 등급</div>
 					<c:if test="${sessionScope.vo.grade==2 }">
+					<div class="col text-right">와우회원</div>
+					</c:if>
+					<c:if test="${sessionScope.vo.grade==2 }">
 					<div class="col text-right">일반회원</div>
 					</c:if>
 					<c:if test="${sessionScope.vo.grade==3 }">
@@ -92,8 +101,10 @@
 					  <div id="totalPrice" class="col"></div>
 				</div> 
 				
-				<button class="btn" type="submit">구매하기</button>
-				     
+				<div class=btn3>
+				<button class="btn2" type="button" id="btnBuyCard" onclick="cardBuy()">카드 결제</button>&nbsp;&nbsp; 
+				<button class="btn2" type="button" id="btnBuyKakao" onclick="kakaoBuy()">카카오 간편결제</button>&nbsp;&nbsp;
+				</div>
 			</div>
 		</div>
 	</div>
@@ -130,6 +141,7 @@ function calculateTotalPrice() {
             	 totalPrice += price;
             }
         }
+        total=totalPrice;
     });
 
     // 총 구매금액을 "totalPrice" 엘리먼트에 표시
@@ -166,14 +178,15 @@ document.querySelectorAll('.col123').forEach(function(item) {
 function updateItemTotal(item, quantityElement, priceElement) {
     const quantity = parseInt(quantityElement.value, 10);
     const price = parseInt(priceElement.textContent.trim().replace(/[^\d]/g, ''), 10); // 가격에서 숫자만 추출
+    const col = parseInt(item.getAttribute('data-col'), 10); // data-col 속성을 읽어옴
 	console.log('quantity',quantity);
 	console.log('price',price);
-    if (!isNaN(quantity) && !isNaN(price)) {
-        const total = quantity * price;
-        item.querySelector('.price').textContent = numberWithCommas(total) + '원';
-        calculateTotalPrice(); // 전체 총 구매금액 업데이트
-        console.log('total',total);
-    }
+	  if (!isNaN(quantity) && !isNaN(price) && !isNaN(col)) {
+	        const total = quantity * col;
+	        item.querySelector('.price').textContent = numberWithCommas(total) + '원';
+	        calculateTotalPrice(); // 전체 총 구매금액 업데이트
+	        console.log('total', total);
+	    }
 }
 
 function openPop(u_id) {
@@ -196,6 +209,47 @@ function updateAddress(post_no,newAddr1,newAddr2) {
     document.getElementById("h_addr2").value=newAddr2;
     
   }
+  
+function kakaoBuy() {
+	var confirmation = confirm("결제하시겠습니까?");
+	var u_id = '${sessionScope.vo.u_id}';
+	//var totalPrice = document.getElementById('totalPrice').textContent
+	console.log("u_id="+u_id);
+	console.log("total="+total);
+	if (confirmation) {
+		console.log($('#u_id'));
+		var IMP = window.IMP;
+		IMP.init('imp23810830');
+		IMP.request_pay({		
+			pg : 'kakaopay',
+			pay_method : 'card',
+			merchant_uid : 'merchant_' + new Date().getTime(),
+			name : '${sessionScope.vo.u_name}',
+			amount : total,
+			buyer_email : 'u_email',
+			buyer_name : 'u_name',
+			buyer_tel : 'u_mobile',
+			buyer_addr : 'u_addr1',
+			buyer_postcode : 'u_post_no',
+		},function(rsp){
+			console.log("rsp="+rsp);
+			if(rsp.success){
+				var msg = "결제가 완료되었습니다";
+				alert(msg);
+				$("#insertBuyOne").submit();
+	            
+	        }else{
+	        	var URL = "redirect:buyOne?pno= "+${pvo.pno} +"&quantity=" + quantity
+	        	var msg = "결제에 실패하였습니다."
+        		rsp.error_msg;
+				location.href=URL;
+	        }
+			//document.location.href="deliveryStatus";
+		});
+	} else {
+		
+	}
+}
 
 
 	
