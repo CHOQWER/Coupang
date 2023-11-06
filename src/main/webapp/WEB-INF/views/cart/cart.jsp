@@ -36,11 +36,17 @@
                         <li class="col"><a href="ProductView?pno=${vo.pno}&cate_name=${cate_name}&subcate_name=${subcate_name}">${vo.pname}</a></li>
                         
                         <li class="col"><input type="number" value="${vo.c_cnt}" id="c_cnt" class="c_cnt" name="c_cnt"></li>
+                        <c:if test="${sessionScope.vo.grade==1 }">
+                           <li class="col">상품 할인가: ${vo.dis_price}</li>
+                        </c:if>
                         <c:if test="${sessionScope.vo.grade==2 }">
                            <li class="col">상품 할인가: ${vo.price}</li>
                         </c:if>
                         <c:if test="${sessionScope.vo.grade==3 }">
                            <li class="col">상품 할인가: ${vo.dis_price}</li>
+                        </c:if>
+                        <c:if test="${sessionScope.vo.grade==1 }">
+                           <li class="price">상품 구매가: ${vo.dis_price * vo.c_cnt }</li>
                         </c:if>
                         <c:if test="${sessionScope.vo.grade==2 }">
                            <li class="price">상품 구매가: ${vo.price * vo.c_cnt }</li>
