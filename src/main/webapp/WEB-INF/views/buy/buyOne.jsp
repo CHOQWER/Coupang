@@ -202,7 +202,7 @@ function cardBuy() {
 	 var checkPopupInterval = setInterval(function() {
 	        if (popup2.closed) {
 	            // 팝업이 닫히면 insertBuy 실행
-	            $("#insertBuy").submit();
+	            $("#insertBuyOne").submit();
 	            clearInterval(checkPopupInterval); // 인터벌 중지
 	        }
 	    }, 1000); // 1초마다 팝업 상태 확인
@@ -274,7 +274,7 @@ function updateAddress(post_no,newAddr1,newAddr2) {
 				if(rsp.success){
 					var msg = "결제가 완료되었습니다";
 					alert(msg);
-					$("#insertBuy").submit();
+					$("#insertBuyOne").submit();
 		            
 		        }else{
 		        	var msg = "결제에 실패하였습니다."
