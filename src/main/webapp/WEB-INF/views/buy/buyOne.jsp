@@ -46,6 +46,9 @@
 								<c:if test="${sessionScope.vo.grade==3 }">
 									<li class="col">${vo.dis_price}</li>
 								</c:if>
+								<c:if test="${sessionScope.vo.grade==1 }">
+									<li class="price">${vo.dis_price * c_cnt }</li>
+								</c:if> 
 								<c:if test="${sessionScope.vo.grade==2 }">
 									<li class="price">${vo.price * c_cnt}</li>
 								</c:if>
@@ -111,8 +114,7 @@
 </form>
 
 <script type="text/javascript">
-
-
+let total=0;
 $(document).ready(function() {
     // 모든 장바구니 아이템의 가격을 가져와서 총 구매금액을 계산
     calculateTotalPrice();
