@@ -36,7 +36,7 @@
 							<ul class="col123" data-col="${vo.price * 1}">
 								<li class="col"><a href="ProductView?pno=${vo.pno}&cate_name=${cate_name}&subcate_name=${subcate_name}">${vo.pname}</a></li> 
 								
-								<li class="col"><input type="number" name="b_cnt" value="${c_cnt}">min="0" oninput="if (this.value < 1) this.value = 1;"></1></li>
+								<li class="col"><input type="number" name="b_cnt" value="${c_cnt}" min="0" oninput="if (this.value < 1) this.value = 1;"></1></li>
 								<c:if test="${sessionScope.vo.grade==1 }">
 									<li class="col">${vo.dis_price}</li>
 								</c:if>
@@ -46,12 +46,12 @@
 								<c:if test="${sessionScope.vo.grade==3 }">
 									<li class="col">${vo.dis_price}</li>
 								</c:if>
- 								<c:if test="${sessionScope.vo.grade==2 }">
-									<li class="price">${vo.price * c_cnt }</li>
+								<c:if test="${sessionScope.vo.grade==2 }">
+									<li class="price">${vo.price * c_cnt}</li>
 								</c:if>
 								<c:if test="${sessionScope.vo.grade==3 }">
 									<li class="price">${vo.dis_price * c_cnt }</li>
-								</c:if>
+								</c:if> 
 							</ul>
 
 					</div>
@@ -111,6 +111,8 @@
 </form>
 
 <script type="text/javascript">
+
+
 $(document).ready(function() {
     // 모든 장바구니 아이템의 가격을 가져와서 총 구매금액을 계산
     calculateTotalPrice();
