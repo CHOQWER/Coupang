@@ -1,25 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100&display=swap');
 
-.div-update-main {
-    display: flex;
-    margin: 0 auto;
-    width: 920px;
-    height: 910px;
-    /* background-color: cornflowerblue; */
-    position: relative;
-    border: 1px solid #a19f9f;
-    margin-top: 50px;
+ .div-update-main {
+	margin-left: -20px;
+	margin-top:-10px;
     
-}
+} 
 
 .sec-update-main {
-    width: 880px;
-    height: 730px;
+    width: 780px;
+    height: 600px;
     background-color: white;
     justify-content: center;
-    position: absolute;
-    top: 6%;
-    left: 2%;
+    
+    
 }
 
 .div-table {
@@ -31,7 +24,7 @@
     font-size: 14px;
     margin: 0 auto;
     border-collapse: collapse;
-    width: 800px;
+    width: 750px;
     height: 500px;
     border-right: none;
     border-left: none;
@@ -74,8 +67,9 @@ input{
     border-radius: 5px;
 }
 #submit-btn{
-    display: flex;            
+	float:right;            
     margin: 0 auto;
     margin-top: 30px;
     width: 60px;
 }
+
