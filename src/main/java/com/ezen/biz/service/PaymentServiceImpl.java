@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ezen.biz.dao.PaymentDAO;
+import com.ezen.biz.dto.DeliveryVO;
 import com.ezen.biz.dto.PaymentVO;
 @Service
 public class PaymentServiceImpl implements PaymentService {
@@ -25,5 +26,9 @@ public List<PaymentVO> selectCardList(PaymentVO vo) {
 }
 public int deleteCard(PaymentVO vo) {	
 	return dao.deleteCard(vo);
+}
+@Override
+public List<PaymentVO> cardselect(String u_id) {
+	return dao.cardselect(u_id);
 }
 }

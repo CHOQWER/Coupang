@@ -18,6 +18,7 @@
 		<typeAlias alias="review" type="com.ezen.biz.dto.ReviewVO" />
 		<typeAlias alias="cart" type="com.ezen.biz.dto.CartVO" />
 		<typeAlias alias="notice" type="com.ezen.biz.dto.NoticeVO" />
+		<typeAlias alias="payment" type="com.ezen.biz.dto.PaymentVO" />
 		
   	</typeAliases>
   	

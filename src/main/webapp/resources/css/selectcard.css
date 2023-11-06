@@ -1,0 +1,86 @@
+@charset "UTF-8";
+
+/*등록 카드*/
+.cardlist {
+    width: 400px; /* Changed here */
+    background:white;
+    box-shadow:2px 2px 2px 2px black ;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%); 
+      
+  }  
+  
+  .head h1 {
+    padding: 5px 20px;
+    margin: 15px;
+    margin-bottom:1px;
+    color:black;
+    font-weight: 1000;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .head{
+     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+  }
+  ul{
+    padding-left:10px;
+    margin-right:5px;
+    width:80%;/* changed here */
+    list-style: none;
+  }
+  ul li {
+    padding: 10px;
+    margin-left:15px;
+    /* display: grid; */
+    grid-template-columns: 8fr 1fr;
+    font-size: 14px;
+    cursor: pointer;
+     position:relative;
+     transition:0.25s;
+     left:0px;
+  }
+  
+  ul li i {
+    font-size: 20px;
+    font-weight: bold;
+  
+  }
+  .head hr {
+    width: 20%;
+    margin-left:32px;
+    border: 1px solid #0B5AA2;
+  }
+  /* all additional CSS */
+  ul li:before{
+    opacity:0.05;
+    position:absolute;
+    left:-20px;
+    top:50%;
+    transform: translateY(-50%);
+    transition:0.25s;
+    font-size:30px;
+    font-weight:bolder;
+  }
+  
+  ul li:nth-child(1):before{
+    content:'1';
+  }
+  ul li:nth-child(2):before{
+    content:'2';
+  }ul li:nth-child(3):before{
+    content:'3';
+  }ul li:nth-child(4):before{
+    content:'4';
+  }
+  
+  ul li:hover{
+    background-color: #fafafa;
+    left:30px;
+    font-weight: bolder;
+  }
+  ul li:hover:before{
+    color:#000;
+    opacity:0.3;
+  }

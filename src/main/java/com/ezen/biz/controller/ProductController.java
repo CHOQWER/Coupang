@@ -56,22 +56,20 @@ public class ProductController {
 			cri.setCompany(null);
 		}
 		
-		log.info("메인 크리"+cri);
-	
 		int tot = service.selectRowCountPaging(cri);
-		log.info("전체 행의 갯수"+tot);
+		
 		PageMaker pMaker = new PageMaker(cri, tot);
 		boolean next = pMaker.nextPageScore();
 
 		int cnt = service.selectRowCountPaging(cri);
 		PageMaker maker = new PageMaker(cri, cnt);
-		log.info("cnt 갯수"+cnt);
+		
 		model.addAttribute("pmaker", maker);
 		
 
 		List<ProductVO> list = service.productListPaging(cri);
 		model.addAttribute("list", list);
-		log.info("메인 리스트"+list);
+	
 
 		List<ProductVO> clist =null;
 		model.addAttribute("listtype", listtype);
@@ -159,6 +157,8 @@ public class ProductController {
 		model.addAttribute("map", map);
 		model.addAttribute("cate_name", cate_name);
 		model.addAttribute("subcate_name", subcate_name);
+	
+		
 		return "product/ProductView";
 	}
 
