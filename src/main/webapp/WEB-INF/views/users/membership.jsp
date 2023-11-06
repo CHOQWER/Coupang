@@ -21,8 +21,7 @@
 			<li id="side-menu-list"><a href="mypage">개인정보확인/수정</a></li>
 			<li id="side-menu-list"><a href="#">결제수단 관리</a></li>
 			<li id="side-menu-list"><a href="#">주문목록/배송조회</a></li>
-			<li id="side-menu-list"><a href="membership">와우 멤버십</a></li>
-			<li id="side-menu-list"><a href="#">리뷰관리</a></li>
+			<li id="side-menu-list"><a href="membership">와우 멤버십</a></li>			
 			<li id="side-menu-list"><a href="delivery?u_id=${sessionScope.vo.u_id}">배송지 관리</a></li>
 		</ul>
 	</div>
@@ -60,6 +59,13 @@
 <%@ include file="/WEB-INF/views/include/footer.jsp"%>
 
 <script>
+
+	function modal(){ //결제창 on-off
+		popup.style.display = 'block';
+	}
+	closebtn.addEventListener('click', function(){
+		popup.style.display = 'none';
+	});
 			 
 	function wowbtn() {
 		var confirmation = confirm("결제하시겠습니까?");
@@ -104,7 +110,7 @@
 		        }else{
 		        	var msg = "결제에 실패하였습니다."
 	        		rsp.error_msg;
-					location.href="/";
+					location.href="membership";
 		        }
 				alert(msg);
 				document.location.href="redirect:membership";

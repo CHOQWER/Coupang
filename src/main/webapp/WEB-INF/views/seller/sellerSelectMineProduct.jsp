@@ -43,7 +43,7 @@ function openPop(pno) {
 <body>
 	<form action="sellerSelectMineProduct" method="post" id="productForm">
 		<div class="seller-main">
-			<!-- <div class="mypage"> -->
+			 <div class="mypage"> 
 			<div class="content">
 				<!-- <div class="container"> -->
 				<h1>등록제품목록</h1>
@@ -93,7 +93,6 @@ function openPop(pno) {
 											type="currency" currencySymbol="">
 										</fmt:formatNumber></td>
 									<td>${fn:substring(Content,0,45)}...</td>
-
 									<td>${BL.color}</td>
 									<td>${BL.qty}</td>
 								</tr>
@@ -103,7 +102,7 @@ function openPop(pno) {
 				</div>
 				<!--  </div> -->
 			</div>
-			<!-- </div> -->
+			 </div> 
 		</div>
 
 

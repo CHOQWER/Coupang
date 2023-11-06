@@ -96,6 +96,8 @@
 				</div>
 				
 				<button class="btn" type="submit">구매하기</button>
+				<a href="noticeUpdate?nno=${item.nno}"><button type="button" id="btnBuyCard">카드 결제</button></a>&nbsp;&nbsp; 
+				<button type="button" id="btnBuyKakao" onclick="kakaoBuy()">카카오 간편결제</button></a>&nbsp;&nbsp;
 			</div>
 		</div>
 	</div>
@@ -177,7 +179,7 @@ function updateItemTotal(item, quantityElement, priceElement) {
 }
 
 function openPop(u_id) {
-    var popup = window.open('/selectDeli?u_id=' + u_id , '', 'width=700px,height=800px,scrollbars=yes');
+    var popup = window.open('/selectDeli?u_id=' + u_id , '', 'width=600px,height=800px,scrollbars=yes');
 }
 
 
@@ -207,6 +209,75 @@ function updateAddress(post_no,newAddr1,newAddr2) {
         }
     }
 	console.log(selectedItems);*/
+	
+	function modal(){ //결제창 on-off
+		popup.style.display = 'block';
+	}
+	closebtn.addEventListener('click', function(){
+		popup.style.display = 'none';
+	});
+	
+	function kakaoBuy() {
+		var confirmation = confirm("결제하시겠습니까?");
+		var u_id = '${sessionScope.vo.u_id}';
+		const amount = document.querySelector('.col');
+		if (confirmation) {
+			console.log($('#u_id'));
+			var IMP = window.IMP;
+			IMP.init('imp23810830');
+			IMP.request_pay({		
+				pg : 'kakaopay',
+				pay_method : 'card',
+				merchant_uid : 'merchant_' + new Date().getTime(),   //주문번호
+				name : '${sessionScope.vo.u_name}',                                //상품명
+				amount : $('.col').val(),                   //가격
+				
+				buyer_email : 'u_email',
+				buyer_name : 'u_name',
+				buyer_tel : 'u_mobile',
+				buyer_addr : 'u_addr1',
+				buyer_postcode : 'u_post_no',
+			},function(rsp){
+				console.log("rsp="+rsp);
+				if(rsp.success){
+					var msg = "결제가 완료되었습니다";
+					alert(msg);
+					console.log(rsp);
+		            
+		            $.ajax({
+		            	type : 'post',
+		            	url : '/membership',
+		            	data : {"ID" : u_id},
+		            	dataType : 'text',
+		            	success : function(result) { // 결과 성공 콜백함수
+		                console.log(result);
+		                window.location.href = '/membership';
+			            },
+			            error : function(request, status, error) { // 결과 에러 콜백함수
+			                console.log(error)
+			            }
+		            });
+		            
+		        }else{
+		        	var msg = "결제에 실패하였습니다."
+	        		rsp.error_msg;
+					location.href="/";
+		        }
+				alert(msg);
+				document.location.href="redirect:membership";
+			});
+		} else {
+			
+		}
+	}
+	
+	function wowDel() {
+		var confirmation = confirm("탈퇴 하시겠습니까?");
+	    
+	    if (confirmation) {
+	        window.location.href = "redirect:membership";
+	    }
+	}
 
 	
 </script>
