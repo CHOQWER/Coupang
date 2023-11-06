@@ -113,7 +113,6 @@
 	        		rsp.error_msg;
 					location.href="membership";
 		        }
-				alert(msg);
 				document.location.href="redirect:membership";
 			});
 		} else {
