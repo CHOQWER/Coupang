@@ -112,10 +112,23 @@
 			</div>
 
 			<!-- EX)와우 회원이면 무료배송+1일 뒤 도착예정, 일반 회원이면 배송비3000원+5일뒤도착예정 구현하기 -->
-			<div class="prod-delivery">
-				<p>무료배송</p>
-				<p>모래(토) 10/21 도착 예정</p>
-			</div>
+			  <c:if test="${sessionScope.vo.grade==3}">
+			  <div class="prod-delivery">
+                    <p>무료배송</p>
+                    <p id="delivery-date"></p>
+                </div>
+              </c:if>
+              
+              <c:if test="${sessionScope.vo.grade!=3}">
+			  <div class="prod-delivery">
+                    <p>배송비 3000원</p>
+                    <p id="delivery-date-nomal"></p>
+                </div>
+              </c:if>
+              
+              
+              
+              
 
 			<div class="prod-buy-footer">
 				<input type="number" name="c_cnt" id="c_cnt" class="c_cnt" value="1"
@@ -124,12 +137,12 @@
 
 
 				<button onclick="cartSubmit()" class="btn btn-outline-primary"
-					style="width: 170px; height: 80px; margin-left: 20px; font-size: 2rem; font-weight: bold;">
+					style="width: 170px; height: 60px; margin-left: 20px; font-size: 2rem; font-weight: bold;">
 					장바구니</button>
 				<button type="button" style="background: none; border: none;">
 					<a href="#" onclick="setQuantityAndSubmit()"
 						class="btn btn-primary"
-						style="width: 170px; height: 80px; margin-left: 20px; font-size: 2rem; font-weight: bold; line-height: 2.4;">바로구매</a>
+						style="width: 170px; height: 60px; margin-left: 20px; font-size: 2rem; font-weight: bold; line-height: 1.8;">바로구매</a>
 				</button>
 
 
@@ -223,6 +236,25 @@
 
 
 <script type="text/javascript">
+const currentDate = new Date();
+
+// 1일을 더한 날짜 계산
+currentDate.setDate(currentDate.getDate() + 1);
+
+// 날짜 형식 지정 (예: "월 일, 연도")
+const options = {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+const formattedDate = currentDate.toLocaleDateString('ko-KR', options);
+
+// 계산된 날짜를 페이지에 표시
+document.getElementById('delivery-date').textContent = formattedDate + ' 도착 예정';
+
+//3일을 더한 날짜 계산
+currentDate.setDate(currentDate.getDate() + 3);
+
+//계산된 날짜를 페이지에 표시
+document.getElementById('delivery-date-nomal').textContent = formattedDate + ' 도착 예정';
+
+//////////////////////////////////////////////////////////////////////////////////////
 
 
 function getCnt(){
