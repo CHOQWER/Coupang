@@ -108,41 +108,6 @@
 </form>
 
 <script type="text/javascript">
-/* 
-function getCheckedCnt()  {
-	  // 선택된 목록 가져오기
-	  const query = 'input[name="deleteCart"]:checked';
-	  const selectedElements = 
-	      document.querySelectorAll(query);
-	  
-	  // 선택된 목록의 갯수 세기
-	  const selectedElementsCnt =
-	        selectedElements.length;
-	  
-	  // 출력
-	  document.getElementById('result').innerText
-	    = selectedElementsCnt;
-	  
-	  if(selectedElementsCnt==0){
-		  console.log('적어도 한개 이상 구매해주시기 바랍니다.')
-		  
-	  }  */
-
-/* 	  $('#deleteCart').click(function(){
-			var checked = $('#allCk').is(':checked');
-			
-			if(!checked){
-				$('#btn').prop('checked',false);
-				console.log('적어도 한개 이상 구매해주시기 바랍니다.');
-			}
-		}); */
-	  
-	 /*  var msg='적어도 한개 이상 구매해주시기 바랍니다.'
-	 	alert(msg);
-}
-	 */
-
-
 
 $(document).ready(function() {
     // 모든 장바구니 아이템의 가격을 가져와서 총 구매금액을 계산
