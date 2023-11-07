@@ -6,7 +6,7 @@
 <body>
 <div id="main">
 <div id="first">
-<form action=noticeUpdate?nno=${nno}" method="post">
+<form action="noticeUpdate?nno=${nno}" method="post">
 <h1>공지등록</h1>
 <h4>Please fill all entries.</h4>
 <label>제목 </label>
@@ -17,7 +17,7 @@
 </textarea>
 <input name="dsubmit" type="submit" value="수정하기" size="20px">
 <input name="dsubmit" type="reset" value="다시입력" size="20px">
-<input name="dsubmit" type="submit" value="뒤로가기" size="20px">
+<input name="dsubmit" type="submit" value="뒤로가기" size="20px" onclick="javascript:history.back()">
 </form>
 </div>
 </div>

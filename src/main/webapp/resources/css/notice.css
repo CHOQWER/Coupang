@@ -77,6 +77,12 @@ button {
     margin: 10px;
 }
 
+#top-button{
+	display:flex;
+	justify-content: right;
+	padding:10px;
+}
+
 .w-btn {
     position: relative;
     border: none;
