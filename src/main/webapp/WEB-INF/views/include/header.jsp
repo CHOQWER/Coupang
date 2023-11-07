@@ -6,11 +6,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>디지팡팡팡</title>
 
 <link rel="stylesheet" href="../resources/css/index.css">
 <link rel="shortcut icon"
-	href="//image9.coupangcdn.com/image/coupang/favicon/v2/favicon.ico"
+	href="/resources/img/logo.png"
 	type="image/x-icon" />
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 

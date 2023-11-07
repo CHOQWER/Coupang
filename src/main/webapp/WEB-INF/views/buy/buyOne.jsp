@@ -198,23 +198,15 @@ function openPop(u_id) {
 
 function cardBuy() {
 	var u_id = '${sessionScope.vo.u_id}';
-	const url = '/cardselect?u_id=' + u_id;
-	var popup2 = window.open(url, '카드 선택', 'width=600px,height=500px,scrollbars=yes');
-	let selectedCard = null;
-	function updateSelectedCard(cardNum) {
-        selectedCard = cardNum;
-    }
-
-    // 팝업이 닫혔을 때 선택된 카드 번호 확인
-    const checkPopupInterval = setInterval(function() {
-        if (popup.closed) {
-           // 인터벌 중지
+	var popup2 = window.open('/cardselect?u_id=' + u_id , '', 'width=600px,height=500px,scrollbars=yes');
+	 var checkPopupInterval = setInterval(function() {
+	        if (popup2.closed) {
+	            // 팝업이 닫히면 insertBuy 실행
                 $("#insertBuyOne").submit();
-                clearInterval(checkPopupInterval);
-            }
-        }
-    }, 1000); // 1초마다 팝업 상태 확인
-
+	            clearInterval(checkPopupInterval); // 인터벌 중지
+	        }
+	    }, 1000); // 1초마다 팝업 상태 확인
+	}
 
 function updateAddress(post_no,newAddr1,newAddr2) {
     // 메인 창의 주소 정보 업데이트
@@ -297,5 +289,6 @@ function updateAddress(post_no,newAddr1,newAddr2) {
 	}
 	
 </script>
+
 
 <%@ include file="/WEB-INF/views/include/footer.jsp"%>
