@@ -70,8 +70,10 @@
 							<div style="margin: 15px;">
 								<span><a
 									href="ProductView?pno=${vo.pno}&cate_name=${cate.get('name')}&subcate_name=${sub.get('sname')}">${vo.pname}</a></span><br>
-								<span>와우할인가</span> <span><fmt:formatNumber
-										value="${vo.price}" pattern="#,###" /></span><br> <span><fmt:formatNumber
+								<span>와우할인가</span> 
+								<span>
+								<fmt:formatNumber
+										value="${vo.price}" pattern="#,###" /></span><br> <span style="color: #cb1400;font-weight: bold;"><fmt:formatNumber
 										value="${vo.dis_price}" pattern="#,###" /></span><br> <input
 									id="avgscore" name="avgscore"
 									value="${starlist[idx.index-1].get('AVG')}"
