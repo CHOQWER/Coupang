@@ -6,11 +6,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>디지팡팡팡</title>
 
 <link rel="stylesheet" href="../resources/css/index.css">
 <link rel="shortcut icon"
-	href="//image9.coupangcdn.com/image/coupang/favicon/v2/favicon.ico"
+	href="/resources/img/logo.png"
 	type="image/x-icon" />
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
@@ -98,8 +98,7 @@
 				</div>
 
 				<div class="logo">
-					<a href="/"><img src="/resources/img/logo_coupang_w350.png"
-						alt="브랜드로고" width="174px"></a>
+					<a href="/"><img src="/resources/img/digipang_logo.png"	width="180px"></a>
 				</div>
 
 				<!--main 검색-->

@@ -58,7 +58,7 @@ function openPop(pno) {
 										<input type="checkbox" class="js-check-all" />
 										<div class="control__indicator"></div>
 								</label></th>
-								<th scope="col">번호</th>
+								
 								<th scope="col">상품번호</th>
 								<th scope="col" class="sellerId">판매자ID</th>
 								<th scope="col">제조회사</th>
@@ -71,7 +71,7 @@ function openPop(pno) {
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach items="${list}" var="BL" varStatus="status">
+							<c:forEach items="${list}" var="BL">
 								<c:set var="Content" value="${BL.content }" />
 								<c:set var="pname" value="${BL.pname }" />
 								<tr scope="row">
@@ -80,7 +80,7 @@ function openPop(pno) {
 											value="${BL.pno}"></input>
 											<div class="control__indicator"></div>
 									</label></th>
-									<td>${status.index}</td>
+									
 									<td>${BL.pno }</td>
 									<td id="u_id" class="u_id">${BL.u_id}</td>
 									<td id="company" class="company">${BL.company}</td>

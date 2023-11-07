@@ -20,20 +20,24 @@
   <input type="hidden" name="u_id" value="${sessionScope.vo.u_id}">
         <ul>	
         <c:forEach items="${list}" var="vo">    
-            <li>${vo.card_num}&nbsp;&nbsp;<button class="selectButton" data-cardnum="${vo.card_num}" onclick="cardselect(this)">선택</button></li>   
+            <li>${vo.card_num}&nbsp;&nbsp;<button class="selectButton" data-cardnum="${vo.card_num}" onclick="cardselect(this)" >선택</button></li>   
             </c:forEach>         
         </ul> 
       
     </form>
 </div>
 <script>
+
 function cardselect(button) {
     const cardNum = button.getAttribute('data-cardnum'); // 선택된 카드 번호
-    alert('선택된 카드 번호: ' + cardNum + '결제 완료');    
+    if (cardNum) {
+        alert('선택된 카드 번호: ' + cardNum + ' 결제 완료');
+    } else {
+        alert('카드를 선택하지 않았으므로 구매가 취소됩니다.');
+      
+    }
     // 선택 후 구매완료 
-    
     window.close();
-    
 }
 </script>
 </body>

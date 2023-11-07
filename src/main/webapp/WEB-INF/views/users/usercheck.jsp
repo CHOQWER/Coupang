@@ -40,4 +40,4 @@
 			<h2><c:out value="${error}"/> </h2>
 			</form>
 </div>
-<%@ include file="/WEB-INF/views/include/footer.jsp"%>			
+

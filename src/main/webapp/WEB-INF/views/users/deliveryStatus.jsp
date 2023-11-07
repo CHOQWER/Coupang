@@ -42,7 +42,7 @@
 										<td class="td-left">
 											<div class="td-left-1">
 												<c:if test="${BL.sta=='r'}">
-													배송 중
+													주문 승인 중
 													&nbsp;·<div class="td-left-1-1">${date }&nbsp;도착예정</div>
 												</c:if>
 												<c:if test="${BL.sta=='y'}">

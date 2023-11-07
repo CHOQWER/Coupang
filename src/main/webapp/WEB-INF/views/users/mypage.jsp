@@ -2,8 +2,10 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ include file="/WEB-INF/views/include/header.jsp"%>
+
 <link rel="stylesheet" href="/resources/css/mypage.css">
 <link rel="stylesheet" href="/resources/css/register3.css">
+
 
 
 
@@ -83,10 +85,15 @@
 							</div>
 							<div class="updatebutton">
 								<div class="updatebutton-1">
-									<button type="submit" name="updateUser" id="updateUser">회원정보수정</button>
+								<button type="submit" name="updateUser" id="updateUser">
+								회원정보수정</button>
+								
+				          
+				
 				</form>
+				
 				<form action="withdrawal" method="post"> 
-				<button class="withdrawal" onclick="deleteUser()">회원탈퇴</button>
+				<button class="withdrawal" id="withdrawal" onclick="deleteUser()">회원탈퇴</button>
 				<input type="hidden" name="u_id" value="${sessionScope.vo.u_id }"> 
 				</form>
 			</div>
@@ -114,4 +121,3 @@
 		}
 	}
 </script>
-<%@ include file="/WEB-INF/views/include/footer.jsp"%>

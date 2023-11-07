@@ -16,7 +16,7 @@
 </textarea>
 <input name="dsubmit" type="submit" value="등록" size="20px">
 <input name="dsubmit" type="reset" value="다시입력" size="20px">
-<input name="dsubmit" type="submit" value="뒤로가기" size="20px">
+<input name="dsubmit" type="submit" value="뒤로가기" size="20px" onclick="javascript:history.back()">
 </form>
 </div>
 </div>
