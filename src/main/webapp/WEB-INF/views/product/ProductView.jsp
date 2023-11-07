@@ -111,21 +111,21 @@
 
 			</div>
 
-			<!-- EX)와우 회원이면 무료배송+1일 뒤 도착예정, 일반 회원이면 배송비3000원+5일뒤도착예정 구현하기 -->
-			  <c:if test="${sessionScope.vo.grade==3}">
-			  <div class="prod-delivery">
-                    <p>무료배송</p>
-                    <p id="delivery-date"></p>
-                </div>
-              </c:if>
-              
-              <c:if test="${sessionScope.vo.grade!=3}">
-			  <div class="prod-delivery">
-                    <p>배송비 3000원</p>
-                    <p id="delivery-date-nomal"></p>
-                </div>
-              </c:if>
-              
+		<!-- EX)와우 회원이면 무료배송+1일 뒤 도착예정, 일반 회원이면 배송비3000원+3일뒤도착예정 구현하기 -->
+		<c:if test="${sessionScope.vo.grade==3}">
+		  <div class="prod-delivery">
+    	  <p>무료배송</p>
+    	  <p id="delivery-date"></p>
+		  </div>
+		</c:if>
+		
+		<c:if test="${sessionScope.vo.grade!=3}">
+		 <div class="prod-delivery-nomal">
+    	<p>배송비 3000원</p>
+    	<p id="delivery-date-nomal"></p>
+		</div>
+		</c:if>
+		              
               
               
               
@@ -237,22 +237,17 @@
 
 <script type="text/javascript">
 const currentDate = new Date();
-
-// 1일을 더한 날짜 계산
 currentDate.setDate(currentDate.getDate() + 1);
-
-// 날짜 형식 지정 (예: "월 일, 연도")
-const options = {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+const currentDate2 = new Date();
+currentDate2.setDate(currentDate2.getDate() + 3);
+const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
 const formattedDate = currentDate.toLocaleDateString('ko-KR', options);
+const formattedDate2 = currentDate2.toLocaleDateString('ko-KR', options);
+if(${sessionScope.vo.grade==3}){
+	document.getElementById('delivery-date').textContent = formattedDate + ' 도착 예정';
+}else
+	document.getElementById('delivery-date-nomal').textContent = formattedDate2 + ' 도착 예정';
 
-// 계산된 날짜를 페이지에 표시
-document.getElementById('delivery-date').textContent = formattedDate + ' 도착 예정';
-
-//3일을 더한 날짜 계산
-currentDate.setDate(currentDate.getDate() + 3);
-
-//계산된 날짜를 페이지에 표시
-document.getElementById('delivery-date-nomal').textContent = formattedDate + ' 도착 예정';
 
 //////////////////////////////////////////////////////////////////////////////////////
 
