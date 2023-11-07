@@ -117,7 +117,7 @@
 					rsp.error_msg;
 					location.href = "membership";
 				}
-				/* document.location.href = "redirect:membership"; */
+				//document.location.href = "redirect:membership";
 			});
 		} else {
 
