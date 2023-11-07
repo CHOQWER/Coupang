@@ -20,7 +20,7 @@
   <input type="hidden" name="u_id" value="${sessionScope.vo.u_id}">
         <ul>	
         <c:forEach items="${list}" var="vo">    
-            <li>${vo.card_num}&nbsp;&nbsp;<button class="selectButton" data-cardnum="${vo.card_num}" onclick="cardselect(this)">선택</button></li>   
+            <li>${vo.card_num}&nbsp;&nbsp;<button class="selectButton" data-cardnum="${vo.card_num}" onclick="cardselect(this)" >선택</button></li>   
             </c:forEach>         
         </ul> 
       
