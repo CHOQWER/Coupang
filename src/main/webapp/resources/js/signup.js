@@ -11,7 +11,7 @@
 	=======================*/
 	function jusoPopup() {
 		popWindow = window.open(
-				"http://127.0.0.1:8983/app/search/urlJusoSearch.do", "pop",
+				"http://yessoft.iptime.org:8983/app/search/urlJusoSearch.do", "pop",
 				"width=450,height=600, scrollbars=yes, resizable=yes");
 	}
 
